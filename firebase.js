@@ -41,17 +41,17 @@ async function getDatas(collectionName){
   return snapshot;
 }
 
-async function updateDatas(collectionName, docId, updateInfoObj) {
-  // doc(db, 컬렉션명, 문서ID);
-  // getDoc(문서레퍼런스);
-  // updateDoc(문서데이터, 수정할 정보객체);
-  const docRef = await docId(db, collectionName, docId);
-  await updateDoc(docRef, updateInfoObj);
+async function updateDatas(collectionName, docId, updateObj) {
+ await db.collection(collectionName).doc(docId).update(updateObj);
 }
 
 async function deleteDatas(collectionName, docId){
-    const docRef = await docId(db, collectionName, docId);
-    await deleteDoc(docRef);
+   try{
+    await db.collection(collectionName).doc(docId).delete();
+    return true;
+   } catch(error){
+    return false;
+   }
 }
 
 export { app, db, dbService, storageService, addDatas, getDatas, updateDatas, deleteDatas };
