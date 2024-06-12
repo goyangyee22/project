@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>빌리슈</title>
+    <script src="https://www.gstatic.com/firebasejs/10.6.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.6.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore-compat.js"></script>
+    <script src="./firebase.js"></script>
+  </head>
+  <style></style>
+  <body>
+    <form id="signup-form">
+      <h1>회원가입</h1>
+      <div>아이디<input type="text" name="id" id="id" required /></div>
+      <br />
+      <div>비밀번호<input type="password" name="pw" id="pw" required /></div>
+      <br />
+      <div>
+        비밀번호 확인<input
+          type="password"
+          name="confirmPw"
+          id="confirmPw"
+          required
+        />
+      </div>
+      <br />
+      <input type="button" value="회원 가입" onclick="createId()" />
+      <input type="button" value="취소" onclick="back()" />
+    </form>
+  </body>
+  <script>
+    // 뒤로가기 기능을 구현합니다.
+    function back() {
+      history.go(-1);
+    }
+
+    // 아이디를 생성합니다.
+    function createId() {
+      // 입력한 정보값들을 받아옵니다.
+      let id = document.querySelector("#id");
+      let pw = document.querySelector("#pw");
+      let confirmPw = document.querySelector("#confirmPw");
+
+      // 필요 입력사항 중 하나라도 값을 입력하지 않으면 회원가입을 할 수 없습니다.
+      if (id.value == "" || pw.value == "" || confirmPw.value == "") {
+        alert("회원정보를 모두 입력해주시기 바랍니다.");
+        return false;
+      } else if (pw.value !== confirmPw.value) {
+        alert("입력한 비밀번호가 다릅니다.");
+        return false;
+      } else {
+        // Firebase auth를 이용한 회원가입 처리
+        firebase
+          .auth()
+          .createUserWithEmailAndPassword(id, pw)
+          .then((userCredential) => {
+            // 회원가입에 성공하면
+            let user = userCredential.user;
+            saveSession(user.uid);
+            alert("회원가입이 완료되었습니다. 아이디는 " + id + "입니다.");
+            // 메인 페이지로 이동
+            location.href = "signUp.html";
+          })
+          .catch((error) => {
+            // 에러 처리
+            let errorCode = error.code;
+            let errorMessage = error.message;
+            alert("Error: " + errorMessage);
+          });
+      }
+    }
+
+    // Firestore에 사용자 정보를 저장합니다.
+    function saveUserData(id, pw){
+      let db = firebase.firestore();
+      db.collection("users").doc(userId).set({
+        id: id,
+        pw: pw,
+        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+      })
+    .then(()=>{
+      console.log("User data saved successfully!");
+    })
+    .catch((error)=>{
+      console.error("Error saving user data: ", error);
+    })
+  }
+  
+
+    // 로그인이 되면 세션을 저장합니다.
+    function saveSession(userId) {
+      sessionStorage.setItem("userId", userId);
+    }
+
+    // 로그인이 되어있는지 확인합니다.
+    function isLoggedIn() {
+      return sessionStorage.getItem("userId") !== null;
+    }
+
+  </script>
+</html>
