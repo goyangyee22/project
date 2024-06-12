@@ -1,0 +1,121 @@
+@charset "utf-8";
+
+@import url(./common.css);
+
+/* 결제폼 */
+#detail-payment {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+  width: 320px; /* 크기는 대략적으로 잡아놨습니다. 지워주세요. */
+  border: 2px solid #eee;
+}
+
+#detail-payment > div {
+  padding-bottom: 16px;
+  border-bottom: 1px solid #ccc; /* border 색상은 연한 회색으로 사용해주세요! */
+}
+
+/* 결제폼 헤더 */
+.pay-header h3 {
+  font-size: 24px;
+}
+.pay-cost {
+  margin: 8px 0;
+}
+.pay-desc {
+  font-size: 14px;
+  color: #808080; /* 설명 부분은 진한 회색입니다. */
+}
+
+.pay-desc p {
+  margin: 0 0 16px;
+}
+.pay-hash {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.pay-hash .hash-item {
+  padding: 8px 16px;
+  border: 1px solid #ddd;
+  border-radius: 16px;
+  background-color: #f5f5f5;
+}
+
+/* 결제폼 옵션 선택 */
+.pay-options {
+}
+
+.pay-option {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.pay-option:not(:last-child) {
+  margin-bottom: 8px;
+}
+
+.personnel-desc {
+  font-size: 14px;
+  color: #808080;
+}
+
+/* 예약 주의사항 */
+.pay-caution {
+}
+.pay-caution h4 {
+  position: relative;
+  margin-bottom: 16px;
+  padding: 0 8px;
+  font-size: 20px;
+  text-align: center;
+  color: #d42a2a;
+}
+.pay-caution h4::before,
+.pay-caution h4::after {
+  position: absolute;
+  content: "";
+  display: block;
+  border-bottom: 2px solid #d42a2a;
+}
+
+.pay-caution h4::before {
+  top: 50%;
+  left: 0;
+  width: 8%;
+  transform: translateY(-50%);
+}
+.pay-caution h4::after {
+  top: 50%;
+  right: 0;
+  width: 8%;
+  transform: translateY(-50%);
+}
+
+.caution-desc h5 {
+  margin-bottom: 5px;
+  font-size: 16px;
+}
+.caution-desc h5 > i {
+  margin-right: 5px;
+  color: #d42a2a;
+}
+
+.caution-desc h5 + * {
+  font-size: 14px;
+  color: #808080;
+}
+
+.caution-desc:first-of-type {
+  margin-bottom: 16px;
+}
+
+/* 모달 팝업 */
+#pay-modal {
+  display: none;
+}
