@@ -11,9 +11,9 @@
 </head>
 <style></style>
 <body>
-  <h1>회원가입</h1>
   <form name="signUpForm">
-    <p>
+    <h1>회원가입</h1>
+    <!-- <p>
       <label>이름&nbsp;</label>
       <input type="text" name="name" required />
     </p>
@@ -28,85 +28,156 @@
     <p>
       <label>비밀번호 확인&nbsp;</label>
       <input type="password" name="pwConfirm" required />
-    </p>
+    </p> -->
+    <div>이메일: <input type="email" id="signUpEmail" /></div>
+    <div>비밀번호: <input type="password" id="signUpPassword" ></div>
+    <button type="submit" id="signUpButton" >회원가입</button>
+    <button>로그인</button>
   </form>
-  <button id="signUpButton">회원가입</button>
-  <button id="cancel">취소</button>
+
+  <form>
+    <div>이메일: <input type="email" id="signInEmail" /></div>
+    <div>비밀번호: <input type="password" id="signInPassword" /></div>
+    <button type="submit" id="signInButton">로그인</button>
+    <button>회원가입</button>
+  </form>
+  <!-- <button id="signUpButton">회원가입</button>
+  <button id="cancel">취소</button> -->
 
   <script type="module">
-    import { dbService } from "./firebase.js";
-    import {
-      app, db, storageService, addDatas, getDatas, updateDatas, deleteDatas
-    } from "./firebase.js";
+    // import { dbService } from "./firebase.js";
+    // import {
+    //   app, db, storageService, addDatas, getDatas, updateDatas, deleteDatas
+    // } from "./firebase.js";
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-analytics.js";
 
-    // 멤버조회 및 이벤트 핸들러를 등록합니다.
-    function getMembersHandlerTrClick(){
-      getMembers().then(handleTrClick);
-    }
+// Firebase 프로젝트 구성으로 설정합니다.
+const firebaseConfig = {
+  apiKey: "AIzaSyAacCYNcsw241GRaLn9A5jUuS0hm0qbxbs",
+  authDomain: "project-52d4c.firebaseapp.com",
+  projectId: "project-52d4c",
+  storageBucket: "project-52d4c.appspot.com",
+  messagingSenderId: "587892298418",
+  appId: "1:587892298418:web:43d4e281e654f11750efab",
+  measurementId: "G-ZY1J3CGR0E",
+};
 
-    document.getElementById("signUpButton").addEventListener("click", async function(event){
-      event.preventDefault();
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 
-      // 데이터를 수집합니다.
-      const name = document.forms["signUpForm"]["name"].value;
-      const id = document.forms["signUpForm"]["id"].value;
-      const pw = document.forms["signUpForm"]["pw"].value;
-      const pwConfirm = document.forms["signUpForm"]["pwConfirm"].value;
+// console.log(app);
 
-      // 입력 정보가 전부 입력 되어야만 회원가입을 할 수 있습니다.
-      if( !name || !id || !pw || !pwConfirm ){
-        alert("회원 정보는 전부 입력하여야 합니다.")
-        return false;
-      }
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js";
+const auth = getAuth();
 
-      // 비밀번호와 비밀번호 확인이 일치하지 않으면 로그인이 되지 않습니다.
-      if(pw !== pwConfirm){
-        alert("비밀번호가 일치하지 않습니다.");
-        return false;
-      }
+document.getElementById("signUpButton").addEventListener("click", (event)=>{
+  event.preventDefault()
+  const signUpemail = document.getElementById("signUpEmail").value
+  const signUppassword = document.getElementById("signUpPassword").value
 
-      // 데이터를 파이어스토어에 저장합니다.
-      try{
-        await addDatas("users", { name, id, pw });
-        alert("회원가입이 완료되었습니다.");
-      } catch (error){
-        console.error("오류가 발생했습니다: ", error);
-        alert("회원가입 중 오류가 발생했습니다.");
-      }
-    })
+createUserWithEmailAndPassword(auth, signUpemail, signUppassword)
+  .then((userCredential) => {
+    console.log(userCredential)
+    // Signed in 
+    const user = userCredential.user;
+    // ...
+  })
+  .catch((error) => {
+    console.log('error')
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // ..
+  });
+})
 
-    async function getMembers(){
-      console.log("getMembers 함수 시작");
-      const snapshot = await getDatas("userId");
-      snapshot.forEach((doc) => {
-        const { name, id, pw, pwConfirm } = doc.data();
-        console.log(snapshot);
-      console.log("getMembers 함수 종료");
-      });
-    }
+document.getElementById("signInButton").addEventListener("click", (event) => {
+  event.preventDefault()
+  const signInemail = document.getElementById("signInEmail").value
+  const signInpassword = document.getElementById("signInPassword").value
+  signInWithEmailAndPassword(auth, signInEmail, signInPassword).then((userCredential)=>{
+    console.log(userCredential)
+    const user = userCredential.user;
+  })
+  .catch((error) => {
+    console.log('로그인 실패')
+    const errorCode = error.code;
+    const errorMessage = error.message;
+  });
+})
 
-    const btn = document.getElementById("signUpButton");
-btn.addEventListener("click", async function () {
-  const formEl = document.forms[0];
-  const formElChildren = formEl.elements;
-  const formElChildrenArr = [...formElChildren];
+  // document.getElementById("signUpButton").addEventListener("click", (event) =>{
+  //   event.preventDefault();
+  // })
 
-  const joinFormObj = formElChildrenArr.reduce(
-    (acc, cur) => ({ ...acc, [cur.name]: cur.value }),
-    {}
-  );
-  console.log(joinFormObj);
+//     // 멤버조회 및 이벤트 핸들러를 등록합니다.
+//     function getMembersHandlerTrClick(){
+//       getMembers().then(handleTrClick);
+//     }
 
-  const userInfo = {
-    name: document.querySelector("input[name='name']").value,
-    id: document.querySelector("input[name='id']").value,
-    pw: document.querySelector("input[name='pw']").value,
-  };
+//     document.getElementById("signUpButton").addEventListener("click", async function(event){
+//       event.preventDefault();
 
-  const result = await addDatas("userInfo", userInfo);
+//       // 데이터를 수집합니다.
+//       const name = document.forms["signUpForm"]["name"].value;
+//       const id = document.forms["signUpForm"]["id"].value;
+//       const pw = document.forms["signUpForm"]["pw"].value;
+//       const pwConfirm = document.forms["signUpForm"]["pwConfirm"].value;
 
-  result ? getMembersHandleTrClick() : alert("저장을 실패했습니다");
-});
+//       // 입력 정보가 전부 입력 되어야만 회원가입을 할 수 있습니다.
+//       if( !name || !id || !pw || !pwConfirm ){
+//         alert("회원 정보는 전부 입력하여야 합니다.")
+//         return false;
+//       }
+
+//       // 비밀번호와 비밀번호 확인이 일치하지 않으면 로그인이 되지 않습니다.
+//       if(pw !== pwConfirm){
+//         alert("비밀번호가 일치하지 않습니다.");
+//         return false;
+//       }
+
+//       // 데이터를 파이어스토어에 저장합니다.
+//       try{
+//         await addDatas("users", { name, id, pw });
+//         alert("회원가입이 완료되었습니다.");
+//       } catch (error){
+//         console.error("오류가 발생했습니다: ", error);
+//         alert("회원가입 중 오류가 발생했습니다.");
+//       }
+//     })
+
+//     async function getMembers(){
+//       console.log("getMembers 함수 시작");
+//       const snapshot = await getDatas("userId");
+//       snapshot.forEach((doc) => {
+//         const { name, id, pw, pwConfirm } = doc.data();
+//         console.log(snapshot);
+//       console.log("getMembers 함수 종료");
+//       });
+//     }
+
+//     const btn = document.getElementById("signUpButton");
+// btn.addEventListener("click", async function () {
+//   const formEl = document.forms[0];
+//   const formElChildren = formEl.elements;
+//   const formElChildrenArr = [...formElChildren];
+
+//   const joinFormObj = formElChildrenArr.reduce(
+//     (acc, cur) => ({ ...acc, [cur.name]: cur.value }),
+//     {}
+//   );
+//   console.log(joinFormObj);
+
+//   const userInfo = {
+//     name: document.querySelector("input[name='name']").value,
+//     id: document.querySelector("input[name='id']").value,
+//     pw: document.querySelector("input[name='pw']").value,
+//   };
+
+//   const result = await addDatas("userInfo", userInfo);
+
+//   result ? getMembersHandleTrClick() : alert("저장을 실패했습니다");
+// });
 
     // 로그인이 되면 세션을 저장합니다.
     function saveSession(userId) {

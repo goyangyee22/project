@@ -1,5 +1,6 @@
 // SDK에서 필요한 기능을 가져옵니다.
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-analytics.js";
 import { getFirestore, getDocs, collection, setDoc, doc, addDoc, deleteDoc, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
 import { getStorage } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-storage.js";
 
@@ -15,7 +16,8 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+const analytics = getAnalytics(app);
+// const db = getFirestore(app);
 
 // export const app = initializeApp(firebaseConfig);
 const dbService = getFirestore(app);
