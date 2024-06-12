@@ -20,8 +20,8 @@
         비밀번호 확인<input type="password" name="confirmPw" id="confirmPw" />
       </div>
       <br />
-      <input type="button" value="회원 가입" onclick="" />
-      <input type="button" value="취소" id="" />
+      <input type="button" value="회원 가입" onclick="createId()" />
+      <input type="button" value="취소" onclick="back()" />
     </form>
   </body>
   <script>
@@ -41,7 +41,7 @@
     if(id.value == "" || pw.value == "" || confirmPw.value == ""){
       alert("회원정보를 모두 입력해주시기 바랍니다.")
       return false;
-    } else if(pw.value !== cohnfirmPw.value){
+    } else if(pw.value !== confirmPw.value){
       alert("입력한 비밀번호가 다릅니다.")
       return false;
     }else{
