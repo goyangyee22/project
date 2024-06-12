@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,22 +12,22 @@
 <style></style>
 <body>
   <h1>회원가입</h1>
-  <form name="signupForm">
+  <form name="signUpForm">
     <p>
       <label>이름&nbsp;</label>
-      <input type="text" name="name" />
+      <input type="text" name="name" required />
     </p>
     <p>
       <label>아이디&nbsp;</label>
-      <input type="text" name="id" />
+      <input type="text" name="id" required />
     </p>
     <p>
       <label>비밀번호&nbsp;</label>
-      <input type="password" name="pw" />
+      <input type="password" name="pw" required />
     </p>
     <p>
       <label>비밀번호 확인&nbsp;</label>
-      <input type="password" name="pwConfirm" />
+      <input type="password" name="pwConfirm" required />
     </p>
   </form>
   <button id="signUpButton">회원가입</button>
@@ -39,14 +39,74 @@
       app, db, storageService, addDatas, getDatas, updateDatas, deleteDatas
     } from "./firebase.js";
 
+    // 멤버조회 및 이벤트 핸들러를 등록합니다.
+    function getMembersHandlerTrClick(){
+      getMembers().then(handleTrClick);
+    }
+
+    document.getElementById("signUpButton").addEventListener("click", async function(event){
+      event.preventDefault();
+
+      // 데이터를 수집합니다.
+      const name = document.forms["signUpForm"]["name"].value;
+      const id = document.forms["signUpForm"]["id"].value;
+      const pw = document.forms["signUpForm"]["pw"].value;
+      const pwConfirm = document.forms["signUpForm"]["pwConfirm"].value;
+
+      // 입력 정보가 전부 입력 되어야만 회원가입을 할 수 있습니다.
+      if( !name || !id || !pw || !pwConfirm ){
+        alert("회원 정보는 전부 입력하여야 합니다.")
+        return false;
+      }
+
+      // 비밀번호와 비밀번호 확인이 일치하지 않으면 로그인이 되지 않습니다.
+      if(pw !== pwConfirm){
+        alert("비밀번호가 일치하지 않습니다.");
+        return false;
+      }
+
+      // 데이터를 파이어스토어에 저장합니다.
+      try{
+        await addDatas("users", { name, id, pw });
+        alert("회원가입이 완료되었습니다.");
+      } catch (error){
+        console.error("오류가 발생했습니다: ", error);
+        alert("회원가입 중 오류가 발생했습니다.");
+      }
+    })
+
     async function getMembers(){
       console.log("getMembers 함수 시작");
       const snapshot = await getDatas("userId");
       snapshot.forEach((doc) => {
         const { name, id, pw, pwConfirm } = doc.data();
+        console.log(snapshot);
       console.log("getMembers 함수 종료");
-      })
+      });
     }
+
+    const btn = document.getElementById("signUpButton");
+btn.addEventListener("click", async function () {
+  const formEl = document.forms[0];
+  const formElChildren = formEl.elements;
+  const formElChildrenArr = [...formElChildren];
+
+  const joinFormObj = formElChildrenArr.reduce(
+    (acc, cur) => ({ ...acc, [cur.name]: cur.value }),
+    {}
+  );
+  console.log(joinFormObj);
+
+  const userInfo = {
+    name: document.querySelector("input[name='name']").value,
+    id: document.querySelector("input[name='id']").value,
+    pw: document.querySelector("input[name='pw']").value,
+  };
+
+  const result = await addDatas("userInfo", userInfo);
+
+  result ? getMembersHandleTrClick() : alert("저장을 실패했습니다");
+});
 
     // 로그인이 되면 세션을 저장합니다.
     function saveSession(userId) {

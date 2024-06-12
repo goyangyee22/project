@@ -23,7 +23,7 @@ const storageService = getStorage(app);
 // const app = firebase.initializeApp(firebaseConfig);
 // const dbService = firebase.firestore(app);
 
-async function addDatas(collectionName, addObj) {
+async function addDatas(collectionName, dataObj) {
   // 문서 ID가 자동으로 할당됩니다.
  try{
   const collect = await collection(db, collectionName);
@@ -35,8 +35,10 @@ async function addDatas(collectionName, addObj) {
 }
 
 async function getDatas(collectionName){
- const querySnapshot = await db.collection(collectionName).get();
- return querySnapshot;
+  const collect = await collection(db, collectionName);
+  const snapshot = await getDocs(collect);
+
+  return snapshot;
 }
 
 async function updateDatas(collectionName, docId, updateObj) {
