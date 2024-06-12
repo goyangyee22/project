@@ -1,0 +1,159 @@
+@charset "utf-8";
+
+/* common font-family */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap");
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+
+/* reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Pretendard", "Noto Sans KR", sans-serif;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+li {
+  list-style: none;
+}
+body {
+  color: #333;
+}
+
+/* common */
+.wrap {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1200px;
+}
+
+/* header */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+  padding: 24px 0;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+header > .wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+#logo {
+  outline: 1px dotted red;
+}
+
+nav {
+  flex-grow: 1;
+  font-size: 24px;
+}
+
+ul.main-menu {
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+}
+
+ul.spot {
+  display: flex;
+}
+
+ul.spot > li {
+  position: relative;
+  padding: 8px;
+}
+
+ul.spot > li::after {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: 150%;
+  font-size: 14px;
+}
+
+.spot-login:hover::after {
+  content: "login";
+}
+.spot-join:hover::after {
+  content: "join";
+}
+.spot-page:hover::after {
+  content: "mypage";
+}
+
+/* footer */
+/* footer */
+footer {
+  padding: 40px 24px 24px;
+  background-color: #eee;
+}
+
+.footer-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.footer-menu {
+  display: flex;
+}
+
+.footer-menu li {
+  font-size: 14px;
+}
+
+.footer-menu li:not(:last-child)::after {
+  content: "";
+  display: inline-block;
+  width: 2px;
+  height: 10px;
+  background-color: #ccc;
+}
+
+.footer-menu li a {
+  padding: 0 8px;
+}
+
+.footer-contents {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 0;
+  border-top: 1px solid #ccc;
+}
+
+.footer-company {
+  display: flex;
+  flex-wrap: wrap;
+}
+.footer-company li:not(:last-child)::after {
+  content: "";
+  display: inline-block;
+  margin-left: 8px;
+  width: 2px;
+  height: 10px;
+  background-color: #ccc;
+}
+
+.footer-company li {
+  padding: 0 4px;
+}
+
+.footer-sns {
+  width: 50%;
+  display: flex;
+  justify-content: right;
+  gap: 24px;
+}
+
+.copy {
+  padding: 24px 0 0;
+  border-top: 1px solid #ccc;
+  text-align: center;
+}

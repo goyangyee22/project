@@ -1,0 +1,71 @@
+@charset "utf-8";
+
+@import url(./common.css);
+
+/* hero */
+#hero {
+  position: relative;
+  height: 100vh;
+  outline: 1px dotted red;
+}
+
+#hero > .hero-swiper {
+  height: 100%;
+}
+
+.hero-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  pointer-events: none;
+}
+
+.hero-slide img {
+  width: 100%;
+  height: 100%;
+}
+
+/* intro */
+#intro {
+  padding: 48px 0;
+}
+
+.intro-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+}
+.intro-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+}
+
+.party-icon {
+  background-color: yellow;
+}
+.seminar-icon {
+  background-color: navy;
+  color: #fff;
+}
+.pet-icon {
+  background-color: green;
+}
+
+.room-desc {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin: 40px 0;
+}
