@@ -1,6 +1,6 @@
 // SDK에서 필요한 기능을 가져옵니다.
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
-import { getFirestore } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
+import { getFirestore, getDocs, collection, setDoc, doc, addDoc, deleteDoc, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
 import { getStorage } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-storage.js";
 
 // Firebase 프로젝트 구성으로 설정합니다.
@@ -23,22 +23,20 @@ const storageService = getStorage(app);
 // const app = firebase.initializeApp(firebaseConfig);
 // const dbService = firebase.firestore(app);
 
-async function addDatas(collectionName, dataObj) {
-  // 문서의 ID는 자동으로 배정됩니다.
-  try {
-    const collect = await collectionName(db, collectionName);
-    await addDoc(collect, dataObj); // 결과는 undefined입니다.
-    return true;
-  } catch (error) {
-    return false;
-  }
+async function addDatas(collectionName, addObj) {
+  // 문서 ID가 자동으로 할당됩니다.
+ try{
+  const collect = await collection(db, collectionName);
+  await addDoc(collect, dataObj); // 결과 == undefined
+  return true;
+ } catch (error){
+  return false;
+ }
 }
 
 async function getDatas(collectionName){
-  const collect = await collectionName(db, collectionName);
-  const snapshot = await getDocs(collect);
-
-  return snapshot;
+ const querySnapshot = await db.collection(collectionName).get();
+ return querySnapshot;
 }
 
 async function updateDatas(collectionName, docId, updateObj) {
