@@ -1,0 +1,13 @@
+@charset "utf-8";
+
+@import url(./common.css);
+#pet {
+  padding-top: 100px;
+  background-color: #faf3f0;
+  height: 100vh;
+}
+.petimg {
+  width: 100%;
+  border-radius: 30px;
+  height: 100%;
+}

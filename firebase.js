@@ -1,6 +1,5 @@
 // SDK에서 필요한 기능을 가져옵니다.
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.6.0/firebase-app-compat.js';
-import { getAuth } from 'https://www.gstatic.com/firebasejs/10.6.0/firebase-auth-compat.js';
 import { getFirestore } from 'https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore-compat.js';
 import { getStorage } from 'https://www.gstatic.com/firebasejs/10.6.0/firebase-storage-compat.js'
 
@@ -16,7 +15,6 @@ const firebaseConfig ={
 }
 
 export const app = initializeApp(firebaseConfig);
-export const authService = getAuth(app);
 export const dbService = getFirestore(app);
 export const storageService = getStorage(app);
 
