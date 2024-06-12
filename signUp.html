@@ -10,14 +10,59 @@
   </head>
   <style></style>
   <body>
-    <form>
+    <form id="signup-form">
       <h1>회원가입</h1>
-      <div>ID : <input type="email" /></div>
-      <div>비밀번호 : <input type="password" /></div>
-      <button type="submit">회원가입</button>
+      <div>아이디<input type="text" name="id" id="id" /></div>
+      <br />
+      <div>비밀번호<input type="password" name="pw" id="pw" /></div>
+      <br />
+      <div>
+        비밀번호 확인<input type="password" name="confirmPw" id="confirmPw" />
+      </div>
+      <br />
+      <input type="button" value="회원 가입" onclick="" />
+      <input type="button" value="취소" id="" />
     </form>
   </body>
   <script>
+    // 뒤로가기 기능을 구현합니다.
+    function back() {
+      history.go(-1);
+    }
+
+    // 아이디를 생성합니다.
+    function createId(){
+      // 입력한 정보값들을 받아옵니다.
+    let id = document.querySelector("#id");
+    let pw = document.querySelector("#pw");
+    let confirmPw = document.querySelector("#confirmPw");
+
+    // 필요 입력사항 중 하나라도 값을 입력하지 않으면 회원가입을 할 수 없습니다.
+    if(id.value == "" || pw.value == "" || confirmPw.value == ""){
+      alert("회원정보를 모두 입력해주시기 바랍니다.")
+      return false;
+    } else if(pw.value !== cohnfirmPw.value){
+      alert("입력한 비밀번호가 다릅니다.")
+      return false;
+    }else{
+      location.href='signUp.html'
+    }
+    }
+
+    document
+      .getElementById("signup-form")
+      .addEventlistener("submit", function (event) {
+        // 기본 제출 동작을 방지합니다.
+        event.preventDefault();
+
+        // 입력값을 가져옵니다.
+        let username = document.getElementById("userId").value;
+        let password = document.getElementById("password").value;
+
+        // 회원가입 로직 처리
+        alert("가입이 완료되었습니다. 아이디는 " + "userId" + "입니다.");
+      });
+
     // 로그인이 되면 세션을 저장합니다.
     function saveSession(userId) {
       sessionStorage.setItem("userId", userId);
