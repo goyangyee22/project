@@ -1,7 +1,7 @@
 // SDK에서 필요한 기능을 가져옵니다.
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app-compat.js";
-import { getFirestore } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore-compat.js";
-import { getStorage } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-storage-compat.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
+import { getFirestore } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
+import { getStorage } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-storage.js";
 
 // Firebase 프로젝트 구성으로 설정합니다.
 const firebaseConfig = {
@@ -18,8 +18,8 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 // export const app = initializeApp(firebaseConfig);
-export const dbService = getFirestore(app);
-export const storageService = getStorage(app);
+const dbService = getFirestore(app);
+const storageService = getStorage(app);
 // const app = firebase.initializeApp(firebaseConfig);
 // const dbService = firebase.firestore(app);
 
