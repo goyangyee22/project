@@ -4,16 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>빌리슈 회원가입</title>
-  <!-- <script src="https://www.gstatic.com/firebasejs/10.6.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.6.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.6.0/firebase-storage-compat.js"></script>
-  <script src="./firebase.js"></script> -->
+  <script src="./firebase.js"></script>
 </head>
 <style></style>
 <body>
   <form name="signUpForm">
     <h1>회원가입</h1>
-    <!-- <p>
+    <p>
       <label>이름&nbsp;</label>
       <input type="text" name="name" required />
     </p>
@@ -28,29 +28,19 @@
     <p>
       <label>비밀번호 확인&nbsp;</label>
       <input type="password" name="pwConfirm" required />
-    </p> -->
-    <div>이메일: <input type="email" id="signUpEmail" /></div>
-    <div>비밀번호: <input type="password" id="signUpPassword" ></div>
-    <button type="submit" id="signUpButton" >회원가입</button>
-    <button>로그인</button>
+    </p>
   </form>
 
-  <form>
-    <div>이메일: <input type="email" id="signInEmail" /></div>
-    <div>비밀번호: <input type="password" id="signInPassword" /></div>
-    <button type="submit" id="signInButton">로그인</button>
-    <button>회원가입</button>
-  </form>
-  <!-- <button id="signUpButton">회원가입</button>
-  <button id="cancel">취소</button> -->
+  <button id="signUpButton">회원가입</button>
+  <button id="cancel">취소</button>
 
   <script type="module">
-    // import { dbService } from "./firebase.js";
-    // import {
-    //   app, db, storageService, addDatas, getDatas, updateDatas, deleteDatas
-    // } from "./firebase.js";
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-analytics.js";
+    import { dbService } from "./firebase.js";
+    import {
+      app, db, storageService, addDatas, getDatas, updateDatas, deleteDatas
+    } from "./firebase.js";
+// import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-analytics.js";
 
 // Firebase 프로젝트 구성으로 설정합니다.
 const firebaseConfig = {
@@ -68,116 +58,78 @@ const analytics = getAnalytics(app);
 
 // console.log(app);
 
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js";
-const auth = getAuth();
-
-document.getElementById("signUpButton").addEventListener("click", (event)=>{
-  event.preventDefault()
-  const signUpemail = document.getElementById("signUpEmail").value
-  const signUppassword = document.getElementById("signUpPassword").value
-
-createUserWithEmailAndPassword(auth, signUpemail, signUppassword)
-  .then((userCredential) => {
-    console.log(userCredential)
-    // Signed in 
-    const user = userCredential.user;
-    // ...
+  document.getElementById("signUpButton").addEventListener("click", (event) =>{
+    event.preventDefault();
   })
-  .catch((error) => {
-    console.log('error')
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    // ..
-  });
-})
 
-document.getElementById("signInButton").addEventListener("click", (event) => {
-  event.preventDefault()
-  const signInemail = document.getElementById("signInEmail").value
-  const signInpassword = document.getElementById("signInPassword").value
-  signInWithEmailAndPassword(auth, signInEmail, signInPassword).then((userCredential)=>{
-    console.log(userCredential)
-    const user = userCredential.user;
-  })
-  .catch((error) => {
-    console.log('로그인 실패')
-    const errorCode = error.code;
-    const errorMessage = error.message;
-  });
-})
+    // 멤버조회 및 이벤트 핸들러를 등록합니다.
+    function getMembersHandlerTrClick(){
+      getMembers().then(handleTrClick);
+    }
 
-  // document.getElementById("signUpButton").addEventListener("click", (event) =>{
-  //   event.preventDefault();
-  // })
+    document.getElementById("signUpButton").addEventListener("click", async function(event){
+      event.preventDefault();
 
-//     // 멤버조회 및 이벤트 핸들러를 등록합니다.
-//     function getMembersHandlerTrClick(){
-//       getMembers().then(handleTrClick);
-//     }
+      // 데이터를 수집합니다.
+      const name = document.forms["signUpForm"]["name"].value;
+      const id = document.forms["signUpForm"]["id"].value;
+      const pw = document.forms["signUpForm"]["pw"].value;
+      const pwConfirm = document.forms["signUpForm"]["pwConfirm"].value;
 
-//     document.getElementById("signUpButton").addEventListener("click", async function(event){
-//       event.preventDefault();
+      // 입력 정보가 전부 입력 되어야만 회원가입을 할 수 있습니다.
+      if( !name || !id || !pw || !pwConfirm ){
+        alert("회원 정보는 전부 입력하여야 합니다.")
+        return false;
+      }
 
-//       // 데이터를 수집합니다.
-//       const name = document.forms["signUpForm"]["name"].value;
-//       const id = document.forms["signUpForm"]["id"].value;
-//       const pw = document.forms["signUpForm"]["pw"].value;
-//       const pwConfirm = document.forms["signUpForm"]["pwConfirm"].value;
+      // 비밀번호와 비밀번호 확인이 일치하지 않으면 로그인이 되지 않습니다.
+      if(pw !== pwConfirm){
+        alert("비밀번호가 일치하지 않습니다.");
+        return false;
+      }
 
-//       // 입력 정보가 전부 입력 되어야만 회원가입을 할 수 있습니다.
-//       if( !name || !id || !pw || !pwConfirm ){
-//         alert("회원 정보는 전부 입력하여야 합니다.")
-//         return false;
-//       }
+      // 데이터를 파이어스토어에 저장합니다.
+      try{
+        await addDatas("users", { name, id, pw });
+        alert("회원가입이 완료되었습니다.");
+      } catch (error){
+        console.error("오류가 발생했습니다: ", error);
+        alert("회원가입 중 오류가 발생했습니다.");
+      }
+    })
 
-//       // 비밀번호와 비밀번호 확인이 일치하지 않으면 로그인이 되지 않습니다.
-//       if(pw !== pwConfirm){
-//         alert("비밀번호가 일치하지 않습니다.");
-//         return false;
-//       }
+    async function getMembers(){
+      console.log("getMembers 함수 시작");
+      const snapshot = await getDatas("userId");
+      snapshot.forEach((doc) => {
+        const { name, id, pw, pwConfirm } = doc.data();
+        console.log(snapshot);
+      console.log("getMembers 함수 종료");
+      });
+    }
 
-//       // 데이터를 파이어스토어에 저장합니다.
-//       try{
-//         await addDatas("users", { name, id, pw });
-//         alert("회원가입이 완료되었습니다.");
-//       } catch (error){
-//         console.error("오류가 발생했습니다: ", error);
-//         alert("회원가입 중 오류가 발생했습니다.");
-//       }
-//     })
+    const btn = document.getElementById("signUpButton");
+btn.addEventListener("click", async function () {
+  const formEl = document.forms[0];
+  const formElChildren = formEl.elements;
+  const formElChildrenArr = [...formElChildren];
 
-//     async function getMembers(){
-//       console.log("getMembers 함수 시작");
-//       const snapshot = await getDatas("userId");
-//       snapshot.forEach((doc) => {
-//         const { name, id, pw, pwConfirm } = doc.data();
-//         console.log(snapshot);
-//       console.log("getMembers 함수 종료");
-//       });
-//     }
+  const joinFormObj = formElChildrenArr.reduce(
+    (acc, cur) => ({ ...acc, [cur.name]: cur.value }),
+    {}
+  );
+  console.log(joinFormObj);
 
-//     const btn = document.getElementById("signUpButton");
-// btn.addEventListener("click", async function () {
-//   const formEl = document.forms[0];
-//   const formElChildren = formEl.elements;
-//   const formElChildrenArr = [...formElChildren];
+  const userInfo = {
+    name: document.querySelector("input[name='name']").value,
+    id: document.querySelector("input[name='id']").value,
+    pw: document.querySelector("input[name='pw']").value,
+  };
 
-//   const joinFormObj = formElChildrenArr.reduce(
-//     (acc, cur) => ({ ...acc, [cur.name]: cur.value }),
-//     {}
-//   );
-//   console.log(joinFormObj);
+  const result = await addDatas("userInfo", userInfo);
 
-//   const userInfo = {
-//     name: document.querySelector("input[name='name']").value,
-//     id: document.querySelector("input[name='id']").value,
-//     pw: document.querySelector("input[name='pw']").value,
-//   };
-
-//   const result = await addDatas("userInfo", userInfo);
-
-//   result ? getMembersHandleTrClick() : alert("저장을 실패했습니다");
-// });
+  result ? getMembersHandleTrClick() : alert("저장을 실패했습니다");
+});
 
     // 로그인이 되면 세션을 저장합니다.
     function saveSession(userId) {
