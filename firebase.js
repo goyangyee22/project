@@ -34,6 +34,13 @@ async function addDatas(collectionName, dataObj) {
   }
 }
 
+async function getDatas(collectionName){
+  const collect = await collectionName(db, collectionName);
+  const snapshot = await getDocs(collect);
+
+  return snapshot;
+}
+
 async function updateDatas(collectionName, docId, updateInfoObj) {
   // doc(db, 컬렉션명, 문서ID);
   // getDoc(문서레퍼런스);
@@ -47,4 +54,4 @@ async function deleteDatas(collectionName, docId){
     await deleteDoc(docRef);
 }
 
-export { app, dbService, storageService, addDatas, updateDatas, deleteDatas };
+export { app, db, dbService, storageService, addDatas, getDatas, updateDatas, deleteDatas };
