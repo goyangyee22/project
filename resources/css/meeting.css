@@ -1,18 +1,78 @@
 @charset "utf-8";
 
 @import url(./common.css);
+header {
+  position: static;
+}
 
 #meet {
   padding-top: 100px;
   background-color: #d2e3fd;
-  height: 100vh;
 }
 
 .meeting-slide {
   width: 100%;
-  height: 600px;
+  height: 550px;
 }
 
 .meeting-slide-wrapper > .swiper-slide > img {
   width: 100%;
+}
+
+#meet-menu {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  align-items: center;
+  color: black;
+  border-top: 1px solid black;
+  padding: 20px 0;
+}
+
+#information {
+  padding: 70px;
+  display: block;
+}
+
+#information p {
+  font-size: large;
+}
+
+.information-list span {
+  background-color: #eeeeee;
+  display: inline-block;
+  padding: 8px 15px;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.main-icon {
+  display: flex;
+  gap: 40px;
+}
+
+.iconsort {
+  text-align: center;
+}
+.iconsort p {
+  font-size: 13px;
+}
+
+.i-con {
+  text-align: center;
+  border: 2px solid black;
+  border-radius: 8px;
+  padding: 10px;
+  width: 60px;
+  height: 60px;
+  /* padding-right: 0 15px; */
+}
+
+.fa-solid {
+  font-size: 35px;
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
 }
