@@ -73,10 +73,10 @@
         return false;
       }
 
-      // 비밀번호와 비밀번호 확인이 일치하지 않으면 로그인이 되지 않습니다.
+      // 비밀번호와 비밀번호 확인이 일치하지 않으면 회원가입이 되지 않습니다.
       console.log(pw);
       console.log(pwConfirm);
-      if (pw != pwConfirm) {
+      if (pw !== pwConfirm) {
         alert("비밀번호가 일치하지 않습니다.");
         return false;
       }
@@ -112,7 +112,15 @@
     const btn = document.getElementById("signUpButton");
     btn.addEventListener("click", async function () {
       const pwCheck = handleSignUp(); // 비밀번호와 비밀번호 확인이 같은 지 확인합니다.
-      if (!pwCheck) return false;
+      if(pwCheck){
+        alert("회원가입이 성공적으로 완료 되었습니다.");
+        return true;
+      }
+      else if (!pwCheck) {
+        alert("입력하신 비밀번호와 비밀번호 확인이 다릅니다.");
+        return false;
+        }    
+      
       const formEl = document.forms[0];
       const formElChildren = formEl.elements;
       const formElChildrenArr = [...formElChildren];
@@ -134,7 +142,7 @@
 
       result ? getMembersHandlerTrClick() : alert("저장을 실패했습니다");
     });
-
+  
     // 초기화 함수 호출
     getMembersHandlerTrClick();
 
