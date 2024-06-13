@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>빌리슈 회원가입</title>
+    <!-- <script src="https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.6.0/firebase-storage.js"></script> -->
+  </head>
+  <style>
+    /* 회원가입 정규식 아직 안 달아서 추가 예정입니다. */
+    #cancel a {
+      text-decoration: none;
+      color: #000;
+    }
+  </style>
+  <body>
+    <form name="signUpForm">
+      <h1>회원가입</h1>
+      <p>
+        <label class="formInput">이름&nbsp;</label>
+        <input type="text" name="name" required />
+      </p>
+      <p>
+        <label class="formInput">아이디&nbsp;</label>
+        <input type="text" name="id" pattern="^[a-z0-9]{4,16}$" required />
+        <button id="duplicate">중복확인</button>
+      </p>
+      <p>
+        <label class="formInput">비밀번호&nbsp;</label>
+        <input
+          type="password"
+          name="pw"
+          pattern="^[A-Za-z0-9~?!@#$%^&*_-]{4,16}"
+          required
+        />
+      </p>
+      <p>
+        <label class="formInput">비밀번호 확인&nbsp;</label>
+        <input type="password" name="pwConfirm" required />
+      </p>
+    </form>
+
+    <button id="signUpButton">회원가입</button>
+    <button id="cancel">
+      <a href="../project/index.html">취소</a>
+    </button>
+  </body>
+  <script type="module">
+    import {
+      app,
+      // db,
+      dbService,
+      storageService,
+      addDatas,
+      getDatas,
+      updateDatas,
+      deleteDatas,
+    } from "../firebase.js";
+    import {
+      collection,
+      query,
+      where,
+      getDocs,
+    } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
+
+    // console.log(app);
+
+    // document
+    //   .getElementById("signUpButton")
+    //   .addEventListener("click", (event) => {
+    //     event.preventDefault();
+    //     handleSignUp();
+    //   });
+
+    let idCheck = false;
+
+    let buttonCheck = false;
+
+    // ID 중복에 대한 함수를 정의합니다.
+    async function isIdDuplicate(event) {
+      event.preventDefault();
+      let id = document.querySelector("input[name='id']").value;
+
+      const usersRef = collection(dbService, "userInfo");
+      const q = query(usersRef, where("id", "==", id));
+      const querySnapshot = await getDocs(q);
+      console.log(querySnapshot);
+      idCheck = !querySnapshot.empty ? false : true;
+      buttonCheck = true;
+      if (idCheck) {
+        alert("사용 가능한 아이디입니다.");
+      } else {
+        alert("중복된 아이디입니다.");
+      }
+    }
+
+    let isItDuplicate = document.querySelector("#duplicate");
+    isItDuplicate.addEventListener("click", isIdDuplicate);
+
+    // 데이터를 수집합니다.
+    function handleSignUp() {
+      const name = document.forms["signUpForm"]["name"].value;
+      const id = document.forms["signUpForm"]["id"].value;
+      const pw = document.forms["signUpForm"]["pw"].value;
+      const pwConfirm = document.forms["signUpForm"]["pwConfirm"].value;
+
+      // 입력 정보가 전부 입력 되어야만 회원가입을 할 수 있습니다.
+      if (!name || !id || !pw || !pwConfirm) {
+        alert("회원 정보는 전부 입력하여야 합니다.");
+        return false;
+      }
+
+      if (buttonCheck == false) {
+        alert("ID 중복확인을 해주십시오.");
+        return false;
+      }
+
+      if (idCheck == false) {
+        alert("중복된 아이디입니다.");
+        return false;
+      }
+
+      // 비밀번호와 비밀번호 확인이 일치하지 않으면 회원가입이 되지 않습니다.
+      console.log(pw !== pwConfirm);
+      if (pw !== pwConfirm) {
+        alert("비밀번호가 일치하지 않습니다.");
+        return false;
+      }
+
+      // ID 중복 검사
+      // const isDuplicate = isIdDuplicate(id);
+      // console.log(isDuplicate);
+      // if (isDuplicate) {
+      //   alert("이미 사용중인 아이디입니다. 다른 아이디를 입력해주세요.");
+      //   return false;
+      // }
+
+      // 중복되지 않는 ID일 경우 Firestore에 데이터를 저장합니다.
+      try {
+        addDatas("userInfo", { name, id, pw });
+        alert("회원가입이 완료되었습니다.");
+        getMembers();
+        return true;
+      } catch (error) {
+        console.error("오류가 발생했습니다: ", error);
+        alert("회원가입 중 오류가 발생했습니다.");
+        return false;
+      }
+      return true;
+    }
+
+    async function getMembers() {
+      console.log("getMembers 함수 시작");
+      const snapshot = await getDatas("userId");
+      snapshot.forEach((doc) => {
+        const { name, id, pw } = doc.data();
+        console.log(`Name: ${name}, ID: ${id}`);
+      });
+      console.log("getMembers 함수 종료");
+    }
+
+    // 멤버조회 및 이벤트 핸들러를 등록합니다.
+    console.log("handleTrClick 함수 호출");
+    function getMembersHandlerTrClick() {
+      getMembers().then(() => {});
+      console.log("handleTrClick 함수 종료");
+    }
+
+    const btn = document.getElementById("signUpButton");
+    btn.addEventListener("click", async function () {
+      const pwCheck = handleSignUp(); // 비밀번호와 비밀번호 확인이 같은 지 확인합니다.
+      console.log(pwCheck);
+      if (!pwCheck) {
+        return;
+      }
+
+      const formEl = document.forms[0];
+      const formElChildren = formEl.elements;
+      const formElChildrenArr = [...formElChildren];
+
+      const joinFormObj = formElChildrenArr.reduce(
+        (acc, cur) => ({ ...acc, [cur.name]: cur.value }),
+        {}
+      );
+      console.log(joinFormObj);
+
+      const userInfo = {
+        name: document.querySelector("input[name='name']").value,
+        id: document.querySelector("input[name='id']").value,
+        pw: document.querySelector("input[name='pw']").value,
+      };
+
+      const result = await addDatas("userInfo", userInfo);
+      console.log(result);
+
+      result ? getMembersHandlerTrClick() : alert("저장을 실패했습니다");
+    });
+
+    // 초기화 함수 호출
+    getMembersHandlerTrClick();
+
+    // ID를 만들 때 중복되는 ID가 있는 지 검사합니다. (다음 코드를 반드시 참고)
+    // import { collection, query, where } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js"; // 이건 firebase.js에서 쓰이는 거였나?
+    // const usersRef = collection(db, "users");
+    // const q = query(usersRef, where("id", "==", id));
+
+    // 이후 내용 참고용인데 확실치 않아서 내버려두는 중
+    //     import { collection, query, where, getDocs } from "firebase/firestore";
+
+    // const q = query(collection(db, "cities"), where("capital", "==", true));
+
+    // const querySnapshot = await getDocs(q);
+    // querySnapshot.forEach((doc) => {
+    //   // doc.data() is never undefined for query doc snapshots
+    //   console.log(doc.id, " => ", doc.data());
+    // });
+
+    // 로그인이 되면 세션을 저장합니다.
+    function saveSession(userId) {
+      sessionStorage.setItem("userId", userId);
+    }
+
+    // 로그인이 되어있는지 확인합니다.
+    function isLoggedIn() {
+      return sessionStorage.getItem("userId") !== null;
+    }
+
+    // 로그아웃이 되면 세션을 제거합니다.
+    function logout() {
+      sessionStorage.removeItem("userId");
+    }
+  </script>
+</html>

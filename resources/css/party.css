@@ -6,6 +6,99 @@
 
 #party {
   padding-top: 100px;
-  background-color: #e2d7f1; /* #DFCCFB */
-  height: 100vh;
+  background-color: #f0edf5; /* #DFCCFB */
+  height: 100%;
+}
+.swiper-slide > img {
+  width: 100%;
+  height: 550px;
+}
+
+.result {
+  padding: 40px;
+  margin: 50px;
+}
+.party-menu {
+  display: flex;
+  justify-content: space-evenly;
+}
+.ment {
+  text-align: center;
+}
+.main-icon {
+  display: flex;
+
+  gap: 40px;
+}
+.fa-solid {
+  font-size: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fa-minus {
+  display: block;
+  padding: -10px 0;
+}
+.i-con {
+  border: 2px solid black;
+
+  border-radius: 8px;
+  padding: 10px;
+  width: 60px;
+  height: 60px;
+}
+.iconsort {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.iconsort p {
+  text-align: center;
+  margin: 10px 0 0;
+}
+
+.maintwo li {
+  margin-bottom: 20px;
+}
+.mainthree li {
+  margin-bottom: 20px;
+}
+
+.textone {
+  padding-right: 70px;
+}
+/* .menu-one:hover {
+  color: white;
+}
+.menu-two:hover {
+  color: white;
+}
+.menu-three:hover {
+  color: white;
+} */
+.party-main {
+  padding-top: 100px;
+}
+.party-maintwo {
+  padding-top: 100px;
+}
+.party-mainthree {
+  padding-top: 100px;
+}
+.party-mainfour {
+  padding-top: 100px;
+}
+.party-serve {
+  padding-bottom: 20px;
+}
+.text-list {
+  padding-bottom: 20px;
+}
+/* .none {
+  padding-top: 20px;
+} */
+.none p {
+  padding-top: 20px;
 }
