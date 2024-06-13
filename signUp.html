@@ -112,11 +112,7 @@
     const btn = document.getElementById("signUpButton");
     btn.addEventListener("click", async function () {
       const pwCheck = handleSignUp(); // 비밀번호와 비밀번호 확인이 같은 지 확인합니다.
-      if(pwCheck){
-        alert("회원가입이 성공적으로 완료 되었습니다.");
-        return true;
-      }
-      else if (!pwCheck) {
+      if (!pwCheck) {
         alert("입력하신 비밀번호와 비밀번호 확인이 다릅니다.");
         return false;
         }    
