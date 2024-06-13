@@ -34,5 +34,38 @@
     </button>
   </body>
   <script type="module">
+    import {
+      app,
+      // db,
+      dbService,
+      storageService,
+      addDatas,
+      getDatas,
+      updateDatas,
+      deleteDatas,
+    } from "../firebase.js";
+    import {
+      collection,
+      query,
+      where,
+      getDocs,
+    } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
+
+    const signInForm = document.forms["signInForm"];
+    const signInButton = document.getElementById("signInButton");
+
+    // 입력된 ID와 비밀번호를 기반으로 로그인을 합니다.
+    signInButton.addEventListener("click", async function (event) {
+      event.preventDefault();
+
+      const id = signInForm.elements["id"].value;
+      const pw = signInForm.elements["pw"].value;
+    });
+
+    // input에 입력된 ID와 비밀번호 값을 가져옵니다.
+
+    // 입력된 ID와 비밀번호를 기반으로 그에 해당하는 문서 ID 값을 가져옵니다.
+
+    // 문서 ID값에 해당하는 name? 값을 가져옵니다.
   </script>
 </html>
