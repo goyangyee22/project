@@ -1,13 +1,150 @@
 @charset "utf-8";
 
 @import url(./common.css);
+header {
+  position: static;
+}
 #pet {
   padding-top: 100px;
   background-color: #faf3f0;
-  height: 100vh;
+  /* height: 100vh; */
 }
-.petimg {
+#pet img {
   width: 100%;
   border-radius: 30px;
   height: 100%;
+}
+section {
+  color: #545b77;
+}
+.More {
+  padding: 20px;
+  /* padding-top: 20px; */
+  border-bottom: 1px solid pink;
+  /* text-align: center; */
+  position: sticky;
+  top: 0;
+}
+.More ul {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+.fa-duotone {
+  width: 20px;
+  height: 20px;
+}
+.pet-title {
+  padding-top: 10px;
+  font-weight: 900;
+  font-size: 35px;
+  color: burlywood;
+}
+.infor-title {
+  color: darksalmon;
+  font-weight: 700;
+  font-size: 30px;
+}
+.space {
+  padding: 20px;
+}
+/* 아이콘 */
+.main-icon {
+  display: flex;
+  gap: 40px;
+  margin-left: 16px;
+  margin-bottom: 50px;
+}
+
+.i-con {
+  text-align: center;
+  border: 1px solid #9babb8;
+  border-radius: 8px;
+  padding: 10px;
+  width: 60px;
+  height: 60px;
+}
+.i-con > .fa-solid {
+  font-size: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.iconsort p {
+  font-size: 13px;
+}
+/* 객실용품 */
+.all {
+  display: flex;
+  align-items: center;
+  border: 1px solid #545b77;
+}
+.common-main {
+  /* display: flex;
+  justify-content: space-between; */
+}
+/* 공간소개 */
+.spaceintroduction {
+  padding: 10px;
+}
+.space {
+  margin-bottom: 50px;
+}
+.spaceintroduction p {
+  font-size: 18px;
+}
+.bir {
+  font-size: 20px;
+
+  font-weight: 900;
+}
+/* 시설안내 */
+.facility {
+  padding: 20px;
+  margin-bottom: 80px;
+}
+/* .facility-main {
+  padding: 10px;
+  font-size: 18px;
+} */
+.facility-main > li {
+  margin-top: 16px;
+  font-size: 18px;
+  display: flex;
+  text-align: center;
+  gap: 8px;
+  /* padding: 6px; */
+}
+.facility-main > li > .fa-solid {
+  font-size: 10px;
+
+  padding: 5px;
+}
+/* 이용시간 */
+.times {
+  padding: 10px;
+  margin-bottom: 50px;
+}
+table {
+  border: 2px solid black;
+  border-collapse: collapse;
+}
+tr,
+td,
+th {
+  border: 2px solid black;
+  padding: 15px 200px;
+}
+.times .time {
+  font-size: 20px;
+  color: #e99674;
+}
+/* 환불규정 */
+.refund {
+  padding-bottom: 50px;
+  /* margin-bottom: 50px; */
+}
+.refund-main > li {
+  font-size: 18px;
+  margin-top: 16px;
 }

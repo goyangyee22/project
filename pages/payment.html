@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>빌리슈 - 결제</title>
+    <link rel="stylesheet" href="../resources/css/payment.css" />
+    <script defer src="../resources/js/payment.js"></script>
+  </head>
+  <body>
+    <form action="" id="payment">
+      <div class="decision-data">
+        <div>
+          <h3>날짜</h3>
+          <span id="display-date"></span>
+        </div>
+        <div>
+          <h3>룸</h3>
+          <span id="display-room"></span>
+        </div>
+        <div>
+          <h3>시간</h3>
+          <span id="display-time"></span>
+        </div>
+        <div>
+          <h3>인원</h3>
+          <span id="display-personnel"></span>
+        </div>
+        <div>
+          <h3>결제할 금액</h3>
+          <span id="display-amount"></span>
+        </div>
+      </div>
+      <div class="enter-card-number">
+        <label for="card-number1">카드 번호를 입력해 주세요.</label>
+        <div class="input-card-number">
+          <input type="text" id="card-number1" maxlength="4" required /> -
+          <input type="text" id="card-number2" maxlength="4" required /> -
+          <input type="text" id="card-number3" maxlength="4" required /> -
+          <input type="text" id="card-number4" maxlength="4" required />
+        </div>
+      </div>
+      <input type="submit" value="결제하기" />
+    </form>
+  </body>
+</html>
