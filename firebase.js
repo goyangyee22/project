@@ -47,7 +47,6 @@ async function addDatas(collectionName, dataObj) {
 async function getDatas(collectionName) {
   const collect = collection(dbService, collectionName);
   const snapshot = await getDocs(collect);
-
   return snapshot;
 }
 
