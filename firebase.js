@@ -10,7 +10,7 @@ import {
   deleteDoc,
   getDoc,
   updateDoc,
-  getDocFromCache,
+  getDocFromCache
 } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
 import { getStorage } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-storage.js";
 

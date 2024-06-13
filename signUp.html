@@ -61,7 +61,7 @@
     //   });
 
     // 데이터를 수집합니다.
-    async function handleSignUp() {
+    function handleSignUp() {
       const name = document.forms["signUpForm"]["name"].value;
       const id = document.forms["signUpForm"]["id"].value;
       const pw = document.forms["signUpForm"]["pw"].value;
@@ -74,13 +74,12 @@
       }
 
       // 비밀번호와 비밀번호 확인이 일치하지 않으면 회원가입이 되지 않습니다.
-      console.log(pw);
-      console.log(pwConfirm);
+      console.log(pw !== pwConfirm);
       if (pw !== pwConfirm) {
         alert("비밀번호가 일치하지 않습니다.");
         return false;
       }
-      else return true;
+      return true;
       // 데이터를 파이어스토어에 저장합니다.
       // try {
       //   await addDatas("users", { name, id, pw });
@@ -112,6 +111,7 @@
     const btn = document.getElementById("signUpButton");
     btn.addEventListener("click", async function () {
       const pwCheck = handleSignUp(); // 비밀번호와 비밀번호 확인이 같은 지 확인합니다.
+      console.log(pwCheck);
       if (!pwCheck) {
         return;
       }
@@ -140,6 +140,11 @@
 
     // 초기화 함수 호출
     getMembersHandlerTrClick();
+
+    // ID를 만들 때 중복되는 ID가 있는 지 검사합니다. (다음 코드를 반드시 참고)
+    // import { collection, query, where } from "firebase/firestore";
+    // const citiesRef = collection(db, "cities");
+    // const q = query(citiesRef, where("capital", "==", true));
 
     // 로그인이 되면 세션을 저장합니다.
     function saveSession(userId) {
