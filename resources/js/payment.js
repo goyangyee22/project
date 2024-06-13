@@ -1,18 +1,22 @@
-const date = sessionStorage.getItem("date");
-const time = sessionStorage.getItem("time");
-const personnel = sessionStorage.getItem("personnel");
+const date = sessionStorage.getItem('date');
+const room = sessionStorage.getItem('room');
+const time = sessionStorage.getItem('time');
+const personnel = sessionStorage.getItem('personnel');
+const amount = sessionStorage.getItem('amount');
 
-document.getElementById("display-date").textContent = date;
-document.getElementById("display-time").textContent = time;
-document.getElementById("display-personnel").textContent = personnel;
+document.getElementById('display-date').textContent = date;
+document.getElementById('display-time').textContent = time;
+document.getElementById('display-room').textContent = room;
+document.getElementById('display-personnel').textContent = personnel;
+document.getElementById('display-amount').textContent = amount;
 
-document.getElementById("payment").addEventListener("submit", function (e) {
+document.getElementById('payment').addEventListener('submit', function (e) {
   e.preventDefault();
 
-  const cardNum1 = document.getElementById("card-number1").value;
-  const cardNum2 = document.getElementById("card-number2").value;
-  const cardNum3 = document.getElementById("card-number3").value;
-  const cardNum4 = document.getElementById("card-number4").value;
+  const cardNum1 = document.getElementById('card-number1').value;
+  const cardNum2 = document.getElementById('card-number2').value;
+  const cardNum3 = document.getElementById('card-number3').value;
+  const cardNum4 = document.getElementById('card-number4').value;
 
   const cardNumber = cardNum1 + cardNum2 + cardNum3 + cardNum4;
 
@@ -20,14 +24,16 @@ document.getElementById("payment").addEventListener("submit", function (e) {
   if (SubmitEvent) {
     console.log({
       date: date,
+      room: room,
       time: time,
       personnel: personnel,
+      amount: amount,
       cardNumber: cardNumber,
     });
     sessionStorage.clear();
-    window.location.href = "mypage.html";
+    window.location.href = 'mypage.html';
   } else {
-    console.log("저장 실패");
+    console.log('저장 실패');
   }
 
   // 데이터베이스 저장
