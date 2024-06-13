@@ -20,22 +20,11 @@
       <h1>회원가입</h1>
       <p>
         <label class="formInput">이름&nbsp;</label>
-        <input
-          type="text"
-          name="name"
-          placeholder="이름을 입력해주세요."
-          required
-        />
+        <input type="text" name="name" required />
       </p>
       <p>
         <label class="formInput">아이디&nbsp;</label>
-        <input
-          type="text"
-          name="id"
-          placeholder="4-16자의 영소문자+숫자"
-          pattern="^[a-z0-9]{4,16}$"
-          required
-        />
+        <input type="text" name="id" pattern="^[a-z0-9]{4,16}$" required />
         <button id="duplicate">중복확인</button>
       </p>
       <p>
@@ -43,19 +32,13 @@
         <input
           type="password"
           name="pw"
-          placeholder="8-16자의 특수문자+영대문자+영소문자+숫자"
           pattern="^[A-Za-z0-9~?!@#$%^&*_-]{8,16}"
           required
         />
       </p>
       <p>
         <label class="formInput">비밀번호 확인&nbsp;</label>
-        <input
-          type="password"
-          name="pwConfirm"
-          placeholder="입력하신 비밀번호와 동일합니다."
-          required
-        />
+        <input type="password" name="pwConfirm" required />
       </p>
     </form>
 
