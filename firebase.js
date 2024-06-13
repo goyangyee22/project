@@ -12,7 +12,7 @@ import {
   updateDoc,
   getDocFromCache,
   query,
-  where
+  where,
 } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
 import { getStorage } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-storage.js";
 
@@ -35,7 +35,11 @@ const storageService = getStorage(app);
 // const app = firebase.initializeApp(firebaseConfig);
 // const dbService = firebase.firestore(app);
 
-const usersRef = collection(dbService, "users");
+// users 컬렉션에 대한 참조 작성
+const usersRef = collection(dbService, "userInfo");
+
+// 컬렉션에 대한 쿼리를 만듭니다.
+const q = query(usersRef, where("id", "==", true));
 
 async function addDatas(collectionName, dataObj) {
   // 문서 ID가 자동으로 할당됩니다.
@@ -62,7 +66,8 @@ async function updateDatas(collectionName, docId, updateObj) {
 async function deleteDatas(collectionName, docId) {
   const docRef = await doc(dbService, collectionName, docId);
   try {
-    await deleteDoc(docRef);sss
+    await deleteDoc(docRef);
+    sss;
     return true;
   } catch (error) {
     return false;
