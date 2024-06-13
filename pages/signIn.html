@@ -1,11 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>빌리슈 로그인</title>
+  </head>
+  <style>
+    #cancel a {
+      text-decoration: none;
+      color: #000;
+    }
+  </style>
+  <body>
+    <form name="signInForm">
+      <h1>로그인</h1>
+      <p>
+        <label class="formInput">아이디&nbsp;</label>
+        <input type="text" name="id" pattern="^[a-z0-9]{4,16}$" required />
+      </p>
+      <p>
+        <label class="formInput">비밀번호&nbsp;</label>
+        <input
+          type="password"
+          name="pw"
+          pattern="^[A-Za-z0-9~?!@#$%^&*_-]{8,16}"
+          required
+        />
+      </p>
+    </form>
+    <button id="signInButton">로그인</button>
+    <button id="cancel">
+      <a href="../project/index.html">취소</a>
+    </button>
+  </body>
+  <script type="module">
+  </script>
 </html>

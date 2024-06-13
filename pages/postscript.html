@@ -1,11 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    
-</body>
+  </head>
+  <body></body>
+  <script type="module">
+    import {
+      app,
+      // db,
+      dbService,
+      storageService,
+      addDatas,
+      getDatas,
+      updateDatas,
+      deleteDatas,
+    } from "../firebase.js";
+    import {
+      collection,
+      query,
+      where,
+      getDocs,
+    } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
+  </script>
 </html>
