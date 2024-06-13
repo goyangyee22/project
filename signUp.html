@@ -74,20 +74,22 @@
       }
 
       // 비밀번호와 비밀번호 확인이 일치하지 않으면 로그인이 되지 않습니다.
+      console.log(pw);
+      console.log(pwConfirm);
       if (pw != pwConfirm) {
         alert("비밀번호가 일치하지 않습니다.");
         return false;
       }
 
       // 데이터를 파이어스토어에 저장합니다.
-      try {
-        await addDatas("users", { name, id, pw });
-        alert("회원가입이 완료되었습니다.");
-        getMembers();
-      } catch (error) {
-        console.error("오류가 발생했습니다: ", error);
-        alert("회원가입 중 오류가 발생했습니다.");
-      }
+      // try {
+      //   await addDatas("users", { name, id, pw });
+      //   alert("회원가입이 완료되었습니다.");
+      //   getMembers();
+      // } catch (error) {
+      //   console.error("오류가 발생했습니다: ", error);
+      //   alert("회원가입 중 오류가 발생했습니다.");
+      // }
     }
 
     async function getMembers() {
@@ -96,7 +98,7 @@
       snapshot.forEach((doc) => {
         const { name, id, pw, pwConfirm } = doc.data();
         console.log(snapshot);
-        });
+      });
       console.log("getMembers 함수 종료");
     }
 
@@ -104,11 +106,13 @@
     console.log("handleTrClick 함수 호출");
     function getMembersHandlerTrClick() {
       getMembers().then(() => {});
-    console.log("handleTrClick 함수 종료");
+      console.log("handleTrClick 함수 종료");
     }
 
     const btn = document.getElementById("signUpButton");
     btn.addEventListener("click", async function () {
+      const pwCheck = handleSignUp(); // 비밀번호와 비밀번호 확인이 같은 지 확인합니다.
+      if (!pwCheck) return false;
       const formEl = document.forms[0];
       const formElChildren = formEl.elements;
       const formElChildrenArr = [...formElChildren];
