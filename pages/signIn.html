@@ -51,6 +51,20 @@
       where,
       getDocs,
     } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
-   
+
+    // Firebase 서비스 초기화
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+
+    // 로그인 폼 요소
+    const signInForm = document.getElementById("signInForm");
+
+    // 로그인 이벤트 처리
+    signInForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const id = document.getElementById("id").value;
+      const pw = document.getElementById("pw").value;
+    });
   </script>
 </html>
