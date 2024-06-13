@@ -142,9 +142,20 @@
     getMembersHandlerTrClick();
 
     // ID를 만들 때 중복되는 ID가 있는 지 검사합니다. (다음 코드를 반드시 참고)
-    // import { collection, query, where } from "firebase/firestore";
-    // const citiesRef = collection(db, "cities");
-    // const q = query(citiesRef, where("capital", "==", true));
+    // import { collection, query, where } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js"; // 이건 firebase.js에서 쓰이는 거였나?
+    // const usersRef = collection(db, "users");
+    // const q = query(usersRef, where("id", "==", id));
+
+    // 이후 내용 참고용인데 확실치 않아서 내버려두는 중
+    //     import { collection, query, where, getDocs } from "firebase/firestore";
+
+    // const q = query(collection(db, "cities"), where("capital", "==", true));
+
+    // const querySnapshot = await getDocs(q);
+    // querySnapshot.forEach((doc) => {
+    //   // doc.data() is never undefined for query doc snapshots
+    //   console.log(doc.id, " => ", doc.data());
+    // });
 
     // 로그인이 되면 세션을 저장합니다.
     function saveSession(userId) {

@@ -10,7 +10,9 @@ import {
   deleteDoc,
   getDoc,
   updateDoc,
-  getDocFromCache
+  getDocFromCache,
+  query,
+  where
 } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
 import { getStorage } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-storage.js";
 
@@ -32,6 +34,8 @@ const storageService = getStorage(app);
 // export const app = initializeApp(firebaseConfig);
 // const app = firebase.initializeApp(firebaseConfig);
 // const dbService = firebase.firestore(app);
+
+const usersRef = collection(dbService, "users");
 
 async function addDatas(collectionName, dataObj) {
   // 문서 ID가 자동으로 할당됩니다.
