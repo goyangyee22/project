@@ -104,8 +104,8 @@
     console.log("handleTrClick 함수 호출");
     function getMembersHandlerTrClick() {
       getMembers().then(() => {});
-    }
     console.log("handleTrClick 함수 종료");
+    }
 
     const btn = document.getElementById("signUpButton");
     btn.addEventListener("click", async function () {
@@ -148,6 +148,5 @@
     function logout() {
       sessionStorage.removeItem("userId");
     }
-    getMembers();
   </script>
 </html>
