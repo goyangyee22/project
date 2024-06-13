@@ -44,12 +44,13 @@
     import {
       app,
       // db,
+      dbService,
       storageService,
       addDatas,
       getDatas,
       updateDatas,
       deleteDatas,
-    } from "./firebase.js";
+    } from "../firebase.js";
     import {
       collection,
       query,
@@ -66,6 +67,7 @@
     //     handleSignUp();
     //   });
 
+    // ID 중복에 대한 함수를 정의합니다.
     async function isIdDuplicate(id) {
       const usersRef = collection(dbService, "userInfo");
       const q = query(usersRef, where("id", "==", id));
@@ -92,7 +94,6 @@
         alert("비밀번호가 일치하지 않습니다.");
         return false;
       }
-      return true;
 
       // ID 중복 검사
       const isDuplicate = isIdDuplicate(id);
@@ -112,6 +113,7 @@
         alert("회원가입 중 오류가 발생했습니다.");
         return false;
       }
+      return true;
     }
 
     async function getMembers() {
