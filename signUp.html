@@ -115,8 +115,8 @@
       if (!pwCheck) {
         alert("입력하신 비밀번호와 비밀번호 확인이 다릅니다.");
         return false;
-        } else alert("회원가입이 완료되었습니다.");   
-      
+      } else alert("회원가입이 완료되었습니다.");
+
       const formEl = document.forms[0];
       const formElChildren = formEl.elements;
       const formElChildrenArr = [...formElChildren];
@@ -138,7 +138,7 @@
 
       result ? getMembersHandlerTrClick() : alert("저장을 실패했습니다");
     });
-  
+
     // 초기화 함수 호출
     getMembersHandlerTrClick();
 
