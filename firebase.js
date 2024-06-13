@@ -57,10 +57,10 @@ async function updateDatas(collectionName, docId, updateObj) {
 
 async function deleteDatas(collectionName, docId) {
   const docRef = await doc(dbService, collectionName, docId);
-  try{
-    await deleteDoc(docRef);
+  try {
+    await deleteDoc(docRef);sss
     return true;
-  } catch(error){
+  } catch (error) {
     return false;
   }
 }

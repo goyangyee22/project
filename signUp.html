@@ -8,7 +8,12 @@
     <script src="https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.6.0/firebase-storage.js"></script> -->
   </head>
-  <style></style>
+  <style>
+    #cancel a {
+      text-decoration: none;
+      color: #000;
+    }
+  </style>
   <body>
     <form name="signUpForm">
       <h1>회원가입</h1>
@@ -31,7 +36,9 @@
     </form>
 
     <button id="signUpButton">회원가입</button>
-    <button id="cancel">취소</button>
+    <button id="cancel">
+      <a href="../project/index.html">취소</a>
+    </button>
   </body>
   <script type="module">
     import {
@@ -67,7 +74,7 @@
       }
 
       // 비밀번호와 비밀번호 확인이 일치하지 않으면 로그인이 되지 않습니다.
-      if (pw !== pwConfirm) {
+      if (pw != pwConfirm) {
         alert("비밀번호가 일치하지 않습니다.");
         return false;
       }
@@ -76,6 +83,7 @@
       try {
         await addDatas("users", { name, id, pw });
         alert("회원가입이 완료되었습니다.");
+        getMembers();
       } catch (error) {
         console.error("오류가 발생했습니다: ", error);
         alert("회원가입 중 오류가 발생했습니다.");
@@ -88,16 +96,16 @@
       snapshot.forEach((doc) => {
         const { name, id, pw, pwConfirm } = doc.data();
         console.log(snapshot);
-        console.log("getMembers 함수 종료");
-      });
+        });
+      console.log("getMembers 함수 종료");
     }
 
     // 멤버조회 및 이벤트 핸들러를 등록합니다.
+    console.log("handleTrClick 함수 호출");
     function getMembersHandlerTrClick() {
-      console.log("handleTrClick 함수 호출");
-      getMembers().then(() => {
-      });
+      getMembers().then(() => {});
     }
+    console.log("handleTrClick 함수 종료");
 
     const btn = document.getElementById("signUpButton");
     btn.addEventListener("click", async function () {
