@@ -80,7 +80,7 @@
         alert("비밀번호가 일치하지 않습니다.");
         return false;
       }
-
+      return true;
       // 데이터를 파이어스토어에 저장합니다.
       // try {
       //   await addDatas("users", { name, id, pw });
@@ -113,9 +113,8 @@
     btn.addEventListener("click", async function () {
       const pwCheck = handleSignUp(); // 비밀번호와 비밀번호 확인이 같은 지 확인합니다.
       if (!pwCheck) {
-        alert("입력하신 비밀번호와 비밀번호 확인이 다릅니다.");
-        return false;
-      } else alert("회원가입이 완료되었습니다.");
+        return;
+      }
 
       const formEl = document.forms[0];
       const formElChildren = formEl.elements;
