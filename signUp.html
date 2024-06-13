@@ -50,6 +50,12 @@
       updateDatas,
       deleteDatas,
     } from "./firebase.js";
+    import {
+      collection,
+      query,
+      where,
+      getDocs,
+    } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
 
     // console.log(app);
 
@@ -59,6 +65,13 @@
     //     event.preventDefault();
     //     handleSignUp();
     //   });
+
+    async function isIdDuplicate(id) {
+      const usersRef = collection(dbService, "userInfo");
+      const q = query(usersRef, where("id", "==", id));
+      const querySnapshot = await getDocs(q);
+      return !querySnapshot.empty;
+    }
 
     // 데이터를 수집합니다.
     function handleSignUp() {
@@ -80,23 +93,33 @@
         return false;
       }
       return true;
-      // 데이터를 파이어스토어에 저장합니다.
-      // try {
-      //   await addDatas("users", { name, id, pw });
-      //   alert("회원가입이 완료되었습니다.");
-      //   getMembers();
-      // } catch (error) {
-      //   console.error("오류가 발생했습니다: ", error);
-      //   alert("회원가입 중 오류가 발생했습니다.");
-      // }
+
+      // ID 중복 검사
+      const isDuplicate = isIdDuplicate(id);
+      if (isDuplicate) {
+        alert("이미 사용중인 아이디입니다. 다른 아이디를 입력해주세요.");
+        return false;
+      }
+
+      // 중복되지 않는 ID일 경우 Firestore에 데이터를 저장합니다.
+      try {
+        addDatas("userInfo", { name, id, pw });
+        alert("회원가입이 완료되었습니다.");
+        getMembers();
+        return true;
+      } catch (error) {
+        console.error("오류가 발생했습니다: ", error);
+        alert("회원가입 중 오류가 발생했습니다.");
+        return false;
+      }
     }
 
     async function getMembers() {
       console.log("getMembers 함수 시작");
       const snapshot = await getDatas("userId");
       snapshot.forEach((doc) => {
-        const { name, id, pw, pwConfirm } = doc.data();
-        console.log(snapshot);
+        const { name, id, pw } = doc.data();
+        console.log(`Name: ${name}, ID: ${id}`);
       });
       console.log("getMembers 함수 종료");
     }
