@@ -2,12 +2,25 @@
 
 @import url(./common.css);
 @import url(./payment_form.css);
-
+@font-face {
+  font-family: "KyoboHandwriting2023wsa";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/2404-2@1.0/KyoboHandwriting2023wsa.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "MangoByeolbyeol";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/2405-3@1.1/MangoByeolbyeol.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
 header {
   position: static;
 }
 #pet {
-  padding-top: 100px;
+  /* padding-top: 100px; */
   background-color: #faf3f0;
   /* height: 100vh; */
 }
@@ -22,9 +35,18 @@ header {
 }
 .swiper-slide img {
   width: 100%;
-  border-radius: 30px;
-  height: 100%;
+  /* border-radius: 30px; */
+  height: 600px;
 }
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  color: #eeedeb;
+}
+/* .swiper-button-disabled {
+  background-color: #545b77;
+} */
+
 section {
   color: #545b77;
 }
@@ -46,15 +68,20 @@ section {
   height: 20px;
 }
 .pet-title {
-  padding-top: 10px;
+  font-family: "KyoboHandwriting2023wsa";
+  display: flex;
+  justify-content: baseline;
+  margin: 50px;
+  /* padding-top: 10px; */
   font-weight: 900;
-  font-size: 35px;
+  font-size: 80px;
   color: burlywood;
 }
 .infor-title {
   color: darksalmon;
-  font-weight: 700;
-  font-size: 30px;
+  font-weight: 500;
+  font-size: 32px;
+  font-family: "MangoByeolbyeol";
 }
 .space {
   padding: 20px;
@@ -144,7 +171,7 @@ section {
   /* padding: 6px; */
 }
 .facility-main > li > .fa-solid {
-  font-size: 10px;
+  font-size: 15px;
 
   padding: 5px;
 }
@@ -154,13 +181,13 @@ section {
   margin-bottom: 50px;
 }
 table {
-  border: 2px solid black;
+  /* border: 2px solid black; */
   border-collapse: collapse;
 }
 tr,
 td,
 th {
-  border: 2px solid black;
+  border: 1px solid black;
   padding: 15px 100px;
 }
 .times .time {
@@ -248,4 +275,11 @@ th {
 #Q-A {
   height: 300px;
   padding-bottom: 50px;
+}
+.infor-title > span {
+  font-size: 25px;
+  color: #a34343;
+}
+.bnt:hover {
+  background-color: #ecca9c;
 }
