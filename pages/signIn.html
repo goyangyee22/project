@@ -25,7 +25,7 @@
     </form>
     <button id="signInButton">로그인</button>
     <button id="cancel">
-      <a href="../project/index.html">취소</a>
+      <a href="../index.html">취소</a>
     </button>
     <h3>ID, 비밀번호를 분실하셨을 경우 관리자에게 문의하여 주시기 바랍니다.</h3>
   </body>
@@ -38,8 +38,8 @@
       where,
       getDocs,
     } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
-    import { getAuth } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js";
 
+    // Firebase를 구성하는 정보
     const firebaseConfig = {
       apiKey: "AIzaSyAacCYNcsw241GRaLn9A5jUuS0hm0qbxbs",
       authDomain: "project-52d4c.firebaseapp.com",
@@ -53,11 +53,10 @@
     // Firebase를 초기화합니다.
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
-    const auth = getAuth();
 
-    const signInForm = document.getElementById("signInForm");
+    const signInButton = document.getElementById("signInButton");
 
-    signInForm.addEventListener("submit", async (event) => {
+    signInButton.addEventListener("click", async (event) => {
       event.preventDefault();
 
       const id = document.getElementById("id").value;
@@ -73,20 +72,20 @@
         if (!querySnapshot.empty) {
           // Firestore에서 찾은 사용자 정보
           const userInfo = querySnapshot.docs[0].data();
-
+          console.log(userInfo);
           // 비밀번호를 비교합니다.
-          if (userInfo.password === pw) {
+          if (userInfo.pw === pw) {
             alert(`${userInfo.name}님이 로그인 하셨습니다!`);
+            sessionStorage.setItem("userInfo", JSON.stringify(userInfo));
           } else {
             alert("아이디 또는 비밀번호가 잘못되었습니다.");
           }
         } else {
           alert("아이디 또는 비밀번호가 잘못되었습니다.");
-          }
-          } catch (error) {
-            console.error("Error getting documents: ", error);
-            }
-            });
-          console.log(id, pw);
+        }
+      } catch (error) {
+        console.error("Error getting documents: ", error);
+      }
+    });
   </script>
 </html>
