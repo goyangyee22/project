@@ -171,6 +171,5 @@ document
     sessionStorage.setItem('personnel', personnel);
     sessionStorage.setItem('amount', amount);
 
-    // console.log(room);
-    window.location.href = '/project/pages/payment.html';
+    window.location.href = './pages/payment.html';
   });
