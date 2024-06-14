@@ -54,14 +54,18 @@ header {
 }
 
 .iconsort {
-  text-align: center;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
 }
 .iconsort p {
   font-size: 13px;
 }
 
 .i-con {
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: 2px solid black;
   border-radius: 8px;
   padding: 10px;
@@ -70,7 +74,7 @@ header {
   /* padding-right: 0 15px; */
 }
 
-.fa-solid {
+.i-con .fa-solid {
   font-size: 35px;
   display: flex;
   /* justify-content: space-between; */
