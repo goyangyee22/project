@@ -1,11 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>마이페이지입니다.</title>
+    <!-- <script src="https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js"></script> -->
+  </head>
+  <style>
+    a {
+      text-decoration: none;
+      color: #000;
+    }
+    .active {
+      display: inline-block;
+    }
+    .noneActive {
+      display: none;
+    }
+  </style>
+  <body>
+    <h2 id="myPageMyName"></h2>
+    <button id="backToMainPage">
+      <a href="../index.html">메인페이지로 돌아가기</a>
+    </button>
+    <button id="changePassword">비밀번호 변경</button>
+    <button id="logOut" class="active">로그아웃</button>
+    <button id="logIn" class="noneActive">로그인</button>
+    <button id="deleteId">회원탈퇴</button>
+  </body>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
+    import {
+      getFirestore,
+      collection,
+      query,
+      where,
+      getDocs,
+    } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
+    import { getAuth } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js";
+    import {
+      // app
+      dbService,
+      storageService,
+      addDatas,
+      getDatas,
+      updateDatas,
+      deleteDatas,
+    } from "../firebase.js";
+
+    // Firebase를 구성하는 정보
+    const firebaseConfig = {
+      apiKey: "AIzaSyAacCYNcsw241GRaLn9A5jUuS0hm0qbxbs",
+      authDomain: "project-52d4c.firebaseapp.com",
+      projectId: "project-52d4c",
+      storageBucket: "project-52d4c.appspot.com",
+      messagingSenderId: "587892298418",
+      appId: "1:587892298418:web:43d4e281e654f11750efab",
+      measurementId: "G-ZY1J3CGR0E",
+    };
+
+    // Firebase를 초기화합니다.
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const auth = getAuth(app);
+
+    // 사용자가 로그인 하면 Firebase에서 사용자 정보를 가져와서 userInfo 변수에 할당합니다.
+
+    // 이름을 출력하기 위한 변수를 정의합니다.
+
+    // 로그인 하고 마이페이지에 들어가면 (이름)님의 마이페이지입니다. 라는 글씨가 출력됩니다.
+    //   console.log(sessionStorage.getItem("userInfo", JSON.stringify(name)));
+
+    // 비밀번호 변경 버튼클릭 함수
+    const changePassword = document.getElementById("changePassword");
+    changePassword.addEventListener("click", function () {});
+
+    // 로그아웃 버튼클릭 함수
+    const logOut = document.getElementById("logOut");
+    const logIn = document.getElementById("logIn");
+
+    logOut.addEventListener("click", function () {
+      logOut.classList.remove("active");
+      logOut.classList.add("noneActive");
+      logIn.classList.remove("noneActive");
+      logIn.classList.add("active");
+
+      sessionStorage.removeItem("userInfo");
+      alert("로그아웃 되었습니다.");
+    });
+
+    // 로그인 버튼클릭 함수
+
+    // 로그아웃이 되면 다시 로그인을 할 수 있는 버튼을 로그아웃이 있는 버튼 자리에 생성합니다.
+    // 반대로 로그인이 되면 다시 로그아웃을 할 수 있는 버튼이 로그인이 있는 버튼 자리에 생성됩니다.
+
+    // 회원탈퇴 버튼클릭 함수
+    const deleteId = document.getElementById("deleteId");
+    deleteId.addEventListener("click", function () {});
+  </script>
 </html>
