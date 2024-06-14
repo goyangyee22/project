@@ -172,5 +172,5 @@ document
     sessionStorage.setItem('amount', amount);
 
     // console.log(room);
-    window.location.href = './pages/payment.html';
+    window.location.href = './payment.html';
   });
