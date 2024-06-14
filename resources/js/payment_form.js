@@ -78,8 +78,9 @@ let calendar = new FullCalendar.Calendar(calendarEl, {
 calendar.render();
 
 // 팝업 관련 이벤트
+
 openBtn.addEventListener("click", function () {
-  modal.style.display = "block";
+  modal.style.display = "flex";
 });
 closeBtn.addEventListener("click", function () {
   modal.style.display = "none";
@@ -171,6 +172,5 @@ document
     sessionStorage.setItem("personnel", personnel);
     sessionStorage.setItem("amount", amount);
 
-    // console.log(room);
     window.location.href = "./pages/payment.html";
   });
