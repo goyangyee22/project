@@ -1,6 +1,8 @@
 @charset "utf-8";
 
 @import url(./common.css);
+@import url(./payment_form.css);
+
 header {
   position: static;
 }
@@ -8,6 +10,9 @@ header {
   padding-top: 100px;
   background-color: #faf3f0;
   /* height: 100vh; */
+}
+.pet-hero {
+  display: flex;
 }
 #pet img {
   width: 100%;
@@ -74,14 +79,31 @@ section {
   font-size: 13px;
 }
 /* 객실용품 */
-.all {
-  display: flex;
-  align-items: center;
-  border: 1px solid #545b77;
+.Supplies {
+  margin-bottom: 50px;
+  padding: 25px;
 }
+.all {
+  padding-top: 16px;
+  font-size: 20px;
+  font-weight: 500;
+}
+
 .common-main {
-  /* display: flex;
-  justify-content: space-between; */
+  display: flex;
+  align-items: flex-start;
+  width: max-content;
+  height: 150px;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding: 8px 12px;
+}
+.common-main > li > i {
+  font-size: 14px;
+  width: 25px;
+}
+.common-main li {
+  padding: 5px 15px;
 }
 /* 공간소개 */
 .spaceintroduction {
@@ -147,4 +169,42 @@ th {
 .refund-main > li {
   font-size: 18px;
   margin-top: 16px;
+}
+/* 이용후기 */
+#Reviews {
+  /* display: flex; */
+  border-top: none;
+  /* width: 100%; */
+  height: 400px;
+  margin-bottom: 50px;
+}
+.Reviews-heard {
+  font-size: 25px;
+  font-weight: 500;
+  /* display: flex; */
+  margin: 8px;
+}
+.Bnt {
+  padding: 10px;
+  margin: 8px;
+  background-color: #ef9c66;
+  border: none;
+  border-radius: 6px;
+  color: #faf3f0;
+  font-size: 15px;
+}
+.Reviews-title {
+  text-align: center;
+  padding: 10px;
+  padding: 100px 0;
+}
+.line {
+  border-top: 1px solid black;
+}
+/* Q&A */
+#Q-A {
+  /* border: 1px solid black; */
+  /* width: 100%; */
+  height: 400px;
+  padding-bottom: 50px;
 }
