@@ -4,12 +4,15 @@
 
 /* 결제폼 */
 #detail-payment {
+  position: sticky;
+  top: 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 24px;
   padding: 24px;
   width: 600px; /* 대략적으로 잡은 사이즈에요. */
   border: 2px solid #eee;
+  background-color: #fff;
 }
 
 /* 결제폼 헤더 */
