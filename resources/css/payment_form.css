@@ -191,9 +191,73 @@
 
 /* 모달 팝업 */
 #pay-modal {
-  /* display: none; */
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: none;
+}
+.pay-modal-wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 32px;
+  width: 540px;
+  background-color: #fff;
 }
 
+.pay-modal-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.pay-modal-title h4 {
+  font-size: 32px;
+}
+.close-modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #ccc;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.close-modal:hover {
+  transform: rotate(180deg);
+}
+
+.pay-modal-content {
+  line-height: 1.4;
+}
+.pay-modal-content h5 {
+  margin-bottom: 8px;
+  font-size: 24px;
+}
+.pay-modal-content h5 + * {
+  padding-left: 8px;
+}
+.pay-modal-content span {
+  font-weight: 700;
+  color: red;
+}
+.pay-modal-content ul li {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.pay-modal-content ul li i {
+  font-size: 12px;
+}
 /* 결제폼 푸터 */
 .pay-footer {
   grid-column: 1 / 3;

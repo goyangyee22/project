@@ -79,7 +79,7 @@ calendar.render();
 
 // 팝업 관련 이벤트
 openBtn.addEventListener('click', function () {
-  modal.style.display = 'block';
+  modal.style.display = 'flex';
 });
 closeBtn.addEventListener('click', function () {
   modal.style.display = 'none';
