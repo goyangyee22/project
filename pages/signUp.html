@@ -23,7 +23,12 @@
       </p>
       <p>
         <label class="formInput">아이디&nbsp;</label>
-        <input type="text" name="id" required placeholder="4-16자 사이의 숫자와 영소문자" />
+        <input
+          type="text"
+          name="id"
+          required
+          placeholder="4-16자 사이의 숫자 또는 영소문자"
+        />
         <button id="duplicate">중복확인</button>
       </p>
       <p>
@@ -32,12 +37,17 @@
           type="password"
           name="pw"
           required
-          pattern="^[A-Za-z0-9~?!@#$%^&*_-]{4,16}"
+          placeholder="4-16자 사이의 특수기호, 숫자 또는 영대소문자"
         />
       </p>
       <p>
         <label class="formInput">비밀번호 확인&nbsp;</label>
-        <input type="password" name="pwConfirm" required />
+        <input
+          type="password"
+          name="pwConfirm"
+          required
+          placeholder="입력하셨던 비밀번호와 똑같이 입력합니다."
+        />
       </p>
     </form>
 
@@ -66,8 +76,7 @@
 
     // 회원가입 할 때 아이디 및 비밀번호에 대한 정규식입니다.
     let idEx = /^[0-9a-z]{4,16}$/g;
-    let pwEx =
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}/g;
+    let pwEx = /^[0-9A-Za-z\d$@$!%*?&]{4,16}/g;
 
     // 아이디 중복 확인 및 버튼 클릭 여부를 체크하기 위해 변수를 생성합니다.
     let idCheck = false;
@@ -76,7 +85,17 @@
     // ID 중복에 대한 함수를 정의합니다.
     async function isIdDuplicate(event) {
       event.preventDefault();
-      let id = document.querySelector("input[name='id']").value;
+      const id = document.querySelector("input[name='id']").value;
+
+      // 정규식을 사용하여 아이디가 형식에 맞는지 검증합니다.
+      const idConfirm = idEx.test(id);
+
+      // ID가 조건에 맞게 입력되지 않으면 그에 따른 alert를 띄우기 위한 조건식을 설정합니다.
+      console.log(idConfirm);
+      if (!idConfirm) {
+        alert("아이디가 4-16자 사이의 숫자 또는 영소문자가 아닙니다.");
+        return false;
+      }
 
       // Firestore에서 "userInfo" 컬렉션에서 입력한 아이디가 있는지 조회합니다.
       const usersRef = collection(dbService, "userInfo");
@@ -92,7 +111,9 @@
       if (idCheck) {
         alert("사용 가능한 아이디입니다.");
       } else {
-        alert("중복된 아이디입니다.");
+        alert(
+          "중복된 아이디이거나 4-16자 사이의 숫자 또는 영소문자가 아닙니다."
+        );
       }
     }
 
@@ -113,7 +134,7 @@
         alert("회원 정보는 전부 입력하여야 합니다.");
         return false;
       }
-
+      console.log(idEx.test(id));
       // 정규식을 사용하여 아이디와 비밀번호를 검증합니다.
       if (!idEx.test(id)) {
         alert(
@@ -124,7 +145,7 @@
 
       if (!pwEx.test(pw)) {
         alert(
-          "비밀번호 형식이 올바르지 않습니다. 최소 8자, 대문자, 소문자, 숫자, 특수문자를 포함해야 합니다."
+          "비밀번호 형식이 올바르지 않습니다. 4자-16자 사이의 대문자, 소문자, 숫자, 특수문자를 포함해야 합니다."
         );
         return false;
       }
@@ -151,9 +172,10 @@
       // 중복되지 않는 ID일 경우 Firestore에 데이터를 저장합니다.
       // 데이터를 저장하는 위치는 Firebase의 "userInfo" 컬렉션입니다.
       try {
-        addDatas("userInfo", { name, id, pw });
+        console.log(name, id, pw);
+        // addDatas("userInfo", { name, id, pw });
         alert("회원가입이 완료되었습니다.");
-        getMembers();
+        // getMembers();
         return true;
       } catch (error) {
         console.error("오류가 발생했습니다: ", error);
@@ -185,6 +207,7 @@
     const btn = document.getElementById("signUpButton");
     btn.addEventListener("click", async function () {
       const pwCheck = handleSignUp(); // 회원가입 처리 함수를 호출합니다.(비밀번호와 비밀번호 확인이 같은 지 확인)
+
       console.log(pwCheck);
       if (!pwCheck) {
         return;
