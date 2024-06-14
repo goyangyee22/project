@@ -1,41 +1,41 @@
-'use strict';
+"use strict";
 
 // 날짜 표시
-const displayDate = document.getElementById('display-date');
+const displayDate = document.getElementById("display-date");
 
 // 합계 표시
-const displayTotalAmount = document.getElementById('pay-amount');
+const displayTotalAmount = document.getElementById("pay-amount");
 
 // form 전송용 데이터들
-const selectedDate = document.getElementById('selected-date');
-const selectedRoom = document.getElementById('selected-room');
-const selectedTime = document.getElementById('selected-time');
-const selectedPersonnel = document.getElementById('selected-personnel');
-const calculatedAmount = document.getElementById('total-amount');
+const selectedDate = document.getElementById("selected-date");
+const selectedRoom = document.getElementById("selected-room");
+const selectedTime = document.getElementById("selected-time");
+const selectedPersonnel = document.getElementById("selected-personnel");
+const calculatedAmount = document.getElementById("total-amount");
 
 // 선택할 옵션들
-const selectOptionBtns = document.querySelectorAll('.pay-btn');
-const selectTimeBtns = document.querySelectorAll('.pay-time-btn');
-const selectRoomBtns = document.querySelectorAll('.pay-room-btn');
-const selectPersonnel = document.getElementById('personnel');
+const selectOptionBtns = document.querySelectorAll(".pay-btn");
+const selectTimeBtns = document.querySelectorAll(".pay-time-btn");
+const selectRoomBtns = document.querySelectorAll(".pay-room-btn");
+const selectPersonnel = document.getElementById("personnel");
 
 // 팝업
-const openBtn = document.querySelector('.open-detail');
-const closeBtn = document.querySelector('.close-modal');
-const modal = document.getElementById('pay-modal');
+const openBtn = document.querySelector(".open-detail");
+const closeBtn = document.querySelector(".close-modal");
+const modal = document.getElementById("pay-modal");
 
 // calendar
-const calendarEl = document.getElementById('calendar');
+const calendarEl = document.getElementById("calendar");
 
-displayDate.innerHTML = new Date().toISOString().split('T')[0];
+displayDate.innerHTML = new Date().toISOString().split("T")[0];
 
 let calendar = new FullCalendar.Calendar(calendarEl, {
-  locale: 'ko',
-  initialView: 'dayGridMonth',
-  googleCalendarApiKey: 'AIzaSyDjg0gbj5QCe_pmGqhJcl_510x5i-0C6-U',
+  locale: "ko",
+  initialView: "dayGridMonth",
+  googleCalendarApiKey: "AIzaSyDjg0gbj5QCe_pmGqhJcl_510x5i-0C6-U",
   events: {
     googleCalendarId:
-      '07602c2e77c6a76840bc6eb4d079f9a4f653c0ba493d1a91469f9b276f437298@group.calendar.google.com',
+      "07602c2e77c6a76840bc6eb4d079f9a4f653c0ba493d1a91469f9b276f437298@group.calendar.google.com",
   },
   // editable: true,
   selectable: true,
@@ -53,7 +53,7 @@ let calendar = new FullCalendar.Calendar(calendarEl, {
     maxDate.setMonth(now.getMonth() + 2);
 
     if (start < now || start > maxDate) {
-      alert('최대 2개월 후만 예약이 가능합니다.');
+      alert("최대 2개월 후만 예약이 가능합니다.");
       calendar.usselect();
     }
   },
@@ -65,24 +65,24 @@ let calendar = new FullCalendar.Calendar(calendarEl, {
     return { html: e.date.getDate().toString() };
   },
   headerToolbar: {
-    start: 'prev',
-    center: 'title',
-    end: 'next',
+    start: "prev",
+    center: "title",
+    end: "next",
   },
   titleFormat: {
-    year: 'numeric',
-    month: '2-digit',
+    year: "numeric",
+    month: "2-digit",
   },
 });
 
 calendar.render();
 
 // 팝업 관련 이벤트
-openBtn.addEventListener('click', function () {
-  modal.style.display = 'block';
+openBtn.addEventListener("click", function () {
+  modal.style.display = "block";
 });
-closeBtn.addEventListener('click', function () {
-  modal.style.display = 'none';
+closeBtn.addEventListener("click", function () {
+  modal.style.display = "none";
 });
 
 // 선택한 옵션 데이터 저장
@@ -90,33 +90,33 @@ function saveOptionData(btns, data) {
   return function () {
     selectOptionBtns.forEach((e) => {
       if (
-        btns.classList.contains('pay-time-btn') &&
-        e.classList.contains('pay-time-btn')
+        btns.classList.contains("pay-time-btn") &&
+        e.classList.contains("pay-time-btn")
       ) {
-        e.classList.remove('selected');
+        e.classList.remove("selected");
       } else if (
-        btns.classList.contains('pay-room-btn') &&
-        e.classList.contains('pay-room-btn')
+        btns.classList.contains("pay-room-btn") &&
+        e.classList.contains("pay-room-btn")
       ) {
-        e.classList.remove('selected');
+        e.classList.remove("selected");
       }
     });
-    this.classList.add('selected');
+    this.classList.add("selected");
     data.value = this.value;
     calculateAmount();
   };
 }
 
 selectOptionBtns.forEach((btn) => {
-  if (btn.classList.contains('pay-time-btn')) {
-    btn.addEventListener('click', saveOptionData(btn, selectedTime));
-  } else if (btn.classList.contains('pay-room-btn')) {
-    btn.addEventListener('click', saveOptionData(btn, selectedRoom));
+  if (btn.classList.contains("pay-time-btn")) {
+    btn.addEventListener("click", saveOptionData(btn, selectedTime));
+  } else if (btn.classList.contains("pay-room-btn")) {
+    btn.addEventListener("click", saveOptionData(btn, selectedRoom));
   }
 });
 
 // 인원 선택
-selectPersonnel.addEventListener('change', function () {
+selectPersonnel.addEventListener("change", function () {
   selectedPersonnel.value = this.value;
   calculateAmount();
 });
@@ -124,8 +124,8 @@ selectPersonnel.addEventListener('change', function () {
 // 총 합계 계산 함수
 function calculateAmount() {
   // 방 옵션 선택
-  const roomOption = document.querySelector('.pay-room-btn.selected');
-  const timeOption = document.querySelector('.pay-time-btn.selected');
+  const roomOption = document.querySelector(".pay-room-btn.selected");
+  const timeOption = document.querySelector(".pay-time-btn.selected");
 
   if (!roomOption || !timeOption) {
     return;
@@ -149,8 +149,8 @@ function calculateAmount() {
 
 // form 전송
 document
-  .getElementById('payment-transfer')
-  .addEventListener('submit', function (e) {
+  .getElementById("payment-transfer")
+  .addEventListener("submit", function (e) {
     e.preventDefault();
 
     const form = e.target;
@@ -161,16 +161,16 @@ document
     const amount = form.amount.value;
 
     if (!date || !room || !time || !personnel) {
-      alert('모든 옵션을 선택해 주세요.');
+      alert("모든 옵션을 선택해 주세요.");
       return false;
     }
 
-    sessionStorage.setItem('date', date);
-    sessionStorage.setItem('time', time);
-    sessionStorage.setItem('room', room);
-    sessionStorage.setItem('personnel', personnel);
-    sessionStorage.setItem('amount', amount);
+    sessionStorage.setItem("date", date);
+    sessionStorage.setItem("time", time);
+    sessionStorage.setItem("room", room);
+    sessionStorage.setItem("personnel", personnel);
+    sessionStorage.setItem("amount", amount);
 
     // console.log(room);
-    window.location.href = '../pages/payment.html';
+    window.location.href = "./pages/payment.html";
   });
