@@ -6,6 +6,12 @@
 #detail-payment {
   position: sticky;
   top: 0;
+  margin-top: 24px;
+  border-radius: 16px;
+  background-color: #fff;
+  position: sticky;
+  top: 0;
+  /* right: 0; */
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 24px;
