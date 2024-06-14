@@ -12,6 +12,12 @@
       text-decoration: none;
       color: #000;
     }
+    .active {
+      display: inline-block;
+    }
+    .noneActive {
+      display: none;
+    }
   </style>
   <body>
     <h2 id="myPageMyName"></h2>
@@ -19,7 +25,8 @@
       <a href="../index.html">메인페이지로 돌아가기</a>
     </button>
     <button id="changePassword">비밀번호 변경</button>
-    <button id="logOut">로그아웃</button>
+    <button id="logOut" class="active">로그아웃</button>
+    <button id="logIn" class="noneActive">로그인</button>
     <button id="deleteId">회원탈퇴</button>
   </body>
   <script type="module">
@@ -71,7 +78,22 @@
 
     // 로그아웃 버튼클릭 함수
     const logOut = document.getElementById("logOut");
-    logOut.addEventListener("click", function () {});
+    const logIn = document.getElementById("logIn");
+
+    logOut.addEventListener("click", function () {
+      logOut.classList.remove("active");
+      logOut.classList.add("noneActive");
+      logIn.classList.remove("noneActive");
+      logIn.classList.add("active");
+
+      sessionStorage.removeItem("userInfo");
+      alert("로그아웃 되었습니다.");
+    });
+
+    // 로그인 버튼클릭 함수
+
+    // 로그아웃이 되면 다시 로그인을 할 수 있는 버튼을 로그아웃이 있는 버튼 자리에 생성합니다.
+    // 반대로 로그인이 되면 다시 로그아웃을 할 수 있는 버튼이 로그인이 있는 버튼 자리에 생성됩니다.
 
     // 회원탈퇴 버튼클릭 함수
     const deleteId = document.getElementById("deleteId");
