@@ -31,7 +31,7 @@ document.getElementById('payment').addEventListener('submit', function (e) {
       cardNumber: cardNumber,
     });
     sessionStorage.clear();
-    window.location.href = 'mypage.html';
+    window.location.href = './myPage.html';
   } else {
     console.log('저장 실패');
   }

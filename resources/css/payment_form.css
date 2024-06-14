@@ -149,8 +149,6 @@
 }
 
 /* 예약 주의사항 */
-.pay-caution {
-}
 .pay-caution h4 {
   margin-bottom: 16px;
   padding: 0 8px;
@@ -193,7 +191,7 @@
 
 /* 모달 팝업 */
 #pay-modal {
-  display: none;
+  /* display: none; */
 }
 
 /* 결제폼 푸터 */

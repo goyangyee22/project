@@ -19,6 +19,11 @@ const selectTimeBtns = document.querySelectorAll('.pay-time-btn');
 const selectRoomBtns = document.querySelectorAll('.pay-room-btn');
 const selectPersonnel = document.getElementById('personnel');
 
+// 팝업
+const openBtn = document.querySelector('.open-detail');
+const closeBtn = document.querySelector('.close-modal');
+const modal = document.getElementById('pay-modal');
+
 // calendar
 const calendarEl = document.getElementById('calendar');
 
@@ -71,6 +76,14 @@ let calendar = new FullCalendar.Calendar(calendarEl, {
 });
 
 calendar.render();
+
+// 팝업 관련 이벤트
+openBtn.addEventListener('click', function () {
+  modal.style.display = 'block';
+});
+closeBtn.addEventListener('click', function () {
+  modal.style.display = 'none';
+});
 
 // 선택한 옵션 데이터 저장
 function saveOptionData(btns, data) {

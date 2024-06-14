@@ -65,17 +65,8 @@
       getDocs,
     } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
 
-    // console.log(app);
-
-    // document
-    //   .getElementById("signUpButton")
-    //   .addEventListener("click", (event) => {
-    //     event.preventDefault();
-    //     handleSignUp();
-    //   });
-
+    // 아이디 중복 확인 및 버튼 클릭 여부를 체크하기 위해 변수를 생성합니다.
     let idCheck = false;
-
     let buttonCheck = false;
 
     // ID 중복에 대한 함수를 정의합니다.
@@ -83,12 +74,17 @@
       event.preventDefault();
       let id = document.querySelector("input[name='id']").value;
 
+      // Firestore에서 "userInfo" 컬렉션에서 입력한 아이디가 있는지 조회합니다.
       const usersRef = collection(dbService, "userInfo");
       const q = query(usersRef, where("id", "==", id));
       const querySnapshot = await getDocs(q);
       console.log(querySnapshot);
+
+      // 중복 여부에 따라 idCheck 변수를 설정합니다.
       idCheck = !querySnapshot.empty ? false : true;
       buttonCheck = true;
+
+      // 사용 가능한 아이디인지 또는 중복된 아이디인지 알립니다.
       if (idCheck) {
         alert("사용 가능한 아이디입니다.");
       } else {
@@ -96,11 +92,13 @@
       }
     }
 
+    // 중복확인 버튼에 이벤트 리스너를 등록합니다.
     let isItDuplicate = document.querySelector("#duplicate");
     isItDuplicate.addEventListener("click", isIdDuplicate);
 
-    // 데이터를 수집합니다.
+    // 회원가입 버튼을 클릭하면 처리하는 함수를 생성합니다.
     function handleSignUp() {
+      // 폼에서 사용자가 입력한 값들을 가져옵니다.
       const name = document.forms["signUpForm"]["name"].value;
       const id = document.forms["signUpForm"]["id"].value;
       const pw = document.forms["signUpForm"]["pw"].value;
@@ -112,11 +110,13 @@
         return false;
       }
 
+      // 중복확인 버튼이 클릭되었는지 확인합니다. (false == 0)
       if (buttonCheck == false) {
         alert("ID 중복확인을 해주십시오.");
         return false;
       }
 
+      // 아이디가 중복되었는지 확인합니다.
       if (idCheck == false) {
         alert("중복된 아이디입니다.");
         return false;
@@ -129,15 +129,8 @@
         return false;
       }
 
-      // ID 중복 검사
-      // const isDuplicate = isIdDuplicate(id);
-      // console.log(isDuplicate);
-      // if (isDuplicate) {
-      //   alert("이미 사용중인 아이디입니다. 다른 아이디를 입력해주세요.");
-      //   return false;
-      // }
-
       // 중복되지 않는 ID일 경우 Firestore에 데이터를 저장합니다.
+      // 데이터를 저장하는 위치는 Firebase의 "userInfo" 컬렉션입니다.
       try {
         addDatas("userInfo", { name, id, pw });
         alert("회원가입이 완료되었습니다.");
@@ -151,6 +144,7 @@
       return true;
     }
 
+    // 회원 목록 조회 함수
     async function getMembers() {
       console.log("getMembers 함수 시작");
       const snapshot = await getDatas("userId");
@@ -168,14 +162,16 @@
       console.log("handleTrClick 함수 종료");
     }
 
+    // 회원가입 버튼에 클릭 이벤트 리스너를 등록합니다.
     const btn = document.getElementById("signUpButton");
     btn.addEventListener("click", async function () {
-      const pwCheck = handleSignUp(); // 비밀번호와 비밀번호 확인이 같은 지 확인합니다.
+      const pwCheck = handleSignUp(); // 회원가입 처리 함수를 호출합니다.(비밀번호와 비밀번호 확인이 같은 지 확인)
       console.log(pwCheck);
       if (!pwCheck) {
         return;
       }
 
+      // 폼 요소들을 객체로 변환합니다.
       const formEl = document.forms[0];
       const formElChildren = formEl.elements;
       const formElChildrenArr = [...formElChildren];
@@ -186,36 +182,23 @@
       );
       console.log(joinFormObj);
 
+      // 사용자 정보 객체를 생성합니다.
       const userInfo = {
         name: document.querySelector("input[name='name']").value,
         id: document.querySelector("input[name='id']").value,
         pw: document.querySelector("input[name='pw']").value,
       };
 
+      // Firebase에 사용자 정보를 추가합니다.
       const result = await addDatas("userInfo", userInfo);
       console.log(result);
 
+      // 처리 결과에 따른 회원 목록 조회 함수 또는 실패 메세지를 표시합니다.
       result ? getMembersHandlerTrClick() : alert("저장을 실패했습니다");
     });
 
-    // 초기화 함수 호출
+    // 초기화 로드를 하는 경우 회원 목록을 조회하는 함수를 호출합니다.
     getMembersHandlerTrClick();
-
-    // ID를 만들 때 중복되는 ID가 있는 지 검사합니다. (다음 코드를 반드시 참고)
-    // import { collection, query, where } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js"; // 이건 firebase.js에서 쓰이는 거였나?
-    // const usersRef = collection(db, "users");
-    // const q = query(usersRef, where("id", "==", id));
-
-    // 이후 내용 참고용인데 확실치 않아서 내버려두는 중
-    //     import { collection, query, where, getDocs } from "firebase/firestore";
-
-    // const q = query(collection(db, "cities"), where("capital", "==", true));
-
-    // const querySnapshot = await getDocs(q);
-    // querySnapshot.forEach((doc) => {
-    //   // doc.data() is never undefined for query doc snapshots
-    //   console.log(doc.id, " => ", doc.data());
-    // });
 
     // 로그인이 되면 세션을 저장합니다.
     function saveSession(userId) {
