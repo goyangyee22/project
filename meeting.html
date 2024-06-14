@@ -14,6 +14,10 @@
     />
     <link rel="stylesheet" href="./resources/css/meeting.css" />
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.14/index.global.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/google-calendar@6.1.14/index.global.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/locales/ko.js"></script>
+    <script defer src="./resources/js/payment_form.js"></script>
   </head>
   <body>
     <header>
@@ -67,125 +71,393 @@
           </div>
         </div>
         <br />
-        <div class="wrap">
-          <ul id="meet-menu">
-            <li><a href="#information">상세정보</a></li>
-            <li><a href="#">구매평</a></li>
-            <li><a href="#">Q&A</a></li>
-          </ul>
-        </div>
-        <div id="information">
-          <h1><i class="fa-solid fa-minus"></i> 공간 소개</h1>
-          <p class="information-list">
-            <span>#회의실</span>
-            <span>#미팅룸</span>
-            <span>#스터디룸</span>
-            <span>#모임공간</span>
-          </p>
-          <br />
-          <h4>
-            깔끔한 인테리어와 쾌적한 공간 중구 선화동에 위치한 깔끔한 모임
-            공간<br />
-            최대 30명까지 수용 가능한 공간<br />
-            스터디,소모임,회의,과외,면접,인터뷰,영상촬영,원데이클래스 모두 가능
-          </h4>
-          <br />
-          <div class="main-icon">
-            <div class="iconsort">
-              <div class="i-con"><i class="fa-solid fa-car"></i></div>
-              <p>주차가능</p>
-            </div>
+        <div class="meet-contents wrap">
+          <div class="meet-details">
+            <ul id="meet-menu">
+              <li><a href="#information">상세정보</a></li>
+              <li><a href="#review">이용후기</a></li>
+              <li><a href="#ask">Q&A</a></li>
+            </ul>
+            <div id="information">
+              <h1><i class="fa-solid fa-minus"></i> 공간 소개</h1>
+              <p class="information-list">
+                <span>#회의실</span>
+                <span>#미팅룸</span>
+                <span>#스터디룸</span>
+                <span>#모임공간</span>
+              </p>
+              <br />
+              <h4>
+                깔끔한 인테리어와 쾌적한 공간 중구 선화동에 위치한 깔끔한 모임
+                공간<br />
+                최대 30명까지 수용 가능한 공간<br />
+                스터디,소모임,회의,과외,면접,인터뷰,영상촬영,원데이클래스 모두
+                가능
+              </h4>
+              <br />
+              <div class="main-icon">
+                <div class="iconsort">
+                  <div class="i-con"><i class="fa-solid fa-car"></i></div>
+                  <p>주차가능</p>
+                </div>
 
-            <div class="iconsort">
-              <div class="i-con"><i class="fa-solid fa-wifi"></i></div>
-              <p>인터넷/WIFI</p>
-            </div>
+                <div class="iconsort">
+                  <div class="i-con"><i class="fa-solid fa-wifi"></i></div>
+                  <p>인터넷/WIFI</p>
+                </div>
 
-            <div class="iconsort">
-              <div class="i-con"><i class="fa-solid fa-stairs"></i></div>
-              <p>지상3층</p>
-            </div>
+                <div class="iconsort">
+                  <div class="i-con"><i class="fa-solid fa-stairs"></i></div>
+                  <p>지상3층</p>
+                </div>
 
-            <div class="iconsort">
-              <div class="i-con">
-                <i class="fa-solid fa-elevator"></i>
+                <div class="iconsort">
+                  <div class="i-con">
+                    <i class="fa-solid fa-elevator"></i>
+                  </div>
+                  <p>엘리베이터 있음</p>
+                </div>
               </div>
-              <p>엘리베이터 있음</p>
+              <br />
+              <br />
+
+              <h1><i class="fa-solid fa-minus"></i> 시설 안내</h1>
+              <ol>
+                <ul>
+                  1. 스크린,빔 프로젝터,스피커,화이트
+                  보드,무선마이크,레이저포인터,와이파이,PC 기본 제공
+                </ul>
+                <ul>
+                  2. 대회의실- 대형 화이트 보드
+                </ul>
+                <ul>
+                  3. 55인치 (TV 유튜브,티빙,넷플,디즈니,노트북미러링) HDMI케이블
+                  구비
+                </ul>
+                <ul>
+                  4. 조명,링라이트 조명, 삼각대
+                </ul>
+                <ul>
+                  5. 얼음 정수기(냉수/온수) 및 간단한 차, 커피
+                </ul>
+                <ul>
+                  6. 블루투스 스피커
+                </ul>
+                <ul>
+                  7. 냉난방기, 공기청정기
+                </ul>
+                <ul>
+                  8. 개수대 및 내부 화장실
+                </ul>
+              </ol>
+              <br />
+              <br />
+
+              <h1><i class="fa-solid fa-minus"></i> 유의 사항</h1>
+              <ol>
+                <ul>
+                  1. 예약시간 및 대관인원을 꼭 지켜주세요.
+                </ul>
+                <ul>
+                  2. 예약된 인원보다 사용 인원이 많을 경우 초과 인원 수의 3배
+                  벌금으로 부과 됩니다.
+                </ul>
+                <ul>
+                  3. 내부 시설은 모두 무료로 이용 가능하나, 이용자 개인 과실로
+                  인한 파손 및 고장, 유실, 도난 등이 발생할 경우 이용자가 책임을
+                  집니다. (새 제품 가격으로 배상)
+                </ul>
+                <ul>
+                  4. 예약 시간보다 시간이 초과되는 경우 인원당 한시간 2만원으로
+                  추가 됩니다.
+                </ul>
+                <ul>
+                  5. 간단한 다과 정도 외에 취식 불가 합니다.
+                </ul>
+                <ul>
+                  6. 퇴실 전 반드시 자리를 깨끗하게 정리해 주셔야 합니다.
+                </ul>
+                <ul>
+                  7. CCTV는 방범/분실/기물파손/인원확인 등의 이유로 24시간
+                  녹화되고 있습니다.
+                </ul>
+              </ol>
+              <br />
+              <br />
+
+              <h1><i class="fa-solid fa-minus"></i> 환불 정책</h1>
+              <span>
+                이용 전날과 당일만 제외하고 총 금액의 100% 환불 가능 합니다.
+              </span>
+            </div>
+            <!-- 이용후기, Q&A -->
+            <div id="review">
+              <div class="ra_button">
+                <span class="ra_menu">이용후기(2)</span>
+                <button class="rclick">사진 후기만 보기</button>
+              </div>
+              <br />
+              <!-- 이용후기 -->
+              <ul class="review_list">
+                <li class="rlist">
+                  <div class="rbox">
+                    <span class="ricon"
+                      ><i class="fa-solid fa-circle-user"></i>
+                    </span>
+                    <span class="ra_text">
+                      <strong>라이언</strong>
+                      <p>
+                        멋진 인테리어와 조명이 매우 인상깊었고, 쾌적한 환경에서
+                        회의를 만족스럽게 진행할 수 있었습니다. 이 비용에 이런
+                        퀄리티라니.. 다음 번에도 이곳으로 이용하도록 할게요~!!
+                        ^^*
+                      </p>
+                    </span>
+                    <br />
+                    <div>2024.04.12</div>
+                    <br />
+                    <span class="ricon"
+                      ><i class="fa-brands fa-github"></i>
+                    </span>
+                    <span class="ra_text">
+                      <strong>춘식이</strong>
+                      <p>
+                        너무 친절한 사장님~! 덕분에 워크숍 잘 진행했습니다 최고!
+                      </p>
+                    </span>
+                    <br />
+                    <div>2024.05.30</div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <br />
+
+            <!-- Q&A -->
+            <div id="ask">
+              <div class="ra_button">
+                <span class="ra_menu">Q&A(3)</span>
+                <button class="aclick">
+                  <i class="fa-regular fa-pen-to-square"></i>질문 작성 하기
+                </button>
+              </div>
             </div>
           </div>
-          <br />
-          <h1><i class="fa-solid fa-minus"></i> 시설 안내</h1>
-          <ol>
-            <ul>
-              1. 스크린,빔 프로젝터,스피커,화이트
-              보드,무선마이크,레이저포인터,와이파이,PC 기본 제공
-            </ul>
-            <ul>
-              2. 대회의실- 대형 화이트 보드
-            </ul>
-            <ul>
-              3. 55인치 (TV 유튜브,티빙,넷플,디즈니,노트북미러링) HDMI케이블
-              구비
-            </ul>
-            <ul>
-              4. 조명,링라이트 조명, 삼각대
-            </ul>
-            <ul>
-              5. 얼음 정수기(냉수/온수) 및 간단한 차, 커피
-            </ul>
-            <ul>
-              6. 블루투스 스피커
-            </ul>
-            <ul>
-              7. 냉난방기, 공기청정기
-            </ul>
-            <ul>
-              8. 개수대 및 내부 화장실
-            </ul>
-          </ol>
-          <br />
-          <br />
-
-          <h1><i class="fa-solid fa-minus"></i> 유의 사항</h1>
-          <ol>
-            <ul>
-              1. 예약시간 및 대관인원을 꼭 지켜주세요.
-            </ul>
-            <ul>
-              2. 예약된 인원보다 사용 인원이 많을 경우 초과 인원 수의 3배
-              벌금으로 부과 됩니다.
-            </ul>
-            <ul>
-              3. 내부 시설은 모두 무료로 이용 가능하나, 이용자 개인 과실로 인한
-              파손 및 고장, 유실, 도난 등이 발생할 경우 이용자가 책임을 집니다.
-              (새 제품 가격으로 배상)
-            </ul>
-            <ul>
-              4. 예약 시간보다 시간이 초과되는 경우 인원당 한시간 2만원으로 추가
-              됩니다.
-            </ul>
-            <ul>
-              5. 간단한 다과 정도 외에 취식 불가 합니다.
-            </ul>
-            <ul>
-              6. 퇴실 전 반드시 자리를 깨끗하게 정리해 주셔야 합니다.
-            </ul>
-            <ul>
-              7. CCTV는 방범/분실/기물파손/인원확인 등의 이유로 24시간 녹화되고
-              있습니다.
-            </ul>
-          </ol>
-          <br />
-          <br />
-
-          <h1><i class="fa-solid fa-minus"></i> 환불 정책</h1>
-          <span>
-            이용 전날과 당일만 제외하고 총 금액의 100% 환불 가능 합니다.
-          </span>
+          <div id="detail-payment">
+            <!-- 결제 타이틀 -->
+            <div class="pay-info">
+              <div class="pay-header">
+                <h3>결제할 방 이름</h3>
+                <div class="pay-desc">
+                  <p>
+                    상품에 대한 간략한 설명 <br />
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Sequi quisquam sed beatae nisi repellendus. Obcaecati
+                    praesentium magni, alias officiis ea qui adipisci culpa ex!
+                    Sunt nisi odio sequi debitis quisquam!
+                  </p>
+                  <!-- 해시태그 아이콘 사용하려면 쓰세요~! -->
+                  <div class="pay-hash">
+                    <span class="hash-item">#프라이빗한공간</span>
+                    <span class="hash-item">#좋은추억</span>
+                    <span class="hash-item">#차분한</span>
+                    <span class="hash-item">#집중되는</span>
+                    <span class="hash-item">#밝은</span>
+                  </div>
+                </div>
+              </div>
+              <!-- 예약 시 주의사항 -->
+              <div class="pay-caution">
+                <h4>예약 전 반드시 확인하세요!</h4>
+                <div class="caution-desc">
+                  <h5>
+                    <i class="fa-solid fa-thumbtack"></i>시간당 예약은 문의해
+                    주세요.
+                  </h5>
+                  <a href="#">-> 문의 게시판 바로가기</a>
+                </div>
+                <div class="caution-desc">
+                  <h5>
+                    <i class="fa-solid fa-thumbtack"></i>보증금 제도를
+                    운영합니다.
+                  </h5>
+                  <p>
+                    무인으로 운영하는 파티룸의 특성상 보증금 제도를 운영하고
+                    있습니다.<br />
+                    예약 후 보증금(5만원) 관련 안내 문자를 보내드리며 퇴실 후
+                    문제가 없는 경우 최대 48시간 이내에 100% 환불해 드립니다.
+                  </p>
+                  <span class="open-detail">자세한 내용 보기</span>
+                </div>
+              </div>
+            </div>
+            <!-- 결제 옵션 시작 -->
+            <div class="pay-options">
+              <!-- 날짜 선택 -->
+              <div class="pay-option">
+                <p class="pay-title">
+                  <i class="fa-solid fa-check"></i>
+                  날짜를 선택해 주세요.
+                </p>
+                <div id="calendar"></div>
+                <span id="display-date"></span>
+              </div>
+              <div class="pay-option">
+                <p for="pay-room" class="pay-title">
+                  <i class="fa-solid fa-check"></i>
+                  룸을 선택해 주세요.
+                </p>
+                <div class="pay-btn-wrap">
+                  <!-- 
+                  ** 룸당 가격 작성법
+                  data-room="방 가격"
+                  value="방 옵션(종류)"
+                -->
+                  <input
+                    class="pay-btn pay-room-btn"
+                    type="button"
+                    data-room="10000"
+                    value="4인"
+                  />
+                  <input
+                    class="pay-btn pay-room-btn"
+                    type="button"
+                    data-room="20000"
+                    value="6인"
+                  />
+                  <input
+                    class="pay-btn pay-room-btn"
+                    type="button"
+                    data-room="30000"
+                    value="8인"
+                  />
+                </div>
+              </div>
+              <!-- 시간 선택 -->
+              <div class="pay-option">
+                <p for="pay-time" class="pay-title">
+                  <i class="fa-solid fa-check"></i>
+                  시간을 선택해 주세요.
+                </p>
+                <div class="pay-btn-wrap">
+                  <!-- 
+                  ** 시간당 가격 작성법
+                  data-time="가격"
+                  value="시간 옵션(낮,밤,종일 등등)"
+                -->
+                  <input
+                    class="pay-btn pay-time-btn"
+                    type="button"
+                    data-time="10000"
+                    value="낮"
+                  />
+                  <input
+                    class="pay-btn pay-time-btn"
+                    type="button"
+                    data-time="20000"
+                    value="밤"
+                  />
+                  <input
+                    class="pay-btn pay-time-btn"
+                    type="button"
+                    data-time="30000"
+                    value="종일"
+                  />
+                </div>
+              </div>
+              <!-- 인원 선택 ** 각 룸에 맞게 옵션 변경하시면 됩니다. -->
+              <div class="pay-option">
+                <p for="personnel" class="pay-title">
+                  <i class="fa-solid fa-check"></i>
+                  인원을 선택해 주세요.
+                </p>
+                <div class="select-personnel">
+                  <!-- 레이아웃 고민했는데 맘에 안드시면 select태그랑 .personnel-desc 위치 바꾸시면 됩니다!! 이게 제 한계에요...후ㅜㅠㅠ -->
+                  <div class="personnel-desc">
+                    <!-- 각 룸에 맞는 인원과 추가금 수정하세요~ -->
+                    <span>· 기준인원 4명, 최대인원 12명</span>
+                    <span>· 추가인원 1명당 20000원 증가</span>
+                  </div>
+                  <select name="personnel" id="personnel">
+                    <option value="4">4명</option>
+                    <option value="5">5명</option>
+                    <option value="6">6명</option>
+                    <option value="7">7명</option>
+                    <option value="8">8명</option>
+                    <option value="9">9명</option>
+                    <option value="10">10명</option>
+                    <option value="11">11명</option>
+                    <option value="12">12명</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <!-- 결제폼 푸터 시작 -->
+            <div class="pay-footer">
+              <div class="pay-total">
+                <h4>총 합계</h4>
+                <p><span id="pay-amount">0</span>원</p>
+              </div>
+              <form id="payment-transfer">
+                <input type="hidden" name="date" id="selected-date" required />
+                <input type="hidden" name="room" id="selected-room" required />
+                <input type="hidden" name="time" id="selected-time" required />
+                <input
+                  type="hidden"
+                  name="personnel"
+                  id="selected-personnel"
+                  required
+                />
+                <input type="hidden" name="amount" id="total-amount" required />
+                <!-- button 링크 문의페이지 완성되면 경로 바꿔줘야합니다!! -->
+                <input
+                  type="button"
+                  class="form-btn"
+                  onclick="location.href='./pages/QnA.html'"
+                  value="문의하기"
+                />
+                <input
+                  type="submit"
+                  class="submit-btn form-btn"
+                  value="예약하기"
+                />
+              </form>
+            </div>
+          </div>
+          <!-- 총 합계 -->
+          <!-- 보증금 제도 자세히보기 모달 팝업 -->
+          <div id="pay-modal">
+            <div class="pay-modal-wrap">
+              <div class="close-modal">X</div>
+              <h4>보증금 제도 안내</h4>
+              <div class="pay-modal-content">
+                <h5>청소 보증금</h5>
+                <p>50,000원</p>
+                <p>
+                  보증금 금액이 모두 입금되어야지만 입실하실 수 있는 입실 안내
+                  문자를 보내드립니다.
+                </p>
+              </div>
+              <div class="pay-modal-content">
+                <h5>보증금 환급일</h5>
+                <p>
+                  입실일 기준 최대 48시간 이내에 입금예정이며 순차적으로
+                  환급해드리고 있습니다.
+                </p>
+              </div>
+              <div class="pay-modal-content">
+                <h5>보증금환급불가기준</h5>
+                <ul>
+                  <li>기본 정리, 분리수거, 설거지 등 정리 정돈 미실시</li>
+                  <li>무단 입실, 늦은 퇴실, 추가 인원 미고지</li>
+                  <li>오염 및 파손, 실내 흡연, 구토 후 미처리 등</li>
+                  <li>소등 및 사용 제품 전원을 끄지 않고 퇴실 시</li>
+                  <li>고기 및 생선 등 냄새 심한 음식 취사</li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
-
-        <div id="appraisal"></div>
-        <div id="ask"></div>
       </section>
     </main>
 

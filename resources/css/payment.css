@@ -1,3 +1,53 @@
 @charset "utf-8";
 
 @import url(./common.css);
+
+#payment {
+}
+#payment-header {
+  padding: 24px 0;
+  text-align: center;
+  background-color: #ccc;
+}
+#payment-main {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  padding: 32px 0;
+}
+
+#payment-section {
+  flex-grow: 3;
+  padding: 24px;
+  height: 1000px;
+  outline: 1px dotted blue;
+}
+#payment-aside {
+  position: sticky;
+  top: 0;
+  flex-grow: 1;
+  padding: 24px;
+  outline: 1px dotted green;
+}
+.payment-aside-wrap {
+  outline: 1px dotted red;
+}
+#payment-data-send {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 24px;
+  background-color: #ccc;
+}
+.data-send-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.payment-btn {
+  padding: 16px 32px;
+  font-size: 24px;
+  border-radius: 24px;
+}
