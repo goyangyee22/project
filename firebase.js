@@ -27,7 +27,10 @@ const firebaseConfig = {
   measurementId: "G-ZY1J3CGR0E",
 };
 
+// Firebase 초기화
 const app = initializeApp(firebaseConfig);
+
+// Firebase SDK로부터 Firestore 및 Storage 서비스 가져오기
 const dbService = getFirestore(app);
 const storageService = getStorage(app);
 
