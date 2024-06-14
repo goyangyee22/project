@@ -4,12 +4,16 @@
 
 /* 결제폼 */
 #detail-payment {
+  position: sticky;
+  top: 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 24px;
   padding: 24px;
-  width: 600px; /* 대략적으로 잡은 사이즈에요. */
+  width: 600px;
   border: 2px solid #eee;
+  background-color: #fff;
+  border-radius: 8px;
 }
 
 /* 결제폼 헤더 */
@@ -72,6 +76,9 @@
 }
 
 /* 날짜 달력 수정 */
+#calendar {
+  height: 229px;
+}
 .fc .fc-toolbar.fc-header-toolbar {
   margin-bottom: 8px;
 }
@@ -104,9 +111,11 @@
 
 .fc .fc-daygrid-day.fc-day-today {
   /* 오늘 날짜 배경색상 변경하세요!! */
+  background-color: #ddd4d4;
 }
 .fc .fc-highlight {
   /* 선택한 날짜 배경색상 변경하세요!! */
+  background-color: #777171;
 }
 
 /* 룸 & 시간 옵션 */
