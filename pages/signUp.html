@@ -24,7 +24,7 @@
       </p>
       <p>
         <label class="formInput">아이디&nbsp;</label>
-        <input type="text" name="id" pattern="^[a-z0-9]{4,16}$" required />
+        <input type="text" name="id" required pattern="^[a-z0-9]{4,16}$" />
         <button id="duplicate">중복확인</button>
       </p>
       <p>
@@ -32,8 +32,8 @@
         <input
           type="password"
           name="pw"
-          pattern="^[A-Za-z0-9~?!@#$%^&*_-]{4,16}"
           required
+          pattern="^[A-Za-z0-9~?!@#$%^&*_-]{4,16}"
         />
       </p>
       <p>
@@ -66,9 +66,10 @@
     } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
 
     // 회원가입 할 때 아이디 및 비밀번호에 대한 정규식입니다.
-    let idEx =  /^[a-zA-Z][0-9a-zA-Z]{4,16}$/g
-    let pwEx = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}/g
-    
+    let idEx = "/^[a-zA-Z][0-9a-zA-Z]{4,16}$/g";
+    let pwEx =
+      "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}/g";
+
     // 아이디 중복 확인 및 버튼 클릭 여부를 체크하기 위해 변수를 생성합니다.
     let idCheck = false;
     let buttonCheck = false;
