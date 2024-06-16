@@ -46,7 +46,7 @@
       dbService,
       storageService,
       addDatas,
-      getDatas,
+      // getDatas,
       updateDatas,
       deleteDatas,
     } from "../firebase.js";
@@ -107,7 +107,8 @@
       if (confirm("정말로 회원 탈퇴하시겠습니까?")) {
         try {
           // 세션 스토리지에서 사용자 정보를 가져옵니다.
-          const userInfoString = sessionStorage.getItem("userInfo");
+          const userInfoString = getDatas("userInfo");
+          console.log(userInfoString);
           
           // 세션 스토리지에 사용자 정보가 있는지 확인합니다.
           if(userInfoString){
@@ -115,9 +116,10 @@
             const userInfo = JSON.parse(userInfoString);
 
             // 사용자의 ID를 불러옵니다.
-            const userId = userInfo.id;
+            const userId = userInfo.userId;
 
             // Firebase에서 사용자 정보 삭제
+            console.log(userId);
             await deleteDocument("userInfo", userId);
 
             // 세션 스토리지에서 사용자 정보제거
@@ -141,13 +143,18 @@
     });
 
      // Firebase에서 문서를 삭제하는 함수
-     async function deleteDocument(userInfo, userId) {
+     async function deleteDocument(collectionName, userId) {
      
      // 컬렉션과 문서 ID를 이용한 문서 참조를 만듭니다.
-     const docRef = doc(db,userInfo, userId);
+     const docRef = doc(db,collectionName, userId);
      
      // 문서를 삭제합니다.
      await deleteDoc(docRef); 
    }
+
+  //  세션 스토리지에서 데이터를 가져오는 함수
+  function getDatas(key) {
+    return sessionStorage.getItem(key);
+  }
   </script>
 </html>
