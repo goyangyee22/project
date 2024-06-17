@@ -112,11 +112,14 @@ async function handleSignUp() {
   // 데이터를 저장하는 위치는 Firebase의 "userInfo" 컬렉션입니다.
   try {
     console.log(name, id, pw);
-    const userInfo = await addDatas("userInfo", { name, id, pw });
+    // userInfo 객체 생성
+    const userInfo = { name, id, pw };
+    const docId = await addDatas("userInfo", userInfo);
+    console.log(userInfo.docId);
     alert("회원가입이 완료되었습니다.");
-    saveSession(userInfo);
+    saveSession(userInfo, docId);
     // getMembers();
-    window.location.href = "../index/html";
+    window.location.href = "../index.html";
   } catch (error) {
     console.error("오류가 발생했습니다: ", error);
     alert("회원가입 중 오류가 발생했습니다.");
@@ -144,27 +147,26 @@ function getMembersHandlerTrClick() {
 }
 
 // 회원가입 버튼에 클릭 이벤트 리스너를 등록합니다.
-const btn = document.getElementById("signUpButton");
-btn.addEventListener("click", async function () {
-  const pwCheck = handleSignUp(); // 회원가입 처리 함수를 호출합니다.(비밀번호와 비밀번호 확인이 같은 지 확인)
+const signUpButton = document.getElementById("signUpButton");
+signUpButton.addEventListener("click", async function () {
+  const pwCheck = await handleSignUp(); // 회원가입 처리 함수를 호출합니다.(비밀번호와 비밀번호 확인이 같은 지 확인)
 
   console.log(pwCheck);
   if (!pwCheck) {
     return;
   }
 
-  window.location.href = "../index.html";
+  signUpButton.removeEventListener("click", this);
+  // 폼 요소들을 객체로 변환합니다. (필요 없다 해서)
+  // const formEl = document.forms[0];
+  // const formElChildren = formEl.elements;
+  // const formElChildrenArr = [...formElChildren];
 
-  // 폼 요소들을 객체로 변환합니다.
-  const formEl = document.forms[0];
-  const formElChildren = formEl.elements;
-  const formElChildrenArr = [...formElChildren];
-
-  const joinFormObj = formElChildrenArr.reduce(
-    (acc, cur) => ({ ...acc, [cur.name]: cur.value }),
-    {}
-  );
-  console.log(joinFormObj);
+  // const joinFormObj = formElChildrenArr.reduce(
+  //   (acc, cur) => ({ ...acc, [cur.name]: cur.value }),
+  //   {}
+  // );
+  // console.log(joinFormObj);
 
   // 사용자 정보 객체를 생성합니다.
   const userInfo = {
@@ -175,6 +177,7 @@ btn.addEventListener("click", async function () {
 
   // Firebase에 사용자 정보를 추가합니다.
   const result = await addDatas("userInfo", userInfo);
+  // window.location.href = "../index.html";
   console.log(result);
 
   // 처리 결과에 따른 회원 목록 조회 함수 또는 실패 메세지를 표시합니다.
@@ -185,8 +188,8 @@ btn.addEventListener("click", async function () {
 getMembersHandlerTrClick();
 
 // 로그인이 되면 세션을 저장합니다.
-function saveSession(userInfo) {
-  sessionStorage.setItem("userInfo", userInfo);
+function saveSession(userInfo, docId) {
+  sessionStorage.setItem("userInfo", JSON.stringify(userInfo));
 }
 
 // 로그인이 되어있는지 확인합니다.
