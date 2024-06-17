@@ -46,7 +46,7 @@
       dbService,
       storageService,
       addDatas,
-      // getDatas,
+      getDatas,
       updateDatas,
       deleteDatas,
     } from "../firebase.js";
@@ -116,8 +116,9 @@
             const userInfo = JSON.parse(userInfoString);
 
             // 사용자의 ID를 불러옵니다.
-            const collectionName = 
-            const userId = getDocs(collectionName, "userInfo");
+            const collectionName = await getDocs("userInfo", userId);
+            console.log(userInfoString, collectionName);
+            const userId = getDatas(collectionName);
 
             // Firebase에서 사용자 정보 삭제
             console.log(userId);
@@ -146,17 +147,21 @@
     });
 
     // Firebase에서 문서를 삭제하는 함수
-    async function deleteDocument(collectionName, userId) {
-      // 컬렉션과 문서 ID를 이용한 문서 참조를 만듭니다.
-      const docRef = doc(db, collectionName, userId);
+    // const deleteId = document.getElementById("deleteId");
+    // deleteId.addEventListener("click", function() {
 
-      // 문서를 삭제합니다.
-      await deleteDoc(docRef);
-    }
-
-    //  세션 스토리지에서 데이터를 가져오는 함수
-    function getDatas(key) {
-      return sessionStorage.getItem(key);
-    }
+    //   async function deleteDocument(collectionName, userId) {
+    //     // 컬렉션과 문서 ID를 이용한 문서 참조를 만듭니다.
+    //     const docRef = doc(db, collectionName, userId);
+  
+    //     // 문서를 삭제합니다.
+    //     await deleteDoc(docRef);
+    //   }
+  
+    //   //  세션 스토리지에서 데이터를 가져오는 함수
+    //   function getDatas(key) {
+    //     return sessionStorage.getItem(key);
+    //   }
+    // })
   </script>
 </html>
