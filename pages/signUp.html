@@ -53,10 +53,11 @@
 
     <button id="signUpButton">회원가입</button>
     <button id="cancel">
-      <a href="../project/index.html">취소</a>
+      <a href="../index.html">취소</a>
     </button>
   </body>
   <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
     import {
       app,
       // db,
@@ -170,19 +171,24 @@
       }
 
       // 중복되지 않는 ID일 경우 Firestore에 데이터를 저장합니다.
-      // 데이터를 저장하는 위치는 Firebase의 "userInfo" 컬렉션입니다.
       try {
         console.log(name, id, pw);
-        // addDatas("userInfo", { name, id, pw });
-        alert("회원가입이 완료되었습니다.");
-        // getMembers();
-        return true;
+        const result = JSON.parse(sessionStorage("userInfo"));
+
+        if (result) {
+          saveSession(id);
+          alert("회원가입이 완료되었습니다.");
+          // getMembers();
+          return true;
+        } else {
+          alert("회원가입 중 오류가 발생했습니다.");
+          return false;
+        }
       } catch (error) {
         console.error("오류가 발생했습니다: ", error);
         alert("회원가입 중 오류가 발생했습니다.");
         return false;
       }
-      return true;
     }
 
     // 회원 목록 조회 함수
@@ -205,7 +211,8 @@
 
     // 회원가입 버튼에 클릭 이벤트 리스너를 등록합니다.
     const btn = document.getElementById("signUpButton");
-    btn.addEventListener("click", async function () {
+    btn.addEventListener("click", async function (e) {
+      e.preventDefault();
       const pwCheck = handleSignUp(); // 회원가입 처리 함수를 호출합니다.(비밀번호와 비밀번호 확인이 같은 지 확인)
 
       console.log(pwCheck);
@@ -213,7 +220,7 @@
         return;
       }
 
-      window.location.href = "../index.html"
+      window.location.href = "../index.html";
 
       // 폼 요소들을 객체로 변환합니다.
       const formEl = document.forms[0];
@@ -228,6 +235,7 @@
 
       // 사용자 정보 객체를 생성합니다.
       const userInfo = {
+        // document.forms or document.querySelector?
         name: document.querySelector("input[name='name']").value,
         id: document.querySelector("input[name='id']").value,
         pw: document.querySelector("input[name='pw']").value,
@@ -246,17 +254,18 @@
 
     // 로그인이 되면 세션을 저장합니다.
     function saveSession(userId) {
-      sessionStorage.setItem("userId", userId);
+      // userInfo? userId?
+      sessionStorage.setItem("userInfo", userId);
     }
 
     // 로그인이 되어있는지 확인합니다.
     function isLoggedIn() {
-      return sessionStorage.getItem("userId") !== null;
+      sessionStorage.getItem("userInfo") !== null;
     }
 
     // 로그아웃이 되면 세션을 제거합니다.
     function logout() {
-      sessionStorage.removeItem("userId");
+      sessionStorage.removeItem("userInfo");
     }
   </script>
 </html>
