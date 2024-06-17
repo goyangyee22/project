@@ -2,6 +2,13 @@
 
 @import url(./common.css);
 @import url(./payment_form.css);
+@font-face {
+  font-family: "KyoboHand";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/KyoboHand.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
 header {
   position: static;
 }
@@ -103,6 +110,10 @@ header {
   cursor: pointer;
 }
 
+.ra_text {
+  width: 100%;
+}
+
 .ra_button {
   display: flex;
   justify-content: space-between;
@@ -118,16 +129,56 @@ header {
 }
 
 .ra_menu {
+  font-family: "KyoboHand";
   font-size: 27px;
 }
 
 .ricon {
-  display: flex;
+  /* display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: center; */
   font-size: 50px;
 }
 
-.ra_text {
-  padding: 10px 50px;
+.ra_box {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.rbox > div {
+  gap: 20px;
+}
+
+.coon_box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+}
+
+.review-contents {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.aicon {
+  font-size: 50px;
+}
+
+.alist {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+}
+
+.menu_title {
+  font-family: "KyoboHand";
+  /* color: #818d97; */
+}
+
+.date {
+  font-size: 12px;
 }

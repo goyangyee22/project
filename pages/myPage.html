@@ -26,7 +26,6 @@
     </button>
     <button id="changePassword">비밀번호 변경</button>
     <button id="logOut" class="active">로그아웃</button>
-    <button id="logIn" class="noneActive">로그인</button>
     <button id="deleteId">회원탈퇴</button>
   </body>
   <script type="module">
@@ -39,6 +38,7 @@
       where,
       getDocs,
       deleteDoc,
+      updateDoc,
     } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
     import { getAuth } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js";
     import {
@@ -46,7 +46,6 @@
       dbService,
       storageService,
       addDatas,
-      // getDatas,
       updateDatas,
       deleteDatas,
     } from "../firebase.js";
@@ -67,12 +66,17 @@
     const db = getFirestore(app);
     const auth = getAuth(app);
 
+    const userInfo = sessionStorage.getItem("userInfo");
+    if (!userInfo) {
+      alert("로그인을 해주세요.");
+      window.location.href = "../index.html";
+    }
     // 사용자가 로그인 하면 Firebase에서 사용자 정보를 가져와서 userInfo 변수에 할당합니다.
 
     // 이름을 출력하기 위한 변수를 정의합니다.
 
     // 로그인 하고 마이페이지에 들어가면 (이름)님의 마이페이지입니다. 라는 글씨가 출력됩니다.
-    //   console.log(sessionStorage.getItem("userInfo", JSON.stringify(name)));
+    // console.log(sessionStorage.getItem("userInfo", JSON.stringify(name)));
 
     // 비밀번호 변경 버튼클릭 함수
     const changePassword = document.getElementById("changePassword");
@@ -80,35 +84,35 @@
 
     // 로그아웃 버튼클릭 함수
     const logOut = document.getElementById("logOut");
-    const logIn = document.getElementById("logIn");
-
     logOut.addEventListener("click", function () {
-      logOut.classList.remove("active");
-      logOut.classList.add("noneActive");
-      logIn.classList.remove("noneActive");
-      logIn.classList.add("active");
-
-      sessionStorage.removeItem("userInfo");
-      alert("로그아웃 되었습니다.");
-    });
-
-    // 로그인 버튼클릭 함수
-    logIn.addEventListener("click", function () {
-      window.location.href = "signIn.html";
+      if (confirm("정말 로그아웃 하시겠습니까?")) {
+        sessionStorage.removeItem("userInfo");
+        alert("로그아웃 되었습니다.");
+        window.location.href = "../index.html";
+      }
     });
 
     // 로그아웃이 되면 다시 로그인을 할 수 있는 버튼을 로그아웃이 있는 버튼 자리에 생성합니다.
     // 반대로 로그인이 되면 다시 로그아웃을 할 수 있는 버튼이 로그인이 있는 버튼 자리에 생성됩니다.
 
-    // 회원탈퇴 버튼클릭 함수
+    // 회원탈퇴 버튼클릭 함수 (getDocs를 이용하여 만들 것)
     const deleteId = document.getElementById("deleteId");
     deleteId.addEventListener("click", async function () {
       // 삭제를 하기 전 확인 메세지를 표시합니다.
-      if (confirm("정말로 회원 탈퇴하시겠습니까?")) {
+      if (confirm("정말 회원 탈퇴 하시겠습니까?")) {
         try {
           // 세션 스토리지에서 사용자 정보를 가져옵니다.
-          const userInfoString = getDatas("userInfo");
-          console.log(userInfoString);
+          const userInfoString = sessionStorage.getItem("userInfo");
+          console.log(JSON.parse(userInfoString).id);
+
+          const usersRef = collection(db, "userInfo");
+          const q = query(
+            usersRef,
+            where("id", "==", JSON.parse(userInfoString).id)
+          );
+          const querySnapshot = await getDocs(q);
+          const docId = querySnapshot.docs[0].id;
+          console.log(docId);
 
           // 세션 스토리지에 사용자 정보가 있는지 확인합니다.
           if (userInfoString) {
@@ -116,47 +120,31 @@
             const userInfo = JSON.parse(userInfoString);
 
             // 사용자의 ID를 불러옵니다.
-            const collectionName = 
-            const userId = getDocs(collectionName, "userInfo");
+            const userId = userInfo.userId;
+
+            const collectionName = "userInfo";
 
             // Firebase에서 사용자 정보 삭제
-            console.log(userId);
-            await deleteDocument("userInfo", userId);
+            await deleteDatas(collectionName, docId);
 
-            // 세션 스토리지에서 사용자 정보제거
+            // 세션 스토리지에서 사용자 정보 제거
             sessionStorage.removeItem("userInfo");
 
-            // 회원 탈퇴가 완료됐음을 알리는 메세지를 표시합니다.
-            alert("회원 탈퇴가 완료되었습니다.");
+            // 회원 탈퇴가 완료되었음을 알리는 메세지 표시
+            alert("회원 탈퇴가 성공적으로 완료 되었습니다.");
 
-            // 회원 탈퇴 후 메인 페이지로 이동합니다.
+            // 회원 탈퇴 후 메인 페이지로 이동
             window.location.href = "../index.html";
           } else {
-            // 세션 스토리지에 사용자 정보가 없으면 오류 메세지를 표시합니다.
-            throw new Error(
-              "세션 스토리지에서 사용자 정보를 찾을 수 없습니다."
-            );
+            // 세션 스토리지에 사용자 정보가 없으면 오류 메세지 표시
+            throw new Error("");
           }
         } catch (error) {
-          // 오류가 발생한 경우 콘솔에 오류를 출력하고 오류 메세지를 표시합니다.
+          // 오류가 발생하면 콘솔에 오류를 출력하고 오류 메세지 표시
           console.error("회원 탈퇴 중 오류 발생: ", error);
-          alert("회원 탈퇴 중 오류가 발생했습니다. 다시 시도해주세요.");
+          alert("회원 탈퇴 중 오류가 발생했습니다. 다시 시도해 주십시오.");
         }
       }
     });
-
-    // Firebase에서 문서를 삭제하는 함수
-    async function deleteDocument(collectionName, userId) {
-      // 컬렉션과 문서 ID를 이용한 문서 참조를 만듭니다.
-      const docRef = doc(db, collectionName, userId);
-
-      // 문서를 삭제합니다.
-      await deleteDoc(docRef);
-    }
-
-    //  세션 스토리지에서 데이터를 가져오는 함수
-    function getDatas(key) {
-      return sessionStorage.getItem(key);
-    }
   </script>
 </html>

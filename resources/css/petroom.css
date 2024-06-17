@@ -86,6 +86,31 @@ section {
 .space {
   padding: 20px;
 }
+/* 중간 이미지 */
+.middle {
+  margin: 0 190px;
+}
+.puppy {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* margin-top: 50px; */
+  margin: 50px;
+  margin-bottom: 0;
+}
+
+.puppy1 {
+  text-align: center;
+  padding: 25px;
+}
+.puppy-img {
+  display: flex;
+  justify-content: end;
+  margin-right: 150px;
+}
+.puppy-bot {
+  margin-bottom: 300px;
+}
 /* 아이콘 */
 .main-icon {
   display: flex;
@@ -279,7 +304,4 @@ th {
 .infor-title > span {
   font-size: 25px;
   color: #a34343;
-}
-.bnt:hover {
-  background-color: #ecca9c;
 }

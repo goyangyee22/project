@@ -70,7 +70,6 @@ async function deleteDatas(collectionName, docId) {
   const docRef = await doc(dbService, collectionName, docId);
   try {
     await deleteDoc(docRef);
-    sss;
     return true;
   } catch (error) {
     return false;
