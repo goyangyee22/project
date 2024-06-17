@@ -43,6 +43,11 @@ header {
 .swiper-button-prev::after {
   color: #eeedeb;
 }
+.mySwiper {
+  width: 70%;
+  padding: 50px;
+  /* border-radius: 12px; */
+}
 /* .swiper-button-disabled {
   background-color: #545b77;
 } */
@@ -319,4 +324,15 @@ th {
 }
 .copy {
   color: #4b70f5;
+}
+.map-title {
+  padding: 12px;
+}
+.room {
+  width: 500px;
+  height: 350px;
+}
+.roomimg {
+  width: 600px;
+  height: 500px;
 }
