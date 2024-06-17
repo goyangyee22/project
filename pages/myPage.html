@@ -46,7 +46,6 @@
       dbService,
       storageService,
       addDatas,
-      getDatas,
       updateDatas,
       deleteDatas,
     } from "../firebase.js";
@@ -100,6 +99,11 @@
     // 로그아웃이 되면 다시 로그인을 할 수 있는 버튼을 로그아웃이 있는 버튼 자리에 생성합니다.
     // 반대로 로그인이 되면 다시 로그아웃을 할 수 있는 버튼이 로그인이 있는 버튼 자리에 생성됩니다.
 
+    //   //  세션 스토리지에서 데이터를 가져오는 함수
+    function getDatas(key) {
+      return sessionStorage.getItem(key);
+    }
+
     // 회원탈퇴 버튼클릭 함수
     const deleteId = document.getElementById("deleteId");
     deleteId.addEventListener("click", async function () {
@@ -116,13 +120,11 @@
             const userInfo = JSON.parse(userInfoString);
 
             // 사용자의 ID를 불러옵니다.
-            const collectionName = await getDocs("userInfo", userId);
-            console.log(userInfoString, collectionName);
-            const userId = getDatas(collectionName);
+            const userId = userInfo.doc("userInfo", id);
 
             // Firebase에서 사용자 정보 삭제
             console.log(userId);
-            await deleteDocument("userInfo", userId);
+            deleteDatas("userInfo", userId);
 
             // 세션 스토리지에서 사용자 정보제거
             sessionStorage.removeItem("userInfo");
@@ -145,23 +147,5 @@
         }
       }
     });
-
-    // Firebase에서 문서를 삭제하는 함수
-    // const deleteId = document.getElementById("deleteId");
-    // deleteId.addEventListener("click", function() {
-
-    //   async function deleteDocument(collectionName, userId) {
-    //     // 컬렉션과 문서 ID를 이용한 문서 참조를 만듭니다.
-    //     const docRef = doc(db, collectionName, userId);
-  
-    //     // 문서를 삭제합니다.
-    //     await deleteDoc(docRef);
-    //   }
-  
-    //   //  세션 스토리지에서 데이터를 가져오는 함수
-    //   function getDatas(key) {
-    //     return sessionStorage.getItem(key);
-    //   }
-    // })
   </script>
 </html>
