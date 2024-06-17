@@ -107,7 +107,7 @@
       if (confirm("정말 회원 탈퇴 하시겠습니까?"))
         try {
           // 세션 스토리지에서 사용자 정보를 가져옵니다.
-          const userInfoString = sessionStorage.getItem("userInfo");
+          const userInfoString = sessionStorage.getDocs(collectionName);
           console.log(userInfoString);
 
           // 세션 스토리지에 사용자 정보가 있는지 확인합니다.
@@ -116,9 +116,11 @@
             const userInfo = JSON.parse(userInfoString);
 
             // 사용자의 ID를 불러옵니다.
-            const userId = getDocs("AwS9ql9G1lQ5v8wFDsQL");
+            const userId = userInfo.userId;
 
-            const userDocRef = doc(db, "users", userId);
+            const collectionName = "users";
+
+            const userDocRef = doc(db, collectionName, userId);
 
             // Firebase에서 사용자 정보 삭제
             await deleteDoc(userDocRef);
