@@ -17,6 +17,12 @@
     <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/google-calendar@6.1.14/index.global.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/locales/ko.js"></script>
     <script defer src="./resources/js/payment_form.js"></script>
+    <script
+      type="text/javascript"
+      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1fb3a65936addf6c3befbf8da8e54a23"
+    ></script>
+    <!-- 지도 표시 javascript -->
+    <script defer src="./resources/js/map.js"></script>
   </head>
   <body>
     <header>
@@ -79,15 +85,15 @@
         </div>
         <div class="party-contents wrap">
           <div class="party-details">
-            <div class="ment"><h1>★ 편하게 이용 가능한 파티룸 ★</h1></div>
+            <div class="ment"><h1>👀 편하게 이용 가능한 파티룸 😎</h1></div>
             <div class="result">
               <div class="party-menu">
-                <a href="#">상세정보</a>
-                <a href="#">Q&A</a>
-                <a href="#">이용 후기</a>
+                <a href="#party-tagone">상세정보</a>
+                <a href="#party-tagtwo">Q&A</a>
+                <a href="#party-tagthree">이용 후기</a>
               </div>
               <div class="party-text">
-                <h1 class="party-main">공간 소개</h1>
+                <h1 class="party-main" id="party-tagone">공간 소개</h1>
                 <i class="fa-solid fa-minus" style="color: #ffd43b"></i>
                 <div class="mainone">
                   <p class="party-serve">
@@ -240,47 +246,151 @@
                   <p>이용 당일 환불 불가</p>
                 </div>
               </div>
-              <div class="QnA">
+              <div id="map" style="width: 500px; height: 400px"></div>
+              <div class="QnA" id="party-tagtwo">
                 <div class="QnA-intro">
-                  <h4 class="QnA-order">
+                  <h1 class="QnA-order">
                     Q&A <span class="QnA-color">3개</span
                     ><strong class="QnA-T">질문 작성하기</strong>
                     <i class="fa-solid fa-minus" style="color: #ffd43b"></i>
-                  </h4>
+                  </h1>
                 </div>
                 <div class="QnA-box">
                   <div class="QnA-boxs">
-                    <span class="QnA-img"
+                    <span class="guest-img"
                       ><i class="fa-solid fa-user"></i
                     ></span>
-                    <div>
-                      <strong class="QnA-name">코끼리 </strong><br />
+                    <div class="QnA-num">
+                      <strong class="guest-name">코끼리 </strong>
                       <p class="QnA-ment">
                         안녕하세요 ! 혹시 7월 19일 주간 예약이 가능할까요? 11명
                         정도 될 것 같습니다!
                       </p>
                       <span class="QnA-time">2024-06-14 15:15</span>
+
                       <div class="QnA-boxes">
                         <div>
-                          <p>관리자님의 답글</p>
+                          <strong>관리자님의 답글</strong>
                           <p>일단 대기</p>
-                          <p>2024-06-14 17:16</p>
+                          <p class="QnA-time">2024-06-14 17:16</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="QnA-boxs">
+                    <span class="guest-img"
+                      ><i class="fa-solid fa-child" style="color: #74c0fc"></i
+                    ></span>
+                    <div class="QnA-num">
+                      <strong class="guest-name">거북이 </strong>
+                      <p class="QnA-ment">
+                        혹시 주변 소음이 많이 들리나요? 다른 방 소리가 들리는지
+                        궁금합니다.
+                      </p>
+                      <span class="QnA-time">2024-06-16 11:48</span>
+
+                      <div class="QnA-boxes">
+                        <div>
+                          <strong>관리자님의 답글</strong>
+                          <p>일단 대기</p>
+                          <p class="QnA-time">2024-06-16 13:41</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="QnA-boxs">
+                    <span class="guest-img"
+                      ><i class="fa-brands fa-waze" style="color: #ffd43b"></i
+                    ></span>
+                    <div class="QnA-num">
+                      <strong class="guest-name">호랑이 </strong>
+                      <p class="QnA-ment">
+                        6월 29일 밤 타임 예약이 되어 있어서 혹시 취소가 되면
+                        연락 부락드립니다!
+                      </p>
+                      <span class="QnA-time">2024-06-17 16:18</span>
+
+                      <div class="QnA-boxes">
+                        <div>
+                          <strong>관리자님의 답글</strong>
+                          <p>일단 대기</p>
+                          <p class="QnA-time">2024-06-17 18:57</p>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="QnA-box">
-                  <span class="QnA-img"><i class="fa-solid fa-user"></i></span>
-                  <strong class="QnA-name">악어 </strong>
-                  <p class="QnA-ment">완전 이뻐용~~~</p>
-                  <span class="QnA-time">2024-06-14 15:15</span>
+              </div>
+              <div class="review">
+                <h1 id="party-tagthree">
+                  이용 후기 <strong class="em">3개</strong> / 평균 평점
+                  <span class="em">5.0</span>
+                  <i class="fa-solid fa-minus" style="color: #ffd43b"></i>
+                </h1>
+
+                <div class="QnA-boxs">
+                  <span class="guest-img"
+                    ><img
+                      class="guest-imgs"
+                      src="resources/images/partyimg/게스트이미지1.jpg"
+                      width="60px"
+                      height="60px"
+                  /></span>
+                  <div class="QnA-num">
+                    <strong class="guest-name"
+                      >병아리 <span>⭐⭐⭐⭐⭐</span></strong
+                    >
+                    <p class="QnA-ment">
+                      완전 조용하고 저희만 있는 거 같아요. 분위기 너무 좋습니다~
+                    </p>
+                    <img
+                      src="resources/images/partyimg/후기1.jpg"
+                      width="56px"
+                      height="56px"
+                    />
+                    <span class="QnA-time">2024-06-11 08:38</span>
+                  </div>
                 </div>
-                <div class="QnA-box">
-                  <span class="QnA-img"><i class="fa-solid fa-user"></i></span>
-                  <strong class="QnA-name">기린 </strong>
-                  <p class="QnA-ment">완전 이뻐용~~~</p>
-                  <span class="QnA-time">2024-06-14 15:15</span>
+                <div class="QnA-boxs">
+                  <span class="guest-img"
+                    ><img
+                      class="guest-imgs"
+                      src="resources/images/partyimg/게스트이미지2.jpg"
+                      width="60px"
+                      height="60px"
+                  /></span>
+                  <div class="QnA-num">
+                    <strong class="guest-name"
+                      >대전미꾸라지 <span>⭐⭐⭐⭐⭐</span>
+                    </strong>
+                    <p class="QnA-ment">잘 놀다갑니다. 재방문 의사 있어요~~</p>
+
+                    <span class="QnA-time">2024-06-16 09:07</span>
+                  </div>
+                </div>
+                <div class="QnA-boxs">
+                  <span class="guest-img"
+                    ><img
+                      class="guest-imgs"
+                      src="resources/images/partyimg/게스트이미지3.jpg"
+                      width="60px"
+                      height="60px"
+                  /></span>
+                  <div class="QnA-num">
+                    <strong class="guest-name"
+                      >부산사자<span> ⭐⭐⭐⭐⭐ </span></strong
+                    >
+                    <p class="QnA-ment">
+                      다른 것 말 할 것도 없이 다 좋았고 저는 화장실이 너무
+                      깨끗해서 더 좋았습니다.
+                    </p>
+                    <img
+                      src="resources/images/partyimg/후기2.jpg"
+                      width="56px"
+                      height="56px"
+                    />
+                    <span class="QnA-time">2024-06-20 20:12</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -289,14 +399,13 @@
             <!-- 결제 타이틀 -->
             <div class="pay-info">
               <div class="pay-header">
-                <h3>결제할 방 이름</h3>
+                <h3>행복 파티룸</h3>
                 <div class="pay-desc">
                   <p>
                     상품에 대한 간략한 설명 <br />
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Sequi quisquam sed beatae nisi repellendus. Obcaecati
-                    praesentium magni, alias officiis ea qui adipisci culpa ex!
-                    Sunt nisi odio sequi debitis quisquam!
+                    아늑한 공간에 다양한 게임 블루투스 스피커 완벽한 방음
+                    배달음식 세팅하고 감성뮤직, 빔 on 생일파티,커플데이트,이벤트
+                    환영😁
                   </p>
                   <!-- 해시태그 아이콘 사용하려면 쓰세요~! -->
                   <div class="pay-hash">

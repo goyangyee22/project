@@ -85,30 +85,19 @@ header {
   padding-right: 70px;
 }
 
-.party-main {
-  padding-top: 100px;
-}
-.party-maintwo {
-  padding-top: 100px;
-}
-.party-mainthree {
-  padding-top: 100px;
-}
+.party-main,
+.QnA,
+.party-maintwo,
+.party-mainthree,
 .party-mainfour {
   padding-top: 100px;
 }
-.QnA {
-  padding-top: 100px;
-}
-.party-serve {
-  padding-bottom: 20px;
-}
+
+.party-serve,
 .text-list {
   padding-bottom: 20px;
 }
-/* .none {
-  padding-top: 20px;
-} */
+
 .none p {
   padding-top: 20px;
 }
@@ -118,14 +107,12 @@ header {
   color: blue;
 }
 .QnA-order {
-  margin: 30px 0 15px;
-  padding-bottom: 15px;
-}
-.QnA-box {
   /* display: flex; */
-  padding-bottom: 40px;
+  /* flex-direction: column; */
+  justify-content: space-around;
 }
-.QnA-img {
+
+.guest-img {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -134,35 +121,43 @@ header {
   width: 60px;
   height: 60px;
 }
+.guest-imgs {
+  border-radius: 50px;
+}
 .QnA-boxs {
   display: flex;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  border-bottom: 2px solid rgb(214, 209, 209);
 }
 .QnA-boxes {
+  padding-top: 20px;
+}
+.QnA-num {
+  padding-left: 30px;
+}
+.guest-name {
   display: flex;
-  padding: 4px;
+  padding-bottom: 20px;
+  justify-content: space-between;
+  width: 400px;
 }
-.QnA-name {
-  /* display: block; */
-  padding-left: 30px;
-  /* padding-bottom: 20px; */
-}
-.QnA-ment {
-  /* flex-direction: column; */
-  padding-left: 30px;
-}
+
 .QnA-time {
-  padding-left: 30px;
-  padding-bottom: 40px;
+  display: flex;
   font-size: 12px;
   color: rgb(156, 154, 154);
 }
-/* .QnA-ment {
-}
-.QnA-time {
-}
-.QnA-review {
-  /* display: block; 
-} */
-.fa-user {
+
+.fa-user,
+.fa-child,
+.fa-waze {
   font-size: 40px;
+}
+/* 이용 후기 */
+.em {
+  color: rgb(196, 23, 196);
+}
+.review {
+  padding-top: 100px;
 }
