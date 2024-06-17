@@ -5,11 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
+  <style>
+    #backToMainPage a {
+      color: #000;
+      text-decoration: none;
+    }
+  </style>
   <body>
     <div class="container">
       <div>
         <div>
-          <button>
+          <button id="backToMainPage">
             <a href="../index.html">메인페이지로 돌아가기</a>
           </button>
           <button id="updateBtn">작성하기</button>
@@ -17,6 +23,7 @@
         <div class="form-container">
           <div class="form-item">
             <div class="form-label"><span>작성자명</span></div>
+            <div class="form-input"><input type="text" name="name" /></div>
           </div>
           <div class="form-item">
             <div class="form-label"><span>제목</span></div>
@@ -33,53 +40,11 @@
             <th>제목</th>
             <th>내용</th>
           </tr>
+          <tbody id="tableBody"></tbody>
         </table>
       </div>
     </div>
   </body>
-  <script>
-    let updateTarget;
-    async function getMembers() {
-      // 작성자의 이름을 가져옵니다.
-      const querySnapshot = await getDatas("userInfo", name);
-      const tableTag = document.querySelector("table");
-      querySnapshot.forEach((doc) => {
-        const { name, title, content } = doc.data();
-        tableTag.insertAdjacentHTML(
-          "beforeend",
-          `
-          <tr data-id${doc.id}>
-            <td class="name">${name}</td>
-            <td class="title">${title}</td>
-            <td class="content">${content}</td>
-            </tr>
-          `
-        );
-      });
-    }
-    getMembers();
-
-    const updateBtn = document.getElementById("updateBtn");
-    updateBtn.addEventListener("click", async function () {
-      const inputs = document.querySelectorAll(".form-container input");
-      const inputsArr = Array.from(inputs);
-      const addObj = {};
-      inputsArr.forEach((input) => {
-        addObj[input.name] = input.value;
-      });
-      const result = await addDatas("userInfo", addObj);
-      console.log(result);
-      const { name, title, content } = addObj;
-      tableTag.firstElementChild.insertAdjacentHTML(
-        "afterend",
-        `
-        <tr data-id=${result.id}>
-          <td class="name">${name}</td>
-          <td class="title">${name}</td>
-          <td class="content">${content}</td>
-          </tr>
-        `
-      );
-    });
+  <script type="module">
   </script>
 </html>
