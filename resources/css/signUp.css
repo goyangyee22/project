@@ -44,6 +44,7 @@ body {
   margin-bottom: 24px;
 }
 
+/* 인풋그룹 */
 .join-content label {
   position: absolute;
   top: 0;
@@ -95,6 +96,7 @@ body {
   gap: 8px;
 }
 
+/* 가입 & 취소 버튼 */
 .join-btn {
   padding: 14px 24px;
   font-size: 16px;
