@@ -1,0 +1,119 @@
+@charset "utf-8";
+
+@import url(./common.css);
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  background-color: var(--main-color);
+}
+
+#wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+  padding: 48px 64px;
+  border-radius: 24px;
+  background-color: #fff;
+  box-shadow: 0 0 10px 0 var(--common-color);
+}
+
+/* 회원가입 헤더 */
+.join-header h1 {
+  font-size: 48px;
+}
+
+/* 회원가입 컨텐츠 */
+#join-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.join-content {
+  position: relative;
+  margin-bottom: 24px;
+}
+
+/* 인풋그룹 */
+.join-content label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0);
+  pointer-events: none;
+  transition: 0.3s;
+}
+.join-content input {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  outline: 0;
+  border: 0;
+  border-bottom: 2px solid var(--main-color);
+  font-size: 24px;
+  color: var(--font-color);
+  transition: 0.3s;
+}
+.join-content input::placeholder {
+  color: rgba(0, 0, 0, 0.3);
+  transition: 0.3s;
+}
+.join-content input:focus::placeholder {
+  color: rgba(163, 183, 99, 0.3);
+}
+.join-content input:focus + label {
+  top: -16px;
+  font-size: 14px;
+  color: var(--hover-color);
+}
+.join-content input:focus + label + .highlight {
+  width: 100%;
+}
+.highlight {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--hover-color);
+  transition: 0.3s;
+}
+
+.input-id {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+/* 가입 & 취소 버튼 */
+.join-btn {
+  padding: 14px 24px;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 8px;
+  background-color: var(--accent-color);
+  cursor: pointer;
+  transition: 0.3s;
+}
+.join-btn:hover {
+  color: #fff;
+  background-color: var(--hover-color);
+}
+.join-footer {
+  display: flex;
+  gap: 8px;
+}
+.join-footer > button {
+  padding: 16px 32px;
+}

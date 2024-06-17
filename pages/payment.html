@@ -4,99 +4,196 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>빌리슈 - 결제</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
     <link rel="stylesheet" href="../resources/css/payment.css" />
-    <script
-      type="text/javascript"
-      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1fb3a65936addf6c3befbf8da8e54a23"
-    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script defer src="../resources/js/payment.js"></script>
   </head>
   <body>
     <div id="payment">
       <div id="payment-header">
-        <h1>주문 / 결제</h1>
+        <div class="wrap">
+          <div class="back" onclick="history.back();">
+            <span>
+              <i class="fa-solid fa-arrow-left"></i>
+            </span>
+          </div>
+          <h1>주문 / 결제</h1>
+        </div>
       </div>
       <div id="payment-main" class="wrap">
         <div id="payment-section">
           <div class="payment-contents">
             <div class="payment-content">
-              <h2>주문자</h2>
-              <div class="user-info">
-                <div id="user-name">김ㅇㅇ</div>
-                <div id="user-phone">000-0000-0000</div>
+              <h2>수신자</h2>
+              <div class="user-info payment-content-box">
+                <span class="user-name">김ㅇㅇ</span>
+                <span class="user-phone">000-0000-0000</span>
               </div>
             </div>
             <div class="payment-content">
-              <h2>주문정보</h2>
-              <div class="product-info">
-                <div>
-                  <h3>날짜</h3>
-                  <span id="display-date">2024-06-12</span>
+              <h2>주문상품</h2>
+              <div class="product-info payment-content-box">
+                <div class="product-info-title">
+                  <span id="display-room">빌리슈 파티룸</span>
                 </div>
-                <div>
-                  <h3>룸</h3>
-                  <span id="display-room">파티룸 4인</span>
+                <div class="product-info-content">
+                  <a class="info-img" href="#">img</a>
+                  <ul class="info-desc">
+                    <li>
+                      <h3>날짜</h3>
+                      <p>
+                        <span id="display-date">2024-06-12</span>
+                      </p>
+                    </li>
+                    <li>
+                      <h3>시간</h3>
+                      <p>
+                        <span id="display-time">낮</span>
+                      </p>
+                    </li>
+                    <li>
+                      <h3>인원</h3>
+                      <p>
+                        <span id="display-personnel">6명</span>
+                      </p>
+                    </li>
+                  </ul>
                 </div>
-                <div>
-                  <h3>시간</h3>
-                  <span id="display-time">낮</span>
-                </div>
-                <div>
-                  <h3>인원</h3>
-                  <span id="display-personnel">6명</span>
-                </div>
-                <div>
-                  <h3>결제할 금액</h3>
-                  <span id="display-amount">000,000원</span>
-                </div>
+              </div>
+              <div class="info-cost">
+                <h3>총 주문금액</h3>
+                <span id="display-amount">000,000원</span>
               </div>
             </div>
             <div class="payment-content">
               <h2>결제수단</h2>
-              <div class="payment-method">
-                <div class="method-account"></div>
-                <div class="method-card"></div>
+              <div class="payment-method payment-content-box">
+                <div class="method-account">
+                  <input
+                    type="radio"
+                    id="account"
+                    name="method"
+                    value="account"
+                  />
+                  <label for="account">계좌 간편결제</label>
+                </div>
+                <div class="display-account">
+                  <div class="swiper account-slide">
+                    <div class="swiper-wrapper">
+                      <div class="swiper-slide">농협은행</div>
+                      <div class="swiper-slide">신한은행</div>
+                      <div class="swiper-slide">우리은행</div>
+                      <div class="swiper-slide">계좌등록</div>
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                  </div>
+                </div>
+                <div class="method-card">
+                  <input type="radio" id="card" name="method" value="card" />
+                  <label for="card">카드 간편결제</label>
+                </div>
+                <div class="display-card">
+                  <div class="swiper card-slide">
+                    <div class="swiper-wrapper">
+                      <div class="swiper-slide">삼성카드</div>
+                      <div class="swiper-slide">현대카드</div>
+                      <div class="swiper-slide">국민카드</div>
+                      <div class="swiper-slide">카드등록</div>
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                  </div>
+                </div>
                 <div class="method-common">
-                  <div class="samsung-pay"></div>
-                  <div class="naver-pay"></div>
-                  <div class="kakao-pay"></div>
+                  <input
+                    type="radio"
+                    id="common"
+                    name="method"
+                    value="common"
+                  />
+                  <label for="common">일반결제</label>
+                </div>
+                <div class="display-common">
+                  <div class="common-btn-wrap">
+                    <button class="btn">삼성페이</button>
+                    <button class="btn">네이버페이</button>
+                    <button class="btn">카카오페이</button>
+                    <button class="btn">무통장입금</button>
+                  </div>
+                  <div class="samsung-pay">
+                    <p>삼성페이 인증 후 결제됩니다.</p>
+                  </div>
+                  <div class="naver-pay">
+                    <p>네이버페이 인증 후 결제됩니다.</p>
+                  </div>
+                  <div class="kakao-pay">
+                    <p>카카오페이 인증 후 결제됩니다.</p>
+                  </div>
                   <div class="no-bankbook">
+                    <select name="bankbook" id="bankbook">
+                      <option value="">은행을 선택해주세요.</option>
+                      <option value="NH">농협</option>
+                      <option value="KM">국민은행</option>
+                      <option value="SH">신한은행</option>
+                      <option value="WR">우리은행</option>
+                      <option value="KU">기업은행</option>
+                      <option value="HN">하나은행</option>
+                      <option value="EP">우체국</option>
+                    </select>
                     <div class="no-bankbook-info">
-                      <h3>무통장입금 안내</h3>
+                      <p>무통장입금 안내</p>
                       <span class="more-info">?</span>
                     </div>
                   </div>
-                </div>
-                <div class="payment-refund">
-                  <h3>환불 방법</h3>
-                  <div class="refund-account">계좌를 선택해주세요.</div>
                 </div>
               </div>
             </div>
             <div class="payment-content cash-receipts">
               <h2>현금영수증</h2>
               <div class="cash-receipt-proposal">
-                <input type="radio" name="cash-receipt" />
+                <input
+                  id="applied_y"
+                  type="radio"
+                  name="cash-receipt"
+                  value="applied_y"
+                />
+                <label for="applied_y">신청</label>
+                <input
+                  id="applied_n"
+                  type="radio"
+                  name="cash-receipt"
+                  value="applied_n"
+                />
+                <label for="applied_n">미신청</label>
+              </div>
+              <div class="display-cash-receipt payment-content-box">
+                <span class="user-name">김ㅇㅇ</span>
+                <span class="user-phone">000-0000-0000</span>
               </div>
             </div>
           </div>
         </div>
         <div id="payment-aside">
-          <div class="payment-way">
-            <h2>찾아오시는 길</h2>
-            <div id="map" style="width: 500px; height: 400px"></div>
-          </div>
           <div class="payment-aside-wrap">
             <div class="payment-aside-contents">
               <h2>결제상세</h2>
-              <div class="payment-aside-content">
+              <div class="payment-aside-content payment-content-box">
                 <div id="select-method">결제수단</div>
                 <div id="total-cost">00,000원</div>
               </div>
             </div>
             <div class="payment-aside-contents">
               <h2>포인트 혜택</h2>
-              <div class="payment-aside-content">
+              <div class="payment-aside-content payment-content-box">
                 <div class="acc-points purchase-point">
                   <h3>구매적립</h3>
                   <span class="more-info">?</span>

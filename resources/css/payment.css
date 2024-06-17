@@ -2,43 +2,220 @@
 
 @import url(./common.css);
 
-#payment {
+html,
+body {
+  background-color: var(--main-color);
 }
+
+/* common swiper */
+.swiper-wrapper {
+  padding: 32px;
+}
+
+.swiper-slide {
+  padding: 32px 48px;
+  border-radius: 24px;
+  border: 2px dashed var(--main-color);
+  box-shadow: 0 0 5px 0 var(--main-color);
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: var(--accent-color);
+  background-color: var(--accent-color);
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--main-color);
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background-color: var(--hover-color);
+}
+
+/* header */
 #payment-header {
-  padding: 24px 0;
+  padding: 32px 0;
   text-align: center;
-  background-color: #ccc;
+  background-color: #fff;
 }
+#payment-header > .wrap {
+  position: relative;
+}
+#payment-header .back {
+  position: absolute;
+  top: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--accent-color);
+  color: var(--accent-color);
+  transform: translateY(-50%);
+  cursor: pointer;
+  transition: 0.3s;
+}
+#payment-header .back:hover {
+  border: 2px solid var(--hover-color);
+  background-color: var(--hover-color);
+  color: #fff;
+}
+
+#payment-header h1 {
+  font-size: 24px;
+}
+
+/* main */
 #payment-main {
   position: relative;
   display: flex;
   align-items: flex-start;
-  padding: 32px 0;
+  gap: 24px;
+  padding-bottom: 160px;
 }
 
 #payment-section {
-  flex-grow: 3;
-  padding: 24px;
-  height: 1000px;
-  outline: 1px dotted blue;
+  padding-top: 32px;
+  width: 65%;
 }
+
+.payment-contents {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.payment-content h2 {
+  margin-bottom: 8px;
+  font-size: 24px;
+}
+
+.payment-content-box {
+  padding: 24px;
+  border-radius: 24px;
+  background-color: #fff;
+}
+
+/* 수신자 */
+.user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 24px;
+}
+.user-name {
+  font-weight: 700;
+}
+
+/* 주문상품 */
+.product-info-title {
+  margin-bottom: 16px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.product-info-content {
+  display: flex;
+  gap: 16px;
+}
+.info-img {
+  width: 240px;
+  outline: 1px dotted red;
+}
+
+.info-desc {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.info-desc li {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.info-desc li h3 {
+  padding: 8px 16px;
+  border: 2px solid var(--main-color);
+  border-radius: 16px;
+  font-size: 16px;
+  font-weight: 400;
+}
+.info-desc li > p > span {
+  font-size: 24px;
+  font-weight: 700;
+}
+.info-cost {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+  padding: 24px;
+  border-radius: 24px;
+  background-color: rgba(234, 219, 200, 0.7);
+}
+
+#display-amount {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+/* method */
+div[class^='method'] {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.payment-method label {
+  font-size: 24px;
+}
+.payment-method input[type='radio'] {
+  appearance: none;
+  width: 30px;
+  height: 30px;
+  background-color: #fff;
+  border: 2px solid var(--common-color);
+  border-radius: 50%;
+  outline: 0;
+  cursor: pointer;
+}
+.payment-method input[type='radio']:checked {
+  background-color: var(--hover-color);
+  border: 5px solid #fff;
+  box-shadow: 0 0 0 2px var(--hover-color);
+}
+.display-account {
+  width: 100%;
+}
+
+/* aside */
 #payment-aside {
   position: sticky;
   top: 0;
   flex-grow: 1;
-  padding: 24px;
-  outline: 1px dotted green;
 }
 .payment-aside-wrap {
-  outline: 1px dotted red;
+  padding-top: 32px;
 }
+
+/* data send form */
 #payment-data-send {
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
+  z-index: 10;
   padding: 24px;
-  background-color: #ccc;
+  background-color: #fff;
+  box-shadow: 0 -1px 10px 0 var(--common-color);
 }
 .data-send-content {
   display: flex;
@@ -50,4 +227,13 @@
   padding: 16px 32px;
   font-size: 24px;
   border-radius: 24px;
+  background-color: var(--accent-color);
+  color: #fff;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.payment-btn:hover {
+  background-color: var(--hover-color);
+  box-shadow: 0 0 10px 0 var(--hover-color);
 }
