@@ -14,7 +14,11 @@
     />
     <link rel="stylesheet" href="./resources/css/main.css" />
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script defer src="./resources/js/swiper.js"></script>
+    <script
+      type="text/javascript"
+      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1fb3a65936addf6c3befbf8da8e54a23"
+    ></script>
+    <script defer src="./resources/js/main.js"></script>
   </head>
   <body>
     <header>
@@ -105,6 +109,9 @@
           </div>
         </div>
       </section>
+      <section id="way-to-come">
+        <div id="map" style="width: 500px; height: 400px"></div>
+      </section>
     </main>
     <footer>
       <div class="footer-info">
@@ -138,8 +145,8 @@
       </div>
     </footer>
   </body>
-  <script>
-    let userInfo = sessionStorage.getItem("userInfo");
+  <!-- <script>
+    let userInfo = sessionStorage.getItem('userInfo');
     console.log(JSON.parse(userInfo));
-  </script>
+  </script> -->
 </html>
