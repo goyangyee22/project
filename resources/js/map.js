@@ -1,14 +1,3 @@
-var swiper = new Swiper('.hero-swiper', {
-  spaceBetween: 30,
-  effect: 'fade',
-  grabCursor: true,
-  loop: true,
-  autoplay: {
-    delay: 2500,
-    disableOnInteraction: false,
-  },
-});
-
 // 지도
 var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
 var options = {

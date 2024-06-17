@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>빌리슈 - 결제</title>
     <link rel="stylesheet" href="../resources/css/payment.css" />
+    <script
+      type="text/javascript"
+      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1fb3a65936addf6c3befbf8da8e54a23"
+    ></script>
     <script defer src="../resources/js/payment.js"></script>
   </head>
   <body>
@@ -78,6 +82,10 @@
           </div>
         </div>
         <div id="payment-aside">
+          <div class="payment-way">
+            <h2>찾아오시는 길</h2>
+            <div id="map" style="width: 500px; height: 400px"></div>
+          </div>
           <div class="payment-aside-wrap">
             <div class="payment-aside-contents">
               <h2>결제상세</h2>
@@ -104,15 +112,6 @@
           </div>
         </div>
       </div>
-      <!-- <div class="enter-card-number">
-        <label for="card-number1">카드 번호를 입력해 주세요.</label>
-        <div class="input-card-number">
-          <input type="text" id="card-number1" maxlength="4" required /> -
-          <input type="text" id="card-number2" maxlength="4" required /> -
-          <input type="text" id="card-number3" maxlength="4" required /> -
-          <input type="text" id="card-number4" maxlength="4" required />
-        </div>
-      </div> -->
       <form action="" id="payment-data-send">
         <div class="data-send-content wrap">
           <p>주문내용을 확인하였으며, 정보 제공 등에 동의합니다.</p>
