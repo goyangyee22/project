@@ -173,10 +173,10 @@
       // 중복되지 않는 ID일 경우 Firestore에 데이터를 저장합니다.
       try {
         console.log(name, id, pw);
-        const result = JSON.parse(sessionStorage("userInfo"));
+        const result = addDatas("userInfo", { name, id, pw });
 
         if (result) {
-          saveSession(id);
+          saveSession();
           alert("회원가입이 완료되었습니다.");
           // getMembers();
           return true;
