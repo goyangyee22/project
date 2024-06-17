@@ -14,7 +14,11 @@
     />
     <link rel="stylesheet" href="./resources/css/main.css" />
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script defer src="./resources/js/swiper.js"></script>
+    <script
+      type="text/javascript"
+      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1fb3a65936addf6c3befbf8da8e54a23"
+    ></script>
+    <script defer src="./resources/js/main.js"></script>
   </head>
   <body>
     <header>
@@ -48,7 +52,7 @@
       <section id="hero">
         <div class="hero-content">
           <h2>빌리슈</h2>
-          <p>대전에서..........모르겠따..............ㅠ</p>
+          <p>공간대여소개</p>
         </div>
         <div class="swiper hero-swiper">
           <div class="swiper-wrapper hero-wrapper">
@@ -105,6 +109,83 @@
           </div>
         </div>
       </section>
+      <section id="way">
+        <div class="wrap">
+          <h2>찾아오시는 길</h2>
+          <div class="way-contents">
+            <div
+              id="map"
+              class="way-map"
+              style="width: 500px; height: 400px"
+            ></div>
+            <div class="way-to-come">
+              <div class="public-transport">
+                <h3>대중교통 이용</h3>
+                <ul>
+                  <li>
+                    <h4>판암역행</h4>
+                    <p>
+                      반석역 → 지족역 → 노은역 → 월드컵경기장역 → 현충원역 →
+                      구암역 → 유성온천역 → 갑천역 → 월평역 → 갈마역 →
+                      정부청사역 → 시청역 → 탄방역 → 용문역 → 오룡역 → 서대전
+                      네거리역 → 중구청역 → <span>중앙로역</span>
+                    </p>
+                  </li>
+                  <li>
+                    <h4>반석역행</h4>
+                    <p>
+                      판암역 → 신흥역 → 대동역 → 대전역 → <span>중앙로역</span>
+                    </p>
+                  </li>
+                  <li>
+                    <h4>버스노선</h4>
+                    <p>
+                      1, 201, 202, 2002, 101, 311, 313, 317, 511, 514, 603, 604,
+                      606, 614, 615, 620, 701, 802
+                    </p>
+                  </li>
+                </ul>
+              </div>
+              <div class="own-car">
+                <h3>자가용 이용</h3>
+                <ul>
+                  <li>
+                    <h4>경부고속도로(서울방면)</h4>
+                    <p>
+                      출발→회덕분기점→호남고속도로→북대전/대덕밸리IC →
+                      <a href="#">이후 길찾기 참조</a>
+                    </p>
+                  </li>
+                  <li>
+                    <h4>경부고속도로(부산방면)</h4>
+                    <p>
+                      출발→대전IC(통과)→회덕분기점→호남고속도로→북대전/대덕밸리IC
+                      →
+                      <a href="#">이후 길찾기 참조</a>
+                    </p>
+                  </li>
+                  <li>
+                    <h4>호남고속도로(광주방면)</h4>
+                    <p>
+                      출발→서대전IC(통과)→유성IC →
+                      <a href="#">이후 길찾기 참조</a>
+                    </p>
+                  </li>
+                  <li>
+                    <h4>대전통영고속도로(진주방면)</h4>
+                    <p>
+                      출발→산내분기점→대전남부순환고속도로(서울/광주
+                      방향→서대전IC(통과→서대전분기점→호남고속도로(서울방향)→유성
+                      IC →
+                      <a href="#">이후 길찾기 참조</a>
+                    </p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
     <footer>
       <div class="footer-info">
@@ -138,8 +219,8 @@
       </div>
     </footer>
   </body>
-  <script>
-    let userInfo = sessionStorage.getItem("userInfo");
+  <!-- <script>
+    let userInfo = sessionStorage.getItem('userInfo');
     console.log(JSON.parse(userInfo));
-  </script>
+  </script> -->
 </html>

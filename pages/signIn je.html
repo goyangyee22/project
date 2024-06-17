@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>빌리슈 로그인</title>
+    <link rel="stylesheet" href="../resources/css/signln je.css" />
   </head>
   <style>
     #cancel a {
@@ -12,21 +13,25 @@
     }
   </style>
   <body>
-    <form id="signInForm" name="signInForm">
-      <h1>로그인</h1>
-      <p>
-        <label class="formInput">아이디&nbsp;</label>
-        <input type="text" name="id" id="id" required />
-      </p>
-      <p>
-        <label class="formInput">비밀번호&nbsp;</label>
-        <input type="password" name="pw" id="pw" required />
-      </p>
-    </form>
-    <button id="signInButton">로그인</button>
-    <button id="cancel">
-      <a href="../index.html">취소</a>
-    </button>
+    <div class="log">
+      <form id="signInForm" name="signInForm">
+        <h1>로그인</h1>
+        <p>
+          <label class="formInput">아이디&nbsp;</label>
+          <input type="text" name="id" id="id" required />
+        </p>
+        <p>
+          <label class="formInput">비밀번호&nbsp;</label>
+          <input type="password" name="pw" id="pw" required />
+        </p>
+      </form>
+      <div class="bnt">
+        <button id="signInButton">로그인</button>
+        <button id="cancel">
+          <a href="../index.html">취소</a>
+        </button>
+      </div>
+    </div>
     <h3>ID, 비밀번호를 분실하셨을 경우 관리자에게 문의하여 주시기 바랍니다.</h3>
   </body>
   <script type="module">

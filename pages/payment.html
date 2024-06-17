@@ -5,42 +5,122 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>빌리슈 - 결제</title>
     <link rel="stylesheet" href="../resources/css/payment.css" />
+    <script
+      type="text/javascript"
+      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1fb3a65936addf6c3befbf8da8e54a23"
+    ></script>
     <script defer src="../resources/js/payment.js"></script>
   </head>
   <body>
-    <form action="" id="payment">
-      <div class="decision-data">
-        <div>
-          <h3>날짜</h3>
-          <span id="display-date"></span>
+    <div id="payment">
+      <div id="payment-header">
+        <h1>주문 / 결제</h1>
+      </div>
+      <div id="payment-main" class="wrap">
+        <div id="payment-section">
+          <div class="payment-contents">
+            <div class="payment-content">
+              <h2>주문자</h2>
+              <div class="user-info">
+                <div id="user-name">김ㅇㅇ</div>
+                <div id="user-phone">000-0000-0000</div>
+              </div>
+            </div>
+            <div class="payment-content">
+              <h2>주문정보</h2>
+              <div class="product-info">
+                <div>
+                  <h3>날짜</h3>
+                  <span id="display-date">2024-06-12</span>
+                </div>
+                <div>
+                  <h3>룸</h3>
+                  <span id="display-room">파티룸 4인</span>
+                </div>
+                <div>
+                  <h3>시간</h3>
+                  <span id="display-time">낮</span>
+                </div>
+                <div>
+                  <h3>인원</h3>
+                  <span id="display-personnel">6명</span>
+                </div>
+                <div>
+                  <h3>결제할 금액</h3>
+                  <span id="display-amount">000,000원</span>
+                </div>
+              </div>
+            </div>
+            <div class="payment-content">
+              <h2>결제수단</h2>
+              <div class="payment-method">
+                <div class="method-account"></div>
+                <div class="method-card"></div>
+                <div class="method-common">
+                  <div class="samsung-pay"></div>
+                  <div class="naver-pay"></div>
+                  <div class="kakao-pay"></div>
+                  <div class="no-bankbook">
+                    <div class="no-bankbook-info">
+                      <h3>무통장입금 안내</h3>
+                      <span class="more-info">?</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="payment-refund">
+                  <h3>환불 방법</h3>
+                  <div class="refund-account">계좌를 선택해주세요.</div>
+                </div>
+              </div>
+            </div>
+            <div class="payment-content cash-receipts">
+              <h2>현금영수증</h2>
+              <div class="cash-receipt-proposal">
+                <input type="radio" name="cash-receipt" />
+              </div>
+            </div>
+          </div>
         </div>
-        <div>
-          <h3>룸</h3>
-          <span id="display-room"></span>
-        </div>
-        <div>
-          <h3>시간</h3>
-          <span id="display-time"></span>
-        </div>
-        <div>
-          <h3>인원</h3>
-          <span id="display-personnel"></span>
-        </div>
-        <div>
-          <h3>결제할 금액</h3>
-          <span id="display-amount"></span>
+        <div id="payment-aside">
+          <div class="payment-way">
+            <h2>찾아오시는 길</h2>
+            <div id="map" style="width: 500px; height: 400px"></div>
+          </div>
+          <div class="payment-aside-wrap">
+            <div class="payment-aside-contents">
+              <h2>결제상세</h2>
+              <div class="payment-aside-content">
+                <div id="select-method">결제수단</div>
+                <div id="total-cost">00,000원</div>
+              </div>
+            </div>
+            <div class="payment-aside-contents">
+              <h2>포인트 혜택</h2>
+              <div class="payment-aside-content">
+                <div class="acc-points purchase-point">
+                  <h3>구매적립</h3>
+                  <span class="more-info">?</span>
+                  <span>결제금액의 5% (얼마인지 표시하기)</span>
+                </div>
+                <div class="acc-points review-point">
+                  <h3>리뷰적립</h3>
+                  <span class="more-info">?</span>
+                  <span>결제금액의 10% (얼마인지 표시하기)</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="enter-card-number">
-        <label for="card-number1">카드 번호를 입력해 주세요.</label>
-        <div class="input-card-number">
-          <input type="text" id="card-number1" maxlength="4" required /> -
-          <input type="text" id="card-number2" maxlength="4" required /> -
-          <input type="text" id="card-number3" maxlength="4" required /> -
-          <input type="text" id="card-number4" maxlength="4" required />
+      <form action="" id="payment-data-send">
+        <div class="data-send-content wrap">
+          <p>주문내용을 확인하였으며, 정보 제공 등에 동의합니다.</p>
+          <button type="submit" id="final-payment-btn" class="btn payment-btn">
+            <span id="amount-of-payment">00,000원</span>
+            결제하기
+          </button>
         </div>
-      </div>
-      <input type="submit" value="결제하기" />
-    </form>
+      </form>
+    </div>
   </body>
 </html>
