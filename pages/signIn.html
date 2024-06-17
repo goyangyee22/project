@@ -79,10 +79,10 @@
             sessionStorage.setItem("userInfo", JSON.stringify(userInfo));
             window.location.href = "../index.html";
           } else {
-            alert("아이디 또는 비밀번호가 잘못되었습니다.");
+            alert("아이디 또는 비밀번호가 잘못되었거나 공백입니다.");
           }
         } else {
-          alert("아이디 또는 비밀번호가 잘못되었습니다.");
+          alert("아이디 또는 비밀번호가 잘못되었거나 공백입니다.");
         }
       } catch (error) {
         console.error("Error getting documents: ", error);

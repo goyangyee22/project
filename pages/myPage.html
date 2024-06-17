@@ -32,11 +32,13 @@
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
     import {
+      doc,
       getFirestore,
       collection,
       query,
       where,
       getDocs,
+      deleteDoc,
     } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
     import { getAuth } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js";
     import {
@@ -44,7 +46,7 @@
       dbService,
       storageService,
       addDatas,
-      getDatas,
+      // getDatas,
       updateDatas,
       deleteDatas,
     } from "../firebase.js";
@@ -100,6 +102,59 @@
 
     // 회원탈퇴 버튼클릭 함수
     const deleteId = document.getElementById("deleteId");
-    deleteId.addEventListener("click", function () {});
+    deleteId.addEventListener("click", async function () {
+      // 삭제를 하기 전 확인 메세지를 표시합니다.
+      if (confirm("정말로 회원 탈퇴하시겠습니까?")) {
+        try {
+          // 세션 스토리지에서 사용자 정보를 가져옵니다.
+          const userInfoString = getDatas("userInfo");
+          console.log(userInfoString);
+          
+          // 세션 스토리지에 사용자 정보가 있는지 확인합니다.
+          if(userInfoString){
+            // 세션 스토리지에 저장된 사용자 정보를 객체로 전환합니다.
+            const userInfo = JSON.parse(userInfoString);
+
+            // 사용자의 ID를 불러옵니다.
+            const userId = userInfo.userId;
+
+            // Firebase에서 사용자 정보 삭제
+            console.log(userId);
+            await deleteDocument("userInfo", userId);
+
+            // 세션 스토리지에서 사용자 정보제거
+            sessionStorage.removeItem("userInfo");
+
+            // 회원 탈퇴가 완료됐음을 알리는 메세지를 표시합니다.
+            alert("회원 탈퇴가 완료되었습니다.");
+
+            // 회원 탈퇴 후 메인 페이지로 이동합니다.
+            window.location.href = "../index.html";
+          } else{
+            // 세션 스토리지에 사용자 정보가 없으면 오류 메세지를 표시합니다.
+            throw new Error("세션 스토리지에서 사용자 정보를 찾을 수 없습니다.");
+          }
+      } catch(error){
+        // 오류가 발생한 경우 콘솔에 오류를 출력하고 오류 메세지를 표시합니다.
+        console.error("회원 탈퇴 중 오류 발생: ", error);
+        alert("회원 탈퇴 중 오류가 발생했습니다. 다시 시도해주세요.");
+      } 
+    }
+    });
+
+     // Firebase에서 문서를 삭제하는 함수
+     async function deleteDocument(collectionName, userId) {
+     
+     // 컬렉션과 문서 ID를 이용한 문서 참조를 만듭니다.
+     const docRef = doc(db,collectionName, userId);
+     
+     // 문서를 삭제합니다.
+     await deleteDoc(docRef); 
+   }
+
+  //  세션 스토리지에서 데이터를 가져오는 함수
+  function getDatas(key) {
+    return sessionStorage.getItem(key);
+  }
   </script>
 </html>
