@@ -5,23 +5,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
-  <body></body>
-  <script type="module">
-    import {
-      app,
-      // db,
-      dbService,
-      storageService,
-      addDatas,
-      getDatas,
-      updateDatas,
-      deleteDatas,
-    } from "../firebase.js";
-    import {
-      collection,
-      query,
-      where,
-      getDocs,
-    } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
+  <body>
+    <div class="container">
+      <div>
+        <div>
+          <button id="updateBtn">작성하기</button>
+        </div>
+        <div class="form-container">
+          <div class="form-item">
+            <div class="form-label"><span>작성자명</span></div>
+          </div>
+          <div class="form-item">
+            <div class="form-label"><span>제목</span></div>
+            <div class="form-input"><input type="text" name="title" /></div>
+          </div>
+          <div class="form-item">
+            <div class="form-label"><span>내용</span></div>
+            <div class="form-input"><input type="text" name="content" /></div>
+          </div>
+        </div>
+        <table border="1">
+          <tr>
+            <th>이름</th>
+            <th>제목</th>
+            <th>내용</th>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </body>
+  <script>
+    let updateTarget;
+    async function getMembers() {
+      // 작성자의 이름을 가져옵니다.
+      const querySnapshot = await getDatas("userInfo", name);
+      const tableTag = document.querySelector("table");
+      querySnapshot.forEach((doc) => {
+        const { name, title, content } = doc.data();
+        tableTag.insertAdjacentHTML(
+          "beforeend",
+          `
+          <tr data-id${doc.id}>
+            <td class="name">${name}</td>
+            <td class="title">${title}</td>
+            <td class="content">${content}</td>
+            </tr>
+          `
+        );
+      });
+    }
+    getMembers();
+
+    const updateBtn = document.getElementById("updateBtn");
+    updateBtn.addEventListener("click", async function () {
+      const inputs = document.querySelectorAll(".form-container input");
+      const inputsArr = Array.from(inputs);
+      const addObj = {};
+      inputsArr.forEach((input) => {
+        addObj[input.name] = input.value;
+      });
+      const result = await addDatas("userInfo", addObj);
+      console.log(result);
+      const { name, title, content } = addObj;
+      tableTag.firstElementChild.insertAdjacentHTML(
+        "afterend",
+        `
+        <tr data-id=${result.id}>
+          <td class="name">${name}</td>
+          <td class="title">${name}</td>
+          <td class="content">${content}</td>
+          </tr>
+        `
+      );
+    });
   </script>
 </html>
