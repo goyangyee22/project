@@ -70,9 +70,6 @@
     // Firestore database or session storage에서 name 값을 불러옴
     const myPageMyName = document.getElementById("myPageMyName");
 
-    const userInformation = { name, id, pw };
-    const userName = userInformation.name;
-
     // 로그인이 되어있지 않은 경우, 접근이 제한됩니다.
     const userInfo = sessionStorage.getItem("userInfo");
     if (!userInfo) {
