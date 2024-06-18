@@ -125,7 +125,7 @@ async function handleSignUp() {
     alert("회원가입 중 오류가 발생했습니다.");
     return false;
   }
-  // return true;
+  // return true; // 여기 잘못되면 그냥 주석처리 ㄱㄱ
 }
 
 // 회원 목록 조회 함수

@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>후기</title>
+    <script type="module" src="../resources/js/postscript.js"></script>
   </head>
   <style>
     #backToMainPage a {
@@ -12,7 +13,9 @@
     }
   </style>
   <body>
+    <h1>여러분의 후기를 남겨주세요!</h1>
     <div class="container">
+      <form id="updateForm" name="updateForm">
       <div>
         <div>
           <button id="backToMainPage">
@@ -21,10 +24,10 @@
           <button id="updateBtn">작성하기</button>
         </div>
         <div class="form-container">
-          <div class="form-item">
+          <!-- <div class="form-item">
             <div class="form-label"><span>작성자명</span></div>
             <div class="form-input"><input type="text" name="name" /></div>
-          </div>
+          </div> -->
           <div class="form-item">
             <div class="form-label"><span>제목</span></div>
             <div class="form-input"><input type="text" name="title" /></div>
@@ -42,9 +45,7 @@
           </tr>
         </table>
       </div>
+    </form>
     </div>
   </body>
-  <script type="module">
-    
-  </script>
 </html>
