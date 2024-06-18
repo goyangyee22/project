@@ -38,33 +38,17 @@ const userInfo = sessionStorage.getItem("userInfo");
 // 게시글을 올릴 때 userInfo의 이름, 제목, 내용이 드러나게 게시글을 올립니다.
 
 // Firestore에서 "userInfo" 컬렉션에서 입력한 이름이 있는지 조회합니다.
-const usersRef = collection(dbService, "userInfo");
-const q = query(usersRef, where("name", "==", name));
-const querySnapshot = await getDocs(q);
-console.log(querySnapshot);
 
 // updateBtn을 클릭하면 처리하는 함수를 생성합니다.
-async function handleSignUp(){
-    // 폼에서 사용자가 입력한 값들을 가져옵니다.
-const getName = await getDatas("userInfo");
-  const title = document.forms["updateForm"]["title"].value;
-  const content = document.forms["updateForm"]["content"].value;
- 
-//   if(){}
-
-//   try{}
-//   catch(error){}
-  };
-
 
 // 회원 목록 조회 함수
 
 // 제목 및 내용을 작성하고 누르는 버튼입니다.
 const updateBtn = document.getElementById("updateBtn");
-updateBtn.addEventListener("click", function () {
+updateBtn.addEventListener("click", async function () {
   // 게시글에 대한 정보 객체를 생성합니다.
   const boardUpdate = {
-    name: document.querySelector("name").value,
+    name: ,
     title: document.querySelector("input[name='title']").value,
     content: document.querySelector("input[name='content']").value,
   };
