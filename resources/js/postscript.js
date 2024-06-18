@@ -36,29 +36,36 @@ const q = query(usersRef, where("name", "==", name));
 const querySnapshot = await getDocs(q);
 console.log(querySnapshot);
 
-// updateBtn을 클리하면 처리하는 함수를 생성합니다.
-async function handleSignUp() {
-  // 폼에서 사용자가 입력한 값들을 가져옵니다.
-  // name은 userInfo에서 가져옵니다.
-  const userInfo = { name, id, pw };
-  const userName = await getDatas(userInfo.name);
-  const name = userName.value;
+// updateBtn을 클릭하면 처리하는 함수를 생성합니다.
+async function handleSignUp(){
+    // 폼에서 사용자가 입력한 값들을 가져옵니다.
+const getName = await getDatas("userInfo");
   const title = document.forms["updateForm"]["title"].value;
   const content = document.forms["updateForm"]["content"].value;
 
-// 제목과 내용이 빈 칸인 채로 게시글을 작성할 수 없게 합니다.
-  if (!title || !content) {
-    alert("제목과 내용은 빈 칸으로 작성하실 수 없습니다.");
-    return false;
-  }
+  if(){}
 
-  // 유효한 게시글인 경우 Firestore에 데이터를 저장합니다.
-  // 데이터를 저장하는 위치는 Firebase의 "board" 컬렉션입니다.
-  try{
-    console.log(name, title, content);
-    const board = { name, title, content };
-    const boardInfo = await addDatas("board", board);
-    console.log(board, boardInfo);
-    alert("게시글이 작성 되었습니다.");
-  }
+  try{}
+  catch(error){}
 }
+
+// 회원 목록 조회 함수
+
+// 멤버조회 및 이벤트 핸들러를 등록합니다
+
+// 제목 및 내용을 작성하고 누르는 버튼입니다.
+const updateBtn = document.getElementById("updateBtn");
+updateBtn.addEventListener("click", function () {
+  // 게시글에 대한 정보 객체를 생성합니다.
+  const boardUpdate = {
+    name: document.querySelector("name").value,
+    title: document.querySelector("input[name='title']").value,
+    content: document.querySelector("input[name='content']").value,
+  };
+
+  // 파이어베이스에 작성한 게시글의 데이터를 저장합니다.
+  const result = await addDatas("board", boardUpdate);
+
+  // 저장 결과에 따라 페이지가 리로딩(성공)되거나, "게시글 업로드에 실패 하였습니다." 라는 alert창(실패)이 나타납니다.
+  result ? handleSignUp() : alert("게시글 업로드에 실패 하였습니다.");
+});
