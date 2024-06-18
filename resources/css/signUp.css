@@ -66,11 +66,11 @@ body {
   transition: 0.3s;
 }
 .join-content input::placeholder {
-  color: rgba(0, 0, 0, 0.3);
+  color: rgba(50, 61, 76, 0.5);
   transition: 0.3s;
 }
 .join-content input:focus::placeholder {
-  color: rgba(163, 183, 99, 0.3);
+  color: rgba(50, 61, 76, 0.3);
 }
 .join-content input:focus + label {
   top: -16px;
@@ -100,14 +100,13 @@ body {
 .join-btn {
   padding: 14px 24px;
   font-size: 16px;
-  font-weight: 700;
   border-radius: 8px;
   background-color: var(--accent-color);
+  color: var(--main-color);
   cursor: pointer;
   transition: 0.3s;
 }
 .join-btn:hover {
-  color: #fff;
   background-color: var(--hover-color);
 }
 .join-footer {

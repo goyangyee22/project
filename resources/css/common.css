@@ -4,6 +4,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
 
+/* colors */
+:root {
+  --main-color: #f4f4f2;
+  --accent-color: #495464;
+  --common-color: #e8e8e8;
+  --sub-color: #bbbfca;
+  --hover-color: #7a8597;
+  --font-color: #323d4c;
+}
+
 /* reset */
 * {
   margin: 0;
@@ -19,17 +29,7 @@ li {
   list-style: none;
 }
 body {
-  color: #4f4a45;
-}
-
-/* colors */
-:root {
-  --main-color: #f1f1f1;
-  --accent-color: #b5c18e;
-  --common-color: #eadbc8;
-  --sub-color: #c7b7a3;
-  --hover-color: #a3b763;
-  --font-color: #4f4a45;
+  color: var(--font-color);
 }
 
 /* common */
@@ -43,6 +43,8 @@ body {
   appearance: none;
   outline: 0;
   border: 0;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
 /* header */
@@ -54,6 +56,8 @@ header {
   z-index: 5;
   padding: 24px 0;
   background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 5px 0 rgba(187, 191, 202, 0.5);
 }
 header > .wrap {
   position: relative;
@@ -61,38 +65,101 @@ header > .wrap {
   align-items: center;
 }
 
-#logo {
-  outline: 1px dotted red;
+/* 로고 */
+.logo > a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-color);
+}
+.logo-en {
+  margin-bottom: 4px;
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 400;
+  background-color: var(--accent-color);
+  color: var(--main-color);
+}
+.logo-ko {
+  font-size: 32px;
 }
 
+/* 메인메뉴 */
 nav {
   flex-grow: 1;
   font-size: 24px;
 }
-
 ul.main-menu {
   display: flex;
   justify-content: center;
   gap: 48px;
 }
-
-ul.spot {
-  display: flex;
+ul.main-menu li a {
+  position: relative;
+  transition: 0.3s;
+}
+ul.main-menu li:hover a {
+  color: var(--hover-color);
+}
+ul.main-menu li a:after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: var(--hover-color);
+  transition: 0.3s;
+}
+ul.main-menu li:hover a:after {
+  width: 100%;
+  left: 0;
 }
 
+/* 스팟메뉴 */
+ul.spot {
+  display: flex;
+  gap: 8px;
+}
 ul.spot > li {
   position: relative;
   padding: 8px;
 }
-
-ul.spot > li::after {
+ul.spot > li > a {
+  font-size: 24px;
+  color: var(--accent-color);
+  transition: 0.3s;
+}
+ul.spot > li:hover > a {
+  color: var(--hover-color);
+}
+ul.spot > li:hover::before {
+  content: '';
   position: absolute;
   top: 40px;
-  left: 0;
-  width: 150%;
-  font-size: 14px;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  transform: translateX(-50%) rotate(45deg);
+  background-color: var(--hover-color);
 }
-
+ul.spot > li:hover::after {
+  position: absolute;
+  top: 45px;
+  left: 50%;
+  padding: 8px 16px;
+  width: fit-content;
+  font-size: 12px;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--main-color);
+  letter-spacing: 3px;
+  border-radius: 8px;
+  transform: translateX(-50%);
+  background-color: var(--hover-color);
+}
 .spot-login:hover::after {
   content: 'login';
 }
@@ -103,7 +170,6 @@ ul.spot > li::after {
   content: 'mypage';
 }
 
-/* footer */
 /* footer */
 footer {
   padding: 40px 24px 24px;
