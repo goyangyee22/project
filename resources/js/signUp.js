@@ -189,7 +189,7 @@ getMembersHandlerTrClick();
 
 // 로그인이 되면 세션을 저장합니다.
 function saveSession(userInfo, docId) {
-  sessionStorage.setItem("userInfo", JSON.stringify(userInfo));
+  sessionStorage.setItem("userInfo", JSON.stringify(userInfo, docId));
 }
 
 // 로그인이 되어있는지 확인합니다.
