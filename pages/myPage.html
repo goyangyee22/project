@@ -66,22 +66,18 @@
     const db = getFirestore(app);
     const auth = getAuth(app);
 
-    // 사용자의 이름을 기반으로 마이페이지에 접속하면 사용자의 이름 + 마이페이지입니다. 라는 문구가 출력됩니다.
-    // Firestore database or session storage에서 name 값을 불러옴
-    const myPageMyName = document.getElementById("myPageMyName");
-
+    
     // 로그인이 되어있지 않은 경우, 접근이 제한됩니다.
     const userInfo = sessionStorage.getItem("userInfo");
     if (!userInfo) {
       alert("로그인을 해주세요.");
       window.location.href = "../index.html";
     }
-    // 사용자가 로그인 하면 Firebase에서 사용자 정보를 가져와서 userInfo 변수에 할당합니다.
 
-    // 이름을 출력하기 위한 변수를 정의합니다.
-
-    // 로그인 하고 마이페이지에 들어가면 (이름)님의 마이페이지입니다. 라는 글씨가 출력됩니다.
-    // console.log(sessionStorage.getItem("userInfo", JSON.stringify(name)));
+    // 사용자의 이름을 기반으로 마이페이지에 접속하면 사용자의 이름 + 마이페이지입니다. 라는 문구가 출력됩니다.
+    // Firestore database or session storage에서 name 값을 불러옴
+    const usersRef = collection(dbService, "userInfo");
+    const q = query(usersRef, where("name", "==", name));
 
     // 비밀번호 변경 버튼클릭 함수
     const changePassword = document.getElementById("changePassword");
