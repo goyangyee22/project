@@ -69,8 +69,8 @@ updateBtn.addEventListener("click", async function () {
   const userpw = document.querySelector("input[name='newPassword']").value;
 
   try {
-    const userId = userInfo.userId;
-    const userDocRef = doc(db, "userInfo", userId);
+    const
+      const userDocRef = doc(db, "userInfo", userId);
     await updateDoc(userDocRef, {
       pw: userpw,
     });
