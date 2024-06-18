@@ -29,11 +29,11 @@ const firebaseConfig = {
 };
 
 // 로그인이 되어있지 않은 경우, 접근이 제한됩니다.
-const userInfo = sessionStorage.getItem("userInfo");
-    if (!userInfo) {
-      alert("로그인을 해주세요.");
-      window.location.href = "../index.html";
-    }
+// const userInfo = sessionStorage.getItem("userInfo");
+//     if (!userInfo) {
+//       alert("로그인을 해주세요.");
+//       window.location.href = "../index.html";
+//     }
 
 // 게시글을 올릴 때 userInfo의 이름, 제목, 내용이 드러나게 게시글을 올립니다.
 
@@ -48,7 +48,6 @@ const updateBtn = document.getElementById("updateBtn");
 updateBtn.addEventListener("click", async function () {
   // 게시글에 대한 정보 객체를 생성합니다.
   const boardUpdate = {
-    name: ,
     title: document.querySelector("input[name='title']").value,
     content: document.querySelector("input[name='content']").value,
   };
@@ -57,5 +56,5 @@ updateBtn.addEventListener("click", async function () {
   const result = await addDatas("board", boardUpdate);
 
   // 저장 결과에 따라 페이지가 리로딩(성공)되거나, "게시글 업로드에 실패 하였습니다." 라는 alert창(실패)이 나타납니다.
-  result ? handleSignUp() : alert("게시글 업로드에 실패 하였습니다.");
+  result ? window.location.reload() : alert("게시글 업로드에 실패 하였습니다.");
 });
