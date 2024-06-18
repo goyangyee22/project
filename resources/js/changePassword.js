@@ -65,18 +65,18 @@ updateBtn.addEventListener("click", async function () {
     return false;
   }
 
-  // 새로운 비밀번호와 새로운 비밀번호 확인의 입력값이 일치하면 비밀번호가 변경 됩니다..
+  // 새로운 비밀번호와 새로운 비밀번호 확인의 입력값이 일치하면 비밀번호가 변경 됩니다.
   const userpw = document.querySelector("input[name='newPassword']").value;
 
+  const userDocRef = doc(db, "userInfo", userpw);
   try {
-    const userDocRef = doc(db, "userInfo", userpw);
     await updateDoc(userDocRef, {
       pw: newPassword,
     });
     alert("비밀번호가 성공적으로 변경되었습니다!");
 
     // 세션 스토리지에 변경된 비밀번호를 업데이트 합니다.
-    sessionStorage.setItem("userInfo", userpw);
+    sessionStorage.setItem("pw", userpw);
   } catch (error) {
     console.error("Error updating document: ", error);
     alert("비밀번호 변경 중 오류가 발생했습니다.");
