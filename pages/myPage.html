@@ -43,6 +43,7 @@
     import { getAuth } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js";
     import {
       // app
+      getDatas,
       dbService,
       storageService,
       addDatas,
@@ -78,11 +79,12 @@
     // document.write를 사용해야 하나..
     async function getMembers() {
       const snapShot = await getDatas("userInfo");
-      snapshot.forEach((doc) => {
+      snapShot.forEach((doc) => {
         const { name } = doc.data();
         console.log(`${name}님의 마이페이지입니다.`);
       });
     }
+    getMembers();
 
     // 비밀번호 변경 버튼클릭 함수
     const changePassword = document.getElementById("changePassword");
