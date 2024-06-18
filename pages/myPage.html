@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>마이페이지입니다.</title>
+    <title>My Page</title>
     <!-- <script src="https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js"></script> -->
   </head>
@@ -66,6 +66,9 @@
     const db = getFirestore(app);
     const auth = getAuth(app);
 
+    const myPageMyName = document.getElementById("myPageMyName");
+    
+
     // 로그인이 되어있지 않은 경우, 접근이 제한됩니다.
     const userInfo = sessionStorage.getItem("userInfo");
     if (!userInfo) {
@@ -83,8 +86,6 @@
     const changePassword = document.getElementById("changePassword");
     changePassword.addEventListener("click", function () {
       window.location.href = "changePassword.html";
-
-      
     });
 
     // 로그아웃 버튼클릭 함수
@@ -129,7 +130,7 @@
             const userInfo = JSON.parse(userInfoString);
 
             // 사용자의 ID 및 컬렉션 "userInfo"를 불러옵니다.
-            const userId = userInfo.userId;
+            // const userId = userInfo.docId;
             const collectionName = "userInfo";
 
             // Firebase에서 사용자 정보 삭제

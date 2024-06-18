@@ -117,16 +117,67 @@ body {
 
 /* intro */
 #intro {
-  padding: 48px 0;
+  padding: 64px 0;
 }
 
-.intro-icons {
+/* 이용 및 옵션 안내 */
+.info-icons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+.info-icons li {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  width: 160px;
+  height: 160px;
+  border: 4px solid var(--font-color);
+  border-radius: 32px;
+}
+.info-icons li > i {
+  font-size: 48px;
+  color: var(--accent-color);
+}
+
+/* 이용 안내 */
+.use-info {
+  padding: 64px 0 48px;
+}
+
+/* 옵션 안내 */
+.option-info {
+  position: relative;
+
+  outline: 1px dotted red;
+}
+.option-info > .section-menu {
+  position: sticky;
+  top: 117px;
+  right: 0;
+}
+.option-info > .section-menu > a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+  background-color: #ccc;
+}
+
+/* booking */
+#booking {
+  padding: 64px 0;
+}
+.booking-icons {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 32px;
 }
-.intro-icon {
+.booking-icon {
   position: relative;
   width: 300px;
   height: 300px;
@@ -134,7 +185,7 @@ body {
   overflow: hidden;
   transition: 0.3s;
 }
-.intro-icon > a {
+.booking-icon > a {
   position: absolute;
   top: 0;
   left: 0;
@@ -145,17 +196,17 @@ body {
   height: 100%;
   font-size: 24px;
 }
-.intro-icon:hover {
+.booking-icon:hover {
   background-size: 120%;
 }
-.intro-icon:hover > a::after {
+.booking-icon:hover > a::after {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
   color: var(--main-color);
 }
-.intro-icon:hover::after {
+.booking-icon:hover::after {
   content: '';
   position: absolute;
   width: 100%;
@@ -174,7 +225,7 @@ body {
 }
 
 .seminar-icon {
-  background: url(../images/meeting/미팅룸1.jpg) no-repeat center/100%;
+  background: url(../images/meeting/세미나룸.jpg) no-repeat center/100%;
   color: #fff;
 }
 .seminar-icon:hover > a::after {
@@ -182,15 +233,8 @@ body {
 }
 
 .pet-icon {
-  background: url(../images/petroom/1.jpg) no-repeat center/100%;
+  background: url(../images/petroom/1687331772079.jpg) no-repeat center/100%;
 }
 .pet-icon:hover > a::after {
   content: '펫룸 예약하기';
-}
-
-.room-desc {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-  margin: 40px 0;
 }
