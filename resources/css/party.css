@@ -10,6 +10,7 @@ header {
   display: flex;
   align-items: start;
   gap: 20px;
+  position: relative;
 }
 
 .swiper-button-next,
@@ -24,17 +25,43 @@ header {
   background-color: #f1edf5;
   height: 100%;
 }
-.swiper-slide > img {
+
+.swiper-slide img {
   width: 100%;
-  height: 600px;
+  height: 550px;
 }
-.mySwiper2 {
-  width: 400px;
-  height: 400px;
+.mySwiperoption {
+  width: 100%;
+  height: 100%;
 }
+.party-option {
+  margin: 50px 0;
+  display: flex;
+  justify-content: center;
+  /* margin: 20px; */
+  border: 2px solid black;
+  flex-direction: column;
+
+  /* width: 100%;
+  height: 100%; */
+  text-align: center;
+}
+.party-option img {
+  width: 100%;
+  height: 300px;
+}
+
+.swiper-title {
+  padding: 25px;
+  background-color: white;
+}
+
+.swiper-title h3 {
+  color: black;
+}
+
 .result {
   padding: 70px 0;
-  /* margin: 50px; */
 }
 .party-menu {
   display: flex;
