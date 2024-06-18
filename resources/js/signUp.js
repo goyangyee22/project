@@ -115,7 +115,7 @@ async function handleSignUp() {
     // userInfo 객체 생성
     const userInfo = { name, id, pw };
     const docId = await addDatas("userInfo", userInfo);
-    console.log(userInfo.docId);
+    console.log(userInfo, docId);
     alert("회원가입이 완료되었습니다.");
     saveSession(userInfo, docId);
     // getMembers();
@@ -125,7 +125,7 @@ async function handleSignUp() {
     alert("회원가입 중 오류가 발생했습니다.");
     return false;
   }
-  return true;
+  // return true;
 }
 
 // 회원 목록 조회 함수
