@@ -168,8 +168,13 @@ signUpButton.addEventListener("click", async function () {
   // );
   // console.log(joinFormObj);
 
+  // const usersRef = collection(db, "userInfo");
+  // const q = query(usersRef, where("id", "==", id));
+  // const querySnapshot = await getDocs(q);
+
   // 사용자 정보 객체를 생성합니다.
   const userInfo = {
+    // docId: querySnapshot.docs[0],
     name: document.querySelector("input[name='name']").value,
     id: document.querySelector("input[name='id']").value,
     pw: document.querySelector("input[name='pw']").value,
@@ -188,7 +193,7 @@ signUpButton.addEventListener("click", async function () {
 getMembersHandlerTrClick();
 
 // 로그인이 되면 세션을 저장합니다.
-function saveSession(userInfo, docId) {
+function saveSession(userInfo) {
   sessionStorage.setItem("userInfo", JSON.stringify(userInfo));
 }
 
