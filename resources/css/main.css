@@ -117,7 +117,7 @@ body {
 
 /* intro */
 #intro {
-  padding: 48px 0;
+  padding: 64px 0;
 }
 
 .intro-icons {
@@ -174,7 +174,7 @@ body {
 }
 
 .seminar-icon {
-  background: url(../images/meeting/미팅룸1.jpg) no-repeat center/100%;
+  background: url(../images/meeting/세미나룸.jpg) no-repeat center/100%;
   color: #fff;
 }
 .seminar-icon:hover > a::after {
@@ -182,15 +182,31 @@ body {
 }
 
 .pet-icon {
-  background: url(../images/petroom/1.jpg) no-repeat center/100%;
+  background: url(../images/petroom/1687331772079.jpg) no-repeat center/100%;
 }
 .pet-icon:hover > a::after {
   content: '펫룸 예약하기';
 }
 
-.room-desc {
+/* 이용 안내 */
+.use-info {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 32px;
-  margin: 40px 0;
+  padding: 64px 0 48px;
+}
+
+.info-title {
+  font-size: 32px;
+}
+.info-title::after {
+  content: '';
+}
+
+/* 옵션 안내 */
+.option-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
