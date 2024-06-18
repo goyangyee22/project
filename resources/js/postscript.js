@@ -28,10 +28,17 @@ const firebaseConfig = {
   measurementId: "G-ZY1J3CGR0E",
 };
 
+// 로그인이 되어있지 않은 경우, 접근이 제한됩니다.
+const userInfo = sessionStorage.getItem("userInfo");
+    if (!userInfo) {
+      alert("로그인을 해주세요.");
+      window.location.href = "../index.html";
+    }
+
 // 게시글을 올릴 때 userInfo의 이름, 제목, 내용이 드러나게 게시글을 올립니다.
 
-// Firestore에서 "board" 컬렉션에서 입력한 이름이 있는지 조회합니다.
-const usersRef = collection(dbService, "board");
+// Firestore에서 "userInfo" 컬렉션에서 입력한 이름이 있는지 조회합니다.
+const usersRef = collection(dbService, "userInfo");
 const q = query(usersRef, where("name", "==", name));
 const querySnapshot = await getDocs(q);
 console.log(querySnapshot);
@@ -39,15 +46,16 @@ console.log(querySnapshot);
 // updateBtn을 클릭하면 처리하는 함수를 생성합니다.
 async function handleSignUp(){
     // 폼에서 사용자가 입력한 값들을 가져옵니다.
-// const getName = await getDatas("userInfo");
+const getName = await getDatas("userInfo");
   const title = document.forms["updateForm"]["title"].value;
   const content = document.forms["updateForm"]["content"].value;
+ 
+//   if(){}
 
-  if(){}
+//   try{}
+//   catch(error){}
+  };
 
-  try{}
-  catch(error){}
-}
 
 // 회원 목록 조회 함수
 
