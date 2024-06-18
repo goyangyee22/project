@@ -39,7 +39,7 @@ console.log(querySnapshot);
 // updateBtn을 클릭하면 처리하는 함수를 생성합니다.
 async function handleSignUp(){
     // 폼에서 사용자가 입력한 값들을 가져옵니다.
-const getName = await getDatas("userInfo");
+// const getName = await getDatas("userInfo");
   const title = document.forms["updateForm"]["title"].value;
   const content = document.forms["updateForm"]["content"].value;
 
@@ -50,14 +50,6 @@ const getName = await getDatas("userInfo");
 }
 
 // 회원 목록 조회 함수
-
-// 멤버조회 및 이벤트 핸들러를 등록합니다
-async function handleSignUp(){
-    // 폼에서 사용자가 입력한 값들을 가져옵니다.
-//   const name = document.forms["signUpForm"]["name"].value;
-  const id = document.forms["signUpForm"]["id"].value;
-  const pw = document.forms["signUpForm"]["pw"].value;
-}
 
 // 제목 및 내용을 작성하고 누르는 버튼입니다.
 const updateBtn = document.getElementById("updateBtn");
