@@ -65,9 +65,6 @@ updateBtn.addEventListener("click", async function () {
     return false;
   }
 
-  // 새로운 비밀번호와 새로운 비밀번호 확인의 입력값이 일치하면 비밀번호가 변경 됩니다.
-  // const userpw = document.querySelector("input[name='newPassword']").value;
-
   try {
     const userId = userInfo.id;
     const userDocRef = doc(db, "userInfo", userId);
@@ -77,7 +74,7 @@ updateBtn.addEventListener("click", async function () {
     alert("비밀번호가 성공적으로 변경되었습니다!");
 
     // 세션 스토리지에 변경된 비밀번호를 업데이트 합니다.
-    sessionStorage.setItem("pw", userpw);
+    sessionStorage.setItem("userInfo", newPassword);
   } catch (error) {
     console.error("Error updating document: ", error);
     alert("비밀번호 변경 중 오류가 발생했습니다.");
