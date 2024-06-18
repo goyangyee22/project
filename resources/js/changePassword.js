@@ -68,10 +68,11 @@ updateBtn.addEventListener("click", async function () {
   // 새로운 비밀번호와 새로운 비밀번호 확인의 입력값이 일치하면 비밀번호가 변경 됩니다.
   const userpw = document.querySelector("input[name='newPassword']").value;
 
-  const userDocRef = doc(db, "userInfo", userpw);
   try {
+    const userId = userInfo.userId;
+    const userDocRef = doc(db, "userInfo", userId);
     await updateDoc(userDocRef, {
-      pw: newPassword,
+      pw: userpw,
     });
     alert("비밀번호가 성공적으로 변경되었습니다!");
 
