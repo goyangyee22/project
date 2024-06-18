@@ -2,33 +2,116 @@
 
 @import url(./common.css);
 
+html,
+body {
+  background-color: var(--main-color);
+}
+
 /* hero */
 #hero {
   position: relative;
   height: 100vh;
-  outline: 1px dotted red;
 }
 
 #hero > .hero-swiper {
   height: 100%;
 }
 
-.hero-content {
+.hero-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+}
+
+/* hero background images */
+.hero-event {
+  background: url(../images/partyimg/사진2.jpg) no-repeat center/cover;
+}
+.hero-party {
+  background: url(../images/partyimg/카톡4.png) no-repeat center/cover;
+}
+.hero-meeting {
+  background: url(../images/meeting/미팅룸2.png) no-repeat center/cover;
+}
+.hero-pet {
+  background: url(../images/petroom/강아지2.jpg) no-repeat center/cover;
+}
+
+/* hero contents */
+.hero-contents {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 2;
+  z-index: 100;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   flex-direction: column;
-  pointer-events: none;
+  gap: 24px;
+  color: var(--main-color);
+  background-image: linear-gradient(
+    rgba(0, 0, 0, 0.5) 0%,
+    rgba(0, 0, 0, 0.5) 100%
+  );
+}
+.hero-contents > .wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  height: calc(100% - 117px);
+}
+.hero-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  font-size: 32px;
+}
+.sub-title-wrap span {
+  padding: 8px 16px;
+  border: 1px solid var(--main-color);
+  border-radius: 16px;
+  font-size: 16px;
 }
 
-.hero-slide img {
+.hero-content-desc {
+  font-size: 24px;
+  text-align: center;
+}
+.hero-content-desc p {
+  line-height: 1.5;
+}
+
+.hero-btn {
+  position: relative;
+  padding: 16px 24px;
+  font-size: 24px;
+  color: var(--main-color);
+  border: 2px solid var(--main-color);
+  background-color: transparent;
+}
+.hero-btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
   width: 100%;
+  height: 0;
+  background-color: var(--hover-color);
+  transition: 0.3s;
+}
+.hero-btn:hover {
+  border-color: var(--hover-color);
+  background-color: var(--hover-color);
+}
+.hero-btn:hover::after {
   height: 100%;
 }
 
@@ -41,26 +124,68 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 24px;
+  gap: 32px;
 }
 .intro-icon {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: relative;
   width: 300px;
   height: 300px;
   border-radius: 50%;
+  overflow: hidden;
+  transition: 0.3s;
+}
+.intro-icon > a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  font-size: 24px;
+}
+.intro-icon:hover {
+  background-size: 120%;
+}
+.intro-icon:hover > a::after {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  color: var(--main-color);
+}
+.intro-icon:hover::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(
+    rgba(0, 0, 0, 0.5) 0%,
+    rgba(0, 0, 0, 0.5) 100%
+  );
 }
 
 .party-icon {
-  background-color: yellow;
+  background: url(../images/partyimg/카톡5.png) no-repeat center/100%;
 }
+.party-icon:hover > a::after {
+  content: '파티룸 예약하기';
+}
+
 .seminar-icon {
-  background-color: navy;
+  background: url(../images/meeting/미팅룸1.jpg) no-repeat center/100%;
   color: #fff;
 }
+.seminar-icon:hover > a::after {
+  content: '세미나룸 예약하기';
+}
+
 .pet-icon {
-  background-color: green;
+  background: url(../images/petroom/1.jpg) no-repeat center/100%;
+}
+.pet-icon:hover > a::after {
+  content: '펫룸 예약하기';
 }
 
 .room-desc {
