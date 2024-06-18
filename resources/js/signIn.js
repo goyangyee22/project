@@ -35,11 +35,13 @@ signInButton.addEventListener("click", async (event) => {
   const q = query(usersRef, where("id", "==", id));
 
   try {
+    
     const querySnapshot = await getDocs(q);
 
     if (!querySnapshot.empty) {
       // Firestore에서 찾은 사용자 정보
-      const userInfo = querySnapshot.docs[0].data();
+      const userDoc = querySnapshot.docs[0];
+      const userInfo = {...userDoc.data(), docId: userDoc.id};
       console.log(userInfo);
       // 비밀번호를 비교합니다.
       if (userInfo.pw === pw) {

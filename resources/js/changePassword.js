@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
 import {
-  app,
+  // app,
   // db,
   dbService,
   storageService,
@@ -31,21 +31,22 @@ const firebaseConfig = {
 };
 
 // Firebase 앱 초기화
-// const app = initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 // 비밀번호 형식입니다.
 let pwEx = /^[0-9A-Za-z\d$@$!%*?&]{4,16}/g;
 
 // 로그인이 되어있지 않은 경우, 접근이 제한됩니다.
-const userInfo = sessionStorage.getItem("userInfo");
+const userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
 if (!userInfo) {
   alert("로그인을 해주세요.");
   window.location.href = "../index.html";
 }
 
 const updateBtn = document.getElementById("updateBtn");
-updateBtn.addEventListener("click", async function () {
+updateBtn.addEventListener("click", async function (e) {
+  e.preventDefault();
   const newPassword = document.querySelector("input[name='newPassword']").value;
   const newPasswordConfirm = document.querySelector(
     "input[name='newPasswordConfirm']"
@@ -66,7 +67,7 @@ updateBtn.addEventListener("click", async function () {
   }
 
   try {
-    const userId = userInfo.id;
+    const userId = userInfo.docId;
     const userDocRef = doc(db, "userInfo", userId);
     await updateDoc(userDocRef, {
       pw: newPassword,
@@ -74,7 +75,10 @@ updateBtn.addEventListener("click", async function () {
     alert("비밀번호가 성공적으로 변경되었습니다!");
 
     // 세션 스토리지에 변경된 비밀번호를 업데이트 합니다.
-    sessionStorage.setItem("userInfo", newPassword);
+    sessionStorage.setItem(
+      "userInfo",
+      JSON.stringify({ ...userInfo, pw: newPassword })
+    );
   } catch (error) {
     console.error("Error updating document: ", error);
     alert("비밀번호 변경 중 오류가 발생했습니다.");
