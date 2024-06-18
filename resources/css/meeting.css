@@ -33,8 +33,9 @@ header {
   gap: 20px;
   position: relative;
 }
+
 .meet-details {
-  width: 600px;
+  width: 50%;
 }
 #meet-menu {
   position: sticky;
@@ -44,8 +45,8 @@ header {
   gap: 40px;
   align-items: center;
   color: black;
-  border-top: 1px solid black;
-  padding: 20px 0;
+  border-bottom: 1px solid black;
+  padding: 10px 0;
 }
 
 #information {
@@ -96,15 +97,6 @@ header {
   display: flex;
   /* justify-content: space-between; */
   align-items: center;
-}
-
-.meeting-medium {
-  width: 100%;
-  height: 350px;
-}
-
-.swiper-wrapper .meeting-medium-wrapperr > .swiper-slide > img {
-  width: 100%;
 }
 
 .rclick {
@@ -177,6 +169,11 @@ header {
   flex-direction: row;
   align-items: center;
   gap: 20px;
+}
+
+.meet_pohoto {
+  width: 500px;
+  height: 550px;
 }
 
 .menu_title {

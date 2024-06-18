@@ -17,7 +17,7 @@
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.14/index.global.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/google-calendar@6.1.14/index.global.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/locales/ko.js"></script>
-    <script defer src="./resources/js/payment_form.js"></script>
+
     <script
       type="text/javascript"
       src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1fb3a65936addf6c3befbf8da8e54a23"
@@ -57,6 +57,8 @@
       <section id="meet">
         <div class="wrap">
           <!-- 들어갈 상세페이지 내용 -->
+
+          <!-- 맨 위 사진 -->
           <div class="swiper meeting-slide">
             <div class="swiper-wrapper meeting-slide-wrapper">
               <div class="swiper-slide">
@@ -77,6 +79,8 @@
           </div>
         </div>
         <br />
+        <!-- 중간 사진 -->
+
         <div class="meet-contents wrap">
           <div class="meet-details">
             <ul id="meet-menu">
@@ -161,46 +165,6 @@
               </ol>
               <br />
               <br />
-              <div class="swiper meeting-medium">
-                <div class="swiper-wrapper meeting-medium-wrapperr">
-                  <div class="swiper-slide">
-                    <img
-                      class="meet pohoto"
-                      src="./resources/images/meeting/로비.jpg"
-                      width="500"
-                      height="350"
-                    />
-                  </div>
-                  <div class="swiper-slide">
-                    <img
-                      class=""
-                      src="./resources/images/meeting/대회의실1.jpg"
-                      width="500"
-                      height="350"
-                    />
-                  </div>
-                  <div class="swiper-slide">
-                    <img
-                      class=""
-                      src="./resources/images/meeting/중회의실1.jpg"
-                      width="500"
-                      height="350"
-                    />
-                  </div>
-                  <div class="swiper-slide">
-                    <img
-                      class=""
-                      src="./resources/images/meeting/후기 사진1.jpeg"
-                      width="500"
-                      height="350"
-                    />
-                  </div>
-                </div>
-                <div class="swiper-pagination"></div>
-              </div>
-              <br />
-              <br />
-
               <h1 class="menu_title">
                 <i class="fa-solid fa-minus"></i> 유의 사항
               </h1>
@@ -385,221 +349,6 @@
                   </li>
                 </div>
               </ul>
-            </div>
-          </div>
-
-          <div id="detail-payment">
-            <!-- 결제 타이틀 -->
-            <div class="pay-info">
-              <div class="pay-header">
-                <h3>세미나룸</h3>
-                <div class="pay-desc">
-                  <p>
-                    고객인증✨✨ 가성비 공간 핫플 선화동 세미나룸👏👏 <br />
-                    🚩30명 이상의 많은 인원이 넉넉한 공간에서 편안하게 회의
-                    진행이 가능한 곳이에요~:D <br />
-                    📌블로그 리뷰 인증시 다음 예약 시 2시간 추가 드림 진행
-                    중(●'◡'●)❗❗
-                  </p>
-                  <!-- 해시태그 아이콘 사용하려면 쓰세요~! -->
-                  <div class="pay-hash">
-                    <span class="hash-item">#프라이빗한공간</span>
-                    <span class="hash-item">#좋은추억</span>
-                    <span class="hash-item">#차분한</span>
-                    <span class="hash-item">#집중되는</span>
-                    <span class="hash-item">#밝은</span>
-                  </div>
-                </div>
-              </div>
-              <!-- 예약 시 주의사항 -->
-              <div class="pay-caution">
-                <h4>예약 전 반드시 확인하세요!</h4>
-                <div class="caution-desc">
-                  <h5>
-                    <i class="fa-solid fa-thumbtack"></i>시간당 예약은 문의해
-                    주세요.
-                  </h5>
-                  <a href="#">-> 문의 게시판 바로가기</a>
-                </div>
-                <div class="caution-desc">
-                  <h5>
-                    <i class="fa-solid fa-thumbtack"></i>보증금 제도를
-                    운영합니다.
-                  </h5>
-                  <p>
-                    무인으로 운영하는 파티룸의 특성상 보증금 제도를 운영하고
-                    있습니다.<br />
-                    예약 후 보증금(5만원) 관련 안내 문자를 보내드리며 퇴실 후
-                    문제가 없는 경우 최대 48시간 이내에 100% 환불해 드립니다.
-                  </p>
-                  <span class="open-detail">자세한 내용 보기</span>
-                </div>
-              </div>
-            </div>
-            <!-- 결제 옵션 시작 -->
-            <div class="pay-options">
-              <!-- 날짜 선택 -->
-              <div class="pay-option">
-                <p class="pay-title">
-                  <i class="fa-solid fa-check"></i>
-                  날짜를 선택해 주세요.
-                </p>
-                <div id="calendar"></div>
-                <span id="display-date"></span>
-              </div>
-              <div class="pay-option">
-                <p for="pay-room" class="pay-title">
-                  <i class="fa-solid fa-check"></i>
-                  룸을 선택해 주세요.
-                </p>
-                <div class="pay-btn-wrap">
-                  <!-- 
-                  ** 룸당 가격 작성법
-                  data-room="방 가격"
-                  value="방 옵션(종류)"
-                -->
-                  <input
-                    class="pay-btn pay-room-btn"
-                    type="button"
-                    data-room="10000"
-                    value="4인"
-                  />
-                  <input
-                    class="pay-btn pay-room-btn"
-                    type="button"
-                    data-room="20000"
-                    value="6인"
-                  />
-                  <input
-                    class="pay-btn pay-room-btn"
-                    type="button"
-                    data-room="30000"
-                    value="8인"
-                  />
-                </div>
-              </div>
-              <!-- 시간 선택 -->
-              <div class="pay-option">
-                <p for="pay-time" class="pay-title">
-                  <i class="fa-solid fa-check"></i>
-                  시간을 선택해 주세요.
-                </p>
-                <div class="pay-btn-wrap">
-                  <!-- 
-                  ** 시간당 가격 작성법
-                  data-time="가격"
-                  value="시간 옵션(낮,밤,종일 등등)"
-                -->
-                  <input
-                    class="pay-btn pay-time-btn"
-                    type="button"
-                    data-time="10000"
-                    value="낮"
-                  />
-                  <input
-                    class="pay-btn pay-time-btn"
-                    type="button"
-                    data-time="20000"
-                    value="밤"
-                  />
-                  <input
-                    class="pay-btn pay-time-btn"
-                    type="button"
-                    data-time="30000"
-                    value="종일"
-                  />
-                </div>
-              </div>
-              <!-- 인원 선택 ** 각 룸에 맞게 옵션 변경하시면 됩니다. -->
-              <div class="pay-option">
-                <p for="personnel" class="pay-title">
-                  <i class="fa-solid fa-check"></i>
-                  인원을 선택해 주세요.
-                </p>
-                <div class="select-personnel">
-                  <!-- 레이아웃 고민했는데 맘에 안드시면 select태그랑 .personnel-desc 위치 바꾸시면 됩니다!! 이게 제 한계에요...후ㅜㅠㅠ -->
-                  <div class="personnel-desc">
-                    <!-- 각 룸에 맞는 인원과 추가금 수정하세요~ -->
-                    <span>· 기준인원 4명, 최대인원 12명</span>
-                    <span>· 추가인원 1명당 20000원 증가</span>
-                  </div>
-                  <select name="personnel" id="personnel">
-                    <option value="4">4명</option>
-                    <option value="5">5명</option>
-                    <option value="6">6명</option>
-                    <option value="7">7명</option>
-                    <option value="8">8명</option>
-                    <option value="9">9명</option>
-                    <option value="10">10명</option>
-                    <option value="11">11명</option>
-                    <option value="12">12명</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-            <!-- 결제폼 푸터 시작 -->
-            <div class="pay-footer">
-              <div class="pay-total">
-                <h4>총 합계</h4>
-                <p><span id="pay-amount">0</span>원</p>
-              </div>
-              <form id="payment-transfer">
-                <input type="hidden" name="date" id="selected-date" required />
-                <input type="hidden" name="room" id="selected-room" required />
-                <input type="hidden" name="time" id="selected-time" required />
-                <input
-                  type="hidden"
-                  name="personnel"
-                  id="selected-personnel"
-                  required
-                />
-                <input type="hidden" name="amount" id="total-amount" required />
-                <!-- button 링크 문의페이지 완성되면 경로 바꿔줘야합니다!! -->
-                <input
-                  type="button"
-                  class="form-btn"
-                  onclick="location.href='./pages/QnA.html'"
-                  value="문의하기"
-                />
-                <input
-                  type="submit"
-                  class="submit-btn form-btn"
-                  value="예약하기"
-                />
-              </form>
-            </div>
-          </div>
-          <!-- 총 합계 -->
-          <!-- 보증금 제도 자세히보기 모달 팝업 -->
-          <div id="pay-modal">
-            <div class="pay-modal-wrap">
-              <div class="close-modal">X</div>
-              <h4>보증금 제도 안내</h4>
-              <div class="pay-modal-content">
-                <h5>청소 보증금</h5>
-                <p>50,000원</p>
-                <p>
-                  보증금 금액이 모두 입금되어야지만 입실하실 수 있는 입실 안내
-                  문자를 보내드립니다.
-                </p>
-              </div>
-              <div class="pay-modal-content">
-                <h5>보증금 환급일</h5>
-                <p>
-                  입실일 기준 최대 48시간 이내에 입금예정이며 순차적으로
-                  환급해드리고 있습니다.
-                </p>
-              </div>
-              <div class="pay-modal-content">
-                <h5>보증금환급불가기준</h5>
-                <ul>
-                  <li>기본 정리, 분리수거, 설거지 등 정리 정돈 미실시</li>
-                  <li>무단 입실, 늦은 퇴실, 추가 인원 미고지</li>
-                  <li>오염 및 파손, 실내 흡연, 구토 후 미처리 등</li>
-                  <li>소등 및 사용 제품 전원을 끄지 않고 퇴실 시</li>
-                  <li>고기 및 생선 등 냄새 심한 음식 취사</li>
-                </ul>
-              </div>
             </div>
           </div>
         </div>
