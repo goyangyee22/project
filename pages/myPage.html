@@ -79,10 +79,14 @@
     // document.write를 사용해야 하나..
     async function getMembers() {
       const snapShot = await getDatas("userInfo");
+      const myPageMyName = document.querySelector("myPageMyName");
+      
       snapShot.forEach((doc) => {
         const { name } = doc.data();
         console.log(`${name}님의 마이페이지입니다.`);
+        // document.write(`${name}님의 마이페이지입니다.`);
       });
+
     }
     getMembers();
 
