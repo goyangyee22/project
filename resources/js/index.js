@@ -22,40 +22,28 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-// 로그인 여부를 확인합니다.
-function isLoggedIn() {
-  // sessionStorage에 로그인 정보가 있는지 확인합니다.
-  return sessionStorage.getItem("userInfo") === "true";
-}
-
-// 버튼 상태를 업데이트하는 함수
 function updateButtonState() {
-  const loginButton = document.querySelector(".spot-login");
-  const joinButton = document.querySelector(".spot-join");
-  const pageButton = document.querySelector(".spot-page");
+  const loginButton = document.querySelector(".spot-login a");
+  const joinButton = document.querySelector(".spot-join a");
+  const pageButton = document.querySelector(".spot-page a");
 
   if (isLoggedIn()) {
-    // 로그인 되어 있는 경우 버튼 비활성화
-    loginButton.style.pointerEvents = "none";
-    loginButton.style.opacity = "0.5";
-
-    joinButton.style.pointerEvents = "none";
-    joinButton.style.opacity = "0.5";
-
-    pageButton.style.pointerEvents = "auto";
-    pageButton.style.opacity = "1";
+    loginButton.classList.add("disabled");
+    loginButton.classList.remove("abled");
+    joinButton.classList.add("disabled");
+    joinButton.classList.remove("abled");
+    pageButton.classList.remove("disabled");
+    pageButton.classList.add("abled");
   } else {
-    // 로그인 되어 있지 않은 경우 버튼 활성화
-    loginButton.style.pointerEvents = "auto";
-    loginButton.style.opacity = "1";
-
-    joinButton.style.pointerEvents = "auto";
-    joinButton.style.opacity = "1";
-
-    pageButton.style.pointerEvents = "none";
-    pageButton.style.opacity = "0.5";
+    loginButton.classList.add("abled");
+    loginButton.classList.remove("disabled");
+    joinButton.classList.add("abled");
+    joinButton.classList.remove("disabled");
+    pageButton.classList.remove("abled");
+    pageButton.classList.add("disabled");
   }
 }
-
-// 페이지 로드 시 버튼 상태 업데이트
-updateButtonState();
+// DOMContentLoaded 이벤트가 발생할 때까지 기다립니다.
+document.addEventListener("DOMContentLoaded", function () {
+  updateButtonState();
+});
