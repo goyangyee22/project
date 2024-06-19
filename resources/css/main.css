@@ -115,9 +115,30 @@ body {
   height: 100%;
 }
 
+/* section */
+.main-section {
+  padding: 160px 0;
+}
+.section-title {
+  font-size: 48px;
+  text-align: center;
+}
+.section-title span {
+  font-weight: 400;
+  color: var(--accent-color);
+}
+.section-desc {
+  font-size: 24px;
+  line-height: 1.6;
+}
+.section-desc span {
+  font-weight: 700;
+}
+
 /* intro */
-#intro {
-  padding: 64px 0;
+.intro-contents {
+  padding: 48px 0;
+  text-align: center;
 }
 
 /* 후기 사진 미리보기? */
@@ -132,16 +153,27 @@ body {
 .preview-slide {
   width: 100%;
   height: 300px;
-  background-color: #fff;
 }
 .preview-slide > .swiper-wrapper {
   transition-timing-function: linear;
+}
+.preview-slide .swiper-slide {
+  background-color: #fff;
+  border-radius: 24px;
+  overflow: hidden;
+  outline: 1px dotted red;
+}
+.preview-slide .swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* 이용 및 옵션 안내 */
 .info-icons {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
   gap: 24px;
 }
 .info-icons li {
@@ -166,23 +198,55 @@ body {
 }
 
 /* 옵션 안내 */
-.option-info {
+.room-options-container {
   position: relative;
-
-  outline: 1px dotted red;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  flex-direction: row-reverse;
+  margin: 48px 0;
 }
-.option-info > .section-menu {
+#section-menu {
   position: sticky;
   top: 117px;
   right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-direction: column;
+  padding: 24px 0;
 }
-.option-info > .section-menu > a {
+#section-menu > a {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 80px;
-  height: 80px;
-  background-color: #ccc;
+  width: 120px;
+  padding: 16px 24px;
+  border-bottom: 1px solid #000;
+  transition: 0.3s;
+}
+#section-menu > a.active {
+  transform: scale(1.2);
+  color: red;
+}
+
+.option-contents {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-bottom: 48px;
+}
+
+.room-option {
+  padding-top: 160px;
+}
+.room-option h3 {
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+
+#option-common {
+  margin-top: 80px;
 }
 
 /* booking */
