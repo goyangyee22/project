@@ -12,21 +12,24 @@
       text-decoration: none;
       color: #000;
     }
-    .active {
-      display: inline-block;
-    }
-    .noneActive {
-      display: none;
+    .myPageMyName {
+      position: absolute;
+      right: 0;
+      padding: 8px 32px;
     }
   </style>
   <body>
-    <h2 id="myPageMyName"></h2>
-    <button id="backToMainPage">
-      <a href="../index.html">메인페이지로 돌아가기</a>
-    </button>
-    <button id="changePassword">비밀번호 변경</button>
-    <button id="logOut" class="active">로그아웃</button>
-    <button id="deleteId">회원탈퇴</button>
+    <div class="wrapper">
+      <div class="myPageMyName"><span></span></div>
+      <div class="buttons">
+        <button id="backToMainPage">
+          <a href="../index.html">메인페이지로 돌아가기</a>
+        </button>
+        <button id="changePassword">비밀번호 변경</button>
+        <button id="logOut" class="active">로그아웃</button>
+        <button id="deleteId">회원탈퇴</button>
+      </div>
+    </div>
   </body>
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
@@ -43,6 +46,7 @@
     import { getAuth } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js";
     import {
       // app
+      getDatas,
       dbService,
       storageService,
       addDatas,
@@ -66,7 +70,6 @@
     const db = getFirestore(app);
     const auth = getAuth(app);
 
-    
     // 로그인이 되어있지 않은 경우, 접근이 제한됩니다.
     const userInfo = sessionStorage.getItem("userInfo");
     if (!userInfo) {
@@ -75,9 +78,17 @@
     }
 
     // 사용자의 이름을 기반으로 마이페이지에 접속하면 사용자의 이름 + 마이페이지입니다. 라는 문구가 출력됩니다.
-    // Firestore database or session storage에서 name 값을 불러옴
-    const usersRef = collection(dbService, "userInfo");
-    const q = query(usersRef, where("name", "==", name));
+    async function getMembers() {
+      const snapShot = await getDatas("userInfo");
+
+      snapShot.forEach((doc) => {
+        const { name } = doc.data();
+        console.log(`${name}님의 마이페이지입니다.`);
+        const nameSpan = document.querySelector(".myPageMyName span");
+        nameSpan.textContent = `${name}님의 마이페이지입니다.`;
+      });
+    }
+    getMembers();
 
     // 비밀번호 변경 버튼클릭 함수
     const changePassword = document.getElementById("changePassword");
