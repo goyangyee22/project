@@ -1,4 +1,11 @@
 const paymentData = {
+<<<<<<< HEAD
+  meeting1: {
+    title: "소회의실",
+    desc: "✨고객인증✨ 쾌적한 환경에서 모임이 가능한 곳!!<br/>🎀각종 모임 대환영🎀 블로그 리뷰 인증 시 2시간 추가 제공(●'◡'●)🧡🎁",
+    standardPeople: 4, //기준인원
+    maximumPeople: 8, // 최대인원
+=======
   party1: {
     title: "빌리슈 파티룸1",
     desc: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Id, saepe necessitatibus aut harum impedit beatae minima ut! Nisi laboriosam, dolorum iure repudiandae natus harum eos vitae commodi optio ut quasi?",
@@ -9,12 +16,16 @@ const paymentData = {
     standardPeople: 4, //기준인원
     maximumPeople: 6, // 최대인원
 >>>>>>> c774bff356ce758e10db8ebd42ef6793d8185d86
+>>>>>>> b6c6b7184a0efa5cbb544d7e0633011e660f254f
     cost: {
       //가격
-      day: 20000,
-      night: 30000,
-      all: 40000,
+      day: 60000,
+      night: 80000,
+      all: 100000,
     },
+<<<<<<< HEAD
+    hash: ["화상면접", "스터디", "원데이클래스"],
+=======
     hash: ["프라이빗한공간", "무드", "감성", "좋은추억"],
 <<<<<<< HEAD
   },
@@ -55,18 +66,31 @@ const paymentData = {
     hash: ["쾌적한", "편안함", "반려견과 힐링", "좋은추억"],
 =======
 >>>>>>> c774bff356ce758e10db8ebd42ef6793d8185d86
+>>>>>>> b6c6b7184a0efa5cbb544d7e0633011e660f254f
   },
-  big: {
+  meeting2: {
+    title: "중회의실",
+    desc: "✨고객인증✨ 눈과 맘이 편안한 빌리슈만의 친환경 인테리어 제공👏👏 블로그 리뷰 인증 시 2시간 추가 제공^o^🧡🎁",
+    standardPeople: 6,
+    maximumPeople: 17,
+    cost: {
+      day: 80000,
+      night: 100000,
+      all: 120000,
+    },
+    hash: ["모임공간", "쾌적한", "풀옵션", "단체룸"],
+  },
+  meeting3: {
     title: "대회의실",
-    desc: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Id, saepe necessitatibus aut harum impedit beatae minima ut! Nisi laboriosam, dolorum iure repudiandae natus harum eos vitae commodi optio ut quasi?",
-    standardPeople: 30,
+    desc: "✨고객인증✨ 풀옵션 완비❗ 커피맛집☕ 🎀단체 대환영🎀 블로그 리뷰 인증 시 2시간 추가 제공(●'◡'●)🧡🎁",
+    standardPeople: 15,
     maximumPeople: 32,
     cost: {
       day: 100000,
-      night: 200000,
-      all: 300000,
+      night: 120000,
+      all: 140000,
     },
-    hash: ["원데이클래스", "차분한", "고품격", "풀옵션"],
+    hash: ["대규모", "교육장", "워크숍", "기업행사"],
   },
 };
 

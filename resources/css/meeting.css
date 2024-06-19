@@ -190,7 +190,8 @@ header {
   /* position: sticky; */
   border-radius: 10px;
   border: 1px solid black;
-  padding: 20px;
+  /* background-color: #d2e3fd; */
+  padding: 10px 10px;
 }
 
 .one_img,
@@ -209,11 +210,23 @@ header {
 }
 
 .three_img {
-  padding-top: 10px;
+  padding-top: 15px;
 }
 
 .room_titles {
   display: flex;
   flex-direction: column;
   padding: 20px;
+}
+
+.reservation_button button {
+  border: 1px solid black;
+  border-radius: 15px;
+  padding: 5px 10px;
+  background-color: #eeeeee;
+  color: black;
+}
+
+#information ol {
+  padding: 0;
 }
