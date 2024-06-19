@@ -12,6 +12,11 @@
       text-decoration: none;
       color: #000;
     }
+    .myPageMyName{
+      position: absolute;
+      right: 0;
+      padding: 8px 32px;
+    }
   </style>
   <body>
     <div class="wrapper">
@@ -80,6 +85,8 @@
         const { name } = doc.data();
         console.log(`${name}님의 마이페이지입니다.`);
         // document.write(`${name}님의 마이페이지입니다.`);
+        const nameSpan = document.querySelector(".myPageMyName span");
+        nameSpan.textContent = `${name}님의 마이페이지입니다.`;
       });
     }
     getMembers();
