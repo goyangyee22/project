@@ -22,25 +22,40 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-// 페이지가 로드되면 코드가 실행됩니다.
+// 로그인 여부를 확인합니다.
+function isLoggedIn() {
+  // sessionStorage에 로그인 정보가 있는지 확인합니다.
+  return sessionStorage.getItem("userInfo") === "true";
+}
 
-// 로그인이 되었는지 확인합니다.
-// sessionStorage에 로그인 정보가 있는지 확인합니다.
+// 버튼 상태를 업데이트하는 함수
+function updateButtonState() {
+  const loginButton = document.querySelector(".spot-login");
+  const joinButton = document.querySelector(".spot-join");
+  const pageButton = document.querySelector(".spot-page");
 
-// 버튼 상태를 업데이트 합니다.
+  if (isLoggedIn()) {
+    // 로그인 되어 있는 경우 버튼 비활성화
+    loginButton.style.pointerEvents = "none";
+    loginButton.style.opacity = "0.5";
 
-// 로그인 되어 있는 경우 버튼 비활성화
-//   loginButton.style.pointerEvents = "none"; // 클릭 이벤트 비활성화
-//   loginButton.style.opacity = "0.5"; // 투명도 조절 등으로 비활성화 스타일 적용
+    joinButton.style.pointerEvents = "none";
+    joinButton.style.opacity = "0.5";
 
-//   joinButton.style.pointerEvents = "none"; // 클릭 이벤트 비활성화
-//   joinButton.style.opacity = "0.5"; // 투명도 조절 등으로 비활성화 스타일 적용
+    pageButton.style.pointerEvents = "auto";
+    pageButton.style.opacity = "1";
+  } else {
+    // 로그인 되어 있지 않은 경우 버튼 활성화
+    loginButton.style.pointerEvents = "auto";
+    loginButton.style.opacity = "1";
 
-// 로그인 되어 있지 않은 경우 버튼 활성화
-//   loginButton.style.pointerEvents = "auto"; // 클릭 이벤트 활성화
-//   loginButton.style.opacity = "1"; // 투명도 원래대로
+    joinButton.style.pointerEvents = "auto";
+    joinButton.style.opacity = "1";
 
-//   joinButton.style.pointerEvents = "auto"; // 클릭 이벤트 활성화
-//   joinButton.style.opacity = "1"; // 투명도 원래대로
+    pageButton.style.pointerEvents = "none";
+    pageButton.style.opacity = "0.5";
+  }
+}
 
 // 페이지 로드 시 버튼 상태 업데이트
+updateButtonState();
