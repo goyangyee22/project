@@ -21,24 +21,14 @@ const firebaseConfig = {
 // Firebase를 초기화합니다.
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const auth = getAuth(app);
 
-function updateButtonState() {
-    const loginButton = document.querySelector(".spot-login a");
-    const joinButton = document.querySelector(".spot-join a");
-  
-    if (isLoggedIn()) {
-      loginButton.classList.add("disabled");
-      loginButton.classList.remove("abled");
-      joinButton.classList.add("disabled");
-      joinButton.classList.remove("abled");
-    } else {
-      loginButton.classList.add("abled");
-      loginButton.classList.remove("disabled");
-      joinButton.classList.add("abled");
-      joinButton.classList.remove("disabled");
-    }
-  }
-  // DOMContentLoaded 이벤트가 발생할 때까지 기다립니다.
-  document.addEventListener("DOMContentLoaded", function () {
-    updateButtonState();
-  });
+// function updateButtonState() {
+//     const loginButton = document.querySelector(".spot-login a");
+//     const joinButton = document.querySelector(".spot-join a");
+//     const pageButton = document.querySelector(".spot-page a");
+//   }
+//   // DOMContentLoaded 이벤트가 발생할 때까지 기다립니다.
+//   document.addEventListener("DOMContentLoaded", function () {
+//     updateButtonState();
+//   });
