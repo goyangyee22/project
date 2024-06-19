@@ -21,13 +21,15 @@
   </style>
   <body>
     <div class="wrapper">
-      <div class="myPageMyName"></div>
+      <div class="myPageMyName"><span></span></div>
+      <div class="buttons">
       <button id="backToMainPage">
         <a href="../index.html">메인페이지로 돌아가기</a>
       </button>
       <button id="changePassword">비밀번호 변경</button>
       <button id="logOut" class="active">로그아웃</button>
       <button id="deleteId">회원탈퇴</button>
+      </div>
     </div>
   </body>
   <script type="module">
@@ -83,7 +85,7 @@
       snapShot.forEach((doc) => {
         const { name } = doc.data();
         console.log(`${name}님의 마이페이지입니다.`);
-        document.write(`${name}님의 마이페이지입니다.`);
+        // document.write(`${name}님의 마이페이지입니다.`);
       });
     }
     getMembers();
