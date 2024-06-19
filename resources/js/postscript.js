@@ -28,33 +28,14 @@ const firebaseConfig = {
   measurementId: "G-ZY1J3CGR0E",
 };
 
-// 로그인이 되어있지 않은 경우, 접근이 제한됩니다.
-// const userInfo = sessionStorage.getItem("userInfo");
-//     if (!userInfo) {
-//       alert("로그인을 해주세요.");
-//       window.location.href = "../index.html";
-//     }
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
-// 게시글을 올릴 때 userInfo의 이름, 제목, 내용이 드러나게 게시글을 올립니다.
-
-// Firestore에서 "userInfo" 컬렉션에서 입력한 이름이 있는지 조회합니다.
-
-// updateBtn을 클릭하면 처리하는 함수를 생성합니다.
-
-// 회원 목록 조회 함수
-
-// 제목 및 내용을 작성하고 누르는 버튼입니다.
+// 게시글을 작성하는 함수입니다.
 const updateBtn = document.getElementById("updateBtn");
-updateBtn.addEventListener("click", async function () {
-  // 게시글에 대한 정보 객체를 생성합니다.
-  const boardUpdate = {
-    title: document.querySelector("input[name='title']").value,
-    content: document.querySelector("input[name='content']").value,
-  };
+updateBtn.addEventListener("click", function () {});
 
-  // 파이어베이스에 작성한 게시글의 데이터를 저장합니다.
-  const result = await addDatas("board", boardUpdate);
+// 게시글을 수정하는 함수입니다. (한 번에 한 개의 게시글씩 수정 가능)
 
-  // 저장 결과에 따라 페이지가 리로딩(성공)되거나, "게시글 업로드에 실패 하였습니다." 라는 alert창(실패)이 나타납니다.
-  result ? window.location.reload() : alert("게시글 업로드에 실패 하였습니다.");
-});
+// 게시글을 삭제하는 함수입니다. (한 번에 여러 개의 게시글 삭제 가능)
