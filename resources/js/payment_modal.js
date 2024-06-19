@@ -2,14 +2,21 @@ const paymentData = {
   party1: {
     title: "빌리슈 파티룸1",
     desc: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Id, saepe necessitatibus aut harum impedit beatae minima ut! Nisi laboriosam, dolorum iure repudiandae natus harum eos vitae commodi optio ut quasi?",
+<<<<<<< HEAD
     standardPeople: 4,
     maximumPeople: 6,
+=======
+    standardPeople: 4, //기준인원
+    maximumPeople: 6, // 최대인원
+>>>>>>> c774bff356ce758e10db8ebd42ef6793d8185d86
     cost: {
+      //가격
       day: 20000,
       night: 30000,
       all: 40000,
     },
     hash: ["프라이빗한공간", "무드", "감성", "좋은추억"],
+<<<<<<< HEAD
   },
   petroom1: {
     title: "펫룸 스위트",
@@ -46,6 +53,8 @@ const paymentData = {
       all: 160000,
     },
     hash: ["쾌적한", "편안함", "반려견과 힐링", "좋은추억"],
+=======
+>>>>>>> c774bff356ce758e10db8ebd42ef6793d8185d86
   },
   big: {
     title: "대회의실",
