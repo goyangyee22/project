@@ -1,15 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
 import {
-  app,
-  // db,
-  dbService,
-  storageService,
-  addDatas,
-  getDatas,
-  updateDatas,
-  deleteDatas,
-} from "../../firebase.js";
-import {
   getFirestore,
   collection,
   query,
@@ -28,14 +18,15 @@ const firebaseConfig = {
   measurementId: "G-ZY1J3CGR0E",
 };
 
-// Initialize Firebase
+// Firebase를 초기화합니다.
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-// 게시글을 작성하는 함수입니다.
-const updateBtn = document.getElementById("updateBtn");
-updateBtn.addEventListener("click", function () {});
+// 로그인 여부를 확인합니다.
+function isLoggedIn() {
+  return sessionStorage.getItem("userInfo") === true;
+}
 
-// 게시글을 수정하는 함수입니다. (한 번에 한 개의 게시글씩 수정 가능)
-
-// 게시글을 삭제하는 함수입니다. (한 번에 여러 개의 게시글 삭제 가능)
+// 각각의 버튼에 로그인 혹은 로그아웃이 되어있을 경우 버튼 활성화를 설정합니다.
+// 로그인이 되어있는 경우 회원가입, 로그인 버튼을 비활성화하고 마이페이지 버튼을 활성화합니다.
+// 로그인이 되어있지 않은 경우 마이페이지 버튼을 비활성화하고 회원가입, 로그인 버튼을 활성화합니다.

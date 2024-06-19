@@ -4,22 +4,12 @@
 
 /* 결제폼 */
 #detail-payment {
-  position: sticky;
-  top: 0;
-  margin-top: 24px;
-  border-radius: 16px;
-  background-color: #fff;
-  position: sticky;
-  top: 0;
-  /* right: 0; */
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 24px;
   padding: 24px;
-  width: 600px;
-  border: 2px solid #eee;
+  width: 100%;
   background-color: #fff;
-  border-radius: 8px;
 }
 
 /* 결제폼 헤더 */
@@ -284,7 +274,7 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 16px;
-  padding: 16px 8px;
+  padding: 16px 8px 0;
   border-top: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
 }
