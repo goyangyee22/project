@@ -35,7 +35,7 @@ const partyOps = [
   { icon: 'kitchen-set', text: '조리도구' },
 ];
 
-const options = [
+const infoOptions = [
   {
     section: 'common',
     list: [
