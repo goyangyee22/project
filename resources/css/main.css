@@ -120,6 +120,24 @@ body {
   padding: 64px 0;
 }
 
+/* 후기 사진 미리보기? */
+.preview-btn {
+  color: var(--main-color);
+  background-color: var(--accent-color);
+}
+.preview-btn:hover {
+  color: var(--main-color);
+  background-color: var(--hover-color);
+}
+.preview-slide {
+  width: 100%;
+  height: 300px;
+  background-color: #fff;
+}
+.preview-slide > .swiper-wrapper {
+  transition-timing-function: linear;
+}
+
 /* 이용 및 옵션 안내 */
 .info-icons {
   display: grid;

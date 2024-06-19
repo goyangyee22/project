@@ -178,7 +178,7 @@ header {
 
 .menu_title {
   font-family: "KyoboHand";
-  /* color: #818d97; */
+  font-size: 24px;
 }
 
 .date {
@@ -187,7 +187,8 @@ header {
 }
 
 .meeting-imgs {
-  border-radius: 5px;
+  /* position: sticky; */
+  border-radius: 10px;
   border: 1px solid black;
   padding: 20px;
 }
@@ -199,6 +200,16 @@ header {
   flex-direction: row;
   align-items: center;
   padding-bottom: 10px;
+}
+
+.one_img,
+.two_img {
+  border-bottom: 1px dotted black;
+  padding-top: 10px;
+}
+
+.three_img {
+  padding-top: 10px;
 }
 
 .room_titles {

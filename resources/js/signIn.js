@@ -22,8 +22,22 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-const signInButton = document.getElementById("signInButton");
+// 로그인이 되어있는 경우, 접근이 제한됩니다.
+const userInfo = sessionStorage.getItem("userInfo");
+if (userInfo) {
+  alert(
+    "이미 로그인이 되어있습니다, 다른 계정으로 로그인을 원하시는 경우 현재 계정을 로그아웃 하시고 다른 계정으로 로그인 하시기 바랍니다."
+  );
+  window.location.href = "../index.html";
+}
 
+const signUpButton = document.getElementById("signUpButton");
+signUpButton.addEventListener("click", async (event) => {
+  event.preventDefault();
+  window.location.href = "./signUp.html";
+});
+
+const signInButton = document.getElementById("signInButton");
 signInButton.addEventListener("click", async (event) => {
   event.preventDefault();
 
