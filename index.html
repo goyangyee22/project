@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>빌리슈</title>
+    <!-- <script type="module" src="../project/resources/js/index.js"></script> -->
+
     <style>
       .abled {
         display: inline-block;
@@ -22,6 +24,7 @@
       href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
     />
     <link rel="stylesheet" href="./resources/css/main.css" />
+
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script
       type="text/javascript"
@@ -29,7 +32,7 @@
     ></script>
     <script defer src="./resources/js/common.js"></script>
     <script defer src="./resources/js/main.js"></script>
-    <script type="module" src="./resources/js/index.js"></script>
+    <script type="module" src="../project/resources/js/index.js"></script>
   </head>
   <body>
     <header>
@@ -168,13 +171,20 @@
             <div class="use-notice">
               <p>본 시설은 숙박업소가 아닌 공간대여업소입니다.</p>
             </div>
-            <div class="preview">
-              <button>객실 미리보기</button>
-              <div class="prev-modal">
-                <div class="preview-item prev-party"></div>
-                <div class="preview-item prev-meeting"></div>
-                <div class="preview-item prev-pet"></div>
-              </div>
+          </div>
+        </div>
+        <div class="preview">
+          <div class="swiper preview-slide">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">Slide 1</div>
+              <div class="swiper-slide">Slide 2</div>
+              <div class="swiper-slide">Slide 3</div>
+              <div class="swiper-slide">Slide 4</div>
+              <div class="swiper-slide">Slide 5</div>
+              <div class="swiper-slide">Slide 6</div>
+              <div class="swiper-slide">Slide 7</div>
+              <div class="swiper-slide">Slide 8</div>
+              <div class="swiper-slide">Slide 9</div>
             </div>
           </div>
         </div>
@@ -185,54 +195,9 @@
             <h2 class="section-title">
               <span>즐기다;</span> 편리함이 넘치는 올인원 공간
             </h2>
-            <div>
+            <div id="option-common">
               <h3>공통 옵션</h3>
-              <ul class="use-icons info-icons">
-                <li>
-                  <i class="fa-solid fa-car"></i>
-                  <span>주차가능</span>
-                </li>
-                <li>
-                  <i class="fa-solid fa-wifi"></i>
-                  <span>와이파이</span>
-                </li>
-                <li>
-                  <i class="fa-solid fa-building"></i>
-                  <span>독채건물</span>
-                </li>
-                <li>
-                  <i class="fa-solid fa-elevator"></i>
-                  <span>엘리베이터</span>
-                </li>
-                <li>
-                  <i class="fa-solid fa-toilet"></i>
-                  <span>내부화장실</span>
-                </li>
-                <li>
-                  <i class="fa-solid fa-temperature-arrow-down"></i>
-                  <span>냉장고</span>
-                </li>
-                <li>
-                  <i class="fa-solid fa-pen-to-square"></i>
-                  <span>빔프로젝터</span>
-                </li>
-                <li>
-                  <i class="fa-solid fa-volume-high"></i>
-                  <span>블루투스 스피커</span>
-                </li>
-                <li>
-                  <i class="fa-solid fa-glass-water-droplet"></i>
-                  <span>얼음정수기</span>
-                </li>
-                <li>
-                  <i class="fa-solid fa-rotate"></i>
-                  <span>공기청정기</span>
-                </li>
-                <li>
-                  <i class="fa-solid fa-wind"></i>
-                  <span>천장형 에어컨</span>
-                </li>
-              </ul>
+              <ul class="use-icons info-icons"></ul>
             </div>
             <div class="section-menu">
               <a href="#option-party">파티룸</a>
@@ -241,106 +206,15 @@
             </div>
             <div id="option-party">
               <h3>파티룸옵션</h3>
-              <ul class="option-icons info-icons">
-                <li>
-                  <i class="fa-solid fa-person-dress"></i>
-                  <span>드레스의상</span>
-                </li>
-                <li>
-                  <i class="fa-solid fa-camera-retro"></i>
-                  <span>레트로 사진기</span>
-                </li>
-                <li>
-                  <i class="fa-solid fa-dice"></i>
-                  <span>보드게임</span>
-                </li>
-                <li>
-                  <i class="fa-solid fa-fire-burner"></i>
-                  <span>주방시설</span>
-                </li>
-                <li>
-                  <i class="fa-solid fa-utensils"></i>
-                  <span>식기류</span>
-                </li>
-                <li>
-                  <i class="fa-solid fa-kitchen-set"></i>
-                  <span>조리도구</span>
-                </li>
-              </ul>
+              <ul class="option-icons info-icons"></ul>
             </div>
             <div id="option-meeting">
               <h3>세미나룸옵션</h3>
-              <ul class="option-icons info-icons">
-                <li>
-                  <i class="fa-solid fa-tv"></i>
-                  <span>대형스크린</span>
-                </li>
-                <li>
-                  <i class="fa-solid fa-display"></i>
-                  <span>55인치 TV</span>
-                </li>
-                <li>
-                  <i class="fa-solid fa-volume-high"></i>
-                  <span>스피커</span>
-                </li>
-                <li>
-                  <i class="fa-solid fa-chalkboard-user"></i>
-                  <span>화이트보드</span>
-                </li>
-                <li>
-                  <i class="fa-solid fa-microphone"></i>
-                  <span>무선마이크</span>
-                </li>
-                <li>
-                  <i class="fa-solid fa-thumbtack"></i>
-                  <span>삼각대</span>
-                </li>
-                <li>
-                  <i class="fa-solid fa-mug-saucer"></i>
-                  <span>티/커피</span>
-                </li>
-              </ul>
+              <ul class="option-icons info-icons"></ul>
             </div>
             <div id="option-pet">
               <h3>펫룸옵션</h3>
-              <ul class="option-icons info-icons">
-                <li>
-                  <i class="fa-solid fa-tv"></i>
-                  <span>TV</span>
-                </li>
-                <li>
-                  <i class="fa-solid fa-fire-burner"></i>
-                  <span>주방시설</span>
-                </li>
-                <li>
-                  <i class="fa-solid fa-utensils"></i>
-                  <span>식기류</span>
-                </li>
-                <li>
-                  <i class="fa-solid fa-kitchen-set"></i>
-                  <span>조리도구</span>
-                </li>
-                <li>
-                  <i class="fa-solid fa-mattress-pillow"></i>
-                  <span>침구류</span>
-                </li>
-                <li>
-                  <i class="fa-solid fa-stairs"></i>
-                  <span>계단슬라이드</span>
-                </li>
-                <li>
-                  <i class="fa-solid fa-tape"></i>
-                  <span>클리너테이프</span>
-                </li>
-                <li>
-                  <i class="fa-solid fa-spray-can-sparkles"></i>
-                  <span>탈취제</span>
-                </li>
-                <li>
-                  <i class="fa-solid fa-sheet-plastic"></i>
-                  <span>배변패드</span>
-                </li>
-              </ul>
+              <ul class="option-icons info-icons"></ul>
             </div>
           </div>
         </div>
@@ -379,7 +253,7 @@
             <div class="way-to-come">
               <div class="public-transport">
                 <h3>대중교통 이용</h3>
-                <ul>
+                <ul class="list-unstyled">
                   <li>
                     <h4>판암역행</h4>
                     <p>
@@ -406,7 +280,7 @@
               </div>
               <div class="own-car">
                 <h3>자가용 이용</h3>
-                <ul>
+                <ul class="list-unstyled">
                   <li>
                     <h4>경부고속도로(서울방면)</h4>
                     <p>

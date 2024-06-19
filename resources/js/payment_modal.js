@@ -1,16 +1,72 @@
 const paymentData = {
+<<<<<<< HEAD
   meeting1: {
     title: "소회의실",
     desc: "✨고객인증✨ 쾌적한 환경에서 모임이 가능한 곳!!<br/>🎀각종 모임 대환영🎀 블로그 리뷰 인증 시 2시간 추가 제공(●'◡'●)🧡🎁",
     standardPeople: 4, //기준인원
     maximumPeople: 8, // 최대인원
+=======
+  party1: {
+    title: "빌리슈 파티룸1",
+    desc: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Id, saepe necessitatibus aut harum impedit beatae minima ut! Nisi laboriosam, dolorum iure repudiandae natus harum eos vitae commodi optio ut quasi?",
+<<<<<<< HEAD
+    standardPeople: 4,
+    maximumPeople: 6,
+=======
+    standardPeople: 4, //기준인원
+    maximumPeople: 6, // 최대인원
+>>>>>>> c774bff356ce758e10db8ebd42ef6793d8185d86
+>>>>>>> b6c6b7184a0efa5cbb544d7e0633011e660f254f
     cost: {
       //가격
       day: 60000,
       night: 80000,
       all: 100000,
     },
+<<<<<<< HEAD
     hash: ["화상면접", "스터디", "원데이클래스"],
+=======
+    hash: ["프라이빗한공간", "무드", "감성", "좋은추억"],
+<<<<<<< HEAD
+  },
+  petroom1: {
+    title: "펫룸 스위트",
+    desc: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Id, saepe necessitatibus aut harum impedit beatae minima ut! Nisi laboriosam, dolorum iure repudiandae natus harum eos vitae commodi optio ut quasi?",
+    standardPeople: 2,
+    maximumPeople: 4,
+    cost: {
+      day: 40000,
+      night: 50000,
+      all: 90000,
+    },
+    hash: ["쾌적한", "편안함", "반려견과 힐링", "좋은추억"],
+  },
+  petroom2: {
+    title: "펫룸 디럭스",
+    desc: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Id, saepe necessitatibus aut harum impedit beatae minima ut! Nisi laboriosam, dolorum iure repudiandae natus harum eos vitae commodi optio ut quasi?",
+    standardPeople: 6,
+    maximumPeople: 8,
+    cost: {
+      day: 80000,
+      night: 90000,
+      all: 130000,
+    },
+    hash: ["쾌적한", "편안함", "반려견과 힐링", "좋은추억"],
+  },
+  petroom3: {
+    title: "펫룸 패밀리",
+    desc: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Id, saepe necessitatibus aut harum impedit beatae minima ut! Nisi laboriosam, dolorum iure repudiandae natus harum eos vitae commodi optio ut quasi?",
+    standardPeople: 6,
+    maximumPeople: 8,
+    cost: {
+      day: 110000,
+      night: 120000,
+      all: 160000,
+    },
+    hash: ["쾌적한", "편안함", "반려견과 힐링", "좋은추억"],
+=======
+>>>>>>> c774bff356ce758e10db8ebd42ef6793d8185d86
+>>>>>>> b6c6b7184a0efa5cbb544d7e0633011e660f254f
   },
   meeting2: {
     title: "중회의실",
