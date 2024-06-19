@@ -22,6 +22,13 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
+// 로그인이 되어있는 경우, 접근이 제한됩니다.
+const userInfo = sessionStorage.getItem("userInfo");
+if (userInfo) {
+  alert("이미 로그인이 되어있습니다.");
+  return false;
+}
+
 const signInButton = document.getElementById("signInButton");
 
 signInButton.addEventListener("click", async (event) => {
@@ -35,13 +42,12 @@ signInButton.addEventListener("click", async (event) => {
   const q = query(usersRef, where("id", "==", id));
 
   try {
-    
     const querySnapshot = await getDocs(q);
 
     if (!querySnapshot.empty) {
       // Firestore에서 찾은 사용자 정보
       const userDoc = querySnapshot.docs[0];
-      const userInfo = {...userDoc.data(), docId: userDoc.id};
+      const userInfo = { ...userDoc.data(), docId: userDoc.id };
       console.log(userInfo);
       // 비밀번호를 비교합니다.
       if (userInfo.pw === pw) {
