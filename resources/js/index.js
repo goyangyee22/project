@@ -24,38 +24,9 @@ const db = getFirestore(app);
 
 // 로그인 여부를 확인합니다.
 function isLoggedIn() {
-  // sessionStorage에 로그인 정보가 있는지 확인합니다.
-  return sessionStorage.getItem("userInfo") === "true";
+  return sessionStorage.getItem("userInfo") === true;
 }
 
-// 버튼 상태를 업데이트하는 함수
-function updateButtonState() {
-  const loginButton = document.querySelector(".spot-login");
-  const joinButton = document.querySelector(".spot-join");
-  const pageButton = document.querySelector(".spot-page");
-
-  if (isLoggedIn()) {
-    // 로그인 되어 있는 경우 버튼 비활성화
-    loginButton.style.pointerEvents = "none";
-    loginButton.style.opacity = "0.5";
-
-    joinButton.style.pointerEvents = "none";
-    joinButton.style.opacity = "0.5";
-
-    pageButton.style.pointerEvents = "auto";
-    pageButton.style.opacity = "1";
-  } else {
-    // 로그인 되어 있지 않은 경우 버튼 활성화
-    loginButton.style.pointerEvents = "auto";
-    loginButton.style.opacity = "1";
-
-    joinButton.style.pointerEvents = "auto";
-    joinButton.style.opacity = "1";
-
-    pageButton.style.pointerEvents = "none";
-    pageButton.style.opacity = "0.5";
-  }
-}
-
-// 페이지 로드 시 버튼 상태 업데이트
-updateButtonState();
+// 각각의 버튼에 로그인 혹은 로그아웃이 되어있을 경우 버튼 활성화를 설정합니다.
+// 로그인이 되어있는 경우 회원가입, 로그인 버튼을 비활성화하고 마이페이지 버튼을 활성화합니다.
+// 로그인이 되어있지 않은 경우 마이페이지 버튼을 비활성화하고 회원가입, 로그인 버튼을 활성화합니다.
