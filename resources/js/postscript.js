@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
 import {
-  app,
+  // app,
   // db,
   dbService,
   storageService,
@@ -31,7 +31,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-const auth = getAuth(app);
+// const auth = getAuth(app);
 
 // 로그인이 되어있지 않은 경우, 접근이 제한됩니다.
 const userInfo = sessionStorage.getItem("userInfo");
@@ -45,8 +45,7 @@ const updateBtn = document.getElementById("updateBtn");
 updateBtn.addEventListener("click", async (event) => {
   event.preventDefault();
   const postInfo = {
-    name: document.querySelector(sessionStorage.getItem("userInfo", name))
-      .value,
+    name: document.querySelector("userInfo", name),
     title: document.querySelector("input[name='title']").value,
     content: document.querySelector("input[name='content']").value,
   };

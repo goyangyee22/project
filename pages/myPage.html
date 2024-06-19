@@ -22,6 +22,8 @@
     <div class="wrapper">
       <div class="myPageMyName"><span></span></div>
       <div class="buttons">
+        <button id="postscript">후기(임시로 만들어놓음)</button>
+        <button id="payment">결제목록</button>
         <button id="backToMainPage">
           <a href="../index.html">메인페이지로 돌아가기</a>
         </button>
@@ -89,6 +91,18 @@
       });
     }
     getMembers();
+
+    // 후기를 작성할 수 있는 곳으로 이동하는 버튼클릭 함수
+    const postscript = document.getElementById("postscript");
+    postscript.addEventListener("click", function () {
+      window.location.href = "postscript.html";
+    });
+
+    // 결제목록 버튼클릭 함수
+    const payment = document.getElementById("payment");
+    payment.addEventListener("click", function () {
+      window.location.href = "payment.html";
+    });
 
     // 비밀번호 변경 버튼클릭 함수
     const changePassword = document.getElementById("changePassword");
