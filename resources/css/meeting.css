@@ -27,7 +27,7 @@ header {
   width: 100%;
 }
 
-.meet-contents {
+.meet-contents.wrap {
   display: flex;
   align-items: start;
   gap: 20px;
@@ -184,4 +184,25 @@ header {
 .date {
   padding-top: 8px;
   font-size: 12px;
+}
+
+.meeting-imgs {
+  border-radius: 5px;
+  border: 1px solid black;
+  padding: 20px;
+}
+
+.one_img,
+.two_img,
+.three_img {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-bottom: 10px;
+}
+
+.room_titles {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
 }
