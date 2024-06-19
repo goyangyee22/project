@@ -22,17 +22,12 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-// 로그인 여부를 확인합니다.
-function isLoggedIn() {
-  return sessionStorage.getItem("userInfo") === "true";
-}
-
 function updateButtonState() {
-  const loginButton = document.querySelector(".spot-login");
-  const joinButton = document.querySelector(".spot-join");
-  const pageButton = document.querySelector(".spot-page");
+  const loginButton = document.querySelector(".spot-login a");
+  const joinButton = document.querySelector(".spot-join a");
+  const pageButton = document.querySelector(".spot-page a");
 
-  if (isLoggedIn(true)) {
+  if (isLoggedIn()) {
     loginButton.classList.add("disabled");
     loginButton.classList.remove("abled");
     joinButton.classList.add("disabled");
@@ -48,4 +43,7 @@ function updateButtonState() {
     pageButton.classList.add("disabled");
   }
 }
-updateButtonState();
+// DOMContentLoaded 이벤트가 발생할 때까지 기다립니다.
+document.addEventListener("DOMContentLoaded", function () {
+  updateButtonState();
+});
