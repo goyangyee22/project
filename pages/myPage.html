@@ -22,6 +22,8 @@
     <div class="wrapper">
       <div class="myPageMyName"><span></span></div>
       <div class="buttons">
+        <button id="postscript">후기(임시로 만들어놓음)</button>
+        <button id="payment">결제목록</button>
         <button id="backToMainPage">
           <a href="../index.html">메인페이지로 돌아가기</a>
         </button>
@@ -74,7 +76,7 @@
     const userInfo = sessionStorage.getItem("userInfo");
     if (!userInfo) {
       alert("로그인을 해주세요.");
-      window.location.href = "../index.html";
+      window.location.href = "./signIn.html";
     }
 
     // 사용자의 이름을 기반으로 마이페이지에 접속하면 사용자의 이름 + 마이페이지입니다. 라는 문구가 출력됩니다.
@@ -89,6 +91,18 @@
       });
     }
     getMembers();
+
+    // 후기를 작성할 수 있는 곳으로 이동하는 버튼클릭 함수
+    const postscript = document.getElementById("postscript");
+    postscript.addEventListener("click", function () {
+      window.location.href = "postscript.html";
+    });
+
+    // 결제목록 버튼클릭 함수
+    const payment = document.getElementById("payment");
+    payment.addEventListener("click", function () {
+      window.location.href = "payment.html";
+    });
 
     // 비밀번호 변경 버튼클릭 함수
     const changePassword = document.getElementById("changePassword");
@@ -128,7 +142,7 @@
           // 생성한 쿼리를 Firestore에 실행하여 결과를 가져옵니다.
           const querySnapshot = await getDocs(q);
 
-          // 검색된 문서들 중 첫 번째 문서의 ID를 추출합니다.
+          // 검색된 문서들 중 첫 번째 문서의 ID를 추출합니다. (자동으로 주어진 문서 고유 ID)
           const docId = querySnapshot.docs[0].id;
           console.log(docId);
 
