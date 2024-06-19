@@ -31,10 +31,28 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const auth = getAuth(app);
+
+// 로그인이 되어있지 않은 경우, 접근이 제한됩니다.
+const userInfo = sessionStorage.getItem("userInfo");
+if (!userInfo) {
+  alert("로그인이 되어있지 않은 경우 후기 작성이 제한됩니다.");
+  window.location.href = "../index.html";
+}
 
 // 게시글을 작성하는 함수입니다.
 const updateBtn = document.getElementById("updateBtn");
-updateBtn.addEventListener("click", function () {});
+updateBtn.addEventListener("click", async (event) => {
+  event.preventDefault();
+  const postInfo = {
+    name: document.querySelector(sessionStorage.getItem("userInfo", name)).value,
+    title: document.querySelector("input[name='title']").value,
+    content: document.querySelector("input[name='content']").value,
+  };
+
+  const result = await addDatas("board", postInfo);
+  result ? getMembersHandleTrClick() : alert("작성에 실패했습니다.")
+});
 
 // 게시글을 수정하는 함수입니다. (한 번에 한 개의 게시글씩 수정 가능)
 
