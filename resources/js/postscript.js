@@ -33,7 +33,3 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 // 게시글을 작성하는 함수입니다.
-const updateBtn = document.getElementById("updateBtn");
-updateBtn.addEventListener("click", function() {
-  
-})
