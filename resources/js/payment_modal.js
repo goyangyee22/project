@@ -1,7 +1,7 @@
 const paymentData = {
   party1: {
-    title: '빌리슈 파티룸1',
-    desc: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Id, saepe necessitatibus aut harum impedit beatae minima ut! Nisi laboriosam, dolorum iure repudiandae natus harum eos vitae commodi optio ut quasi?',
+    title: "빌리슈 파티룸1",
+    desc: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Id, saepe necessitatibus aut harum impedit beatae minima ut! Nisi laboriosam, dolorum iure repudiandae natus harum eos vitae commodi optio ut quasi?",
     standardPeople: 4,
     maximumPeople: 6,
     cost: {
@@ -9,11 +9,47 @@ const paymentData = {
       night: 30000,
       all: 40000,
     },
-    hash: ['프라이빗한공간', '무드', '감성', '좋은추억'],
+    hash: ["프라이빗한공간", "무드", "감성", "좋은추억"],
+  },
+  petroom1: {
+    title: "펫룸 스위트",
+    desc: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Id, saepe necessitatibus aut harum impedit beatae minima ut! Nisi laboriosam, dolorum iure repudiandae natus harum eos vitae commodi optio ut quasi?",
+    standardPeople: 2,
+    maximumPeople: 4,
+    cost: {
+      day: 40000,
+      night: 50000,
+      all: 90000,
+    },
+    hash: ["쾌적한", "편안함", "반려견과 힐링", "좋은추억"],
+  },
+  petroom2: {
+    title: "펫룸 디럭스",
+    desc: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Id, saepe necessitatibus aut harum impedit beatae minima ut! Nisi laboriosam, dolorum iure repudiandae natus harum eos vitae commodi optio ut quasi?",
+    standardPeople: 6,
+    maximumPeople: 8,
+    cost: {
+      day: 80000,
+      night: 90000,
+      all: 130000,
+    },
+    hash: ["쾌적한", "편안함", "반려견과 힐링", "좋은추억"],
+  },
+  petroom3: {
+    title: "펫룸 패밀리",
+    desc: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Id, saepe necessitatibus aut harum impedit beatae minima ut! Nisi laboriosam, dolorum iure repudiandae natus harum eos vitae commodi optio ut quasi?",
+    standardPeople: 6,
+    maximumPeople: 8,
+    cost: {
+      day: 110000,
+      night: 120000,
+      all: 160000,
+    },
+    hash: ["쾌적한", "편안함", "반려견과 힐링", "좋은추억"],
   },
   big: {
-    title: '대회의실',
-    desc: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Id, saepe necessitatibus aut harum impedit beatae minima ut! Nisi laboriosam, dolorum iure repudiandae natus harum eos vitae commodi optio ut quasi?',
+    title: "대회의실",
+    desc: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Id, saepe necessitatibus aut harum impedit beatae minima ut! Nisi laboriosam, dolorum iure repudiandae natus harum eos vitae commodi optio ut quasi?",
     standardPeople: 30,
     maximumPeople: 32,
     cost: {
@@ -21,7 +57,7 @@ const paymentData = {
       night: 200000,
       all: 300000,
     },
-    hash: ['원데이클래스', '차분한', '고품격', '풀옵션'],
+    hash: ["원데이클래스", "차분한", "고품격", "풀옵션"],
   },
 };
 
@@ -40,10 +76,10 @@ function openPayment(content) {
     .map((e) => {
       return `<span class="hash-item">#${e}</span>`;
     })
-    .join('');
+    .join("");
 
   if (data) {
-    document.querySelector('.modal-body').innerHTML = `
+    document.querySelector(".modal-body").innerHTML = `
       <div id="detail-payment">
         <div class="pay-info">
           <div class="pay-header">
@@ -172,21 +208,21 @@ function openPayment(content) {
       `;
 
     // 날짜 표시
-    const displayDate = document.getElementById('display-date');
+    const displayDate = document.getElementById("display-date");
 
     // 합계 표시
-    const displayTotalAmount = document.getElementById('pay-amount');
+    const displayTotalAmount = document.getElementById("pay-amount");
 
     // form 전송용 데이터들
-    const selectedDate = document.getElementById('selected-date');
-    const selectedTime = document.getElementById('selected-time');
-    const selectedPersonnel = document.getElementById('selected-personnel');
-    const calculatedAmount = document.getElementById('total-amount');
+    const selectedDate = document.getElementById("selected-date");
+    const selectedTime = document.getElementById("selected-time");
+    const selectedPersonnel = document.getElementById("selected-personnel");
+    const calculatedAmount = document.getElementById("total-amount");
 
     // 선택할 옵션들
-    const selectOptionBtns = document.querySelectorAll('.pay-btn');
-    const selectTimeBtns = document.querySelectorAll('.pay-time-btn');
-    const selectPersonnel = document.getElementById('personnel');
+    const selectOptionBtns = document.querySelectorAll(".pay-btn");
+    const selectTimeBtns = document.querySelectorAll(".pay-time-btn");
+    const selectPersonnel = document.getElementById("personnel");
 
     // 선택한 옵션 데이터 저장
 
@@ -194,37 +230,37 @@ function openPayment(content) {
       return function () {
         selectOptionBtns.forEach((e) => {
           if (
-            btns.classList.contains('pay-time-btn') &&
-            e.classList.contains('pay-time-btn')
+            btns.classList.contains("pay-time-btn") &&
+            e.classList.contains("pay-time-btn")
           ) {
-            e.classList.remove('selected');
+            e.classList.remove("selected");
           }
         });
-        this.classList.add('selected');
+        this.classList.add("selected");
         data.value = this.value;
         calculateAmount(displayTotalAmount, selectPersonnel, calculatedAmount);
       };
     }
 
     selectOptionBtns.forEach((btn) => {
-      if (btn.classList.contains('pay-time-btn')) {
-        btn.addEventListener('click', saveOptionData(btn, selectedTime));
+      if (btn.classList.contains("pay-time-btn")) {
+        btn.addEventListener("click", saveOptionData(btn, selectedTime));
       }
     });
 
     // 인원 선택
-    selectPersonnel.addEventListener('change', function () {
+    selectPersonnel.addEventListener("change", function () {
       selectedPersonnel.value = this.value;
       calculateAmount(displayTotalAmount, selectPersonnel, calculatedAmount);
     });
 
-    displayDate.innerHTML = new Date().toISOString().split('T')[0];
+    displayDate.innerHTML = new Date().toISOString().split("T")[0];
     calendarRendering(displayDate, selectedDate);
 
     // form 전송
     document
-      .getElementById('payment-transfer')
-      .addEventListener('submit', function (e) {
+      .getElementById("payment-transfer")
+      .addEventListener("submit", function (e) {
         e.preventDefault();
 
         const form = e.target;
@@ -234,16 +270,16 @@ function openPayment(content) {
         const amount = form.amount.value;
 
         if (!date || !time || !personnel) {
-          alert('모든 옵션을 선택해 주세요.');
+          alert("모든 옵션을 선택해 주세요.");
           return false;
         }
 
-        sessionStorage.setItem('date', date);
-        sessionStorage.setItem('time', time);
-        sessionStorage.setItem('personnel', personnel);
-        sessionStorage.setItem('amount', amount);
+        sessionStorage.setItem("date", date);
+        sessionStorage.setItem("time", time);
+        sessionStorage.setItem("personnel", personnel);
+        sessionStorage.setItem("amount", amount);
 
-        window.location.href = './pages/payment.html';
+        window.location.href = "./pages/payment.html";
       });
   }
 }
