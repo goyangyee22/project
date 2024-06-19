@@ -34,7 +34,14 @@ const db = getFirestore(app);
 
 // 게시글을 작성하는 함수입니다.
 const updateBtn = document.getElementById("updateBtn");
-updateBtn.addEventListener("click", function () {});
+updateBtn.addEventListener("click", async (event) => {
+  event.preventDefault();
+
+  const getName = sessionStorage.getItem("userInfo");
+  const name = 
+  const title = document.querySelector("input[name='title']");
+  const content = document.querySelector("input[name='content']");
+});
 
 // 게시글을 수정하는 함수입니다. (한 번에 한 개의 게시글씩 수정 가능)
 
