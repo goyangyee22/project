@@ -34,7 +34,6 @@ const db = getFirestore(app);
 const auth = getAuth(app);
 
 // 로그인이 되어있지 않은 경우, 접근이 제한됩니다.
-// 로그인이 되어있지 않은 경우, 접근이 제한됩니다.
 const userInfo = sessionStorage.getItem("userInfo");
 if (!userInfo) {
   alert("로그인을 해주세요.");
@@ -52,7 +51,11 @@ updateBtn.addEventListener("click", async (event) => {
     content: document.querySelector("input[name='content']").value,
   };
 
+  // 파이어베이스에 데이터를 저장
   const result = await addDatas("board", postInfo);
+
+  // 작성 결과가 성공 ==> 페이지 리로딩
+  // 결과가 실패 ==> "작성을 실패했습니다."
   result ? window.location.reload() : alert("작성에 실패했습니다.");
 });
 

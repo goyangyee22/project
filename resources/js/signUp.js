@@ -23,6 +23,13 @@ let pwEx = /^[0-9A-Za-z\d$@$!%*?&]{4,16}/g;
 let idCheck = false;
 let buttonCheck = false;
 
+// 로그인이 되어있는 경우, 접근이 제한됩니다.
+const userInfo = sessionStorage.getItem("userInfo");
+if (userInfo) {
+  alert("이미 로그인이 되어있습니다, 새로운 계정의 회원가입을 원하시는 경우 현재 계정을 로그아웃 하시고 새로운 계정의 회원가입을 해주시기 바랍니다.");
+  window.location.href = "../index.html";
+}
+
 // ID 중복에 대한 함수를 정의합니다.
 async function isIdDuplicate(event) {
   event.preventDefault();

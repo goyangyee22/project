@@ -23,12 +23,4 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
 
-// function updateButtonState() {
-//     const loginButton = document.querySelector(".spot-login a");
-//     const joinButton = document.querySelector(".spot-join a");
-//     const pageButton = document.querySelector(".spot-page a");
-//   }
-//   // DOMContentLoaded 이벤트가 발생할 때까지 기다립니다.
-//   document.addEventListener("DOMContentLoaded", function () {
-//     updateButtonState();
-//   });
+// 로그인이 되어있는 경우 
