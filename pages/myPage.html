@@ -20,7 +20,7 @@
     }
   </style>
   <body>
-    <h2 id="myPageMyName"></h2>
+    <div class="myPageMyName"><span></span></div>
     <button id="backToMainPage">
       <a href="../index.html">메인페이지로 돌아가기</a>
     </button>
@@ -79,14 +79,12 @@
     // document.write를 사용해야 하나..
     async function getMembers() {
       const snapShot = await getDatas("userInfo");
-      const myPageMyName = document.querySelector("myPageMyName");
-      
+
       snapShot.forEach((doc) => {
         const { name } = doc.data();
         console.log(`${name}님의 마이페이지입니다.`);
         // document.write(`${name}님의 마이페이지입니다.`);
       });
-
     }
     getMembers();
 
