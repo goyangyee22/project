@@ -32,34 +32,3 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-async function getDatas(collectionName){
-  const collect = await collection(db, collectionName);
-  const snapshot = await getDocs(collect);
-
-  return snapshot;
-}
-
-// 게시글을 등록할 수 있는 함수입니다. (단, 문서 ID는 수동으로 할당 됨)
-async function addDatas(collectionName, dataObj) {
-  try {
-    const collect = await collection(db, collectionName);
-    await addDoc(collect, dataObj);
-    return true;
-  } catch (error) {
-    return false;
-  }
-}
-
-// 게시글을 수정할 수 있는 함수입니다.
-async function updateDatas(collectionName, docId, updateInfoObj){
-  const docRef = await docId(db, collectionName, docId);
-  await updateDoc(docRef, updateInfoObj);
-}
-
-// 게시글을 삭제할 수 있는 함수입니다.
-async function deleteDatas(collectionName, docId){
-  const docRef = await doc(db, collectionName, docId);
-  await deleteDoc(docRef);
-}
-
-export { db, getDatas, addDatas, updateDatas, deleteDatas }
