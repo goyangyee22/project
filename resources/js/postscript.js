@@ -33,3 +33,9 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 // 게시글을 작성하는 함수입니다.
+const updateBtn = document.getElementById("updateBtn");
+updateBtn.addEventListener("click", function () {});
+
+// 게시글을 수정하는 함수입니다. (한 번에 한 개의 게시글씩 수정 가능)
+
+// 게시글을 삭제하는 함수입니다. (한 번에 여러 개의 게시글 삭제 가능)
