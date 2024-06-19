@@ -28,23 +28,24 @@ function isLoggedIn() {
 }
 
 function updateButtonState() {
-  const loginButton = document.querySelector(".spot-login a");
-  const joinButton = document.querySelector(".spot-join a");
-  const pageButton = document.querySelector(".spot-page a");
+  const loginButton = document.querySelector(".spot-login");
+  const joinButton = document.querySelector(".spot-join");
+  const pageButton = document.querySelector(".spot-page");
 
   if (isLoggedIn(true)) {
     loginButton.classList.add("disabled");
-    joinButton.style.pointerEvents = "none";
-    joinButton.style.opacity = "0.5";
-    pageButton.style.pointerEvents = "auto";
-    pageButton.style.opacity = "1";
+    loginButton.classList.remove("abled");
+    joinButton.classList.add("disabled");
+    joinButton.classList.remove("abled");
+    pageButton.classList.remove("disabled");
+    pageButton.classList.add("abled");
   } else {
-    loginButton.style.pointerEvents = "auto";
-    loginButton.style.opacity = "1";
-    joinButton.style.pointerEvents = "auto";
-    joinButton.style.opacity = "1";
-    pageButton.style.pointerEvents = "none";
-    pageButton.style.opacity = "0.5";
+    loginButton.classList.add("abled");
+    loginButton.classList.remove("disabled");
+    joinButton.classList.add("abled");
+    joinButton.classList.remove("disabled");
+    pageButton.classList.remove("abled");
+    pageButton.classList.add("disabled");
   }
 }
 updateButtonState();
