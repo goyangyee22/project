@@ -26,7 +26,9 @@ let buttonCheck = false;
 // 로그인이 되어있는 경우, 접근이 제한됩니다.
 const userInfo = sessionStorage.getItem("userInfo");
 if (userInfo) {
-  alert("이미 로그인이 되어있습니다, 새로운 계정의 회원가입을 원하시는 경우 현재 계정을 로그아웃 하시고 새로운 계정의 회원가입을 해주시기 바랍니다.");
+  alert(
+    "이미 로그인이 되어있습니다, 새로운 계정의 회원가입을 원하시는 경우 현재 계정을 로그아웃 하시고 새로운 계정의 회원가입을 해주시기 바랍니다."
+  );
   window.location.href = "../index.html";
 }
 
@@ -132,7 +134,6 @@ async function handleSignUp() {
     alert("회원가입 중 오류가 발생했습니다.");
     return false;
   }
-  // return true; // 여기 잘못되면 그냥 주석처리 ㄱㄱ
 }
 
 // 회원 목록 조회 함수
