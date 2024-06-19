@@ -31,7 +31,8 @@ header {
   position: relative;
 }
 .pet-contents {
-  width: 600px;
+  /* width: 600px; */
+  flex-grow: 1;
 }
 /* 스와이퍼 */
 .swiper-slide img {
@@ -329,6 +330,7 @@ th {
 }
 .copy {
   color: #4b70f5;
+  border: none;
 }
 .map-title {
   padding: 12px;
@@ -337,31 +339,66 @@ th {
   display: flex;
 }
 /* 방 이미지들(스와이퍼) */
-
-.room {
-  width: 500px;
-  height: 550px;
-  margin: 50px 0;
-}
-
-.room-name img {
-  width: 100%;
-  /* height: 300px; */
-}
-.room-name {
-  /* border: 1px solid black; */
+.room-main {
+  border: 1px solid pink;
   background-color: #fff;
+  position: sticky;
+  top: 0;
+  padding: 16px;
+  border-radius: 8px;
+}
+.btn {
+  display: flex;
+  gap: 12px;
+  padding-top: 20px;
+}
+.btn button {
+  /* width: 40px;
+  height: 30px; */
+  padding: 10px 8px;
+  border: none;
+  background-color: #f5dad2;
+  border-radius: 6px;
+}
+.room {
+  /* border: 1px solid pink; */
+  border-bottom: 1px dashed pink;
+  /* border-radius: 12px; */
+  display: flex;
+  width: 450px;
+  height: 200px;
+  background-color: #fff;
+  margin-bottom: 16px;
+  /* padding: 10px 8px; */
+}
+.room-a {
+  border: none;
+  margin: 0;
 }
 .room-title {
-  padding: 25px;
-}
-.room-title h3,
-p {
+  padding: 8px;
+  padding-bottom: 0;
   color: black;
 }
-.room-text {
+.room-imgs {
   padding: 12px;
 }
-.room-text div p {
-  padding: 0 10px;
+.room-imgs img {
+  border-radius: 12px;
+}
+.room-title h3 {
+  padding-bottom: 8px;
+}
+.bl {
+  font-size: 22px;
+}
+.room-titles div {
+  /* padding: 8px; */
+  color: black;
+  font-size: 18px;
+}
+.room-titles div span {
+  font-size: 16px;
+  color: #686d76;
+  padding-left: 8px;
 }
