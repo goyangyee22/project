@@ -4,178 +4,92 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Page</title>
-    <!-- <script src="https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js"></script> -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../resources/css/myPage.css" />
+    <script type="module" src="../resources/js/myPage.js"></script>
   </head>
-  <style>
-    a {
-      text-decoration: none;
-      color: #000;
-    }
-    .myPageMyName {
-      position: absolute;
-      right: 0;
-      padding: 8px 32px;
-    }
-  </style>
   <body>
-    <div class="wrapper">
-      <div class="myPageMyName"><span></span></div>
-      <div class="buttons">
-        <button id="postscript">후기(임시로 만들어놓음)</button>
-        <button id="payment">결제목록</button>
-        <button id="backToMainPage">
-          <a href="../index.html">메인페이지로 돌아가기</a>
-        </button>
-        <button id="changePassword">비밀번호 변경</button>
-        <button id="logOut" class="active">로그아웃</button>
-        <button id="deleteId">회원탈퇴</button>
+    <header>
+      <div class="wrap">
+        <h1 class="logo">
+          <a href="../index.html">
+            <span class="logo-en">BILLISHU</span>
+            <span class="logo-ko">빌리슈</span>
+          </a>
+        </h1>
+        <nav>
+          <ul class="main-menu">
+            <li><a href="../party.html">파티룸</a></li>
+            <li><a href="../meeting.html">세미나룸</a></li>
+            <li><a href="../petroom.html">펫룸</a></li>
+          </ul>
+        </nav>
+        <ul class="spot">
+          <li class="spot-login">
+            <a href="./signIn.html"
+              ><i class="fa-solid fa-right-to-bracket"></i
+            ></a>
+          </li>
+          <li class="spot-join">
+            <a href="./signUp.html"><i class="fa-solid fa-user-plus"></i></a>
+          </li>
+          <li class="spot-page">
+            <a href="./myPage.html"><i class="fa-solid fa-gear"></i></a>
+          </li>
+        </ul>
       </div>
-    </div>
+    </header>
+    <main>
+      <div class="wrap">
+        <div class="myPageMyName"><span></span></div>
+        <div class="buttons">
+          <button id="postscript">후기(임시로 만들어놓음)</button>
+          <button id="payment">결제목록</button>
+          <button id="backToMainPage">
+            <a href="../index.html">메인페이지로 돌아가기</a>
+          </button>
+          <br />
+          <button id="changePassword">비밀번호 변경</button>
+          <button id="logOut">로그아웃</button>
+          <button id="deleteId">회원탈퇴</button>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <div class="footer-info">
+        <h1 class="logo"><a href="#">빌리슈</a></h1>
+        <ul class="footer-menu">
+          <li><a href="#">이용약관</a></li>
+          <li><a href="#">개인정보처리방침</a></li>
+          <li><a href="#">운영정책</a></li>
+          <li><a href="#">고객문의</a></li>
+        </ul>
+      </div>
+      <div class="footer-contents">
+        <ul class="footer-company">
+          <li>상호명 : <span>빌리슈</span></li>
+          <li>대표 : 원빌리버블</li>
+          <li>사업자등록번호 : 000-00-00000</li>
+          <li>통신판매업신고 : 0000-대전중구-0000</li>
+          <li>영업소재지 : 대전 중구 선화동</li>
+          <li>이메일 : onebelievable@billishu.com</li>
+          <li>대표전화 : 0000-0000 (평일 오전 10시 ~ 오후 6시)</li>
+        </ul>
+        <ul class="footer-sns">
+          <li><a href="#">블로그</a></li>
+          <li><a href="#">인스타그램</a></li>
+          <li><a href="#">페이스북</a></li>
+          <li><a href="#">트위터</a></li>
+        </ul>
+      </div>
+      <div class="copy">
+        <small>
+          Copyright <strong>OneBelievable</strong> All Rights Reserved.
+        </small>
+      </div>
+    </footer>
   </body>
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
-    import {
-      doc,
-      getFirestore,
-      collection,
-      query,
-      where,
-      getDocs,
-      deleteDoc,
-      updateDoc,
-    } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
-    import { getAuth } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js";
-    import {
-      // app
-      getDatas,
-      dbService,
-      storageService,
-      addDatas,
-      updateDatas,
-      deleteDatas,
-    } from "../firebase.js";
-
-    // Firebase를 구성하는 정보
-    const firebaseConfig = {
-      apiKey: "AIzaSyAacCYNcsw241GRaLn9A5jUuS0hm0qbxbs",
-      authDomain: "project-52d4c.firebaseapp.com",
-      projectId: "project-52d4c",
-      storageBucket: "project-52d4c.appspot.com",
-      messagingSenderId: "587892298418",
-      appId: "1:587892298418:web:43d4e281e654f11750efab",
-      measurementId: "G-ZY1J3CGR0E",
-    };
-
-    // Firebase를 초기화합니다.
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
-    const auth = getAuth(app);
-
-    // 로그인이 되어있지 않은 경우, 접근이 제한됩니다.
-    const userInfo = sessionStorage.getItem("userInfo");
-    if (!userInfo) {
-      alert("로그인을 해주세요.");
-      window.location.href = "./signIn.html";
-    }
-
-    // 사용자의 이름을 기반으로 마이페이지에 접속하면 사용자의 이름 + 마이페이지입니다. 라는 문구가 출력됩니다.
-    async function getMembers() {
-      const snapShot = await getDatas("userInfo");
-
-      snapShot.forEach((doc) => {
-        const { name } = doc.data();
-        console.log(`${name}님의 마이페이지입니다.`);
-        const nameSpan = document.querySelector(".myPageMyName span");
-        nameSpan.textContent = `${name}님의 마이페이지입니다.`;
-      });
-    }
-    getMembers();
-
-    // 후기를 작성할 수 있는 곳으로 이동하는 버튼클릭 함수
-    const postscript = document.getElementById("postscript");
-    postscript.addEventListener("click", function () {
-      window.location.href = "postscript.html";
-    });
-
-    // 결제목록 버튼클릭 함수
-    const payment = document.getElementById("payment");
-    payment.addEventListener("click", function () {
-      window.location.href = "payment.html";
-    });
-
-    // 비밀번호 변경 버튼클릭 함수
-    const changePassword = document.getElementById("changePassword");
-    changePassword.addEventListener("click", function () {
-      window.location.href = "changePassword.html";
-    });
-
-    // 로그아웃 버튼클릭 함수
-    const logOut = document.getElementById("logOut");
-    logOut.addEventListener("click", function () {
-      if (confirm("정말 로그아웃 하시겠습니까?")) {
-        sessionStorage.removeItem("userInfo");
-        alert("로그아웃 되었습니다.");
-        window.location.href = "../index.html";
-      }
-    });
-
-    // 회원탈퇴 버튼클릭 함수 (getDocs를 이용하여 만들 것)
-    const deleteId = document.getElementById("deleteId");
-    deleteId.addEventListener("click", async function () {
-      // 삭제를 하기 전 확인 메세지를 표시합니다.
-      if (confirm("정말 회원 탈퇴 하시겠습니까?")) {
-        try {
-          // 세션 스토리지에서 사용자 정보를 가져옵니다.
-          const userInfoString = sessionStorage.getItem("userInfo");
-          console.log(JSON.parse(userInfoString).id);
-
-          // Firestore에서 "userInfo" 컬렉션을 참조하는 변수 생성
-          const usersRef = collection(db, "userInfo");
-
-          // "userInfo" 컬렉션에서 "id" 필드가 JSON.parse(userInfoString).id와 같은 문서만을 검색하는 쿼리를 생성합니다.
-          const q = query(
-            usersRef,
-            where("id", "==", JSON.parse(userInfoString).id)
-          );
-
-          // 생성한 쿼리를 Firestore에 실행하여 결과를 가져옵니다.
-          const querySnapshot = await getDocs(q);
-
-          // 검색된 문서들 중 첫 번째 문서의 ID를 추출합니다. (자동으로 주어진 문서 고유 ID)
-          const docId = querySnapshot.docs[0].id;
-          console.log(docId);
-
-          // 세션 스토리지에 사용자 정보가 있는지 확인합니다.
-          if (userInfoString) {
-            // 세션 스토리지에 저장된 사용자 정보를 객체로 전환합니다.
-            const userInfo = JSON.parse(userInfoString);
-
-            // 사용자의 ID 및 컬렉션 "userInfo"를 불러옵니다.
-            // const userId = userInfo.docId;
-            const collectionName = "userInfo";
-
-            // Firebase에서 사용자 정보 삭제
-            await deleteDatas(collectionName, docId);
-
-            // 세션 스토리지에서 사용자 정보 제거
-            sessionStorage.removeItem("userInfo");
-
-            // 회원 탈퇴가 완료되었음을 알리는 메세지 표시
-            alert("회원 탈퇴가 성공적으로 완료 되었습니다.");
-
-            // 회원 탈퇴 후 메인 페이지로 이동
-            window.location.href = "../index.html";
-          } else {
-            // 세션 스토리지에 사용자 정보가 없으면 오류 메세지 표시
-            throw new Error("사용자 정보를 찾을 수 없습니다.");
-          }
-        } catch (error) {
-          // 오류가 발생하면 콘솔에 오류를 출력하고 오류 메세지 표시
-          console.error("회원 탈퇴 중 오류 발생: ", error);
-          alert("회원 탈퇴 중 오류가 발생했습니다. 다시 시도해 주십시오.");
-        }
-      }
-    });
-  </script>
 </html>

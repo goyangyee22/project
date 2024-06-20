@@ -259,12 +259,12 @@
                     이용이 제한 될 수 있습니다.
                   </li>
                   <li>
-                    <i class="fa-solid fa-paw"></i>애견은 1마리당 10kg 미만으로
-                    제한됩니다.
+                    <i class="fa-solid fa-paw"></i> 반려견 입장 제한구역 이용시
+                    퇴장 조치가 있을 수 있습니다.
                   </li>
                   <li>
-                    <i class="fa-solid fa-paw"></i>10kg 이상인 경우 10,000원의
-                    추가요금이 발생합니다.
+                    <i class="fa-solid fa-paw"></i> 입실 기준 및 이용사항 거부
+                    시 퇴실 조치가 있을 수 있습니다.
                   </li>
                 </ul>
               </div>
@@ -272,15 +272,19 @@
               <div class="times">
                 <table>
                   <tr>
-                    <th class="time" colspan="2">입/퇴실 시간</th>
+                    <th class="time" colspan="2">이용 시간</th>
                   </tr>
                   <tr>
-                    <th>입실</th>
-                    <td>15:00</td>
+                    <th>오전권</th>
+                    <td>09:00 ~ 14:00</td>
                   </tr>
                   <tr>
-                    <th>퇴실</th>
-                    <td>12:00</td>
+                    <th>오후권</th>
+                    <td>15:00 ~ 21:00</td>
+                  </tr>
+                  <tr>
+                    <th>종일권</th>
+                    <td>09:00 ~ 21:00</td>
                   </tr>
                 </table>
               </div>
@@ -303,9 +307,12 @@
               <h3 class="infor-title">지도</h3>
               <div id="map" style="width: 500px; height: 400px"></div>
               <div class="map-title">
-                대전광역시 중구 중앙로121번길 20 빌리슈
-                <button class="copy">
-                  <i class="fa-solid fa-copy"></i>주소복사
+                <div id="textToCopy">
+                  대전광역시 중구 중앙로121번길 20 빌리슈
+                </div>
+
+                <button id="copy">
+                  <i class="fa-solid fa-copy"></i> <span> 주소복사 </span>
                 </button>
               </div>
             </div>
@@ -433,7 +440,7 @@
             <div class="room">
               <div class="room-imgs">
                 <img
-                  src="./resources/images/petroom/스위트1.jpg"
+                  src="./resources/images/petroom/sweetimg1.jpg"
                   width="200px"
                   height="100%"
                   alt=""
@@ -459,6 +466,7 @@
                         class="btn btn-primary"
                         data-bs-toggle="modal"
                         data-bs-target="#seemore"
+                        onclick="petroom('sweetimg')"
                       >
                         <i class="fa-solid fa-images"></i>사진 모두보기
                       </button>
@@ -482,7 +490,7 @@
             <div class="room">
               <div class="room-imgs">
                 <img
-                  src="./resources/images/petroom/디럭스6.jpg"
+                  src="./resources/images/petroom/Deluxeimg6.jpg"
                   width="200px"
                   height="100%"
                   alt=""
@@ -508,6 +516,7 @@
                         class="btn btn-primary"
                         data-bs-toggle="modal"
                         data-bs-target="#seemore"
+                        onclick="petroom('Deluxeimg')"
                       >
                         <i class="fa-solid fa-images"></i>사진 모두보기
                       </button>
@@ -530,7 +539,7 @@
             <div class="room room-a">
               <div class="room-imgs">
                 <img
-                  src="./resources/images/petroom/패밀리2.jpg"
+                  src="./resources/images/petroom/familyimg2.jpg"
                   width="200px"
                   height="100%"
                   alt=""
@@ -556,6 +565,7 @@
                         class="btn btn-primary"
                         data-bs-toggle="modal"
                         data-bs-target="#seemore"
+                        onclick="petroom('familyimg')"
                       >
                         <i class="fa-solid fa-images"></i>사진 모두보기
                       </button>
@@ -635,6 +645,8 @@
         </div>
       </div>
     </div>
+
+    <!-- 이미지 팝업 -->
     <div
       class="modal fade"
       id="seemore"
@@ -655,35 +667,13 @@
           </div>
           <div class="modal-body room-body">
             <!-- form -->
-            <div class="swiper petroom">
-              <div class="swiper-wrapper" id="roomimg">
-                <div class="swiper-slide roomimg">
-                  <img src="./resources/images/petroom/스위트1.jpg" alt="" />
-                </div>
-                <div class="swiper-slide roomimg">
-                  <img src="./resources/images/petroom/스위트2.jpg" alt="" />
-                </div>
-                <div class="swiper-slide roomimg">
-                  <img src="./resources/images/petroom/스위트3.jpg" alt="" />
-                </div>
-                <div class="swiper-slide roomimg">
-                  <img src="./resources/images/petroom/스위트4.jpg" alt="" />
-                </div>
-                <div class="swiper-slide roomimg">
-                  <img src="./resources/images/petroom/스위트5.jpg" alt="" />
-                </div>
-                <div class="swiper-slide roomimg">
-                  <img src="./resources/images/petroom/스위트6.jpg" alt="" />
-                </div>
-                <div class="swiper-slide roomimg">
-                  <img src="./resources/images/petroom/스위트7.jpg" alt="" />
-                </div>
-                <div class="swiper-slide roomimg">
-                  <img src="./resources/images/petroom/스위트8.jpg" alt="" />
-                </div>
+            <!-- <div class="swiper petroom">
+              <div class="swiper-wrapper" id="sweetimg">
+
+
               </div>
               <div class="swiper-pagination"></div>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
