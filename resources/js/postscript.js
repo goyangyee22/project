@@ -105,6 +105,7 @@ updateBtn.addEventListener("click", async function (e) {
     addObj[input.name] = input.value;
   });
   const result = await addDatas("board", addObj);
+  console.log(result);
   // const uploadName = { name: userData.name };
   const date = new Date();
   // 해당 연도를 표시합니다.
@@ -121,13 +122,14 @@ updateBtn.addEventListener("click", async function (e) {
     "beforeend",
     `
     <tr data-id=${result.id}>
-    <td class="name">${name}</td>
+    <td class="name">${userData.name}</td>
     <td class="title">${title}</td>
     <td class="content">${content}</td>
     <td class="date">${`${year}년 ${month}월 ${day}일`}</td>
     </tr>
     `
   );
+  console.log(result.id, userData.name, title, content, year, month, day);
 });
 
 // 게시글을 수정하는 함수입니다. (한 번에 한 개의 게시글씩 수정 가능)
