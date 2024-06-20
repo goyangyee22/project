@@ -44,17 +44,25 @@ if (!userInfo) {
 const updateBtn = document.getElementById("updateBtn");
 updateBtn.addEventListener("click", async (event) => {
   event.preventDefault();
+
+  const boardInfo = {
+    name: userInfo.name,
+    date: Date(),
+    title: document.querySelector("input[name='title']").value,
+    content: document.querySelector("input[name='content']").value,
+  };
+
   const userInfo = sessionStorage.getItem("userInfo");
-  const usersRef = collection(db, "userInfo");
+  const usersRef = collection(dbService, "userInfo");
   const q = query(usersRef, where("name", "==", JSON.parse(userInfo).name));
   const querySnapshot = await getDocs(q);
+  querySnapshot.forEach((doc) => {
+    const { name } = doc.data();
+    console.log(`${name}님의 이름으로 후기를 남깁니다.`);
+  });
 
-  // const boardInfo = {
-  //   name: ,
-  //   date: ,
-  //   title: ,
-  //   content: ,
-  // }
+  // Firebase에 게시글에 대한 정보를 저장합니다.
+  const result = await addDatas("board", boardInfo);
   // 파이어베이스에 데이터를 저장
   // 작성 결과가 성공 ==> 페이지 리로딩
   // 결과가 실패 ==> "작성을 실패했습니다."
