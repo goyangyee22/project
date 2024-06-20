@@ -87,8 +87,8 @@ const paymentData = {
   petroom2: {
     title: "펫룸 디럭스",
     desc: "애견동물과 함께 힐링을 즐길 수 있는 공간🐶",
-    standardPeople: 6,
-    maximumPeople: 8,
+    standardPeople: 4,
+    maximumPeople: 6,
     cost: {
       day: 80000,
       night: 90000,
