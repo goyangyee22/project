@@ -12,16 +12,14 @@ let heroSwiper = new Swiper('.hero-swiper', {
 
 let previewSwiper = new Swiper('.preview-slide', {
   loop: true,
-  speed: 8000,
-  // loopAdditionalSlides: 1,
-  slidesPerView: 5,
+  speed: 10000,
+  slidesPerView: 3,
+  spaceBetween: 16,
   autoplay: {
     delay: 0,
     disableOnInteraction: false,
   },
 });
-
-// mapRendering();
 
 // 옵션 리스트
 const infoOptions = [
@@ -103,3 +101,31 @@ infoOptions.forEach(({ section }) => {
     `#option-${section}`
   );
 });
+
+/* 메뉴 클릭 시 섹션 이동 */
+const sectionMenus = document.querySelectorAll('#section-menu a');
+let isScrolling = false;
+
+function setActiveLink(link) {
+  sectionMenus.forEach((a) => a.classList.remove('active'));
+  link.classList.add('active');
+}
+
+sectionMenus.forEach((link) => {
+  link.addEventListener('click', function (e) {
+    e.preventDefault();
+    isScrolling = true;
+
+    setActiveLink(link);
+
+    const target = document.querySelector(link.getAttribute('href'));
+
+    target.scrollIntoView({ behavior: 'smooth' });
+
+    setTimeout(() => {
+      isScrolling = false;
+    }, 1000);
+  });
+});
+
+// mapRendering();
