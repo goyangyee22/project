@@ -49,9 +49,13 @@ async function getMembers() {
     // 게시글의 정보를 저장할 객체를 생성합니다.
     const { name, title, content, date = new Date() } = doc.data();
 
-    // 해당 연도, 월, 일을 표시합니다, 해당 월을 표시하는 getMonth()는 0부터 시작하므로 1을 더해줍니다.
+    // 해당 연도를 표시합니다.
     const year = date.getFullYear();
+
+    // 해당 월을 표시하는 getMonth()는 0부터 시작하므로 1을 더해줍니다.
     const month = date.getMonth() + 1;
+
+    // 해당 일을 표시합니다.
     const day = date.getDate();
 
     tableTag.insertAdjacentHTML(
@@ -75,7 +79,7 @@ updateBtn.addEventListener("click", async function (e) {
   e.preventDefault();
   // 작성자명을 불러오는 함수입니다.
   const userNameString = sessionStorage.getItem("userInfo");
-  const userInfo = userNameString;
+  const userInfo = JSON.parse(userNameString);
   const name = userInfo;
 
   // Firestore에서 "userInfo" 컬렉션을 참조하는 변수 생성
@@ -92,8 +96,6 @@ updateBtn.addEventListener("click", async function (e) {
   const userData = userDoc.data();
   console.log(userDoc);
   console.log(userData.name);
-
-  const dataName = userData.name;
 
   // 제목, 내용의 입력값을 받아옵니다.
   const inputs = document.querySelectorAll(".form-container input");
@@ -113,13 +115,13 @@ updateBtn.addEventListener("click", async function (e) {
 
   // 해당 일을 표시합니다.
   const day = date.getDate();
-  const { displayName = name, title, content } = addObj;
+  const { title, content } = addObj;
   const tableTag = document.querySelector("table");
   tableTag.firstElementChild.insertAdjacentHTML(
     "beforeend",
     `
     <tr data-id=${result.id}>
-    <td class="name">${displayName}</td>
+    <td class="name">${name}</td>
     <td class="title">${title}</td>
     <td class="content">${content}</td>
     <td class="date">${`${year}년 ${month}월 ${day}일`}</td>
