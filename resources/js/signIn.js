@@ -31,16 +31,19 @@ if (userInfo) {
   window.location.href = "../index.html";
 }
 
+// 회원가입 버튼을 누르면 회원가입 페이지로 이동합니다.
 const signUpButton = document.getElementById("signUpButton");
 signUpButton.addEventListener("click", async (event) => {
   event.preventDefault();
   window.location.href = "./signUp.html";
 });
 
+// 로그인 버튼을 누르면 로그인이 되는 함수입니다.
 const signInButton = document.getElementById("signInButton");
 signInButton.addEventListener("click", async (event) => {
   event.preventDefault();
 
+  // 입력 한 아이디와 비밀번호의 값을 받아 옵니다.
   const id = document.getElementById("id").value;
   const pw = document.getElementById("pw").value;
 
@@ -51,6 +54,7 @@ signInButton.addEventListener("click", async (event) => {
   try {
     const querySnapshot = await getDocs(q);
 
+    // id가 있을 경우 실행되는 함수입니다.
     if (!querySnapshot.empty) {
       // Firestore에서 찾은 사용자 정보
       const userDoc = querySnapshot.docs[0];
@@ -58,8 +62,13 @@ signInButton.addEventListener("click", async (event) => {
       console.log(userInfo);
       // 비밀번호를 비교합니다.
       if (userInfo.pw === pw) {
+        // (이름)님이 로그인 하셨습니다! 라는 알림창이 뜹니다.
         alert(`${userInfo.name}님이 로그인 하셨습니다!`);
+
+        // 세션 스토리지에 입력한 회원 정보가 저장 됩니다.
         sessionStorage.setItem("userInfo", JSON.stringify(userInfo));
+
+        // 메인 홈페이지로 이동합니다.
         window.location.href = "../index.html";
       } else {
         alert("아이디 또는 비밀번호가 잘못되었거나 공백입니다.");
