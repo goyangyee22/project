@@ -45,12 +45,21 @@ const updateBtn = document.getElementById("updateBtn");
 updateBtn.addEventListener("click", async function (e) {
   e.preventDefault();
 
+  // 작성자명을 불러오는 함수입니다.
+  const userName = await getDatas("userInfo");
+
+  // 게시글의 객체를 생성합니다.
   const boardInfo = {
-    date: new date(),
+    name: userName,
+    date: new Date(),
     title: document.querySelector("input[name='title']").value,
     content: document.querySelector("input[name='content']").value,
   };
   const board = await addDatas("board", boardInfo);
+
+  // Firebase에 게시글의 정보를 추가합니다.
+  try {
+  } catch (error) {}
 });
 
 // 게시글을 수정하는 함수입니다. (한 번에 한 개의 게시글씩 수정 가능)
