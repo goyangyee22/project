@@ -46,6 +46,7 @@ updateBtn.addEventListener("click", async (event) => {
   event.preventDefault();
   const postInfo = {
     name: document.querySelector("userInfo", name),
+    // 날짜 추가?
     title: document.querySelector("input[name='title']").value,
     content: document.querySelector("input[name='content']").value,
   };
