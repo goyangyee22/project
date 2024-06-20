@@ -221,6 +221,7 @@ section {
 }
 /* 이용시간 */
 .times {
+  text-align: center;
   padding: 10px;
   margin-bottom: 50px;
 }
@@ -328,9 +329,13 @@ th {
 .mapst {
   margin-bottom: 50px;
 }
-.copy {
+#copy {
   color: #4b70f5;
   border: none;
+  background-color: transparent;
+}
+#copy span:hover {
+  border-bottom: 1px solid black;
 }
 .map-title {
   padding: 12px;

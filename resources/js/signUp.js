@@ -16,8 +16,8 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
 
 // 회원가입 할 때 아이디 및 비밀번호에 대한 정규식입니다.
-let idEx = /^[0-9a-z]{4,16}$/g;
-let pwEx = /^[0-9A-Za-z\d$@$!%*?&]{4,16}/g;
+const idEx = /^[0-9a-z]{4,16}$/g;
+const pwEx = /^[0-9A-Za-z\d$@$!%*?&]{4,16}/g;
 
 // 아이디 중복 확인 및 버튼 클릭 여부를 체크하기 위해 변수를 생성합니다.
 let idCheck = false;
@@ -116,24 +116,10 @@ async function handleSignUp() {
     alert("비밀번호가 일치하지 않습니다.");
     return false;
   }
+  return true;
 
   // 중복되지 않는 ID일 경우 Firestore에 데이터를 저장합니다.
   // 데이터를 저장하는 위치는 Firebase의 "userInfo" 컬렉션입니다.
-  try {
-    console.log(name, id, pw);
-    // userInfo 객체 생성
-    const userInfo = { name, id, pw };
-    const docId = await addDatas("userInfo", userInfo);
-    console.log(userInfo, docId);
-    alert("회원가입이 완료되었습니다.");
-    saveSession(userInfo, docId);
-    // getMembers();
-    window.location.href = "../index.html";
-  } catch (error) {
-    console.error("오류가 발생했습니다: ", error);
-    alert("회원가입 중 오류가 발생했습니다.");
-    return false;
-  }
 }
 
 // 회원 목록 조회 함수
@@ -165,33 +151,30 @@ signUpButton.addEventListener("click", async function () {
   }
 
   signUpButton.removeEventListener("click", this);
-  // 폼 요소들을 객체로 변환합니다. (필요 없다 해서)
-  // const formEl = document.forms[0];
-  // const formElChildren = formEl.elements;
-  // const formElChildrenArr = [...formElChildren];
-
-  // const joinFormObj = formElChildrenArr.reduce(
-  //   (acc, cur) => ({ ...acc, [cur.name]: cur.value }),
-  //   {}
-  // );
-  // console.log(joinFormObj);
-
-  // const usersRef = collection(db, "userInfo");
-  // const q = query(usersRef, where("id", "==", id));
-  // const querySnapshot = await getDocs(q);
 
   // 사용자 정보 객체를 생성합니다.
   const userInfo = {
-    // docId: querySnapshot.docs[0],
     name: document.querySelector("input[name='name']").value,
     id: document.querySelector("input[name='id']").value,
     pw: document.querySelector("input[name='pw']").value,
   };
 
-  // Firebase에 사용자 정보를 추가합니다.
   const result = await addDatas("userInfo", userInfo);
-  // window.location.href = "../index.html";
-  console.log(result);
+  try {
+    // Firebase에 사용자 정보 객체를 추가합니다.
+    const usersRef = collection(dbService, "userInfo");
+    const q = query(usersRef, where("id", "==", userInfo.id));
+    const querySnapshot = await getDocs(q);
+    const userDoc = querySnapshot.docs[0];
+    let sessionUserInfo = { ...userDoc.data(), docId: userDoc.id };
+    alert("회원가입이 완료되었습니다.");
+    saveSession(sessionUserInfo);
+    window.location.href = "../pages/myPage.html";
+  } catch (error) {
+    console.error("오류가 발생했습니다: ", error);
+    alert("회원가입 중 오류가 발생했습니다.");
+    return false;
+  }
 
   // 처리 결과에 따른 회원 목록 조회 함수 또는 실패 메세지를 표시합니다.
   result ? getMembersHandlerTrClick() : alert("저장을 실패했습니다");
