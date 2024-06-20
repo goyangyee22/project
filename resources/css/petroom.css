@@ -353,9 +353,10 @@ th {
   padding: 16px;
   border-radius: 8px;
 }
-.btn {
+.btnwrap {
   display: flex;
   gap: 12px;
+  border: none;
   /* padding-top: 20px; */
 }
 .btn-primary {
@@ -365,11 +366,15 @@ th {
   /* justify-content: center; */
   align-items: center;
 }
-.btn button:hover {
+.btnwrap button:active {
+  background-color: #ca8787;
+}
+
+.btnwrap button:hover {
   background-color: #ca8787;
   color: #fff;
 }
-.btn button {
+.btnwrap button {
   width: 100%;
   height: 30px;
   padding: 2px 4px;
