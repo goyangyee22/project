@@ -239,3 +239,29 @@ footer {
   border-top: 1px solid #ccc;
   text-align: center;
 }
+
+/* 미디어쿼리 */
+/* media - desktop */
+@media screen and (min-width: 1024px) {
+  :root {
+    font-size: 16px;
+  }
+}
+
+/* media - tablet */
+@media screen and (max-width: 1023px) {
+  :root {
+    font-size: 14px;
+  }
+  .wrap {
+    width: 100%;
+    max-width: 800px;
+  }
+}
+
+/* media - mobile */
+@media screen and (max-width: 767px) {
+  :root {
+    font-size: 12px;
+  }
+}

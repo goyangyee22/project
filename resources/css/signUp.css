@@ -104,7 +104,6 @@ body {
   background-color: var(--accent-color);
   color: var(--main-color);
   cursor: pointer;
-  transition: 0.3s;
 }
 .join-btn:hover {
   background-color: var(--hover-color);

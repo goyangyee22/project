@@ -27,19 +27,24 @@ body {
   background-color: #fff;
   box-shadow: 0 0 10px 0 var(--common-color);
 }
+
 #signInForm {
   display: flex;
   flex-direction: column;
   gap: 32px;
 }
 
-#signInForm h1 {
+/* 로그인 헤더 */
+.login-header h1 {
   font-size: 48px;
   text-align: center;
 }
 
 /* 인풋그룹 */
-.join-content label {
+.login-content {
+  position: relative;
+}
+.login-content label {
   position: absolute;
   top: 0;
   left: 0;
@@ -48,7 +53,7 @@ body {
   pointer-events: none;
   transition: 0.3s;
 }
-.join-content input {
+.login-content input {
   display: block;
   width: 100%;
   padding: 8px;
@@ -59,19 +64,19 @@ body {
   color: var(--font-color);
   transition: 0.3s;
 }
-.join-content input::placeholder {
+.login-content input::placeholder {
   color: rgba(50, 61, 76, 0.5);
   transition: 0.3s;
 }
-.join-content input:focus::placeholder {
+.login-content input:focus::placeholder {
   color: rgba(50, 61, 76, 0.3);
 }
-.join-content input:focus + label {
+.login-content input:focus + label {
   top: -16px;
   font-size: 14px;
   color: var(--hover-color);
 }
-.join-content input:focus + label + .highlight {
+.login-content input:focus + label + .highlight {
   width: 100%;
 }
 .highlight {
@@ -82,4 +87,59 @@ body {
   height: 2px;
   background-color: var(--hover-color);
   transition: 0.3s;
+}
+
+/* 로그인 푸터 */
+.login-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+}
+
+.btn-wrap {
+  width: 100%;
+}
+
+/* 로그인 버튼 */
+.login-btn {
+  margin-bottom: 16px;
+  padding: 16px 0;
+  width: 100%;
+  font-size: 16px;
+  border-radius: 8px;
+  background-color: var(--accent-color);
+  color: var(--main-color);
+  cursor: pointer;
+}
+.login-btn:hover {
+  background-color: var(--hover-color);
+}
+
+.links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--sub-color);
+}
+
+.links a {
+  display: inline-block;
+  padding: 4px 8px;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.links a:hover {
+  color: var(--hover-color);
+}
+
+.footer-desc {
+  line-height: 1.5;
+  text-align: center;
+  font-size: 14px;
+}
+.footer-desc span {
+  text-decoration: underline;
 }

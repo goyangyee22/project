@@ -14,30 +14,49 @@
   <body>
     <div id="wrapper">
       <div class="container">
+        <div class="login-header">
+          <h1>빌리슈 - 로그인</h1>
+        </div>
         <form id="signInForm" name="signInForm">
-          <h1>로그인</h1>
-          <div>
-            <input type="text" name="id" id="id" required />
-            <label class="formInput">아이디</label>
+          <div class="login-content">
+            <input
+              type="text"
+              name="id"
+              id="id"
+              autocomplete="off"
+              placeholder="아이디를 입력해 주세요."
+              required
+            />
+            <label for="id" class="formInput">아이디</label>
             <span class="highlight"></span>
           </div>
-          <div>
-            <input type="password" name="pw" id="pw" required />
-            <label class="formInput">비밀번호</label>
+          <div class="login-content">
+            <input
+              type="password"
+              name="pw"
+              id="pw"
+              autocomplete="off"
+              placeholder="비밀번호를 입력해 주세요."
+              required
+            />
+            <label for="pw" class="formInput">비밀번호</label>
             <span class="highlight"></span>
           </div>
         </form>
-        <div class="btn-wrap">
-          <button id="signUpButton">회원가입</button>
-          <button id="signInButton">로그인</button>
-          <button id="cancel" onclick="location.href='../index.html'">
-            취소
-          </button>
+        <div class="login-footer">
+          <div class="btn-wrap">
+            <button id="signInButton" class="login-btn">로그인</button>
+            <div class="links">
+              <a id="signUpButton" href="./signUp.html">회원가입</a>
+              <span>|</span>
+              <a id="cancel" href="../index.html">취소</a>
+            </div>
+          </div>
+          <div class="footer-desc">
+            아이디 또는 비밀번호를 분실하셨을 경우 <br />
+            <span>관리자에게 문의</span>하여 주시기 바랍니다.
+          </div>
         </div>
-        <h3>
-          ID, 비밀번호를 분실하셨을 경우 <br />
-          관리자에게 문의하여 주시기 바랍니다.
-        </h3>
       </div>
     </div>
   </body>
