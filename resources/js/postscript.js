@@ -52,7 +52,7 @@ updateBtn.addEventListener("click", async function (e) {
     // // Firestore에서 "userInfo" 컬렉션을 참조하는 변수 생성
     // const usersRef = collection(dbService, "userInfo");
 
-    // // "userInfo" 컬렉션에서 "id" 필드가 JSON.parse(userInfoString).id와 같은 문서만을 검색하는 쿼리를 생성합니다.
+    // // "userInfo" 컬렉션에서 "name" 필드가 JSON.parse(userInfoString).name과 같은 문서만을 검색하는 쿼리를 생성합니다.
     // const q = query(
     //   usersRef,
     //   where("name", "==", JSON.parse(userNameString).name)
