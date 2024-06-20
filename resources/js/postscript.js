@@ -80,8 +80,8 @@ updateBtn.addEventListener("click", async function (e) {
     // 게시글 작성에 성공하면 새로고침, 실패하면 알림창을 띄웁니다.
     if (board) {
       console.log(boardInfo);
+      console.log(boardInfo.name);
       alert("게시글이 성공적으로 작성 되었습니다.");
-      // window.location.reload();
     } else {
       alert("게시글 작성에 실패하였습니다.");
     }
@@ -91,6 +91,25 @@ updateBtn.addEventListener("click", async function (e) {
     return false;
   }
 });
+
+// 작성한 게시글을 화면에 반영합니다.
+
+async function getMembers() {
+  const querySnapshot = await getDatas("board");
+  const tableTag = document.querySelector("table");
+  querySnapshot.forEach((doc) => {
+    const { name, date, title, content } = doc.data();
+    tableTag.insertAdjacentHTML("beforeend", `
+      <tr data-id=${doc.id}>
+      <td class="name">${name}</td>
+      <td class="date">${date}</td>
+      <td class="title">${title}</td>
+      <td class="content">${content}</td>
+      </tr>
+      `);
+  });
+}
+getMembers();
 
 // 게시글을 수정하는 함수입니다. (한 번에 한 개의 게시글씩 수정 가능)
 
