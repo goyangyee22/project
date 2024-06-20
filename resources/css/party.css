@@ -327,12 +327,12 @@ header {
   cursor: pointer;
 }
 
-.modal-img > .swiper {
+/* .modal-img > .swiper {
   width: 300px;
   height: 300px;
-}
+} */
 
-.swiper-slide {
+/* .swiper-slide {
   text-align: center;
   font-size: 18px;
 
@@ -340,12 +340,12 @@ header {
   justify-content: center;
   align-items: center;
   width: 300px;
-  /* height: 300px; */
+  height: 300px;
 }
-
+*/
 .swiper-slider img {
   display: block;
   width: 300px;
   height: 300px;
-  object-fit: cover;
+  /* object-fit: cover; */
 }

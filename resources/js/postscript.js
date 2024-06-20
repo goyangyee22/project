@@ -90,20 +90,26 @@ updateBtn.addEventListener("click", async function (e) {
     alert("게시글 작성 중 오류가 발생했습니다.");
     return false;
   }
-
-  // 작성한 게시글을 화면에 반영합니다.
-  const inputs = document.querySelectorAll(".container input");
-  const inputsArr = Array.from(inputs);
-  const addObj = {};
-  "beforeend",
-    `
-  <tr>
-              <td>랄로</td>
-              <td>불편해.</td>
-              <td>자세를 고쳐 앉아.</td>
-            </tr>
-  `;
 });
+
+// 작성한 게시글을 화면에 반영합니다.
+
+async function getMembers() {
+  const querySnapshot = await getDatas("board");
+  const tableTag = document.querySelector("table");
+  querySnapshot.forEach((doc) => {
+    const { name, date, title, content } = doc.data();
+    tableTag.insertAdjacentHTML("beforeend", `
+      <tr data-id=${doc.id}>
+      <td class="name">${name}</td>
+      <td class="date">${date}</td>
+      <td class="title">${title}</td>
+      <td class="content">${content}</td>
+      </tr>
+      `);
+  });
+}
+getMembers();
 
 // 게시글을 수정하는 함수입니다. (한 번에 한 개의 게시글씩 수정 가능)
 
