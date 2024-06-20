@@ -12,6 +12,7 @@ import {
 import {
   getFirestore,
   collection,
+  addDoc,
   query,
   where,
   getDocs,
@@ -48,30 +49,42 @@ updateBtn.addEventListener("click", async function (e) {
   try {
     // 작성자명을 불러오는 함수입니다.
     const userNameString = sessionStorage.getItem("userInfo");
+    const userInfo = JSON.parse(userNameString);
 
-    // // Firestore에서 "userInfo" 컬렉션을 참조하는 변수 생성
-    // const usersRef = collection(dbService, "userInfo");
+    // Firestore에서 "userInfo" 컬렉션을 참조하는 변수 생성
+    const usersRef = collection(dbService, "userInfo");
 
-    // // "userInfo" 컬렉션에서 "name" 필드가 JSON.parse(userInfoString).name과 같은 문서만을 검색하는 쿼리를 생성합니다.
-    // const q = query(
-    //   usersRef,
-    //   where("name", "==", JSON.parse(userNameString).name)
-    // );
+    // "userInfo" 컬렉션에서 "name" 필드가 JSON.parse(userInfoString).name과 같은 문서만을 검색하는 쿼리를 생성합니다.
+    const q = query(usersRef, where("name", "==", userInfo.name));
 
-    // // 생성한 쿼리를 Firestore에 실행하여 결과를 가져옵니다.
-    // const querySnapshot = await getDocs(q);
+    // 생성한 쿼리를 Firestore에 실행하여 결과를 가져옵니다.
+    const querySnapshot = await getDocs(q);
 
-    // // 검색된 문서들 중 첫 번째 문서의 ID를 추출합니다. (자동으로 주어진 문서 고유 ID)
-    // const docId = querySnapshot.docs[0].id;
+    // 검색된 문서들 중 첫 번째 문서의 ID를 추출합니다. (자동으로 주어진 문서 고유 ID)
+    const userDoc = querySnapshot.docs[0];
+    const userData = userDoc.data();
 
     // 게시글의 객체를 생성합니다.
     const boardInfo = {
-      name: userNameString.name,
+      // "userInfo" 컬렉션 안의 "name" 값을 사용합니다.
+      name: userData.name,
       date: new Date(),
       title: document.querySelector("input[name='title']").value,
       content: document.querySelector("input[name='content']").value,
     };
-    const board = await addDatas("board", boardInfo);
+
+    // Firestore의 "board" 컬렉션에 게시글을 추가합니다.
+    const boardRef = collection(dbService, "board");
+    const board = await addDoc(boardRef, boardInfo);
+
+    // 게시글 작성에 성공하면 새로고침, 실패하면 알림창을 띄웁니다.
+    if (board) {
+      console.log(boardInfo);
+      alert("게시글이 성공적으로 작성 되었습니다.");
+      // window.location.reload();
+    } else {
+      alert("게시글 작성에 실패하였습니다.");
+    }
   } catch (error) {
     console.error("오류가 발생했습니다: ", error);
     alert("게시글 작성 중 오류가 발생했습니다.");
