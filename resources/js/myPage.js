@@ -53,6 +53,8 @@ async function getMembers() {
     const { name } = doc.data();
     console.log(`${name}님의 마이페이지입니다.`);
     const nameSpan = document.querySelector(".myPageMyName span");
+
+    // 마이페이지에 접속한 경우 우측 상단에 (이름)님의 마이페이지라는 텍스트를 띄웁니다.
     nameSpan.textContent = `${name}님의 마이페이지입니다.`;
   });
 }
