@@ -74,7 +74,7 @@ const paymentData = {
   },
   petroom1: {
     title: "펫룸 스위트",
-    desc: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Id, saepe necessitatibus aut harum impedit beatae minima ut! Nisi laboriosam, dolorum iure repudiandae natus harum eos vitae commodi optio ut quasi?",
+    desc: "애견동물과 함께 힐링을 즐길 수 있는 공간🐶",
     standardPeople: 2,
     maximumPeople: 4,
     cost: {
@@ -86,7 +86,7 @@ const paymentData = {
   },
   petroom2: {
     title: "펫룸 디럭스",
-    desc: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Id, saepe necessitatibus aut harum impedit beatae minima ut! Nisi laboriosam, dolorum iure repudiandae natus harum eos vitae commodi optio ut quasi?",
+    desc: "애견동물과 함께 힐링을 즐길 수 있는 공간🐶",
     standardPeople: 6,
     maximumPeople: 8,
     cost: {
@@ -98,7 +98,7 @@ const paymentData = {
   },
   petroom3: {
     title: "펫룸 패밀리",
-    desc: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Id, saepe necessitatibus aut harum impedit beatae minima ut! Nisi laboriosam, dolorum iure repudiandae natus harum eos vitae commodi optio ut quasi?",
+    desc: "애견동물과 함께 힐링을 즐길 수 있는 공간🐶",
     standardPeople: 6,
     maximumPeople: 8,
     cost: {

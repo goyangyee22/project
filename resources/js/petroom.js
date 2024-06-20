@@ -66,6 +66,6 @@ function petroom(room) {
   });
 }
 // 주소 복사하기
-
+document.getElementById();
 //
 mapRendering();
