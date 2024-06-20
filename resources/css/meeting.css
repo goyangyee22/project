@@ -147,11 +147,19 @@ header {
   gap: 20px;
 }
 
+.coon {
+  padding: 0;
+}
+
 .coon_box {
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 20px;
+}
+
+.review_list {
+  padding: 0;
 }
 
 .review-contents {
@@ -182,7 +190,7 @@ header {
 }
 
 .date {
-  padding-top: 8px;
+  padding: 0;
   font-size: 12px;
 }
 
