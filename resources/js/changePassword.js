@@ -72,13 +72,14 @@ updateBtn.addEventListener("click", async function (e) {
     await updateDoc(userDocRef, {
       pw: newPassword,
     });
-    alert("비밀번호가 성공적으로 변경되었습니다!");
 
     // 세션 스토리지에 변경된 비밀번호를 업데이트 합니다.
     sessionStorage.setItem(
       "userInfo",
       JSON.stringify({ ...userInfo, pw: newPassword })
     );
+    alert("비밀번호가 성공적으로 변경되었습니다!");
+    window.location.href = "../pages/myPage.html";
   } catch (error) {
     console.error("Error updating document: ", error);
     alert("비밀번호 변경 중 오류가 발생했습니다.");

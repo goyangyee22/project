@@ -160,26 +160,21 @@ signUpButton.addEventListener("click", async function () {
   };
 
   const result = await addDatas("userInfo", userInfo);
-  // Firebase에 사용자 정보를 추가합니다.
   try {
-    const usersRef = collection(dbService, "userInfo"); 
-    const q = query(usersRef, where("id", "==", userInfo.id)); 
-    const querySnapshot = await getDocs(q); 
-    const userDoc = querySnapshot.docs[0]; 
+    // Firebase에 사용자 정보 객체를 추가합니다.
+    const usersRef = collection(dbService, "userInfo");
+    const q = query(usersRef, where("id", "==", userInfo.id));
+    const querySnapshot = await getDocs(q);
+    const userDoc = querySnapshot.docs[0];
     let sessionUserInfo = { ...userDoc.data(), docId: userDoc.id };
-    // userInfo 객체 생성
-    console.log(sessionUserInfo);
     alert("회원가입이 완료되었습니다.");
     saveSession(sessionUserInfo);
-    // getMembers();
-    window.location.href = "../index.html";
+    window.location.href = "../pages/myPage.html";
   } catch (error) {
     console.error("오류가 발생했습니다: ", error);
     alert("회원가입 중 오류가 발생했습니다.");
     return false;
   }
-  // window.location.href = "../index.html";
-  // console.log(result);
 
   // 처리 결과에 따른 회원 목록 조회 함수 또는 실패 메세지를 표시합니다.
   result ? getMembersHandlerTrClick() : alert("저장을 실패했습니다");
