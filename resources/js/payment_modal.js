@@ -1,6 +1,6 @@
 const paymentData = {
   party1: {
-    title: '파티룸3',
+    title: '파티룸1',
     desc: '설명',
     standardPeople: 4,
     maximumPeople: 8,
@@ -12,7 +12,7 @@ const paymentData = {
     hash: ['해시태그1', '해시태그2', '해시태그3'],
   },
   party2: {
-    title: '파티룸3',
+    title: '파티룸2',
     desc: '설명',
     standardPeople: 4,
     maximumPeople: 8,
