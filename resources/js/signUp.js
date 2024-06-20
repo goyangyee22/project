@@ -116,6 +116,7 @@ async function handleSignUp() {
     alert("비밀번호가 일치하지 않습니다.");
     return false;
   }
+  return true;
 
   // 중복되지 않는 ID일 경우 Firestore에 데이터를 저장합니다.
   // 데이터를 저장하는 위치는 Firebase의 "userInfo" 컬렉션입니다.
@@ -162,15 +163,15 @@ signUpButton.addEventListener("click", async function () {
   const result = await addDatas("userInfo", userInfo);
   // Firebase에 사용자 정보를 추가합니다.
   try {
-    const usersRef = collection(dbService, "userInfo"); // 문제 시 주석 처리
-    const q = query(usersRef, where("id", "==", id)); // 문제 시 주석 처리
-    const querySnapshot = await getDocs(q); // 문제 시 주석 처리
-    const userDoc = querySnapshot.docs[0]; // 문제 시 주석 처리
-    let userInfo = { ...userDoc.data(), docId: userDoc.id };
+    const usersRef = collection(dbService, "userInfo"); 
+    const q = query(usersRef, where("id", "==", userInfo.id)); 
+    const querySnapshot = await getDocs(q); 
+    const userDoc = querySnapshot.docs[0]; 
+    let sessionUserInfo = { ...userDoc.data(), docId: userDoc.id };
     // userInfo 객체 생성
-    console.log(userInfo);
+    console.log(sessionUserInfo);
     alert("회원가입이 완료되었습니다.");
-    saveSession(userInfo);
+    saveSession(sessionUserInfo);
     // getMembers();
     window.location.href = "../index.html";
   } catch (error) {
