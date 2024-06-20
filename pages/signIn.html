@@ -4,31 +4,41 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>빌리슈 로그인</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../resources/css/signIn.css" />
     <script type="module" src="../resources/js/signIn.js"></script>
   </head>
-  <style>
-    #cancel a {
-      text-decoration: none;
-      color: #000;
-    }
-  </style>
   <body>
-    <form id="signInForm" name="signInForm">
-      <h1>로그인</h1>
-      <p>
-        <label class="formInput">아이디&nbsp;</label>
-        <input type="text" name="id" id="id" required />
-      </p>
-      <p>
-        <label class="formInput">비밀번호&nbsp;</label>
-        <input type="password" name="pw" id="pw" required />
-      </p>
-    </form>
-    <button id="signUpButton">회원가입</button>
-    <button id="signInButton">로그인</button>
-    <button id="cancel">
-      <a href="../index.html">취소</a>
-    </button>
-    <h3>ID, 비밀번호를 분실하셨을 경우 관리자에게 문의하여 주시기 바랍니다.</h3>
+    <div id="wrapper">
+      <div class="container">
+        <form id="signInForm" name="signInForm">
+          <h1>로그인</h1>
+          <div>
+            <input type="text" name="id" id="id" required />
+            <label class="formInput">아이디</label>
+            <span class="highlight"></span>
+          </div>
+          <div>
+            <input type="password" name="pw" id="pw" required />
+            <label class="formInput">비밀번호</label>
+            <span class="highlight"></span>
+          </div>
+        </form>
+        <div class="btn-wrap">
+          <button id="signUpButton">회원가입</button>
+          <button id="signInButton">로그인</button>
+          <button id="cancel" onclick="location.href='../index.html'">
+            취소
+          </button>
+        </div>
+        <h3>
+          ID, 비밀번호를 분실하셨을 경우 <br />
+          관리자에게 문의하여 주시기 바랍니다.
+        </h3>
+      </div>
+    </div>
   </body>
 </html>

@@ -39,7 +39,7 @@ body {
   max-width: 1200px;
 }
 
-.btn {
+button {
   appearance: none;
   outline: 0;
   border: 0;
