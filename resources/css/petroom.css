@@ -27,7 +27,7 @@ header {
 .pet-detail {
   display: flex;
   align-items: start;
-  gap: 20px;
+  gap: 40px;
   position: relative;
 }
 .pet-contents {
@@ -83,6 +83,7 @@ section {
   display: flex;
   justify-content: baseline;
   margin: 50px;
+  padding-left: 15%;
   /* padding-top: 10px; */
   font-weight: 900;
   font-size: 80px;
