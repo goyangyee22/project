@@ -49,6 +49,21 @@ updateBtn.addEventListener("click", async function (e) {
     // 작성자명을 불러오는 함수입니다.
     const userNameString = sessionStorage.getItem("userInfo");
 
+    // Firestore에서 "userInfo" 컬렉션을 참조하는 변수 생성
+    const usersRef = collection(dbService, "userInfo");
+
+    // "userInfo" 컬렉션에서 "id" 필드가 JSON.parse(userInfoString).id와 같은 문서만을 검색하는 쿼리를 생성합니다.
+    const q = query(
+      usersRef,
+      where("name", "==", JSON.parse(userNameString).name)
+    );
+
+    // 생성한 쿼리를 Firestore에 실행하여 결과를 가져옵니다.
+    const querySnapshot = await getDocs(q);
+
+    // 검색된 문서들 중 첫 번째 문서의 ID를 추출합니다. (자동으로 주어진 문서 고유 ID)
+    const docId = querySnapshot.docs[0].id;
+
     // 게시글의 객체를 생성합니다.
     const boardInfo = {
       name: userNameString,
