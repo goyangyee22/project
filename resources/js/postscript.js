@@ -44,21 +44,19 @@ if (!userInfo) {
 const updateBtn = document.getElementById("updateBtn");
 updateBtn.addEventListener("click", async function (e) {
   e.preventDefault();
-
-  // 작성자명을 불러오는 함수입니다.
-  const userName = await getDatas("userInfo");
-
-  // 게시글의 객체를 생성합니다.
-  const boardInfo = {
-    name: userName,
-    date: new Date(),
-    title: document.querySelector("input[name='title']").value,
-    content: document.querySelector("input[name='content']").value,
-  };
-  const board = await addDatas("board", boardInfo);
-
   // Firebase에 게시글의 정보를 추가합니다.
   try {
+    // 작성자명을 불러오는 함수입니다.
+    const userNameString = sessionStorage.getItem("userInfo");
+
+    // 게시글의 객체를 생성합니다.
+    const boardInfo = {
+      name: userNameString,
+      date: new Date(),
+      title: document.querySelector("input[name='title']").value,
+      content: document.querySelector("input[name='content']").value,
+    };
+    const board = await addDatas("board", boardInfo);
   } catch (error) {}
 });
 
