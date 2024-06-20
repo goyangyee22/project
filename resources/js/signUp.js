@@ -154,7 +154,6 @@ signUpButton.addEventListener("click", async function () {
 
   // 사용자 정보 객체를 생성합니다.
   const userInfo = {
-    // docId: querySnapshot.docs[0],
     name: document.querySelector("input[name='name']").value,
     id: document.querySelector("input[name='id']").value,
     pw: document.querySelector("input[name='pw']").value,

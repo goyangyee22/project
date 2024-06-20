@@ -42,30 +42,14 @@ if (!userInfo) {
 
 // 게시글을 작성하는 함수입니다.
 const updateBtn = document.getElementById("updateBtn");
-updateBtn.addEventListener("click", async (event) => {
-  event.preventDefault();
+updateBtn.addEventListener("click", async function (e) {
+  e.preventDefault();
 
   const boardInfo = {
-    name: userInfo.name,
-    date: Date(),
+    date: new date(),
     title: document.querySelector("input[name='title']").value,
     content: document.querySelector("input[name='content']").value,
   };
-
-  const userInfo = sessionStorage.getItem("userInfo");
-  const usersRef = collection(dbService, "userInfo");
-  const q = query(usersRef, where("name", "==", JSON.parse(userInfo).name));
-  const querySnapshot = await getDocs(q);
-  querySnapshot.forEach((doc) => {
-    const { name } = doc.data();
-    console.log(`${name}님의 이름으로 후기를 남깁니다.`);
-  });
-
-  // Firebase에 게시글에 대한 정보를 저장합니다.
-  const result = await addDatas("board", boardInfo);
-  // 파이어베이스에 데이터를 저장
-  // 작성 결과가 성공 ==> 페이지 리로딩
-  // 결과가 실패 ==> "작성을 실패했습니다."
 });
 
 // 게시글을 수정하는 함수입니다. (한 번에 한 개의 게시글씩 수정 가능)
