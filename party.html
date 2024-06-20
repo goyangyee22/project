@@ -134,12 +134,12 @@
                         alt=""
                       />
                     </div>
-                     <div class="swiper-slide">Slide 4</div>
-                  <div class="swiper-slide">Slide 5</div>
-                  <div class="swiper-slide">Slide 6</div>
-                  <div class="swiper-slide">Slide 7</div>
-                  <div class="swiper-slide">Slide 8</div>
-                  <div class="swiper-slide">Slide 9</div> 
+                    <div class="swiper-slide">Slide 4</div>
+                    <div class="swiper-slide">Slide 5</div>
+                    <div class="swiper-slide">Slide 6</div>
+                    <div class="swiper-slide">Slide 7</div>
+                    <div class="swiper-slide">Slide 8</div>
+                    <div class="swiper-slide">Slide 9</div>
                   </div>
                   <div class="swiper-pagination"></div>
                 </div>
@@ -186,12 +186,12 @@
                         alt=""
                       />
                     </div>
-                     <div class="swiper-slide">Slide 4</div>
-                  <div class="swiper-slide">Slide 5</div>
-                  <div class="swiper-slide">Slide 6</div>
-                  <div class="swiper-slide">Slide 7</div>
-                  <div class="swiper-slide">Slide 8</div>
-                  <div class="swiper-slide">Slide 9</div> 
+                    <div class="swiper-slide">Slide 4</div>
+                    <div class="swiper-slide">Slide 5</div>
+                    <div class="swiper-slide">Slide 6</div>
+                    <div class="swiper-slide">Slide 7</div>
+                    <div class="swiper-slide">Slide 8</div>
+                    <div class="swiper-slide">Slide 9</div>
                   </div>
                   <div class="swiper-pagination"></div>
                 </div>
@@ -223,8 +223,11 @@
                   </p>
                 </div>
                 <li class="text-list">
-                  <span class="textone">영업 시간 0~24시</span>
+                  <span class="textone">영업 시간 오전11 ~ 오후11시</span>
                   <span class="texttwo">휴무일 없음</span>
+                  <h3>오전: 오전 11시 ~ 오후 5시</h3>
+                  <h3>오후: 오후 7시 ~ 금일 11시</h3>
+                  <h3>종일: 오전 11시 ~ 금일 11시</h3>
                 </li>
 
                 <div class="main-icon">
@@ -363,18 +366,18 @@
               <div class="QnA" id="party-tagtwo">
                 <div class="QnA-intro">
                   <h1 class="QnA-order">
-                    Q&A <span class="QnA-color">3개</span
-                    ><button class="QnA-T">질문 작성하기</button>
-                    <i class="fa-solid fa-minus" style="color: #ffd43b"></i>
+                    Q&A <span class="QnA-color">3개</span>
                   </h1>
+                  <button class="QnA-T">질문 작성하기</button>
                 </div>
+                <i class="fa-solid fa-minus" style="color: #ffd43b"></i>
                 <div class="QnA-box">
                   <div class="QnA-boxs">
                     <span class="guest-img"
                       ><i class="fa-solid fa-user"></i
                     ></span>
                     <div class="QnA-num">
-                      <strong class="guest-name">코끼리 </strong>
+                      <strong class="guest-name">heqsa231 </strong>
                       <p class="QnA-ment">
                         안녕하세요 ! 혹시 7월 19일 주간 예약이 가능할까요? 11명
                         정도 될 것 같습니다!
@@ -416,7 +419,7 @@
                       ><i class="fa-brands fa-waze" style="color: #ffd43b"></i
                     ></span>
                     <div class="QnA-num">
-                      <strong class="guest-name">호랑이 </strong>
+                      <strong class="guest-name">제이지 </strong>
                       <p class="QnA-ment">
                         6월 29일 밤 타임 예약이 되어 있어서 혹시 취소가 되면
                         연락 부락드립니다!
@@ -438,8 +441,8 @@
                 <h1 id="party-tagthree">
                   이용 후기 <strong class="em">3개</strong> / 평균 평점
                   <span class="em">5.0</span>
-                  <i class="fa-solid fa-minus" style="color: #ffd43b"></i>
                 </h1>
+                <i class="fa-solid fa-minus" style="color: #ffd43b"></i>
 
                 <div class="QnA-boxs">
                   <span class="guest-img"
@@ -514,28 +517,26 @@
             <div class="container-one">
               <div class="payment-container">
                 <div class="pay-img">
-                  <img src="resources/images/partyimg/6인3.jpg" alt="" />
+                  <img
+                    id="imga"
+                    src="resources/images/partyimg/6인3.jpg"
+                    alt=""
+                  />
                 </div>
                 <div class="container-main">
                   <div class="pay-text">
-                    <h1>빌리슈</h1>
                     <h2>스페이스 파티룸</h2>
                     <p>인원: 4~6인</p>
                     <p>-가격 (4인기준)-</p>
-                    <p>주간,야간: 60,000</p>
+                    <p>주간: 60,000</p>
+                    <p>야간: 70,000</p>
                     <p>종일: 90,000원</p>
                   </div>
                   <div class="pay-click">
                     <div class="image-btn">
-                      <button id="shwo-image" class="btn btn-primary">
+                      <button class="btn btn-primary" onclick="toggleImg()">
                         사진 모두보기
                       </button>
-                      <img
-                        id="image1"
-                        class="image"
-                        src="resources/images/partyimg/사진1.jpg"
-                        alt=""
-                      />
                     </div>
                     <button
                       type="button"
@@ -557,11 +558,11 @@
                 </div>
                 <div class="container-main">
                   <div class="pay-text">
-                    <h1>빌리슈</h1>
                     <h2>스페셜 파티룸</h2>
                     <p>인원: 6~8인</p>
                     <p>-가격 (6인기준)-</p>
-                    <p>주간,야간: 80,000</p>
+                    <p>주간: 80,000</p>
+                    <p>야간: 80,000</p>
                     <p>종일: 120,000원</p>
                   </div>
                   <div class="pay-click">
@@ -586,21 +587,91 @@
                 </div>
                 <div class="container-main">
                   <div class="pay-text">
-                    <h1>빌리슈</h1>
                     <h2>다모여 파티룸</h2>
                     <p>인원: 8~12인</p>
                     <p>-가격 (8인기준)-</p>
-                    <p>주간,야간: 100,000</p>
+                    <p>주간: 100,000</p>
+                    <p>야간: 100,000</p>
                     <p>종일: 150,000원</p>
                   </div>
                   <div class="pay-click">
-                    <button class="btn btn-primary">사진 모두보기</button>
+                    <!-- ddddddddddddddddddddddd -->
+                    <div id="click-button">
+                      <div class="swiper-pagination"></div>
+                      <button
+                        typ="button"
+                        id="popupBtn"
+                        class="btn btn-primary"
+                      >
+                        사진 모두 보기
+                      </button>
+
+                      <div id="modalnum">
+                        <div id="modalbutton">
+                          <span id="closebutton">&times;</span>
+
+                          <div class="modal-image">
+                            ...
+                            <div class="swiper mySwiper">
+                              <div class="swiper-wrapper">
+                                <div class="swiper-slide swiper-slider">
+                                  <img
+                                    src="./resources/images/partyimg/카톡5.png"
+                                    alt=""
+                                  />
+                                </div>
+                                <div class="swiper-slide swiper-slider">
+                                  <img
+                                    src="resources/images/partyimg/카톡7.jpg"
+                                    alt=""
+                                  />
+                                </div>
+                                <div class="swiper-slide swiper-slider">
+                                  <img
+                                    src="resources/images/partyimg/파티룸4인6.jpg"
+                                    alt=""
+                                  />
+                                </div>
+                                <div class="swiper-slide swiper-slider">
+                                  Slide 4
+                                </div>
+                                <div class="swiper-slide swiper-slider">
+                                  Slide 5
+                                </div>
+                                <div class="swiper-slide swiper-slider">
+                                  Slide 6
+                                </div>
+                                <div class="swiper-slide swiper-slider">
+                                  Slide 7
+                                </div>
+                                <div class="swiper-slide swiper-slider">
+                                  Slide 8
+                                </div>
+                                <div class="swiper-slide swiper-slider">
+                                  Slide 9
+                                </div>
+                              </div>
+                              <div class="swiper-pagination"></div>
+                            </div>
+                            <!-- <img
+                              src="resources/images/partyimg/6인1.jpg"
+                              alt=""
+                            /> -->
+                            <!-- <img
+                            src="resources/images/partyimg/6인3.jpg"
+                            alt=""
+                            /> -->
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!--  ddddddddddddddddddddd-->
                     <button
                       type="button"
                       class="btn btn-primary"
                       data-bs-toggle="modal"
                       data-bs-target="#payment-form-modal"
-                      onclick="openPayment('party1')"
+                      onclick="openPayment('party3')"
                     >
                       예약하기
                     </button>
@@ -669,10 +740,27 @@
     </div>
   </body>
   <script>
-    document
-      .getElementById("show-image")
-      .addEventListener("click", function () {
-        document.getElementById("image").style.display = "block";
-      });
+    const btn = document.getElementById("popupBtn");
+    const modal = document.getElementById("modalnum");
+    const closeBtn = document.getElementById("closebutton");
+    btn.onclick = function () {
+      modal.style.display = "block";
+    };
+
+    closeBtn.onclick = function () {
+      modal.style.display = "none";
+    };
+
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    };
+    var swiper = new Swiper(".mySwiper2", {
+      pagination: {
+        el: ".swiper-pagination",
+        dynamicBullets: true,
+      },
+    });
   </script>
 </html>
