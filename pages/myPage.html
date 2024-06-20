@@ -82,9 +82,10 @@
     // 사용자의 이름을 기반으로 마이페이지에 접속하면 사용자의 이름 + 마이페이지입니다. 라는 문구가 출력됩니다.
     async function getMembers() {
       const usersRef = collection(db, "userInfo"); // 문제 시 주석 처리
-      const snapShot = await getDatas("userInfo");
+      const q = query(usersRef, where("name", "==", JSON.parse(userInfo).name));
+      const querySnapshot = await getDocs(q); // 문제 시 주석 처리
 
-      snapShot.forEach((doc) => {
+      querySnapshot.forEach((doc) => {
         const { name } = doc.data();
         console.log(`${name}님의 마이페이지입니다.`);
         const nameSpan = document.querySelector(".myPageMyName span");
