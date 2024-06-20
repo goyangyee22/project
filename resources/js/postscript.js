@@ -50,6 +50,7 @@ updateBtn.addEventListener("click", async function (e) {
     title: document.querySelector("input[name='title']").value,
     content: document.querySelector("input[name='content']").value,
   };
+  const board = await addDatas("board", boardInfo);
 });
 
 // 게시글을 수정하는 함수입니다. (한 번에 한 개의 게시글씩 수정 가능)
