@@ -128,29 +128,4 @@ sectionMenus.forEach((link) => {
   });
 });
 
-// window.addEventListener('scroll', function () {
-//   if (isScrolling) return;
-
-//   console.log(isScrolling);
-
-//   let current = '';
-//   const optionsEl = document.querySelectorAll('.room-option');
-
-//   optionsEl.forEach((el) => {
-//     const optionsTop = el.offsetTop - 70;
-//     const optionsHeight = el.clientHeight;
-
-//     if (pageYOffset >= optionsTop && pageYOffset < optionsTop + optionsHeight) {
-//       current = el.getAttribute('id');
-//     }
-//   });
-
-//   sectionMenus.forEach((link) => {
-//     link.classList.remove('active');
-//     if (link.getAttribute('href').substring(1) === current) {
-//       link.classList.add('active');
-//     }
-//   });
-// });
-
 // mapRendering();
