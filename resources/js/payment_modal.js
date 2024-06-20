@@ -1,10 +1,6 @@
 const paymentData = {
   party1: {
-<<<<<<< HEAD
     title: "스페이스 파티룸",
-=======
-    title: "파티룸1",
->>>>>>> d81cd4389b67c7a5344e9848a12f6971550c5504
     desc: "설명",
     standardPeople: 4,
     maximumPeople: 6,
@@ -16,15 +12,9 @@ const paymentData = {
     hash: ["해시태그1", "해시태그2", "해시태그3"],
   },
   party2: {
-<<<<<<< HEAD
     title: "스페셜 파티룸",
     desc: "설명",
     standardPeople: 6,
-=======
-    title: "파티룸2",
-    desc: "설명",
-    standardPeople: 4,
->>>>>>> d81cd4389b67c7a5344e9848a12f6971550c5504
     maximumPeople: 8,
     cost: {
       day: 80000,
@@ -34,17 +24,10 @@ const paymentData = {
     hash: ["해시태그1", "해시태그2", "해시태그3"],
   },
   party3: {
-<<<<<<< HEAD
     title: "다모여 파티룸",
     desc: "설명",
     standardPeople: 8,
     maximumPeople: 12,
-=======
-    title: "파티룸3",
-    desc: "설명",
-    standardPeople: 4,
-    maximumPeople: 8,
->>>>>>> d81cd4389b67c7a5344e9848a12f6971550c5504
     cost: {
       day: 100000,
       night: 110000,
