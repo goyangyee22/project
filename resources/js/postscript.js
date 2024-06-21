@@ -43,8 +43,8 @@ if (!userInfo) {
 
 // 작성한 게시글을 화면에 반영합니다.
 async function getBoard() {
-  const querySnapshot = await getDatas("board");
   const tableTag = document.querySelector("table");
+  const querySnapshot = await getDatas("board");
   querySnapshot.forEach((doc) => {
     // 게시글의 정보를 저장할 객체를 생성합니다.
     const { name, title, content, date } = doc.data();
