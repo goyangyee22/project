@@ -93,13 +93,10 @@ updateBtn.addEventListener("click", async function (e) {
   console.log(userData);
 
   const date = new Date();
-  // 해당 연도를 표시합니다.
+
+  // 해당 연도, 월, 일을 표시하는데, 해당 월을 표시하는 getMonth()는 0부터 시작하므로 1을 더해줍니다.
   const year = date.getFullYear();
-
-  // 해당 월을 표시하는 getMonth()는 0부터 시작하므로 1을 더해줍니다.
   const month = date.getMonth() + 1;
-
-  // 해당 일을 표시합니다.
   const day = date.getDate();
 
   // 제목, 내용의 입력값을 받아옵니다.
