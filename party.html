@@ -448,7 +448,16 @@
                   </div>
                   <div class="pay-click">
                     <div class="image-btn">
-                      <button class="btn btn-primary">사진 모두보기</button>
+                      <button
+                        type="button"
+                        id="popupBtn"
+                        class="btn btn-primary"
+                        data-bs-toggle="modal"
+                        data-bs-target="#partyroom-room"
+                        onclick="partyroom('s')"
+                      >
+                        사진 모두보기
+                      </button>
                     </div>
                     <button
                       type="button"
@@ -483,23 +492,12 @@
                         type="button"
                         id="popupBtn"
                         class="btn btn-primary"
-                        data-bs-target="#payment-form-modal"
+                        data-bs-toggle="modal"
+                        data-bs-target="#partyroom-room"
+                        onclick="partyroom('s')"
                       >
-                        사진 모두 보기
+                        사진 모두보기
                       </button>
-
-                      <div id="modalnum">
-                        <div id="modalbutton">
-                          <span id="closebutton">&times;</span>
-
-                          <div class="modal-image">
-                            <img
-                              src="./resources/images/partyimg/카톡3.jpg"
-                              alt=""
-                            />
-                          </div>
-                        </div>
-                      </div>
                     </div>
                     <button
                       type="button"
@@ -533,10 +531,13 @@
                     <div id="click-button">
                       <button
                         type="button"
+                        id="popupBtn"
                         class="btn btn-primary"
-                        data-bs-target="#imgs-modal"
+                        data-bs-toggle="modal"
+                        data-bs-target="#partyroom-room"
+                        onclick="partyroom('s')"
                       >
-                        사진 모두 보기
+                        사진 모두보기
                       </button>
                     </div>
                     <!--  ddddddddddddddddddddd-->
@@ -614,15 +615,15 @@
     </div>
     <div
       class="modal fade"
-      id="imgs-modal"
+      id="partyroom-room"
       tabindex="-1"
-      aria-labelledby="img"
+      aria-labelledby="partyroom-label"
       aria-hidden="true"
     >
       <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="img">예약하기</h1>
+            <h1 class="modal-title fs-5" id="partyroom-label">전체사진</h1>
             <button
               type="button"
               class="btn-close"
@@ -630,39 +631,9 @@
               aria-label="Close"
             ></button>
           </div>
-          <div class="modal-body modal-class">
-            <!-- form -->
-          </div>
+          <div class="modal-body party-body"></div>
         </div>
       </div>
     </div>
   </body>
-  <script>
-    const btn = document.getElementById("popupBtn");
-    const modal = document.getElementById("modalnum");
-    const closeBtn = document.getElementById("closebutton");
-    btn.onclick = function () {
-      modal.style.display = "block";
-    };
-
-    closeBtn.onclick = function () {
-      modal.style.display = "none";
-    };
-
-    window.onclick = function (event) {
-      if (event.target == modal) {
-        modal.style.display = "none";
-      }
-    };
-  </script>
-
-  <!-- Initialize Swiper -->
-  <script>
-    var swiper = new Swiper(".partyroom", {
-      pagination: {
-        el: ".swiper-pagination",
-        dynamicBullets: true,
-      },
-    });
-  </script>
 </html>
