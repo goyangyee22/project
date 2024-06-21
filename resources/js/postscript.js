@@ -53,7 +53,7 @@ async function getBoard() {
     const name = data.name;
     const title = data.title;
     const content = data.content;
-    let date = data.date;
+    const date = new Date().toLocaleDateString("ko-KR");
     // 해당 연도, 월, 일을 표시하는데, 해당 월을 표시하는 getMonth()는 0부터 시작하므로 1을 더해줍니다.
     const year = date.getFullYear();
     const month = date.getMonth() + 1;
@@ -83,21 +83,19 @@ updateBtn.addEventListener("click", async function (e) {
   const userInfo = JSON.parse(userNameString);
   const name = userInfo.name;
 
-  // // Firestore에서 "userInfo" 컬렉션을 참조하는 변수 생성
-  // const usersRef = collection(dbService, "userInfo");
+  // Firestore에서 "userInfo" 컬렉션을 참조하는 변수 생성
+  const usersRef = collection(dbService, "userInfo");
 
-  // // "userInfo" 컬렉션에서 "name" 필드가 JSON.parse(userInfoString).name과 같은 문서만을 검색하는 쿼리를 생성합니다.
-  // const q = query(usersRef, where("name", "==", userInfo.name));
+  // "userInfo" 컬렉션에서 "name" 필드가 JSON.parse(userInfoString).name과 같은 문서만을 검색하는 쿼리를 생성합니다.
+  const q = query(usersRef, where("name", "==", userInfo.name));
 
-  // // 생성한 쿼리를 Firestore에 실행하여 결과를 가져옵니다.
-  // const querySnapshot = await getDocs(q);
+  // 생성한 쿼리를 Firestore에 실행하여 결과를 가져옵니다.
+  const querySnapshot = await getDocs(q);
 
-  // // 검색된 문서들 중 첫 번째 문서의 ID를 추출합니다. (자동으로 주어진 문서 고유 ID)
-  // const userDoc = querySnapshot.docs[0];
-  // const userData = userDoc.data();
-  // console.log(userData);
-
-  // const date = new Date();
+  // 검색된 문서들 중 첫 번째 문서의 ID를 추출합니다. (자동으로 주어진 문서 고유 ID)
+  const userDoc = querySnapshot.docs[0];
+  const userData = userDoc.data();
+  console.log(userData);
 
   // 해당 연도, 월, 일을 표시하는데, 해당 월을 표시하는 getMonth()는 0부터 시작하므로 1을 더해줍니다.
   // const year = date.getFullYear();
@@ -132,7 +130,7 @@ updateBtn.addEventListener("click", async function (e) {
   tableTag.firstElementChild.insertAdjacentHTML(
     "beforeend",
     `
-    <tr data-id=${result.id}>
+    <tr data-id=${userDoc}>
     <td class="name">${addObj.name}</td>
     <td class="title">${addObj.title}</td>
     <td class="content">${addObj.content}</td>
@@ -140,13 +138,7 @@ updateBtn.addEventListener("click", async function (e) {
     </tr>
     `
   );
-  console.log(
-    result.id,
-    addObj.name,
-    addObj.title,
-    addObj.content,
-    addObj.date
-  );
+  console.log(userDoc, addObj.name, addObj.title, addObj.content, addObj.date);
 });
 
 // 게시글을 수정하는 함수입니다. (한 번에 한 개의 게시글씩 수정 가능)
