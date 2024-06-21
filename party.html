@@ -276,13 +276,47 @@
                   <p>이용 당일 환불 불가</p>
                 </div>
               </div>
-              <div id="map" style="width: 500px; height: 400px"></div>
+              <div class="map-copy-main">
+                <div id="map" style="width: 500px; height: 400px"></div>
+                <input
+                  type="text"
+                  id="text"
+                  value="대전광역시 중구 중앙로121번길 20 빌리슈"
+                  style="display: none"
+                />
+                <div class="map-copy">
+                  <span class="map-copy-text"
+                    >대전광역시 중구 중앙로121번길 20 빌리슈</span
+                  >
+                  <div class="hover-text">
+                    <i
+                      class="fa-solid fa-clone"
+                      style="color: rgb(148, 84, 148)"
+                    ></i>
+                    <input
+                      type="button"
+                      onclick="urlCopy()"
+                      value="주소 복사 하기"
+                      style="border: none"
+                    />
+                    <span class="tooltip-text"
+                      >대전광역시 중구 중앙로121번길 20 빌리슈</span
+                    >
+                  </div>
+                  <div id="copyMessage" class="copy-message">
+                    복사되었습니다!
+                  </div>
+                </div>
+              </div>
+              <!-- <input type="button" onclick="urlCopy()" value="주소 복사" /> -->
               <div class="QnA" id="party-tagtwo">
                 <div class="QnA-intro">
                   <h1 class="QnA-order">
                     Q&A <span class="QnA-color">3개</span>
                   </h1>
-                  <button class="QnA-T">질문 작성하기</button>
+                  <button class="QnA-T">
+                    <a href="pages/QnA.html">질문 작성 하기</a>
+                  </button>
                 </div>
                 <i class="fa-solid fa-minus" style="color: #ffd43b"></i>
                 <div class="QnA-box">
@@ -352,10 +386,16 @@
                 </div>
               </div>
               <div class="review">
-                <h1 id="party-tagthree">
-                  이용 후기 <strong class="em">3개</strong> / 평균 평점
-                  <span class="em">5.0</span>
-                </h1>
+                <div class="QnA-intro">
+                  <h1 id="party-tagthree">
+                    이용 후기 <strong class="em">3개</strong>
+                    <!-- / 평균 평점
+                  <span class="em">5.0</span> -->
+                  </h1>
+                  <button class="QnA-T">
+                    <a href="pages/postscript.html">이용 후기 작성</a>
+                  </button>
+                </div>
                 <i class="fa-solid fa-minus" style="color: #ffd43b"></i>
 
                 <div class="QnA-boxs">
@@ -454,7 +494,7 @@
                         class="btn btn-primary"
                         data-bs-toggle="modal"
                         data-bs-target="#partyroom-room"
-                        onclick="partyroom('s')"
+                        onclick="partyroom('a4인')"
                       >
                         사진 모두보기
                       </button>
@@ -535,7 +575,7 @@
                         class="btn btn-primary"
                         data-bs-toggle="modal"
                         data-bs-target="#partyroom-room"
-                        onclick="partyroom('s')"
+                        onclick="partyroom('d8인')"
                       >
                         사진 모두보기
                       </button>
