@@ -70,9 +70,21 @@ async function getBoard() {
       </tr>
       `
     );
+    // console.log(doc.id);
   });
 }
 getBoard();
+
+// table에 클릭 이벤트를 생성합니다.
+let updateTarget;
+const tableTag = document.querySelector("table");
+tableTag.addEventListener("click", function (e) {
+  if (updateTarget) return false;
+  if (e.target.tagName != "TH" && e.target.tagName != "TABLE") {
+    e.target.parentElement.classList.toggle("selected");
+  }
+  console.log(e.target.parentElement);
+});
 
 // 게시글을 작성하는 함수입니다.
 const updateBtn = document.getElementById("updateBtn");
@@ -108,33 +120,70 @@ updateBtn.addEventListener("click", async function (e) {
     addObj[input.name] = input.value;
   });
 
-  // Firebase에 데이터가 추가 됩니다.
-  const result = await addDatas("board", addObj);
+  try {
+    // Firebase에 데이터를 추가합니다.
+    const docRef = await addDoc(collection(dbService, "board"), addObj);
+    // 추가된 문서의 ID입니다.
+    const docId = docRef.id;
 
-  // const {
-  //   uploadName = name,
-  //   title,
-  //   content,
-  //   uploadDate = `${year} ${month} ${day}`,
-  // } = addObj;
-
-  // 화면에 추가된 데이터를 표시합니다.
-  // const board = sessionStorage.getItem("board");
-  const tableTag = document.querySelector("table");
-  tableTag.firstElementChild.insertAdjacentHTML(
-    "beforeend",
-    `
-    <tr data-id=${userDoc}>
-    <td class="name">${addObj.name}</td>
-    <td class="title">${addObj.title}</td>
-    <td class="content">${addObj.content}</td>
-    <td class="date">${addObj.date}</td>
-    </tr>
-    `
-  );
-  console.log(userDoc, addObj.name, addObj.title, addObj.content, addObj.date);
+    // 화면에 추가된 데이터를 표시합니다.
+    const tableTag = document.querySelector("table");
+    tableTag.firstElementChild.insertAdjacentHTML(
+      "beforeend",
+      `
+      <tr data-id=${docId}>
+      <td class="name">${addObj.name}</td>
+      <td class="title">${addObj.title}</td>
+      <td class="content">${addObj.content}</td>
+      <td class="date">${addObj.date}</td>
+      </tr>
+      `
+    );
+    console.log(docId, addObj.name, addObj.title, addObj.content, addObj.date);
+  } catch (error) {
+    console.error("Error adding document: ", error);
+  }
 });
 
 // 본인이 작성했던 게시글을 수정하는 함수입니다. (한 번에 한 개의 게시글씩 수정 가능)
+const modifyBtn = document.getElementById("modifyBtn");
+modifyBtn.addEventListener("click", async function () {});
 
 // 본인이 작성했던 게시글을 삭제하는 함수입니다. (한 번에 여러 개의 게시글 삭제 가능)
+const deleteBtn = document.getElementById("deleteBtn");
+deleteBtn.addEventListener("click", async function () {
+  const selectedTrs = document.querySelectorAll(".selected");
+  selectedTrs.forEach(async (tr) => {
+    const docId = tr.getAttribute("data-id");
+    // 작성자의 sessionStorage에서 docId를 가져옵니다.
+    const userInfoString = sessionStorage.getItem("userInfo");
+    const userInfo = JSON.parse(userInfoString);
+    const writerDocId = userInfo.docId;
+
+    // 현재 로그인한 본인의 sessionStorage에서 docId를 가져옵니다.
+    const currentUserInfoString = sessionStorage.getItem("userInfo");
+    const currentUserInfo = JSON.parse(currentUserInfoString);
+    const currentDocId = currentUserInfo.docId;
+
+    // 작성자와 현재 로그인한 본인의 docId가 같아야 삭제가 됩니다.
+    if (doc.id == currentDocId) {
+      try {
+        const result = await deleteDatas("board", docId);
+        if (result) {
+          tr.remove();
+        } else {
+          alert(
+            "삭제 중 오류가 발생했습니다. 관리자에게 문의하여 주시기 바랍니다."
+          );
+        }
+      } catch (error) {
+        console.error("Error deleting document: ", error);
+        alert(
+          "삭제 중 오류가 발생했습니다. 관리자에게 문의하여 주시기 바랍니다."
+        );
+      }
+    } else {
+      alert("본인이 작성한 글만 삭제할 수 있습니다.");
+    }
+  });
+});
