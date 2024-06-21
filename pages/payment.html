@@ -14,7 +14,7 @@
     />
     <link rel="stylesheet" href="../resources/css/payment.css" />
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script defer src="../resources/js/payment.js"></script>
+    <script type="module" src="../resources/js/payment.js"></script>
   </head>
   <body>
     <div id="payment">
@@ -34,8 +34,8 @@
             <div class="payment-content">
               <h2>수신자</h2>
               <div class="user-info payment-content-box">
-                <span class="user-name">김ㅇㅇ</span>
-                <span class="user-phone">000-0000-0000</span>
+                <span id="user-name"></span>
+                <span id="user-phone"></span>
               </div>
             </div>
             <div class="payment-content">
@@ -61,16 +61,16 @@
                     </li>
                     <li>
                       <h3>인원</h3>
-                      <p>
-                        <span id="display-personnel">6명</span>
-                      </p>
+                      <p><span id="display-personnel"></span>명</p>
                     </li>
                   </ul>
                 </div>
               </div>
               <div class="info-cost">
                 <h3>총 주문금액</h3>
-                <span id="display-amount">000,000원</span>
+                <p>
+                  <span id="display-amount"> <!-- 총 금액 --> </span>원
+                </p>
               </div>
             </div>
             <div class="payment-content">
@@ -87,85 +87,104 @@
                     <span class="radio-checkmark"></span>
                     <span class="radio-label">계좌 간편결제</span>
                   </label>
-                </div>
-                <div class="display-account">
-                  <div class="swiper account-slide">
-                    <div class="swiper-wrapper">
-                      <div class="swiper-slide">농협은행</div>
-                      <div class="swiper-slide">신한은행</div>
-                      <div class="swiper-slide">우리은행</div>
-                      <div class="swiper-slide">계좌등록</div>
+                  <div id="display-account" class="display-method">
+                    <div class="swiper account-slide">
+                      <div class="swiper-wrapper account-slide-wrapper">
+                        <div class="swiper-slide">
+                          <button class="method-btn">농협은행</button>
+                        </div>
+                        <div class="swiper-slide">
+                          <div class="swiper-slide">
+                            <button class="method-btn">신한은행</button>
+                          </div>
+                        </div>
+                        <div class="swiper-slide">
+                          <div class="swiper-slide">
+                            <button class="method-btn">우리은행</button>
+                          </div>
+                        </div>
+                        <div class="swiper-slide">
+                          <div class="swiper-slide">
+                            <button id="add-account" class="method-btn">
+                              계좌등록
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="swiper-button-next"></div>
+                      <div class="swiper-button-prev"></div>
                     </div>
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
                   </div>
                 </div>
                 <div class="method-card">
-                  <label for="account" class="radio-button">
-                    <input
-                      type="radio"
-                      id="account"
-                      name="method"
-                      value="card"
-                    />
+                  <label for="card" class="radio-button">
+                    <input type="radio" id="card" name="method" value="card" />
                     <span class="radio-checkmark"></span>
                     <span class="radio-label">카드 간편결제</span>
                   </label>
-                </div>
-                <div class="display-card">
-                  <div class="swiper card-slide">
-                    <div class="swiper-wrapper">
-                      <div class="swiper-slide">삼성카드</div>
-                      <div class="swiper-slide">현대카드</div>
-                      <div class="swiper-slide">국민카드</div>
-                      <div class="swiper-slide">카드등록</div>
+                  <div id="display-card" class="display-method">
+                    <div class="swiper card-slide">
+                      <div class="swiper-wrapper card-slide-wrapper">
+                        <div class="swiper-slide">
+                          <button class="method-btn">삼성카드</button>
+                        </div>
+                        <div class="swiper-slide">
+                          <button class="method-btn">현대카드</button>
+                        </div>
+                        <div class="swiper-slide">
+                          <button class="method-btn">국민카드</button>
+                        </div>
+                        <div class="swiper-slide">
+                          <button class="method-btn">카드등록</button>
+                        </div>
+                      </div>
+                      <div class="swiper-button-next"></div>
+                      <div class="swiper-button-prev"></div>
                     </div>
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
                   </div>
                 </div>
                 <div class="method-common">
-                  <label for="account" class="radio-button">
+                  <label for="common" class="radio-button">
                     <input
                       type="radio"
-                      id="account"
+                      id="common"
                       name="method"
                       value="common"
                     />
                     <span class="radio-checkmark"></span>
                     <span class="radio-label">일반결제</span>
                   </label>
-                </div>
-                <div class="display-common">
-                  <div class="common-btn-wrap">
-                    <button class="btn">삼성페이</button>
-                    <button class="btn">네이버페이</button>
-                    <button class="btn">카카오페이</button>
-                    <button class="btn">무통장입금</button>
-                  </div>
-                  <div class="samsung-pay">
-                    <p>삼성페이 인증 후 결제됩니다.</p>
-                  </div>
-                  <div class="naver-pay">
-                    <p>네이버페이 인증 후 결제됩니다.</p>
-                  </div>
-                  <div class="kakao-pay">
-                    <p>카카오페이 인증 후 결제됩니다.</p>
-                  </div>
-                  <div class="no-bankbook">
-                    <select name="bankbook" id="bankbook">
-                      <option value="">은행을 선택해주세요.</option>
-                      <option value="NH">농협</option>
-                      <option value="KM">국민은행</option>
-                      <option value="SH">신한은행</option>
-                      <option value="WR">우리은행</option>
-                      <option value="KU">기업은행</option>
-                      <option value="HN">하나은행</option>
-                      <option value="EP">우체국</option>
-                    </select>
-                    <div class="no-bankbook-info">
-                      <p>무통장입금 안내</p>
-                      <span class="more-info">?</span>
+                  <div id="display-common" class="display-method">
+                    <div class="common-btn-wrap">
+                      <button class="btn">삼성페이</button>
+                      <button class="btn">네이버페이</button>
+                      <button class="btn">카카오페이</button>
+                      <button class="btn">무통장입금</button>
+                    </div>
+                    <div class="samsung-pay">
+                      <p>삼성페이 인증 후 결제됩니다.</p>
+                    </div>
+                    <div class="naver-pay">
+                      <p>네이버페이 인증 후 결제됩니다.</p>
+                    </div>
+                    <div class="kakao-pay">
+                      <p>카카오페이 인증 후 결제됩니다.</p>
+                    </div>
+                    <div class="no-bankbook">
+                      <select name="bankbook" id="bankbook">
+                        <option value="">은행을 선택해주세요.</option>
+                        <option value="NH">농협</option>
+                        <option value="KM">국민은행</option>
+                        <option value="SH">신한은행</option>
+                        <option value="WR">우리은행</option>
+                        <option value="KU">기업은행</option>
+                        <option value="HN">하나은행</option>
+                        <option value="EP">우체국</option>
+                      </select>
+                      <div class="no-bankbook-info">
+                        <p>무통장입금 안내</p>
+                        <span class="more-info">?</span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -190,8 +209,12 @@
                 <label for="applied_n">미신청</label>
               </div>
               <div class="display-cash-receipt payment-content-box">
-                <span class="user-name">김ㅇㅇ</span>
-                <span class="user-phone">000-0000-0000</span>
+                <span class="user-name">
+                  <!-- 사용자 이름 -->
+                </span>
+                <span class="user-phone">
+                  <!-- 사용자 전화번호 -->
+                </span>
               </div>
             </div>
           </div>
@@ -202,7 +225,9 @@
               <h2>결제상세</h2>
               <div class="payment-aside-content payment-content-box">
                 <div id="select-method">결제수단</div>
-                <div id="total-cost">00,000원</div>
+                <div>
+                  <span id="total-cost"> <!-- 총 금액 --> </span>원
+                </div>
               </div>
             </div>
             <div class="payment-aside-contents">
@@ -223,15 +248,14 @@
           </div>
         </div>
       </div>
-      <form action="" id="payment-data-send">
+      <div id="payment-data-send">
         <div class="data-send-content wrap">
           <p>주문내용을 확인하였으며, 정보 제공 등에 동의합니다.</p>
           <button type="submit" id="final-payment-btn" class="payment-btn">
-            <span id="amount-of-payment">00,000원</span>
-            결제하기
+            <span id="amount-of-payment"> <!-- 총 금액 --> </span>원 결제하기
           </button>
         </div>
-      </form>
+      </div>
     </div>
   </body>
 </html>

@@ -1,53 +1,53 @@
 const paymentData = {
   party1: {
-    title: "스페이스 파티룸",
-    desc: "설명",
+    title: '스페이스 파티룸',
+    desc: '설명',
     standardPeople: 4,
     maximumPeople: 6,
-    room: "파티룸",
-    price: "5만원",
+    room: '파티룸',
+    price: '5만원',
     cost: {
       day: 60000,
       night: 70000,
       all: 90000,
     },
-    hash: ["해시태그1", "해시태그2", "해시태그3"],
+    hash: ['해시태그1', '해시태그2', '해시태그3'],
   },
   party2: {
-    title: "스페셜 파티룸",
-    desc: "설명",
+    title: '스페셜 파티룸',
+    desc: '설명',
     standardPeople: 6,
     maximumPeople: 8,
-    room: "파티룸",
-    price: "5만원",
+    room: '파티룸',
+    price: '5만원',
     cost: {
       day: 80000,
       night: 90000,
       all: 120000,
     },
-    hash: ["해시태그1", "해시태그2", "해시태그3"],
+    hash: ['해시태그1', '해시태그2', '해시태그3'],
   },
   party3: {
-    title: "다모여 파티룸",
-    desc: "설명",
+    title: '다모여 파티룸',
+    desc: '설명',
     standardPeople: 8,
     maximumPeople: 12,
-    room: "파티룸",
-    price: "5만원",
+    room: '파티룸',
+    price: '5만원',
     cost: {
       day: 100000,
       night: 110000,
       all: 150000,
     },
-    hash: ["해시태그1", "해시태그2", "해시태그3"],
+    hash: ['해시태그1', '해시태그2', '해시태그3'],
   },
   meeting1: {
-    title: "소회의실",
+    title: '소회의실',
     desc: "✨고객인증✨ 쾌적한 환경에서 모임이 가능한 곳!!<br/>🎀각종 모임 대환영🎀 블로그 리뷰 인증 시 2시간 추가 제공(●'◡'●)🧡🎁",
     standardPeople: 4, //기준인원
     maximumPeople: 8, // 최대인원
-    room: "세미나룸",
-    price: "3만원",
+    room: '세미나룸',
+    price: '3만원',
 
     cost: {
       //가격
@@ -55,77 +55,77 @@ const paymentData = {
       night: 80000,
       all: 100000,
     },
-    hash: ["화상면접", "스터디", "원데이클래스"],
+    hash: ['화상면접', '스터디', '원데이클래스'],
   },
   meeting2: {
-    title: "중회의실",
-    desc: "✨고객인증✨ 눈과 맘이 편안한 빌리슈만의 친환경 인테리어 제공👏👏 블로그 리뷰 인증 시 2시간 추가 제공^o^🧡🎁",
+    title: '중회의실',
+    desc: '✨고객인증✨ 눈과 맘이 편안한 빌리슈만의 친환경 인테리어 제공👏👏 블로그 리뷰 인증 시 2시간 추가 제공^o^🧡🎁',
     standardPeople: 6,
     maximumPeople: 17,
-    room: "세미나룸",
-    price: "3만원",
+    room: '세미나룸',
+    price: '3만원',
     cost: {
       day: 80000,
       night: 100000,
       all: 120000,
     },
-    hash: ["모임공간", "쾌적한", "풀옵션", "단체룸"],
+    hash: ['모임공간', '쾌적한', '풀옵션', '단체룸'],
   },
   meeting3: {
-    title: "대회의실",
+    title: '대회의실',
     desc: "✨고객인증✨ 풀옵션 완비❗ 커피맛집☕ 🎀단체 대환영🎀 블로그 리뷰 인증 시 2시간 추가 제공(●'◡'●)🧡🎁",
     standardPeople: 15,
     maximumPeople: 32,
-    room: "세미나룸",
-    price: "3만원",
+    room: '세미나룸',
+    price: '3만원',
     cost: {
       day: 100000,
       night: 120000,
       all: 140000,
     },
-    hash: ["대규모", "교육장", "워크숍", "기업행사"],
+    hash: ['대규모', '교육장', '워크숍', '기업행사'],
   },
   petroom1: {
-    title: "펫룸 스위트",
-    desc: "애견동물과 함께 힐링을 즐길 수 있는 공간🐶",
+    title: '펫룸 스위트',
+    desc: '애견동물과 함께 힐링을 즐길 수 있는 공간🐶',
     standardPeople: 2,
     maximumPeople: 4,
-    room: "펫룸",
-    price: "2만원",
+    room: '펫룸',
+    price: '2만원',
     cost: {
       day: 40000,
       night: 50000,
       all: 90000,
     },
-    hash: ["쾌적한", "편안함", "반려견과 힐링", "좋은추억"],
+    hash: ['쾌적한', '편안함', '반려견과 힐링', '좋은추억'],
   },
   petroom2: {
-    title: "펫룸 디럭스",
-    desc: "애견동물과 함께 힐링을 즐길 수 있는 공간🐶",
+    title: '펫룸 디럭스',
+    desc: '애견동물과 함께 힐링을 즐길 수 있는 공간🐶',
     standardPeople: 4,
     maximumPeople: 6,
-    price: "4만원",
-    room: "펫룸",
+    price: '4만원',
+    room: '펫룸',
     cost: {
       day: 80000,
       night: 90000,
       all: 130000,
     },
-    hash: ["쾌적한", "편안함", "반려견과 힐링", "좋은추억"],
+    hash: ['쾌적한', '편안함', '반려견과 힐링', '좋은추억'],
   },
   petroom3: {
-    title: "펫룸 패밀리",
-    desc: "애견동물과 함께 힐링을 즐길 수 있는 공간🐶",
+    title: '펫룸 패밀리',
+    desc: '애견동물과 함께 힐링을 즐길 수 있는 공간🐶',
     standardPeople: 6,
     maximumPeople: 8,
-    price: "8만원",
-    room: "펫룸",
+    price: '8만원',
+    room: '펫룸',
     cost: {
       day: 110000,
       night: 120000,
       all: 160000,
     },
-    hash: ["쾌적한", "편안함", "반려견과 힐링", "좋은추억"],
+    hash: ['쾌적한', '편안함', '반려견과 힐링', '좋은추억'],
   },
 };
 
@@ -144,10 +144,10 @@ function openPayment(content) {
     .map((e) => {
       return `<span class="hash-item">#${e}</span>`;
     })
-    .join("");
+    .join('');
 
   if (data) {
-    document.querySelector(".modal-body").innerHTML = `
+    document.querySelector('.modal-body').innerHTML = `
       <div id="detail-payment">
         <div class="pay-info">
           <div class="pay-header">
@@ -255,6 +255,7 @@ function openPayment(content) {
           </div>
           <form id="payment-transfer">
             <input type="hidden" name="date" id="selected-date" required />
+            <input type="hidden" name="room" id="selected-room" required />
             <input type="hidden" name="time" id="selected-time" required />
             <input
               type="hidden"
@@ -276,21 +277,24 @@ function openPayment(content) {
       `;
 
     // 날짜 표시
-    const displayDate = document.getElementById("display-date");
+    const displayDate = document.getElementById('display-date');
 
     // 합계 표시
-    const displayTotalAmount = document.getElementById("pay-amount");
+    const displayTotalAmount = document.getElementById('pay-amount');
 
     // form 전송용 데이터들
-    const selectedDate = document.getElementById("selected-date");
-    const selectedTime = document.getElementById("selected-time");
-    const selectedPersonnel = document.getElementById("selected-personnel");
-    const calculatedAmount = document.getElementById("total-amount");
+    const selectedDate = document.getElementById('selected-date');
+    const selectedRoom = document.getElementById('selected-room');
+    const selectedTime = document.getElementById('selected-time');
+    const selectedPersonnel = document.getElementById('selected-personnel');
+    const calculatedAmount = document.getElementById('total-amount');
+
+    selectedRoom.value = data.title;
 
     // 선택할 옵션들
-    const selectOptionBtns = document.querySelectorAll(".pay-btn");
-    const selectTimeBtns = document.querySelectorAll(".pay-time-btn");
-    const selectPersonnel = document.getElementById("personnel");
+    const selectOptionBtns = document.querySelectorAll('.pay-btn');
+    const selectTimeBtns = document.querySelectorAll('.pay-time-btn');
+    const selectPersonnel = document.getElementById('personnel');
 
     // 선택한 옵션 데이터 저장
 
@@ -298,56 +302,63 @@ function openPayment(content) {
       return function () {
         selectOptionBtns.forEach((e) => {
           if (
-            btns.classList.contains("pay-time-btn") &&
-            e.classList.contains("pay-time-btn")
+            btns.classList.contains('pay-time-btn') &&
+            e.classList.contains('pay-time-btn')
           ) {
-            e.classList.remove("selected");
+            e.classList.remove('selected');
           }
         });
-        this.classList.add("selected");
+        this.classList.add('selected');
         data.value = this.value;
         calculateAmount(displayTotalAmount, selectPersonnel, calculatedAmount);
       };
     }
 
     selectOptionBtns.forEach((btn) => {
-      if (btn.classList.contains("pay-time-btn")) {
-        btn.addEventListener("click", saveOptionData(btn, selectedTime));
+      if (btn.classList.contains('pay-time-btn')) {
+        btn.addEventListener('click', saveOptionData(btn, selectedTime));
       }
     });
 
     // 인원 선택
-    selectPersonnel.addEventListener("change", function () {
+    selectPersonnel.addEventListener('change', function () {
       selectedPersonnel.value = this.value;
       calculateAmount(displayTotalAmount, selectPersonnel, calculatedAmount);
     });
 
-    displayDate.innerHTML = new Date().toISOString().split("T")[0];
+    displayDate.innerHTML = new Date().toISOString().split('T')[0];
     calendarRendering(displayDate, selectedDate);
 
     // form 전송
     document
-      .getElementById("payment-transfer")
-      .addEventListener("submit", function (e) {
+      .getElementById('payment-transfer')
+      .addEventListener('submit', function (e) {
         e.preventDefault();
 
         const form = e.target;
+        const room = form.room.value;
         const date = form.date.value;
         const time = form.time.value;
         const personnel = parseInt(form.personnel.value) + standardPeople;
         const amount = form.amount.value;
 
         if (!date || !time || !personnel) {
-          alert("모든 옵션을 선택해 주세요.");
+          alert('모든 옵션을 선택해 주세요.');
           return false;
         }
 
-        sessionStorage.setItem("date", date);
-        sessionStorage.setItem("time", time);
-        sessionStorage.setItem("personnel", personnel);
-        sessionStorage.setItem("amount", amount);
+        sessionStorage.setItem(
+          'paymentInfo',
+          JSON.stringify({
+            date: date,
+            room: room,
+            time: time,
+            personnel: personnel,
+            amount: amount,
+          })
+        );
 
-        window.location.href = "./pages/payment.html";
+        window.location.href = './pages/payment.html';
       });
   }
 }
