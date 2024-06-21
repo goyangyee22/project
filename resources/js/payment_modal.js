@@ -1,7 +1,7 @@
 const paymentData = {
   party1: {
     title: '스페이스 파티룸',
-    desc: '설명',
+    desc: '쾌적하며 아늑한 감성적인 공간</br>큰 창문이 있어 낮에는 자연채광, 저녁에는 분위기 있는 조명 가득!</br>',
     standardPeople: 4,
     maximumPeople: 6,
     room: '파티룸',
@@ -11,11 +11,11 @@ const paymentData = {
       night: 70000,
       all: 90000,
     },
-    hash: ['해시태그1', '해시태그2', '해시태그3'],
+    hash: ['파티룸', '가족', '친구', '감성'],
   },
   party2: {
     title: '스페셜 파티룸',
-    desc: '설명',
+    desc: "소중한 시간과 다채로운 공간을 선사하는 '스페셜 파티룸'입니다. 소중한분과 즐기러 오세요😃",
     standardPeople: 6,
     maximumPeople: 8,
     room: '파티룸',
@@ -25,11 +25,11 @@ const paymentData = {
       night: 90000,
       all: 120000,
     },
-    hash: ['해시태그1', '해시태그2', '해시태그3'],
+    hash: ['드레스', '빔프로젝터', '분위기', '파티룸', '생일파티'],
   },
   party3: {
     title: '다모여 파티룸',
-    desc: '설명',
+    desc: '간편한 조리가 가능한 주방을 갖춘 공간입니다. 당일예약 가능합니다. 좋은 사람과 좋은 시간 보내세요',
     standardPeople: 8,
     maximumPeople: 12,
     room: '파티룸',
@@ -39,7 +39,7 @@ const paymentData = {
       night: 110000,
       all: 150000,
     },
-    hash: ['해시태그1', '해시태그2', '해시태그3'],
+    hash: ['모임', '드레스', '대전파티룸', '대전', '당일예약'],
   },
   meeting1: {
     title: '소회의실',
