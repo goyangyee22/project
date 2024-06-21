@@ -1,6 +1,7 @@
 @charset "utf-8";
 
 @import url(./common.css);
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@1&display=swap');
 
 html,
 body {
@@ -128,17 +129,13 @@ body {
   color: var(--accent-color);
 }
 .section-desc {
+  padding: 48px 0;
+  text-align: center;
   font-size: 24px;
   line-height: 1.6;
 }
 .section-desc span {
   font-weight: 700;
-}
-
-/* intro */
-.intro-contents {
-  padding: 48px 0;
-  text-align: center;
 }
 
 /* 후기 사진 미리보기? */
@@ -197,42 +194,36 @@ body {
 }
 
 /* 옵션 안내 */
-.room-options-container {
-  position: relative;
+#options-container {
   display: flex;
   justify-content: space-between;
-  align-items: start;
-  flex-direction: row-reverse;
-  margin: 48px 0;
-}
-#section-menu {
-  position: sticky;
-  top: 117px;
-  right: 0;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  flex-direction: column;
-  padding: 24px 0;
-}
-#section-menu > a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 120px;
-  padding: 16px 24px;
-  transition: 0.3s;
-}
-#section-menu > a.active {
-  transform: scale(1.2);
-  color: var(--hover-color);
 }
 
-.option-contents {
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding-bottom: 48px;
+#section-menu {
+  position: relative;
+  top: 216px;
+}
+#section-menu > ul {
+  position: sticky;
+  top: 50%;
+  right: 0;
+  padding: 205px 0 0;
+  transform: translateY(-50%);
+}
+#section-menu > ul > li {
+  margin-bottom: 8px;
+  text-align: center;
+}
+#section-menu > ul > li a {
+  border-radius: 16px;
+  background-color: var(--accent-color);
+  color: var(--main-color);
+  display: block;
+  padding: 16px 48px;
+  transition: 0.3s;
+}
+#section-menu > ul > li a:hover {
+  background-color: var(--hover-color);
 }
 
 .room-option {
@@ -243,8 +234,85 @@ body {
   margin-bottom: 16px;
 }
 
-#option-common {
-  margin-top: 80px;
+/* service */
+.service-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 32px;
+  padding: 48px 0;
+}
+.service-contents {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+}
+.service-img {
+  width: 60%;
+  height: 450px;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 0 10px 0 var(--sub-color);
+}
+.service-img > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.service-desc {
+  width: 40%;
+}
+.service-desc > span {
+  font: italic 500 24px 'DM Serif Text', serif;
+  color: var(--sub-color);
+}
+.service-desc > h3 {
+  font-size: 32px;
+  color: var(--accent-color);
+}
+.service-desc > p {
+  word-break: keep-all;
+  margin: 32px 0;
+  font-size: 24px;
+  line-height: 1.6;
+}
+.service-desc > p > span {
+  font-weight: 700;
+}
+
+.service-inquiry {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 16px;
+}
+.service-inquiry::before {
+  content: '';
+  width: 65%;
+  height: 2px;
+  background-color: var(--common-color);
+}
+.service-inquiry > span {
+  padding-top: 14px;
+}
+.service-inquiry > button {
+  padding: 16px 48px;
+  background-color: var(--accent-color);
+  color: var(--main-color);
+  border-radius: 16px;
+}
+.service-inquiry > button:hover {
+  background-color: var(--hover-color);
+}
+.eventMC img {
+  object-position: top;
+}
+.eventMC > .service-desc {
+  text-align: right;
+}
+.eventMC .service-inquiry {
+  align-items: flex-end;
 }
 
 /* booking */
@@ -317,4 +385,59 @@ body {
 }
 .pet-icon:hover > a::after {
   content: '펫룸 예약하기';
+}
+
+/* way to come */
+#way {
+  padding-bottom: 0;
+}
+.way-contents {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  padding: 48px 0 64px;
+}
+#map {
+  height: auto;
+}
+
+.way-contents > div {
+  width: calc(50% - 12px);
+}
+
+.way-to-come {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.transportation {
+  padding: 24px;
+  border-radius: 16px;
+  background-color: #fff;
+  box-shadow: 0 0 8px 3px var(--common-color);
+}
+
+.transportation > h3 {
+  margin-bottom: 16px;
+  font-size: 24px;
+}
+
+.transportation > ul {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 0 8px;
+}
+.transportation > ul h4 {
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+.transportation > ul p {
+  padding: 0 8px;
+  line-height: 1.5;
+  font-size: 14px;
+}
+.transportation > ul p > span,
+.transportation > ul p > a {
+  font-weight: 700;
 }

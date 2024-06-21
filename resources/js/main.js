@@ -128,4 +128,4 @@ sectionMenus.forEach((link) => {
   });
 });
 
-// mapRendering();
+mapRendering();

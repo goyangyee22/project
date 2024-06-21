@@ -21,6 +21,6 @@ const firebaseConfig = {
 // Firebase를 초기화합니다.
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-const auth = getAuth(app);
+// const auth = getAuth(app);
 
 // 로그인이 되어있는 경우 
