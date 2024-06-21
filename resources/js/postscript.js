@@ -101,7 +101,7 @@ updateBtn.addEventListener("click", async function (e) {
   const inputsArr = Array.from(inputs);
   const addObj = {};
   inputsArr.forEach((input) => {
-    addObj[input.name] = input.value;
+    addObj[name ,input.name, date] = input.value;
   });
   const result = await addDatas("board", addObj);
 
