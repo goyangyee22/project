@@ -156,6 +156,7 @@ deleteBtn.addEventListener("click", async function () {
   selectedTrs.forEach(async (tr) => {
     const docId = tr.getAttribute("data-id");
     // 작성자의 sessionStorage에서 docId를 가져옵니다.
+    // selected 되어있는 칸에서 이 작성자의 docId를 가져오면 됨
     // const userInfoString = sessionStorage.getItem("userInfo");
     // const userInfo = JSON.parse(userInfoString);
     const writerDocId = docId;
