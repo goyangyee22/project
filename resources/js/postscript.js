@@ -42,12 +42,12 @@ if (!userInfo) {
 }
 
 // 작성한 게시글을 화면에 반영합니다.
-async function getMembers() {
+async function getBoard() {
   const querySnapshot = await getDatas("board");
   const tableTag = document.querySelector("table");
   querySnapshot.forEach((doc) => {
     // 게시글의 정보를 저장할 객체를 생성합니다.
-    const { name, title, content, date = new Date() } = doc.data();
+    const { name, title, content, date } = doc.data();
 
     // 해당 연도를 표시합니다.
     const year = date.getFullYear();
@@ -71,7 +71,7 @@ async function getMembers() {
     );
   });
 }
-getMembers();
+getBoard();
 
 // 게시글을 작성하는 함수입니다.
 const updateBtn = document.getElementById("updateBtn");
@@ -80,7 +80,7 @@ updateBtn.addEventListener("click", async function (e) {
   // 작성자명을 불러오는 함수입니다.
   const userNameString = sessionStorage.getItem("userInfo");
   const userInfo = JSON.parse(userNameString);
-  const name = userInfo;
+  const name = userInfo.name;
 
   // Firestore에서 "userInfo" 컬렉션을 참조하는 변수 생성
   const usersRef = collection(dbService, "userInfo");
@@ -94,8 +94,7 @@ updateBtn.addEventListener("click", async function (e) {
   // 검색된 문서들 중 첫 번째 문서의 ID를 추출합니다. (자동으로 주어진 문서 고유 ID)
   const userDoc = querySnapshot.docs[0];
   const userData = userDoc.data();
-  console.log(userDoc);
-  console.log(userData.name);
+  console.log(userData);
 
   // 제목, 내용의 입력값을 받아옵니다.
   const inputs = document.querySelectorAll(".form-container input");
@@ -105,9 +104,9 @@ updateBtn.addEventListener("click", async function (e) {
     addObj[input.name] = input.value;
   });
   const result = await addDatas("board", addObj);
-  console.log(result);
-  // const uploadName = { name: userData.name };
+
   const date = new Date();
+
   // 해당 연도를 표시합니다.
   const year = date.getFullYear();
 
@@ -116,20 +115,25 @@ updateBtn.addEventListener("click", async function (e) {
 
   // 해당 일을 표시합니다.
   const day = date.getDate();
-  const { title, content } = addObj;
+  const {
+    uploadName = name,
+    title,
+    content,
+    uploadDate = `${year} ${month} ${day}`,
+  } = addObj;
   const tableTag = document.querySelector("table");
   tableTag.firstElementChild.insertAdjacentHTML(
     "beforeend",
     `
-    <tr data-id=${result.id}>
-    <td class="name">${userData.name}</td>
+    <tr data-id=${userInfo.docId}>
+    <td class="name">${uploadName}</td>
     <td class="title">${title}</td>
     <td class="content">${content}</td>
-    <td class="date">${`${year}년 ${month}월 ${day}일`}</td>
+    <td class="date">${uploadDate}</td>
     </tr>
     `
   );
-  console.log(result.id, userData.name, title, content, year, month, day);
+  console.log(userInfo.docId, uploadName, title, content, uploadDate);
 });
 
 // 게시글을 수정하는 함수입니다. (한 번에 한 개의 게시글씩 수정 가능)
