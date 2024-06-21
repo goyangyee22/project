@@ -43,12 +43,17 @@ if (!userInfo) {
 
 // 작성한 게시글을 화면에 반영합니다.
 async function getBoard() {
-  const tableTag = document.querySelector("table");
   const querySnapshot = await getDatas("board");
+  const tableTag = document.querySelector("table");
   querySnapshot.forEach((doc) => {
     // 게시글의 정보를 저장할 객체를 생성합니다.
-    const { name, title, content, date } = doc.data();
+    // const { name, title, content, date } = doc.data();
 
+    const data = doc.data();
+    const name = data.name;
+    const title = data.title;
+    const content = data.content;
+    let date = data.date;
     // 해당 연도, 월, 일을 표시하는데, 해당 월을 표시하는 getMonth()는 0부터 시작하므로 1을 더해줍니다.
     const year = date.getFullYear();
     const month = date.getMonth() + 1;
@@ -103,7 +108,7 @@ updateBtn.addEventListener("click", async function (e) {
   const inputs = document.querySelectorAll(".form-container input");
   // const inputsArr = Array.from(inputs);
   const addObj = {
-    name: name,
+    name,
     // 작성일 기준으로 고정합니다.
     date: new Date().toLocaleDateString("ko-KR"),
   };
@@ -141,7 +146,7 @@ updateBtn.addEventListener("click", async function (e) {
     addObj.title,
     addObj.content,
     addObj.date
-  )
+  );
 });
 
 // 게시글을 수정하는 함수입니다. (한 번에 한 개의 게시글씩 수정 가능)
