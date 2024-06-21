@@ -20,8 +20,9 @@ const idEx = /^[0-9a-z]{4,16}$/g;
 const pwEx = /^[0-9A-Za-z\d$@$!%*?&]{4,16}/g;
 const phoneEx = /^\d{3}-\d{4}-\d{4}$/;
 
-// 아이디 중복 확인 및 버튼 클릭 여부를 체크하기 위해 변수를 생성합니다.
+// 아이디와 핸드폰 번호 중복 확인 및 버튼 클릭 여부를 체크하기 위해 변수를 생성합니다.
 let idCheck = false;
+let phoneCheck = false;
 let buttonCheck = false;
 
 // 로그인이 되어있는 경우, 접근이 제한됩니다.
@@ -66,9 +67,46 @@ async function isIdDuplicate(event) {
   }
 }
 
-// 중복확인 버튼에 이벤트 리스너를 등록합니다.
-let isItDuplicate = document.querySelector("#duplicate");
+// ID 중복확인 버튼에 이벤트 리스너를 등록합니다.
+let isItDuplicate = document.querySelector("#duplicateId");
 isItDuplicate.addEventListener("click", isIdDuplicate);
+
+// 핸드폰 번호 중복에 대한 함수를 정의합니다.
+async function isPhoneDuplicate(event) {
+  event.preventDefault();
+  const phone = document.querySelector("input[name='phone']").value;
+
+  // 정규식을 사용하여 아이디가 형식에 맞는지 검증합니다.
+  const phoneConfirm = phoneEx.test(phone);
+
+  // ID가 조건에 맞게 입력되지 않으면 그에 따른 alert를 띄우기 위한 조건식을 설정합니다.
+  console.log(phoneConfirm);
+  if (!phoneConfirm) {
+    alert("유효하지 않은 핸드폰 번호입니다.");
+    return false;
+  }
+
+  // Firestore에서 "userInfo" 컬렉션에서 입력한 아이디가 있는지 조회합니다.
+  const usersRef = collection(dbService, "userInfo");
+  const q = query(usersRef, where("phone", "==", phone));
+  const querySnapshot = await getDocs(q);
+  console.log(querySnapshot);
+
+  // 중복 여부에 따라 idCheck 변수를 설정합니다.
+  phoneCheck = !querySnapshot.empty ? false : true;
+  buttonCheck = true;
+
+  // 사용 가능한 아이디인지 또는 중복된 아이디인지 알립니다.
+  if (phoneCheck) {
+    alert("사용 가능한 핸드폰 번호입니다..");
+  } else {
+    alert("이미 누군가 사용중이거나 유효하지 않은 핸드폰 번호입니다.");
+  }
+}
+
+// 핸드폰 번호 중복확인 버튼에 이벤트 리스너를 등록합니다.
+let isNumberDuplicate = document.querySelector("#duplicatePhone");
+isNumberDuplicate.addEventListener("click", isPhoneDuplicate);
 
 // 회원가입 버튼을 클릭하면 처리하는 함수를 생성합니다.
 async function handleSignUp() {
@@ -101,7 +139,7 @@ async function handleSignUp() {
   }
 
   if (!phoneEx.test(phone)) {
-    alert("유효하지 않은 핸드폰 번호입니다.");
+    alert("이미 누군가 사용중이거나 유효하지 않은 핸드폰 번호입니다.");
     return false;
   }
 
@@ -123,6 +161,13 @@ async function handleSignUp() {
     alert("비밀번호가 일치하지 않습니다.");
     return false;
   }
+
+  // 핸드폰 번호가 중복되었는지 확인합니다.
+  if (phoneCheck == false) {
+    alert("이미 누군가 사용중이거나 유효하지 않은 핸드폰 번호입니다.");
+    return false;
+  }
+
   return true;
 
   // 중복되지 않는 ID일 경우 Firestore에 데이터를 저장합니다.
