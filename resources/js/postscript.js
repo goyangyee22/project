@@ -49,13 +49,9 @@ async function getBoard() {
     // 게시글의 정보를 저장할 객체를 생성합니다.
     const { name, title, content, date } = doc.data();
 
-    // 해당 연도를 표시합니다.
+    // 해당 연도, 월, 일을 표시하는데, 해당 월을 표시하는 getMonth()는 0부터 시작하므로 1을 더해줍니다.
     const year = date.getFullYear();
-
-    // 해당 월을 표시하는 getMonth()는 0부터 시작하므로 1을 더해줍니다.
     const month = date.getMonth() + 1;
-
-    // 해당 일을 표시합니다.
     const day = date.getDate();
 
     tableTag.insertAdjacentHTML(
@@ -96,17 +92,7 @@ updateBtn.addEventListener("click", async function (e) {
   const userData = userDoc.data();
   console.log(userData);
 
-  // 제목, 내용의 입력값을 받아옵니다.
-  const inputs = document.querySelectorAll(".form-container input");
-  const inputsArr = Array.from(inputs);
-  const addObj = {};
-  inputsArr.forEach((input) => {
-    addObj[name ,input.name, date] = input.value;
-  });
-  const result = await addDatas("board", addObj);
-
   const date = new Date();
-
   // 해당 연도를 표시합니다.
   const year = date.getFullYear();
 
@@ -115,6 +101,19 @@ updateBtn.addEventListener("click", async function (e) {
 
   // 해당 일을 표시합니다.
   const day = date.getDate();
+
+  // 제목, 내용의 입력값을 받아옵니다.
+  const inputs = document.querySelectorAll(".form-container input");
+  // const inputsArr = Array.from(inputs);
+  const addObj = {
+    name: name,
+    date: `${year}년 ${month}월 ${day}일`,
+  };
+  inputs.forEach((input) => {
+    addObj[input.name] = input.value;
+  });
+  const result = await addDatas("board", addObj);
+
   const {
     uploadName = name,
     title,
@@ -125,7 +124,7 @@ updateBtn.addEventListener("click", async function (e) {
   tableTag.firstElementChild.insertAdjacentHTML(
     "beforeend",
     `
-    <tr data-id=${userInfo.docId}>
+    <tr data-id=${result.id}>
     <td class="name">${uploadName}</td>
     <td class="title">${title}</td>
     <td class="content">${content}</td>
