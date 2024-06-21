@@ -156,9 +156,9 @@ deleteBtn.addEventListener("click", async function () {
   selectedTrs.forEach(async (tr) => {
     const docId = tr.getAttribute("data-id");
     // 작성자의 sessionStorage에서 docId를 가져옵니다.
-    const userInfoString = sessionStorage.getItem("userInfo");
-    const userInfo = JSON.parse(userInfoString);
-    const writerDocId = userInfo.docId;
+    // const userInfoString = sessionStorage.getItem("userInfo");
+    // const userInfo = JSON.parse(userInfoString);
+    const writerDocId = docId;
 
     // 현재 로그인한 본인의 sessionStorage에서 docId를 가져옵니다.
     const currentUserInfoString = sessionStorage.getItem("userInfo");
@@ -166,7 +166,7 @@ deleteBtn.addEventListener("click", async function () {
     const currentDocId = currentUserInfo.docId;
 
     // 작성자와 현재 로그인한 본인의 docId가 같아야 삭제가 됩니다.
-    if (doc.id == currentDocId) {
+    if (writerDocId == currentDocId) {
       try {
         const result = await deleteDatas("board", docId);
         if (result) {
