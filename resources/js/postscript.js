@@ -66,7 +66,7 @@ async function getBoard() {
       <td class="name">${name}</td>
       <td class="title">${title}</td>
       <td class="content">${content}</td>
-      <td class="date">${year}년 ${month}월 ${day}일</td>
+      <td class="date">${year}. ${month}. ${day}.</td>
       </tr>
       `
     );
@@ -95,12 +95,6 @@ updateBtn.addEventListener("click", async function (e) {
   // 검색된 문서들 중 첫 번째 문서의 ID를 추출합니다. (자동으로 주어진 문서 고유 ID)
   const userDoc = querySnapshot.docs[0];
   const userData = userDoc.data();
-  console.log(userData);
-
-  // 해당 연도, 월, 일을 표시하는데, 해당 월을 표시하는 getMonth()는 0부터 시작하므로 1을 더해줍니다.
-  // const year = date.getFullYear();
-  // const month = date.getMonth() + 1;
-  // const day = date.getDate();
 
   // 제목, 내용의 입력값을 받아옵니다.
   const inputs = document.querySelectorAll(".form-container input");
@@ -141,6 +135,6 @@ updateBtn.addEventListener("click", async function (e) {
   console.log(userDoc, addObj.name, addObj.title, addObj.content, addObj.date);
 });
 
-// 게시글을 수정하는 함수입니다. (한 번에 한 개의 게시글씩 수정 가능)
+// 본인이 작성했던 게시글을 수정하는 함수입니다. (한 번에 한 개의 게시글씩 수정 가능)
 
-// 게시글을 삭제하는 함수입니다. (한 번에 여러 개의 게시글 삭제 가능)
+// 본인이 작성했던 게시글을 삭제하는 함수입니다. (한 번에 여러 개의 게시글 삭제 가능)
