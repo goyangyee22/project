@@ -15,9 +15,10 @@ import {
   getDocs,
 } from 'https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js';
 
-// 회원가입 할 때 아이디 및 비밀번호에 대한 정규식입니다.
+// 회원가입 할 때 아이디, 비밀번호 및 핸드폰 번호에 대한 정규식입니다.
 const idEx = /^[0-9a-z]{4,16}$/g;
 const pwEx = /^[0-9A-Za-z\d$@$!%*?&]{4,16}/g;
+const phoneEx = /^\d{3}-\d{4}-\d{4}$/;
 
 // 아이디 중복 확인 및 버튼 클릭 여부를 체크하기 위해 변수를 생성합니다.
 let idCheck = false;
@@ -76,14 +77,15 @@ async function handleSignUp() {
   const id = document.forms['signUpForm']['id'].value;
   const pw = document.forms['signUpForm']['pw'].value;
   const pwConfirm = document.forms['signUpForm']['pwConfirm'].value;
+  const phone = document.forms['signUpForm']['phone'].value;
 
   // 입력 정보가 전부 입력 되어야만 회원가입을 할 수 있습니다.
-  if (!name || !id || !pw || !pwConfirm) {
+  if (!name || !id || !pw || !pwConfirm || !phone) {
     alert('회원 정보는 전부 입력하여야 합니다.');
     return false;
   }
   console.log(idEx.test(id));
-  // 정규식을 사용하여 아이디와 비밀번호를 검증합니다.
+  // 정규식을 사용하여 아이디, 비밀번호, 핸드폰 번호를 검증합니다.
   if (!idEx.test(id)) {
     alert(
       '아이디 형식이 올바르지 않습니다. 영문자로 시작하는 4~16자의 영문자 또는 숫자를 입력하세요.'
@@ -95,6 +97,11 @@ async function handleSignUp() {
     alert(
       '비밀번호 형식이 올바르지 않습니다. 4자-16자 사이의 대문자, 소문자, 숫자, 특수문자를 포함해야 합니다.'
     );
+    return false;
+  }
+
+  if (!phoneEx.test(phone)){
+    alert("유효하지 않은 핸드폰 번호이거나 이미 누군가 사용중인 핸드폰 번호입니다.");
     return false;
   }
 
@@ -127,7 +134,7 @@ async function getMembers() {
   console.log('getMembers 함수 시작');
   const snapshot = await getDatas('userInfo');
   snapshot.forEach((doc) => {
-    const { name, id, pw } = doc.data();
+    const { name, id, pw, phone } = doc.data();
     console.log(`Name: ${name}, ID: ${id}`);
   });
   console.log('getMembers 함수 종료');
@@ -157,6 +164,7 @@ signUpButton.addEventListener('click', async function () {
     name: document.querySelector("input[name='name']").value,
     id: document.querySelector("input[name='id']").value,
     pw: document.querySelector("input[name='pw']").value,
+    phone: document.querySelector("input[name='phone']").value
   };
 
   const result = await addDatas('userInfo', userInfo);
