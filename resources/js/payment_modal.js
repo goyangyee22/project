@@ -4,6 +4,8 @@ const paymentData = {
     desc: "설명",
     standardPeople: 4,
     maximumPeople: 6,
+    room: "파티룸",
+    price: "5만원",
     cost: {
       day: 60000,
       night: 70000,
@@ -16,6 +18,8 @@ const paymentData = {
     desc: "설명",
     standardPeople: 6,
     maximumPeople: 8,
+    room: "파티룸",
+    price: "5만원",
     cost: {
       day: 80000,
       night: 90000,
@@ -28,6 +32,8 @@ const paymentData = {
     desc: "설명",
     standardPeople: 8,
     maximumPeople: 12,
+    room: "파티룸",
+    price: "5만원",
     cost: {
       day: 100000,
       night: 110000,
@@ -40,6 +46,9 @@ const paymentData = {
     desc: "✨고객인증✨ 쾌적한 환경에서 모임이 가능한 곳!!<br/>🎀각종 모임 대환영🎀 블로그 리뷰 인증 시 2시간 추가 제공(●'◡'●)🧡🎁",
     standardPeople: 4, //기준인원
     maximumPeople: 8, // 최대인원
+    room: "세미나룸",
+    price: "3만원",
+
     cost: {
       //가격
       day: 60000,
@@ -53,6 +62,8 @@ const paymentData = {
     desc: "✨고객인증✨ 눈과 맘이 편안한 빌리슈만의 친환경 인테리어 제공👏👏 블로그 리뷰 인증 시 2시간 추가 제공^o^🧡🎁",
     standardPeople: 6,
     maximumPeople: 17,
+    room: "세미나룸",
+    price: "3만원",
     cost: {
       day: 80000,
       night: 100000,
@@ -65,6 +76,8 @@ const paymentData = {
     desc: "✨고객인증✨ 풀옵션 완비❗ 커피맛집☕ 🎀단체 대환영🎀 블로그 리뷰 인증 시 2시간 추가 제공(●'◡'●)🧡🎁",
     standardPeople: 15,
     maximumPeople: 32,
+    room: "세미나룸",
+    price: "3만원",
     cost: {
       day: 100000,
       night: 120000,
@@ -77,6 +90,8 @@ const paymentData = {
     desc: "애견동물과 함께 힐링을 즐길 수 있는 공간🐶",
     standardPeople: 2,
     maximumPeople: 4,
+    room: "펫룸",
+    price: "2만원",
     cost: {
       day: 40000,
       night: 50000,
@@ -87,8 +102,10 @@ const paymentData = {
   petroom2: {
     title: "펫룸 디럭스",
     desc: "애견동물과 함께 힐링을 즐길 수 있는 공간🐶",
-    standardPeople: 6,
-    maximumPeople: 8,
+    standardPeople: 4,
+    maximumPeople: 6,
+    price: "4만원",
+    room: "펫룸",
     cost: {
       day: 80000,
       night: 90000,
@@ -101,6 +118,8 @@ const paymentData = {
     desc: "애견동물과 함께 힐링을 즐길 수 있는 공간🐶",
     standardPeople: 6,
     maximumPeople: 8,
+    price: "8만원",
+    room: "펫룸",
     cost: {
       day: 110000,
       night: 120000,
@@ -157,9 +176,9 @@ function openPayment(content) {
                 <i class="fa-solid fa-thumbtack"></i>보증금 제도를 운영합니다.
               </h5>
               <p>
-                무인으로 운영하는 파티룸의 특성상 보증금 제도를 운영하고
+                무인으로 운영하는 ${data.room}의 특성상 보증금 제도를 운영하고
                 있습니다.<br />
-                예약 후 보증금(5만원) 관련 안내 문자를 보내드리며 퇴실 후 문제가
+                예약 후 보증금(${data.price}) 관련 안내 문자를 보내드리며 퇴실 후 문제가
                 없는 경우 최대 48시간 이내에 100% 환불해 드립니다.
               </p>
             </div>
