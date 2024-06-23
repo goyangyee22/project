@@ -53,12 +53,8 @@ async function getBoard() {
     const name = data.name;
     const title = data.title;
     const content = data.content;
-    const date = new Date();
-    // 해당 연도, 월, 일을 표시하는데, 해당 월을 표시하는 getMonth()는 0부터 시작하므로 1을 더해줍니다.
-    const year = date.getFullYear();
-    const month = date.getMonth() + 1;
-    const day = date.getDate();
-
+    const date = data.date;
+   
     tableTag.insertAdjacentHTML(
       "beforeend",
       `
@@ -66,7 +62,7 @@ async function getBoard() {
       <td class="name">${name}</td>
       <td class="title">${title}</td>
       <td class="content">${content}</td>
-      <td class="date">${year}. ${month}. ${day}.</td>
+      <td class="date">${date}.</td>
       </tr>
       `
     );
