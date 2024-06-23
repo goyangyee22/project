@@ -66,7 +66,6 @@ async function getBoard() {
       </tr>
       `
     );
-    // console.log(doc.id);
   });
 }
 getBoard();
@@ -98,7 +97,7 @@ updateBtn.addEventListener("click", async function (e) {
   // 제목과 내용이 모두 비어있는지 검사합니다.
   if (title === "" || content === "") {
     alert("제목과 내용을 모두 입력해주세요.");
-    return; // 함수 종료
+    return;
   }
 
   // 작성자명을 불러오는 함수입니다.
@@ -121,7 +120,6 @@ updateBtn.addEventListener("click", async function (e) {
 
   // 제목, 내용의 입력값을 받아옵니다.
   const inputs = document.querySelectorAll(".form-container input");
-  // const inputsArr = Array.from(inputs);
   const addObj = {
     name,
     // 작성일 기준으로 고정합니다.
