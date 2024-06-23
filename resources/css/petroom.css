@@ -372,6 +372,16 @@ th {
   background-color: #ca8787;
 }
 
+.btn-primary:active {
+  background-color: #ca8787 !important;
+}
+/* #petroomBtn:active {
+  background-color: #ca8787;
+} */
+.room-btn:active {
+  background-color: #ca8787;
+}
+
 .btnwrap button:hover {
   background-color: #ca8787;
   color: #fff;
