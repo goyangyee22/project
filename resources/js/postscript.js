@@ -54,7 +54,7 @@ async function getBoard() {
     const title = data.title;
     const content = data.content;
     const date = data.date;
-   
+
     tableTag.insertAdjacentHTML(
       "beforeend",
       `
@@ -62,7 +62,7 @@ async function getBoard() {
       <td class="name">${name}</td>
       <td class="title">${title}</td>
       <td class="content">${content}</td>
-      <td class="date">${date}.</td>
+      <td class="date">${date}</td>
       </tr>
       `
     );
