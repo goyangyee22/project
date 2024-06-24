@@ -1,7 +1,26 @@
-var swiper = new Swiper(".mySwiper", {
+// var swiper = new Swiper(".mySwiper", {
+//   navigation: {
+//     nextEl: ".swiper-button-next",
+//     prevEl: ".swiper-button-prev",
+//   },
+// });
+
+var swiper = new Swiper(".detail-slide-thumb", {
+  loop: true,
+  spaceBetween: 10,
+  slidesPerView: 4,
+  freeMode: true,
+  watchSlidesProgress: true,
+});
+var swiper2 = new Swiper(".detail-slide", {
+  loop: true,
+  spaceBetween: 10,
   navigation: {
     nextEl: ".swiper-button-next",
     prevEl: ".swiper-button-prev",
+  },
+  thumbs: {
+    swiper: swiper,
   },
 });
 
