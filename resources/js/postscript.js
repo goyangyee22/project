@@ -1,10 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
-import {
-  dbService,
-  getDatas,
-  deleteDocument,
-  updateDocument,
-} from "../../firebase.js";
+import { dbService } from "../../firebase.js";
 import {
   getFirestore,
   collection,
@@ -41,8 +36,8 @@ if (!userInfo) {
 
 // 작성한 게시글을 화면에 반영합니다.
 async function getBoard() {
-  const querySnapshot = await getDatas("board");
-  const tableTag = document.querySelector("table");
+  const tableBody = document.querySelector("tbody");
+  const querySnapshot = await getDocs(collection(db, "board"));
   querySnapshot.forEach((doc) => {
     // 게시글의 정보를 저장할 객체를 생성합니다.
     const data = doc.data();
@@ -57,16 +52,48 @@ async function getBoard() {
     <td class="date">${date}</td>
     `;
 
-    tableTag.appendChild(row);
+    row.addEventListener("click", () => {
+      // 선택된 행을 표시합니다.
+      const selectedRow = document.querySelector(".selected");
+      if (selectedRow) {
+        selectedRow.classList.remove("selected");
+      }
+      row.classList.add("selected");
+
+      // 모달 창 내용을 업데이트 합니다.
+      const modalTitleElement = document.querySelector(".modal-title");
+      const modalContentElement = document.querySelector(".modal-content");
+
+      modalTitleElement.textContent = title;
+      modalContentElement.textContent = data.content;
+
+      // 모달 창을 엽니다.
+      const modal = document.querySelector("#modal");
+      modal.style.display = "block";
+    });
+
+    tableBody.appendChild(row);
   });
 }
-getBoard();
+
+// 모달창 닫기 버튼을 클릭하면 모달 창을 닫습니다.
+const closeBtn = document.querySelector(".closeBtn");
+closeBtn.addEventListener("click", () => {
+  const modal = document.querySelector("#modal");
+  modal.style.display = "none";
+});
+
+// 페이지를 로드하면 게시글을 불러옵니다.
+window.onload = () => {
+  getBoard();
+};
 
 const modal = document.querySelector("#modal");
 const readBtn = document.querySelector("#readBtn");
-const close = document.querySelector(".close");
+const modalTitleElement = document.querySelector(".modal-title");
+const modalContentElement = document.querySelector(".modal-content");
 
-// 모달 창을 엽니다.
+// 자세히 보기 버튼을 클릭하면 모달 창을 엽니다.
 readBtn.addEventListener("click", async () => {
   const selectedRow = document.querySelector(".selected");
   if (!selectedRow) {
@@ -75,22 +102,19 @@ readBtn.addEventListener("click", async () => {
   }
 
   const docId = selectedRow.getAttribute("data-id");
+  const docRef = doc(db, "board", docId);
 
   try {
     // Firebase에서 선택된 게시글의 데이터를 가져옵니다.
-    const docRef = doc(dbService, "board", docId);
     const docSnap = await getDoc(docRef);
 
     if (docSnap.exists()) {
-      const data = doc.data();
+      const data = docSnap.data();
       const { title, content } = data;
 
       // 모달 창 내용을 업데이트 합니다.
-      const modalTitle = modal.querySelector(".title");
-      const modalContent = modal.querySelector(".ct .modal-content");
-
-      modalTitle.textContent = title;
-      modalContent.textContent = content;
+      modalTitleElement.textContent = title;
+      modalContentElement.textContent = content;
 
       // 모달 창을 엽니다.
       modal.style.display = "block";
@@ -102,11 +126,6 @@ readBtn.addEventListener("click", async () => {
     alert("게시글을 불러오는 중 오류가 발생했습니다.");
   }
 });
-
-// 모달창 닫기
-close.onclick = function () {
-  modal.style.display = "none";
-};
 
 // table에 클릭 이벤트를 생성합니다.
 let updateTarget;
