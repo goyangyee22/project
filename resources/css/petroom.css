@@ -23,8 +23,10 @@ header {
 #pet {
   /* padding-top: 100px; */
   background-color: #fff;
+padding: 48px 0;
   /* height: 100vh; */
 }
+.detail-slide{margin-bottom: 8px;}
 .pet-detail {
   display: flex;
   align-items: start;
@@ -32,12 +34,13 @@ header {
   position: relative;
 }
 .pet-contents {
-  /* width: 600px; */
+  width: 75%;
   flex-grow: 1;
 }
 /* 스와이퍼 */
 .swiper-slide img {
-  width: 100%;
+  width:100%;
+
   /* border-radius: 30px; */
   /* height: 600px; */
 }
@@ -408,12 +411,15 @@ justify-content: space-between;}
 }
 /* 방 이미지들(스와이퍼) */
 .room-main {
-  border: 1px solid pink;
+  /* border: 1px solid pink; */
   background-color: #fff;
   position: sticky;
+  display: flex;
+  flex-direction: column;
   top: 0;
   padding: 16px;
   border-radius: 8px;
+  width: 30%;
 }
 .btnwrap {
   display: flex;
@@ -449,11 +455,13 @@ justify-content: space-between;}
   transition: 0.5s;
 }
 .room {
-  /* border: 1px solid pink; */
-  border-bottom: 1px dashed pink;
+  border: 1px solid black;
+  /* border-bottom: 1px dashed pink; */
   /* border-radius: 12px; */
-  display: flex;
-  width: 450px;
+ /* padding: 24px; */
+ margin: 24px 0;
+  /* display: flex; */
+  width: 100%;
   height: 200px;
   background-color: #fff;
   margin-bottom: 16px;
@@ -468,13 +476,10 @@ justify-content: space-between;}
   padding-bottom: 0;
   color: black;
 }
-.room-imgs {
-  padding: 16px;
-}
-.room-imgs img {
-  border-radius: 12px;
-}
+
+
 .room-title h3 {
+  color: #FFB1B1;
   padding-bottom: 8px;
   margin: 0;
 }
