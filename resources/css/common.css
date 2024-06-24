@@ -38,14 +38,14 @@ body {
 }
 
 /* media - desktop */
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1023px) {
   :root {
     font-size: 16px;
   }
 }
 
 /* media - tablet */
-@media screen and (max-width: 1023px) {
+@media screen and (max-width: 1022px) {
   :root {
     font-size: 14px;
   }
@@ -288,14 +288,22 @@ footer {
 }
 
 /* media - desktop */
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1026px) {
   .ham-menu {
     display: none;
   }
 }
 
 /* media - tablet */
-@media screen and (max-width: 1023px) {
+@media screen and (max-width: 1025px) {
+  html,
+  body {
+    word-break: keep-all;
+  }
+  .wrap {
+    width: 100%;
+    max-width: 800px;
+  }
   header {
     right: auto;
     width: 100%;
@@ -338,6 +346,10 @@ footer {
 
 /* media - mobile */
 @media screen and (max-width: 767px) {
+  .wrap {
+    width: 100%;
+    max-width: 400px;
+  }
   header {
     right: auto;
     width: 100%;
