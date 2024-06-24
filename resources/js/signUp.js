@@ -156,7 +156,6 @@ async function handleSignUp() {
   }
 
   // 비밀번호와 비밀번호 확인이 일치하지 않으면 회원가입이 되지 않습니다.
-  console.log(pw !== pwConfirm);
   if (pw !== pwConfirm) {
     alert("비밀번호가 일치하지 않습니다.");
     return false;
