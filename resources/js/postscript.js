@@ -1,5 +1,10 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
-import { dbService, getDatas, deleteDocument } from "../../firebase.js";
+import {
+  dbService,
+  getDatas,
+  deleteDocument,
+  updateDocument,
+} from "../../firebase.js";
 import {
   getFirestore,
   collection,
@@ -46,19 +51,19 @@ async function getBoard() {
     const date = data.date;
     const name = data.name;
     const title = data.title;
-    const content = data.content;
+    // const content = data.content;
 
-    tableTag.insertAdjacentHTML(
-      "beforeend",
-      `
+    // HTML 문자열을 생성합니다. content 필드는 제외됩니다.
+    const htmlString = `
       <tr data-id=${doc.id}>
-      <td class="name">${name}</td>
-      <td class="title">${title}</td>
-      <td class="content">${content}</td>
-      <td class="date">${date}</td>
+        <td class="name">${name}</td>
+        <td class="title">${title}</td>
+        <td class="date">${date}</td>
       </tr>
-      `
-    );
+    `;
+
+    // 테이블에 HTML 문자열을 추가합니다.
+    tableTag.insertAdjacentHTML("beforeend", htmlString);
   });
 }
 getBoard();
