@@ -121,12 +121,21 @@ body {
   padding: 160px 0;
 }
 .section-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
   font-size: 48px;
-  text-align: center;
 }
 .section-title span {
+  display: flex;
+  align-items: center;
+  /* padding: 10px 24px; */
+  /* font-size: 32px; */
   font-weight: 400;
-  color: var(--accent-color);
+  /* border-radius: 16px;
+  background-color: var(--accent-color);
+  color: var(--main-color); */
 }
 .section-desc {
   padding: 48px 0;

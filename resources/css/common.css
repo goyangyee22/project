@@ -144,56 +144,6 @@ ul.main-menu li:hover a:after {
 }
 
 /* 스팟메뉴 */
-ul.spot {
-  display: flex;
-  gap: 8px;
-}
-ul.spot > li {
-  position: relative;
-  padding: 8px;
-}
-ul.spot > li > a {
-  font-size: 24px;
-  color: var(--accent-color);
-  transition: 0.3s;
-}
-ul.spot > li:hover > a {
-  color: var(--hover-color);
-}
-ul.spot > li:hover::before {
-  content: '';
-  position: absolute;
-  top: 40px;
-  left: 50%;
-  width: 10px;
-  height: 10px;
-  transform: translateX(-50%) rotate(45deg);
-  background-color: var(--hover-color);
-}
-ul.spot > li:hover::after {
-  position: absolute;
-  top: 45px;
-  left: 50%;
-  padding: 8px 16px;
-  width: fit-content;
-  font-size: 12px;
-  text-align: center;
-  text-transform: uppercase;
-  color: var(--main-color);
-  letter-spacing: 3px;
-  border-radius: 8px;
-  transform: translateX(-50%);
-  background-color: var(--hover-color);
-}
-.spot-login:hover::after {
-  content: 'login';
-}
-.spot-join:hover::after {
-  content: 'join';
-}
-.spot-page:hover::after {
-  content: 'mypage';
-}
 
 /* footer */
 footer {

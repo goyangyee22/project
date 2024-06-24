@@ -1,22 +1,12 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
 import {
-  doc,
   getFirestore,
   collection,
   query,
   where,
   getDocs,
-  deleteDoc,
-  updateDoc,
 } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
-import { getAuth } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js";
 import {
-  // app
-  getDatas,
-  dbService,
-  storageService,
-  addDatas,
-  updateDatas,
   deleteDatas,
 } from "../../firebase.js";
 
@@ -34,7 +24,6 @@ const firebaseConfig = {
 // Firebase를 초기화합니다.
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-const auth = getAuth(app);
 
 // 로그인이 되어있지 않은 경우, 접근이 제한됩니다.
 const userInfo = sessionStorage.getItem("userInfo");
