@@ -1,9 +1,34 @@
 // header spot menu rendering
 const userInfo = sessionStorage.getItem('userInfo');
+const spotMenu = document.querySelector('.spot');
 if (!userInfo) {
   // spot
+  spotMenu.innerHTML = `
+    <li>
+      <a href="./pages/signIn.html">로그인</a>
+    </li>
+    <li>
+      <a href="./pages/signUp.html">회원가입</a>
+    </li>
+  `;
 } else {
   // spot
+  spotMenu.innerHTML = `
+    <li id="logout">
+      로그아웃
+    </li>
+    <li>
+      <a href="./pages/myPage.html">마이페이지</a>
+    </li>
+`;
+
+  document.getElementById('logout').addEventListener('click', function () {
+    if (confirm('정말 로그아웃 하시겠습니까?')) {
+      sessionStorage.removeItem('userInfo');
+      alert('로그아웃 되었습니다.');
+      window.location.reload();
+    }
+  });
 }
 
 // 달력 렌더링
