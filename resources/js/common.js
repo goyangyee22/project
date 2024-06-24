@@ -1,3 +1,11 @@
+// header spot menu rendering
+const userInfo = sessionStorage.getItem('userInfo');
+if (!userInfo) {
+  // spot
+} else {
+  // spot
+}
+
 // 달력 렌더링
 function calendarRendering(display, date) {
   const calendarEl = document.getElementById('calendar');
