@@ -66,6 +66,28 @@ function petroom(room) {
   });
 }
 // 주소 복사하기
+function urlCopy() {
+  var copyText = document.getElementById("text");
+  copyText.style.display = "block"; 
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); 
+
+  navigator.clipboard.writeText(copyText.value).then(
+    function () {
+      
+      var copyMessage = document.getElementById("copyMessage");
+      copyMessage.classList.add("show");
+      setTimeout(function () {
+        copyMessage.classList.remove("show");
+      }, 1000);
+    },
+    function (err) {
+      console.error("Failed to copy: ", err);
+    }
+  );
+
+  copyText.style.display = "none"; 
+}
 document.getElementById();
 //
 mapRendering();
