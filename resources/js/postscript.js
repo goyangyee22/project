@@ -76,6 +76,17 @@ async function getBoard() {
   });
 }
 
+// 수정 버튼을 클릭하면 input 창이 주어지면서 내용을 수정할 수 있습니다.
+const modifyBtn = document.querySelector(".modifyBtn");
+modifyBtn.addEventListener("click", () => {
+  
+})
+
+// 삭제 버튼을 클릭하면 게시글을 삭제 합니다.
+const deleteBtn = document.querySelector(".deleteBtn");
+deleteBtn.addEventListener("click", () => {
+})
+
 // 모달창 닫기 버튼을 클릭하면 모달 창을 닫습니다.
 const closeBtn = document.querySelector(".closeBtn");
 closeBtn.addEventListener("click", () => {
