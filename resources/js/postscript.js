@@ -1,5 +1,10 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
-import { dbService, getDatas, deleteDocument } from "../../firebase.js";
+import {
+  dbService,
+  getDatas,
+  deleteDocument,
+  updateDocument,
+} from "../../firebase.js";
 import {
   getFirestore,
   collection,
@@ -40,28 +45,68 @@ async function getBoard() {
   const tableTag = document.querySelector("table");
   querySnapshot.forEach((doc) => {
     // 게시글의 정보를 저장할 객체를 생성합니다.
-    // const { name, title, content, date } = doc.data();
-
     const data = doc.data();
-    const date = data.date;
-    const name = data.name;
-    const title = data.title;
-    const content = data.content;
+    const { name, title, date } = data;
+    const row = document.createElement("tr");
+    row.setAttribute("data-id", doc.id);
 
-    tableTag.insertAdjacentHTML(
-      "beforeend",
-      `
-      <tr data-id=${doc.id}>
-      <td class="name">${name}</td>
-      <td class="title">${title}</td>
-      <td class="content">${content}</td>
-      <td class="date">${date}</td>
-      </tr>
-      `
-    );
+    // 각 열에 데이터를 삽입합니다.
+    row.innerHTML = `
+    <td class="name">${name}</td>
+    <td class="title">${title}</td>
+    <td class="date">${date}</td>
+    `;
+
+    tableTag.appendChild(row);
   });
 }
 getBoard();
+
+const modal = document.querySelector("#modal");
+const readBtn = document.querySelector("#readBtn");
+const close = document.querySelector(".close");
+
+// 모달 창을 엽니다.
+readBtn.addEventListener("click", async () => {
+  const selectedRow = document.querySelector(".selected");
+  if (!selectedRow) {
+    alert("선택된 게시글이 없습니다.");
+    return false;
+  }
+
+  const docId = selectedRow.getAttribute("data-id");
+
+  try {
+    // Firebase에서 선택된 게시글의 데이터를 가져옵니다.
+    const docRef = doc(dbService, "board", docId);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+      const data = doc.data();
+      const { title, content } = data;
+
+      // 모달 창 내용을 업데이트 합니다.
+      const modalTitle = modal.querySelector(".title");
+      const modalContent = modal.querySelector(".ct .modal-content");
+
+      modalTitle.textContent = title;
+      modalContent.textContent = content;
+
+      // 모달 창을 엽니다.
+      modal.style.display = "block";
+    } else {
+      throw new Error("게시글을 찾을 수 없습니다.");
+    }
+  } catch (error) {
+    console.error("Error fetching document: ", error);
+    alert("게시글을 불러오는 중 오류가 발생했습니다.");
+  }
+});
+
+// 모달창 닫기
+close.onclick = function () {
+  modal.style.display = "none";
+};
 
 // table에 클릭 이벤트를 생성합니다.
 let updateTarget;
@@ -145,48 +190,4 @@ updateBtn.addEventListener("click", async function (e) {
   } catch (error) {
     console.error("Error adding document: ", error);
   }
-});
-
-// 본인이 작성했던 게시글을 삭제하는 함수입니다. (한 번에 여러 개의 게시글 삭제 가능)
-const deleteBtn = document.getElementById("deleteBtn");
-deleteBtn.addEventListener("click", async function () {
-  const selectedTrs = document.querySelectorAll(".selected");
-
-  // 선택된 행에 대한 반복 처리
-  selectedTrs.forEach(async (tr) => {
-    const docId = tr.getAttribute("data-id");
-
-    // 현재 로그인한 사용자의 정보를 sessionStorage에서 가져옴
-    const currentUserInfoString = sessionStorage.getItem("userInfo");
-    const currentUserInfo = JSON.parse(currentUserInfoString);
-    const currentDocId = currentUserInfo.docId;
-
-    try {
-      // Firebase에서 해당 회원의 정보를 가져옵니다.
-      const boardDoc = await getDoc(doc(dbService, "board", docId));
-      if (!boardDoc.exists()) {
-        throw new Error(`Document ${docId} not found.`);
-      }
-
-      // 회원 정보의 작성자 ID를 가져옵니다.
-      const writerInfo = boardDoc.data().writerInfo;
-      const writerDocId = writerInfo().docId;
-
-      // 현재 로그인 되어있는 사용자와 작성자 ID가 일치하면 삭제합니다.
-      if (currentDocId === writerDocId) {
-        // 회원 정보를 삭제합니다.
-        const result = await deleteDocument("board", docId);
-        if (result) {
-          tr.remove();
-        } else {
-          throw new Error("Delete operation failed.");
-        }
-      } else {
-        throw new Error("You are not authorized to delete this member");
-      }
-    } catch (error) {
-      console.error("Error deleting member: ", error.message);
-      alert("삭제 중 오류가 발생했습니다.");
-    }
-  });
 });

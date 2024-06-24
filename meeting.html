@@ -66,421 +66,498 @@
       </div>
     </header>
     <main>
-      <section id="meet">
-        <div class="wrap">
-          <!-- 들어갈 상세페이지 내용 -->
-          <!-- 맨 위 사진 -->
-          <div class="swiper meeting-slide">
-            <div class="swiper-wrapper meeting-slide-wrapper">
-              <div class="swiper-slide">
-                <img
-                  class="meet pohoto"
-                  src="./resources/images/meeting/미팅룸1.jpg"
-                />
-              </div>
-              <div class="swiper-slide">
-                <img class="" src="./resources/images/meeting/미팅룸2.png" />
-              </div>
-              <div class="swiper-slide">
-                <img class="" src="./resources/images/meeting/미팅룸3.png" />
-              </div>
-            </div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-          </div>
-        </div>
-        <br />
-        <div class="meet-contents wrap">
-          <div class="meet-details">
-            <ul id="meet-menu">
-              <li><a href="#information">상세정보</a></li>
-              <li><a href="#review">이용후기</a></li>
-              <li><a href="#ask">Q&A</a></li>
-            </ul>
-            <div id="information">
-              <h1 class="menu_title">공간 소개</h1>
-              <p class="information-list">
-                <span>#회의실</span>
-                <span>#미팅룸</span>
-                <span>#스터디룸</span>
-                <span>#모임공간</span>
-              </p>
-              <h5>
-                깔끔한 인테리어와 쾌적한 공간 중구 선화동에 위치한 깔끔한 모임
-                공간<br />
-                최대 30명까지 수용 가능한 공간 <br />
-                스터디,소모임,회의,과외,면접,인터뷰,영상촬영,원데이클래스 모두
-                가능
-              </h5>
-              <br />
-              <div class="main-icon">
-                <div class="iconsort">
-                  <div class="i-con"><i class="fa-solid fa-car"></i></div>
-                  <p>주차가능</p>
-                </div>
-
-                <div class="iconsort">
-                  <div class="i-con"><i class="fa-solid fa-wifi"></i></div>
-                  <p>인터넷/WIFI</p>
-                </div>
-
-                <div class="iconsort">
-                  <div class="i-con"><i class="fa-solid fa-stairs"></i></div>
-                  <p>지상3층</p>
-                </div>
-
-                <div class="iconsort">
-                  <div class="i-con">
-                    <i class="fa-solid fa-elevator"></i>
-                  </div>
-                  <p>엘리베이터 있음</p>
-                </div>
-              </div>
-              <br />
-              <h1 class="menu_title">시설 안내</h1>
-              <ol class="menu-text">
-                <!-- 🤍 ⋈ ① ⊳   -->
-                <li>
-                  ⊳ 스크린,빔 프로젝터,스피커,화이트
-                  보드,무선마이크,레이저포인터,와이파이,PC 기본 제공
-                </li>
-                <li>⊳ 대회의실- 대형 화이트 보드</li>
-                <li>
-                  ⊳ 55인치 (TV 유튜브,티빙,넷플,디즈니,노트북미러링) HDMI케이블
-                  구비
-                </li>
-                <li>⊳ 조명,링라이트 조명, 삼각대</li>
-                <li>⊳ 얼음 정수기(냉수/온수) 및 간단한 차, 커피</li>
-                <li>⊳ 블루투스 스피커</li>
-                <li>⊳ 냉난방기, 공기청정기</li>
-                <li>⊳ 개수대 및 내부 화장실</li>
-              </ol>
-              <br />
-              <h1 class="menu_title">유의 사항</h1>
-              <ol class="menu-text">
-                <li>⊳ 예약시간 및 대관인원을 꼭 지켜주세요.</li>
-                <li>
-                  ⊳ 예약된 인원보다 사용 인원이 많을 경우 초과 인원 수의 3배
-                  벌금으로 부과 됩니다.
-                </li>
-                <li>
-                  ⊳ 내부 시설은 모두 무료로 이용 가능하나, 이용자 개인 과실로
-                  인한 파손 및 고장, 유실, 도난 등이 발생할 경우<br />
-                  이용자가 책임을 집니다. (새 제품 가격으로 배상)
-                </li>
-                <li>
-                  ⊳ 예약 시간보다 시간이 초과되는 경우 인원당 한시간 2만원으로
-                  추가 됩니다.
-                </li>
-                <li>⊳ 간단한 다과 정도 외에 취식 불가 합니다.</li>
-                <li>⊳ 퇴실 전 반드시 자리를 깨끗하게 정리해 주셔야 합니다.</li>
-                <li>
-                  ⊳ CCTV는 방범/분실/기물파손/인원확인 등의 이유로 24시간
-                  녹화되고 있습니다.
-                </li>
-              </ol>
-              <br />
-
-              <h1 class="menu_title">환불 정책</h1>
-              <span class="menu-text">
-                이용 전날과 당일만 제외하고 총 금액의 100% 환불 가능 합니다.
-              </span>
-            </div>
-
-            <!-- 지도 -->
-            <div class="map-copy-main">
-              <div id="map" style="width: 500px; height: 400px"></div>
-              <input
-                type="text"
-                id="text"
-                value="대전광역시 중구 중앙로121번길 20 빌리슈"
-                style="display: none"
-              />
-              <div class="map-copy">
-                <span class="map-copy-text"
-                  >대전광역시 중구 중앙로121번길 20 빌리슈</span
-                >
-                <div class="hover-text">
-                  <i class="fa-solid fa-clone" style="color: #1a2130"></i>
-                  <input
-                    class="hover-input"
-                    type="button"
-                    onclick="urlCopy()"
-                    value="주소 복사"
-                  />
-                </div>
-                <div id="copyMessage" class="copy-message">복사되었습니다!</div>
-              </div>
-            </div>
-
+      <section id="detail">
+        <div id="detail-wrap" class="wrap">
+          <div class="detail-container">
             <br />
-            <!-- 이용후기, Q&A -->
-            <div id="review">
-              <div class="ra_button">
-                <span class="ra_menu">이용후기(2)</span>
-                <button class="rclick">
-                  <a href="pages/postscript.html">이용 후기 작성</a>
-                </button>
-              </div>
-
-              <br />
-              <!-- 이용후기 -->
-              <ul class="review_list">
-                <li class="rlist">
-                  <div class="rbox">
-                    <div class="ra_box">
-                      <span class="ricon"
-                        ><i class="fa-solid fa-circle-user"></i>
-                      </span>
-                      <div class="ra_text">
-                        <div class="review-contents">
-                          <strong class="review-user-name">라이언 </strong>
-                          <div class="star-wrap">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                          </div>
-                        </div>
-                        <p class="ra_review">
-                          멋진 인테리어와 조명이 매우 인상깊었고, 쾌적한
-                          환경에서 회의를 만족스럽게 진행할 수 있었습니다. 이
-                          비용에 이런 퀄리티라니.. 다음 번에도 이곳으로
-                          이용하도록 할게요~!! ^^*
-                        </p>
+            <div class="meet-contents wrap">
+              <div class="meet-details">
+                <div class="detail-hero">
+                  <div
+                    style="
+                      --swiper-navigation-color: #fff;
+                      --swiper-pagination-color: #fff;
+                    "
+                    class="swiper detail-slide"
+                  >
+                    <!-- 메인 -->
+                    <div class="swiper-wrapper">
+                      <div class="swiper-slide">
                         <img
-                          class=""
-                          src="./resources/images/meeting/후기 사진1.jpeg"
-                          width="100"
-                          height="100"
+                          src="resources/images/meeting/미팅룸1.jpg"
+                          width="100%"
+                          height="500px"
                         />
-                        <img
-                          class=""
-                          src="./resources/images/meeting/후기 사진2.jpg"
-                          width="100"
-                          height="100"
-                        />
-                        <div class="date">2024.04.12</div>
                       </div>
-                      <br />
+                      <div class="swiper-slide">
+                        <img
+                          src="resources/images/meeting/미팅룸2.png"
+                          width="100%"
+                          height="500px"
+                        />
+                      </div>
+                      <div class="swiper-slide">
+                        <img
+                          src="resources/images/meeting/미팅룸3.png"
+                          width="100%"
+                          height="500px"
+                        />
+                      </div>
+                      <div class="swiper-slide">
+                        <img
+                          src="resources/images/meeting/소회의실1.jpg"
+                          width="100%"
+                          height="500px"
+                        />
+                      </div>
+                      <div class="swiper-slide">
+                        <img
+                          src="resources/images/meeting/중회의실1.jpg"
+                          width="100%"
+                          height="500px"
+                        />
+                      </div>
+                      <div class="swiper-slide">
+                        <img
+                          src="resources/images/meeting/대회의실1.jpg"
+                          width="100%"
+                          height="500px"
+                        />
+                      </div>
                     </div>
-                    <br />
-                    <ul class="coon">
-                      <li class="coon_box">
-                        <span class="ricon"
-                          ><i class="fa-brands fa-github"></i>
-                        </span>
-                        <div class="ra_text">
-                          <div class="review-contents">
-                            <strong class="review-user-name">춘식이 </strong>
-                            <div class="star-wrap">
-                              <i class="fa-solid fa-star"></i>
-                              <i class="fa-solid fa-star"></i>
-                              <i class="fa-solid fa-star"></i>
-                              <i class="fa-solid fa-star"></i>
-                              <i class="fa-solid fa-star"></i>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                  </div>
+                  <!-- 썸네일 -->
+                  <div thumbsSlider="" class="swiper detail-slide-thumb">
+                    <div class="swiper-wrapper">
+                      <div class="swiper-slide">
+                        <img
+                          src="resources/images/meeting/미팅룸1.jpg"
+                          width="100%"
+                          height="150px"
+                        />
+                      </div>
+                      <div class="swiper-slide">
+                        <img
+                          src="resources/images/meeting/미팅룸2.png"
+                          width="100%"
+                          height="150px"
+                        />
+                      </div>
+                      <div class="swiper-slide">
+                        <img
+                          src="resources/images/meeting/미팅룸3.png"
+                          width="100%"
+                          height="150px"
+                        />
+                      </div>
+                      <div class="swiper-slide">
+                        <img
+                          src="resources/images/meeting/소회의실1.jpg"
+                          width="100%"
+                          height="150px"
+                        />
+                      </div>
+                      <div class="swiper-slide">
+                        <img
+                          src="resources/images/meeting/중회의실1.jpg"
+                          width="100%"
+                          height="150px"
+                        />
+                      </div>
+                      <div class="swiper-slide">
+                        <img
+                          src="resources/images/meeting/대회의실1.jpg"
+                          width="100%"
+                          height="150px"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <ul id="meet-menu">
+                  <li><a href="#information">상세정보</a></li>
+                  <li><a href="#review">이용후기</a></li>
+                  <li><a href="#ask">Q&A</a></li>
+                </ul>
+                <div id="information">
+                  <h1 class="menu_title">공간 소개</h1>
+                  <p class="information-list">
+                    <span>#회의실</span>
+                    <span>#미팅룸</span>
+                    <span>#스터디룸</span>
+                    <span>#모임공간</span>
+                  </p>
+                  <h5>
+                    깔끔한 인테리어와 쾌적한 공간 중구 선화동에 위치한 깔끔한
+                    모임 공간<br />
+                    최대 30명까지 수용 가능한 공간 <br />
+                    스터디,소모임,회의,과외,면접,인터뷰,영상촬영,원데이클래스
+                    모두 가능
+                  </h5>
+                  <br />
+                  <div class="main-icon">
+                    <div class="iconsort">
+                      <div class="i-con"><i class="fa-solid fa-car"></i></div>
+                      <p>주차가능</p>
+                    </div>
+
+                    <div class="iconsort">
+                      <div class="i-con"><i class="fa-solid fa-wifi"></i></div>
+                      <p>인터넷/WIFI</p>
+                    </div>
+
+                    <div class="iconsort">
+                      <div class="i-con">
+                        <i class="fa-solid fa-stairs"></i>
+                      </div>
+                      <p>지상3층</p>
+                    </div>
+
+                    <div class="iconsort">
+                      <div class="i-con">
+                        <i class="fa-solid fa-elevator"></i>
+                      </div>
+                      <p>엘리베이터 있음</p>
+                    </div>
+                  </div>
+                  <br />
+                  <h1 class="menu_title">시설 안내</h1>
+                  <ol class="menu-text">
+                    <!-- 🤍 ⋈ ① ⊳   -->
+                    <li>
+                      ⊳ 스크린,빔 프로젝터,스피커,화이트
+                      보드,무선마이크,레이저포인터,와이파이,PC 기본 제공
+                    </li>
+                    <li>⊳ 대회의실- 대형 화이트 보드</li>
+                    <li>
+                      ⊳ 55인치 (TV 유튜브,티빙,넷플,디즈니,노트북미러링)
+                      HDMI케이블 구비
+                    </li>
+                    <li>⊳ 조명,링라이트 조명, 삼각대</li>
+                    <li>⊳ 얼음 정수기(냉수/온수) 및 간단한 차, 커피</li>
+                    <li>⊳ 블루투스 스피커</li>
+                    <li>⊳ 냉난방기, 공기청정기</li>
+                    <li>⊳ 개수대 및 내부 화장실</li>
+                  </ol>
+                  <br />
+                  <h1 class="menu_title">유의 사항</h1>
+                  <ol class="menu-text">
+                    <li>⊳ 예약시간 및 대관인원을 꼭 지켜주세요.</li>
+                    <li>
+                      ⊳ 예약된 인원보다 사용 인원이 많을 경우 초과 인원 수의 3배
+                      벌금으로 부과 됩니다.
+                    </li>
+                    <li>
+                      ⊳ 내부 시설은 모두 무료로 이용 가능하나, 이용자 개인
+                      과실로 인한 파손 및 고장, 유실, 도난 등이 발생할 경우<br />
+                      이용자가 책임을 집니다. (새 제품 가격으로 배상)
+                    </li>
+                    <li>
+                      ⊳ 예약 시간보다 시간이 초과되는 경우 인원당 한시간
+                      2만원으로 추가 됩니다.
+                    </li>
+                    <li>⊳ 간단한 다과 정도 외에 취식 불가 합니다.</li>
+                    <li>
+                      ⊳ 퇴실 전 반드시 자리를 깨끗하게 정리해 주셔야 합니다.
+                    </li>
+                    <li>
+                      ⊳ CCTV는 방범/분실/기물파손/인원확인 등의 이유로 24시간
+                      녹화되고 있습니다.
+                    </li>
+                  </ol>
+                  <br />
+
+                  <h1 class="menu_title">환불 정책</h1>
+                  <span class="menu-text">
+                    이용 전날과 당일만 제외하고 총 금액의 100% 환불 가능 합니다.
+                  </span>
+                </div>
+
+                <!-- 지도 -->
+                <div class="map-copy-main">
+                  <div id="map" style="width: 500px; height: 400px"></div>
+                  <input
+                    type="text"
+                    id="text"
+                    value="대전광역시 중구 중앙로121번길 20 빌리슈"
+                    style="display: none"
+                  />
+                  <div class="map-copy">
+                    <span class="map-copy-text"
+                      >대전광역시 중구 중앙로121번길 20 빌리슈</span
+                    >
+                    <div class="hover-text">
+                      <i class="fa-solid fa-clone" style="color: #1a2130"></i>
+                      <input
+                        class="hover-input"
+                        type="button"
+                        onclick="urlCopy()"
+                        value="주소 복사"
+                      />
+                    </div>
+                    <div id="copyMessage" class="copy-message">
+                      복사되었습니다!
+                    </div>
+                  </div>
+                </div>
+
+                <br />
+                <!-- 이용후기, Q&A -->
+                <div id="review">
+                  <div class="ra_button">
+                    <span class="ra_menu">이용후기(2)</span>
+                    <button class="rclick">
+                      <a href="pages/postscript.html">이용 후기 작성</a>
+                    </button>
+                  </div>
+
+                  <br />
+                  <!-- 이용후기 -->
+                  <ul class="review_list">
+                    <li class="rlist">
+                      <div class="rbox">
+                        <div class="ra_box">
+                          <span class="ricon"
+                            ><i class="fa-solid fa-circle-user"></i>
+                          </span>
+                          <div class="ra_text">
+                            <div class="review-contents">
+                              <strong class="review-user-name">라이언 </strong>
+                              <div class="star-wrap">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                              </div>
                             </div>
+                            <p class="ra_review">
+                              멋진 인테리어와 조명이 매우 인상깊었고, 쾌적한
+                              환경에서 회의를 만족스럽게 진행할 수 있었습니다.
+                              이 비용에 이런 퀄리티라니.. 다음 번에도 이곳으로
+                              이용하도록 할게요~!! ^^*
+                            </p>
+                            <img
+                              class=""
+                              src="./resources/images/meeting/후기 사진1.jpeg"
+                              width="100"
+                              height="100"
+                            />
+                            <img
+                              class=""
+                              src="./resources/images/meeting/후기 사진2.jpg"
+                              width="100"
+                              height="100"
+                            />
+                            <div class="date">2024.04.12</div>
                           </div>
-                          <p class="ra_review">
-                            너무 친절한 사장님~! 덕분에 워크숍 잘 진행했습니다
-                            최고!
-                          </p>
-                          <div class="date">2024.05.30</div>
+                          <br />
                         </div>
                         <br />
-                      </li>
-                    </ul>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <br />
-            <br />
+                        <ul class="coon">
+                          <li class="coon_box">
+                            <span class="ricon"
+                              ><i class="fa-brands fa-github"></i>
+                            </span>
+                            <div class="ra_text">
+                              <div class="review-contents">
+                                <strong class="review-user-name"
+                                  >춘식이
+                                </strong>
+                                <div class="star-wrap">
+                                  <i class="fa-solid fa-star"></i>
+                                  <i class="fa-solid fa-star"></i>
+                                  <i class="fa-solid fa-star"></i>
+                                  <i class="fa-solid fa-star"></i>
+                                  <i class="fa-solid fa-star"></i>
+                                </div>
+                              </div>
+                              <p class="ra_review">
+                                너무 친절한 사장님~! 덕분에 워크숍 잘
+                                진행했습니다 최고!
+                              </p>
+                              <div class="date">2024.05.30</div>
+                            </div>
+                            <br />
+                          </li>
+                        </ul>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <br />
+                <br />
 
-            <!-- Q&A -->
-            <div id="ask">
-              <div class="ra_button">
-                <span class="ra_menu">Q&A(3)</span>
-                <button class="aclick">
-                  <a href="pages/QnA.html">
-                    <i class="fa-regular fa-pen-to-square"></i>질문 작성 하기
-                  </a>
-                </button>
-              </div>
-              <br />
-              <ul class="ask_list">
-                <div class="ask_box">
-                  <li class="alist">
-                    <span class="aicon"
-                      ><i class="fa-brands fa-twitch"></i
-                    ></span>
-                    <div class="ask_text">
-                      <div class="ask-contents">
-                        <strong class="review-user-name">어피치 </strong>
-                        <p class="ask_review">혹시 방음 잘 되나요?</p>
-                        <div class="date">2024.04.10</div>
-                      </div>
-                    </div>
-                  </li>
-                </div>
-                <br />
-                <div class="ask_box">
-                  <li class="alist">
-                    <span class="aicon"
-                      ><i class="fa-brands fa-twitch"></i
-                    ></span>
-                    <div class="ask_text">
-                      <div class="ask-contents">
-                        <strong class="review-user-name">네오 </strong>
-                        <p class="ask_review">
-                          안녕하세요! 내일 예약인데 확정된게 맞는지 확인
-                          부탁드립니다!
-                        </p>
-                        <div class="date">2024.05.15</div>
-                      </div>
-                    </div>
-                  </li>
-                </div>
-                <br />
-                <div class="ask_box">
-                  <li class="alist">
-                    <span class="aicon"
-                      ><i class="fa-brands fa-twitch"></i
-                    ></span>
-                    <div class="ask_text">
-                      <div class="ask-contents">
-                        <strong class="review-user-name">프로도 </strong>
-                        <p class="ask_review">배달음식 가능한가요~?</p>
-                        <div class="date">2024.06.06</div>
-                      </div>
-                    </div>
-                  </li>
-                </div>
-              </ul>
-            </div>
-          </div>
-          <div class="meeting-imgs">
-            <div class="meeting-imgs-contents">
-              <div class="one_img">
-                <div class="roomimg">
-                  <img
-                    class="room_img"
-                    src="./resources/images/meeting/소회의실1.jpg"
-                  />
-                </div>
-                <div class="room_titles">
-                  <div class="room_text">
-                    <h3>소회의실</h3>
-                    <div>
-                      <strong>인원</strong>
-                      <p>4~6명</p>
-                    </div>
-                    <div>
-                      <strong>구성</strong>
-                      <p>책상/의자/70인치 칠판</p>
-                    </div>
-                  </div>
-                  <div class="reservation_button">
-                    <button
-                      class="btn_pohoto"
-                      type="button"
-                      class="reservation_button"
-                      data-bs-toggle="modal"
-                      data-bs-target="#all_pohoto"
-                      onclick="meeting('small')"
-                    >
-                      <i class="fa-solid fa-images"></i>사진 모두보기
-                    </button>
-                    <button
-                      type="button"
-                      class="reservation_button"
-                      data-bs-toggle="modal"
-                      data-bs-target="#payment-form-modal"
-                      onclick="openPayment('meeting1')"
-                    >
-                      예약하기
+                <!-- Q&A -->
+                <div id="ask">
+                  <div class="ra_button">
+                    <span class="ra_menu">Q&A(3)</span>
+                    <button class="aclick">
+                      <a href="pages/QnA.html">
+                        <i class="fa-regular fa-pen-to-square"></i>질문 작성
+                        하기
+                      </a>
                     </button>
                   </div>
+                  <br />
+                  <ul class="ask_list">
+                    <div class="ask_box">
+                      <li class="alist">
+                        <span class="aicon"
+                          ><i class="fa-brands fa-twitch"></i
+                        ></span>
+                        <div class="ask_text">
+                          <div class="ask-contents">
+                            <strong class="review-user-name">어피치 </strong>
+                            <p class="ask_review">혹시 방음 잘 되나요?</p>
+                            <div class="date">2024.04.10</div>
+                          </div>
+                        </div>
+                      </li>
+                    </div>
+                    <br />
+                    <div class="ask_box">
+                      <li class="alist">
+                        <span class="aicon"
+                          ><i class="fa-brands fa-twitch"></i
+                        ></span>
+                        <div class="ask_text">
+                          <div class="ask-contents">
+                            <strong class="review-user-name">네오 </strong>
+                            <p class="ask_review">
+                              안녕하세요! 내일 예약인데 확정된게 맞는지 확인
+                              부탁드립니다!
+                            </p>
+                            <div class="date">2024.05.15</div>
+                          </div>
+                        </div>
+                      </li>
+                    </div>
+                    <br />
+                    <div class="ask_box">
+                      <li class="alist">
+                        <span class="aicon"
+                          ><i class="fa-brands fa-twitch"></i
+                        ></span>
+                        <div class="ask_text">
+                          <div class="ask-contents">
+                            <strong class="review-user-name">프로도 </strong>
+                            <p class="ask_review">배달음식 가능한가요~?</p>
+                            <div class="date">2024.06.06</div>
+                          </div>
+                        </div>
+                      </li>
+                    </div>
+                  </ul>
                 </div>
               </div>
-              <div class="two_img">
-                <div class="roomimg">
-                  <img
-                    class="room_img"
-                    src="./resources/images/meeting/중회의실1.jpg"
-                  />
-                </div>
-                <div class="room_titles">
-                  <h3>중회의실</h3>
-                  <div>
-                    <strong>인원</strong>
-                    <p>6~15명</p>
+              <div class="meeting-imgs">
+                <div class="meeting-imgs-contents">
+                  <div class="one_img">
+                    <div class="room_titles">
+                      <div class="room_text">
+                        <h3>소회의실</h3>
+                        <div>
+                          <strong>인원</strong>
+                          <p>4~6명</p>
+                        </div>
+                        <div>
+                          <strong>구성</strong>
+                          <p>책상/의자/70인치 칠판</p>
+                        </div>
+                      </div>
+                      <div class="reservation_button">
+                        <button
+                          class="btn_pohoto"
+                          type="button"
+                          class="reservation_button"
+                          data-bs-toggle="modal"
+                          data-bs-target="#all_pohoto"
+                          onclick="meeting('small')"
+                        >
+                          <i class="fa-solid fa-images"></i>사진 모두보기
+                        </button>
+                        <button
+                          type="button"
+                          class="reservation_button"
+                          data-bs-toggle="modal"
+                          data-bs-target="#payment-form-modal"
+                          onclick="openPayment('meeting1')"
+                        >
+                          예약하기
+                        </button>
+                      </div>
+                    </div>
                   </div>
-                  <div>
-                    <strong>구성</strong>
-                    <p>책상/의자/55인치 스마트TV/75인치 전자칠판(OTT)</p>
+                  <div class="two_img">
+                    <div class="room_titles">
+                      <h3>중회의실</h3>
+                      <div>
+                        <strong>인원</strong>
+                        <p>6~15명</p>
+                      </div>
+                      <div>
+                        <strong>구성</strong>
+                        <p>책상/의자/55인치 스마트TV/75인치 전자칠판(OTT)</p>
+                      </div>
+                      <div class="reservation_button">
+                        <button
+                          class="btn_pohoto"
+                          type="button"
+                          class="reservation_button"
+                          data-bs-toggle="modal"
+                          data-bs-target="#all_pohoto"
+                          onclick="meeting('medium')"
+                        >
+                          <i class="fa-solid fa-images"></i>사진 모두보기
+                        </button>
+                        <button
+                          type="button"
+                          class="reservation_button"
+                          data-bs-toggle="modal"
+                          data-bs-target="#payment-form-modal"
+                          onclick="openPayment('meeting2')"
+                        >
+                          예약하기
+                        </button>
+                      </div>
+                    </div>
                   </div>
-                  <div class="reservation_button">
-                    <button
-                      class="btn_pohoto"
-                      type="button"
-                      class="reservation_button"
-                      data-bs-toggle="modal"
-                      data-bs-target="#all_pohoto"
-                      onclick="meeting('medium')"
-                    >
-                      <i class="fa-solid fa-images"></i>사진 모두보기
-                    </button>
-                    <button
-                      type="button"
-                      class="reservation_button"
-                      data-bs-toggle="modal"
-                      data-bs-target="#payment-form-modal"
-                      onclick="openPayment('meeting2')"
-                    >
-                      예약하기
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div class="three_img">
-                <div class="roomimg">
-                  <img
-                    class="room_img"
-                    src="./resources/images/meeting/대회의실1.jpg"
-                  />
-                </div>
-                <div class="room_titles">
-                  <h3>대회의실</h3>
-                  <div>
-                    <strong>인원</strong>
-                    <p>15~30명</p>
-                  </div>
-                  <div>
-                    <strong>구성</strong>
-                    <p>책상/의자/스마트 스크린</p>
-                  </div>
-                  <div class="reservation_button">
-                    <button
-                      class="btn_pohoto"
-                      type="button"
-                      class="reservation_button"
-                      data-bs-toggle="modal"
-                      data-bs-target="#all_pohoto"
-                      onclick="meeting('big')"
-                    >
-                      <i class="fa-solid fa-images"></i>사진 모두보기
-                    </button>
-                    <button
-                      type="button"
-                      class="reservation_button"
-                      data-bs-toggle="modal"
-                      data-bs-target="#payment-form-modal"
-                      onclick="openPayment('meeting3')"
-                    >
-                      예약하기
-                    </button>
+                  <div class="three_img">
+                    <div class="room_titles">
+                      <h3>대회의실</h3>
+                      <div>
+                        <strong>인원</strong>
+                        <p>15~30명</p>
+                      </div>
+                      <div>
+                        <strong>구성</strong>
+                        <p>책상/의자/스마트 스크린</p>
+                      </div>
+                      <div class="reservation_button">
+                        <button
+                          class="btn_pohoto"
+                          type="button"
+                          class="reservation_button"
+                          data-bs-toggle="modal"
+                          data-bs-target="#all_pohoto"
+                          onclick="meeting('big')"
+                        >
+                          <i class="fa-solid fa-images"></i>사진 모두보기
+                        </button>
+                        <button
+                          type="button"
+                          class="reservation_button"
+                          data-bs-toggle="modal"
+                          data-bs-target="#payment-form-modal"
+                          onclick="openPayment('meeting3')"
+                        >
+                          예약하기
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

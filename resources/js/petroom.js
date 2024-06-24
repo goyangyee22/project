@@ -1,15 +1,33 @@
-var swiper = new Swiper(".mySwiper", {
+// var swiper = new Swiper(".mySwiper", {
+//   loop: true,
+//   autoplay: {
+//     delay: 2500,
+//     disableOnInteraction: false,
+//   },
+//   navigation: {
+//     nextEl: ".swiper-button-next",
+//     prevEl: ".swiper-button-prev",
+//   },
+// });
+
+var swiper = new Swiper('.detail-slide-thumb', {
   loop: true,
-  autoplay: {
-    delay: 2500,
-    disableOnInteraction: false,
-  },
+  spaceBetween: 10,
+  slidesPerView: 4,
+  freeMode: true,
+  watchSlidesProgress: true,
+});
+var swiper2 = new Swiper('.detail-slide', {
+  loop: true,
+  spaceBetween: 10,
   navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+  thumbs: {
+    swiper: swiper,
   },
 });
-
 // 사진 더보기
 // var swiper1 = new Swiper(".petroom", {
 //   slidesPerView: 1,

@@ -62,9 +62,6 @@ signInButton.addEventListener("click", async (event) => {
       console.log(userInfo);
       // 비밀번호를 비교합니다.
       if (userInfo.pw === pw) {
-        // (이름)님이 로그인 하셨습니다! 라는 알림창이 뜹니다.
-        alert(`${userInfo.name}님이 로그인 하셨습니다!`);
-
         // 세션 스토리지에 입력한 회원 정보가 저장 됩니다.
         sessionStorage.setItem("userInfo", JSON.stringify(userInfo));
 
