@@ -88,45 +88,6 @@ window.onload = () => {
   getBoard();
 };
 
-const modal = document.querySelector("#modal");
-const readBtn = document.querySelector("#readBtn");
-const modalTitleElement = document.querySelector(".modal-title");
-const modalContentElement = document.querySelector(".modal-content");
-
-// 자세히 보기 버튼을 클릭하면 모달 창을 엽니다.
-readBtn.addEventListener("click", async () => {
-  const selectedRow = document.querySelector(".selected");
-  if (!selectedRow) {
-    alert("선택된 게시글이 없습니다.");
-    return false;
-  }
-
-  const docId = selectedRow.getAttribute("data-id");
-  const docRef = doc(db, "board", docId);
-
-  try {
-    // Firebase에서 선택된 게시글의 데이터를 가져옵니다.
-    const docSnap = await getDoc(docRef);
-
-    if (docSnap.exists()) {
-      const data = docSnap.data();
-      const { title, content } = data;
-
-      // 모달 창 내용을 업데이트 합니다.
-      modalTitleElement.textContent = title;
-      modalContentElement.textContent = content;
-
-      // 모달 창을 엽니다.
-      modal.style.display = "block";
-    } else {
-      throw new Error("게시글을 찾을 수 없습니다.");
-    }
-  } catch (error) {
-    console.error("Error fetching document: ", error);
-    alert("게시글을 불러오는 중 오류가 발생했습니다.");
-  }
-});
-
 // table에 클릭 이벤트를 생성합니다.
 let updateTarget;
 const tableTag = document.querySelector("table");
