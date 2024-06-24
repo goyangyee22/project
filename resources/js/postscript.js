@@ -1,14 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
-import {
-  // app,
-  // db,
-  dbService,
-  storageService,
-  addDatas,
-  getDatas,
-  updateDatas,
-  deleteDatas,
-} from "../../firebase.js";
+import { dbService, getDatas, deleteDocument } from "../../firebase.js";
 import {
   getFirestore,
   collection,
@@ -16,6 +7,8 @@ import {
   query,
   where,
   getDocs,
+  getDoc,
+  doc as firestoreDoc,
 } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
 
 // Firebase를 구성하는 정보
@@ -154,118 +147,46 @@ updateBtn.addEventListener("click", async function (e) {
   }
 });
 
-// 본인이 작성했던 게시글을 수정하는 함수입니다. (한 번에 한 개의 게시글씩 수정 가능)
-const modifyBtn = document.getElementById("modifyBtn");
-modifyBtn.addEventListener("click", async function () {
-  const selectedTr = document.querySelector(".selected");
-
-  // 선택된 행이 없으면 모달 창을 띄울 수 없습니다.
-  if (!selectedTr) {
-    alert("수정할 게시글을 선택해주세요.");
-    return false;
-  }
-
-  // 선택된 행의 데이터를 불러옵니다.
-  const name = selectedTr.querySelector(".name").textContent;
-  const title = selectedTr.querySelector(".title").textContent;
-  const content = selectedTr.querySelector(".content").textContent;
-  const date = selectedTr.querySelector(".date").textContent;
-
-  // 수정 모달을 열고 해당 데이터를 입력 폼에 채웁니다.
-  const modifyForm = document.getElementById("modifyForm");
-  modifyForm.querySelector("input[name='modifyTitle']").value = title;
-  modifyForm.querySelector("input[name='modifyContent']").value = content;
-
-  // 모달을 화면에 띄웁니다.
-  const modal = document.getElementById("myModal");
-  modal.style.display = "block";
-
-  // 수정 완료 버튼에 이벤트 리스너를 추가합니다.
-  modifyForm.addEventListener("submit", async function (e) {
-    e.preventDefault();
-
-    // 수정할 데이터를 불러옵니다.
-    const modifyTitle = modifyForm
-      .querySelector('input[name="modifyTitle"]')
-      .value.trim();
-    const modifyContent = modifyForm
-      .querySelector('input[name="modifyContent"]')
-      .value.trim();
-
-    // 제목과 내용이 모두 공백인지 검사합니다.
-    if (modifyTitle === "" || modifyContent === "") {
-      alert("제목과 내용을 모두 입력해주세요.");
-      return false;
-    }
-
-    // 선택된 행의 ID를 가져옵니다.
-    const docId = selectedTr.getAttribute("data-id");
-
-    try {
-      // Firebase에서 해당 문서를 수정합니다.
-      await updateDatas("board", docId, {
-        title: modifyTitle,
-        content: modifyContent,
-      });
-
-      // 화면에서 선택된 행의 데이터를 수정합니다.
-      selectedTr.querySelector(".title").textContent = modifyTitle;
-      selectedTr.querySelector(".content").textContent = modifyContent;
-
-      // 모달을 닫습니다.
-      modal.style.display = "none";
-    } catch (error) {
-      console.error("Error updating document: ", error);
-      alert("게시글을 수정하는 도중 오류가 발생했습니다.");
-    }
-  });
-});
-
-// 모달 닫기 버튼 클릭 시 모달을 닫습니다.
-const closeModalBtn = document.getElementById("closeModalBtn");
-closeModalBtn.addEventListener("click", function () {
-  const modal = document.getElementById("myModal");
-  modal.style.display = "none";
-});
-
 // 본인이 작성했던 게시글을 삭제하는 함수입니다. (한 번에 여러 개의 게시글 삭제 가능)
 const deleteBtn = document.getElementById("deleteBtn");
 deleteBtn.addEventListener("click", async function () {
   const selectedTrs = document.querySelectorAll(".selected");
+
+  // 선택된 행에 대한 반복 처리
   selectedTrs.forEach(async (tr) => {
-    // 작성자의 docId를 가져옵니다.
     const docId = tr.getAttribute("data-id");
 
-    // 현재 로그인한 본인의 sessionStorage에서 docId를 가져옵니다.
+    // 현재 로그인한 사용자의 정보를 sessionStorage에서 가져옴
     const currentUserInfoString = sessionStorage.getItem("userInfo");
     const currentUserInfo = JSON.parse(currentUserInfoString);
     const currentDocId = currentUserInfo.docId;
 
-    console.log(docId, currentUserInfoString, currentUserInfo, currentDocId);
+    try {
+      // Firebase에서 해당 회원의 정보를 가져옵니다.
+      const boardDoc = await getDoc(doc(dbService, "board", docId));
+      if (!boardDoc.exists()) {
+        throw new Error(`Document ${docId} not found.`);
+      }
 
-    // 삭제할 게시글의 작성자 정보를 가져옵니다.
-    const boardDoc = await getDatas("board", docId);
-    const writerDocId = boardDoc.data().docId;
+      // 회원 정보의 작성자 ID를 가져옵니다.
+      const writerInfo = boardDoc.data().writerInfo;
+      const writerDocId = writerInfo().docId;
 
-    // 작성자와 현재 로그인한 본인의 docId가 같아야 삭제가 됩니다.
-    if (writerDocId === currentDocId) {
-      try {
-        const result = await deleteDatas("board", docId);
+      // 현재 로그인 되어있는 사용자와 작성자 ID가 일치하면 삭제합니다.
+      if (currentDocId === writerDocId) {
+        // 회원 정보를 삭제합니다.
+        const result = await deleteDocument("board", docId);
         if (result) {
           tr.remove();
         } else {
-          alert(
-            "삭제 중 오류가 발생했습니다. 관리자에게 문의하여 주시기 바랍니다."
-          );
+          throw new Error("Delete operation failed.");
         }
-      } catch (error) {
-        console.error("Error deleting document: ", error);
-        alert(
-          "삭제 중 오류가 발생했습니다. 관리자에게 문의하여 주시기 바랍니다."
-        );
+      } else {
+        throw new Error("You are not authorized to delete this member");
       }
-    } else {
-      alert("본인이 작성한 글만 삭제할 수 있습니다.");
+    } catch (error) {
+      console.error("Error deleting member: ", error.message);
+      alert("삭제 중 오류가 발생했습니다.");
     }
   });
 });
