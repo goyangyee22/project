@@ -12,6 +12,7 @@ const paymentData = {
       all: 90000,
     },
     hash: ['파티룸', '가족', '친구', '감성'],
+    thumb: 'partyimg/6인3.jpg',
   },
   party2: {
     title: '스페셜 파티룸',
@@ -26,6 +27,7 @@ const paymentData = {
       all: 120000,
     },
     hash: ['드레스', '빔프로젝터', '분위기', '파티룸', '생일파티'],
+    thumb: 'partyimg/6인1.jpg',
   },
   party3: {
     title: '다모여 파티룸',
@@ -40,6 +42,7 @@ const paymentData = {
       all: 150000,
     },
     hash: ['모임', '드레스', '대전파티룸', '대전', '당일예약'],
+    thumb: 'partyimg/6인7.jpg',
   },
   meeting1: {
     title: '소회의실',
@@ -56,6 +59,7 @@ const paymentData = {
       all: 100000,
     },
     hash: ['화상면접', '스터디', '원데이클래스'],
+    thumb: 'meeting/소회의실1.jpg',
   },
   meeting2: {
     title: '중회의실',
@@ -70,6 +74,7 @@ const paymentData = {
       all: 120000,
     },
     hash: ['모임공간', '쾌적한', '풀옵션', '단체룸'],
+    thumb: 'meeting/중회의실1.jpg',
   },
   meeting3: {
     title: '대회의실',
@@ -84,6 +89,7 @@ const paymentData = {
       all: 140000,
     },
     hash: ['대규모', '교육장', '워크숍', '기업행사'],
+    thumb: 'meeting/대회의실1.jpg',
   },
   petroom1: {
     title: '펫룸 스위트',
@@ -98,6 +104,7 @@ const paymentData = {
       all: 90000,
     },
     hash: ['쾌적한', '편안함', '반려견과 힐링', '좋은추억'],
+    thumb: 'petroom/sweetimg1.jpg',
   },
   petroom2: {
     title: '펫룸 디럭스',
@@ -112,6 +119,7 @@ const paymentData = {
       all: 130000,
     },
     hash: ['쾌적한', '편안함', '반려견과 힐링', '좋은추억'],
+    thumb: 'petroom/Deluxeimg6.jpg',
   },
   petroom3: {
     title: '펫룸 패밀리',
@@ -126,6 +134,7 @@ const paymentData = {
       all: 160000,
     },
     hash: ['쾌적한', '편안함', '반려견과 힐링', '좋은추억'],
+    thumb: 'petroom/familyimg2.jpg',
   },
 };
 
@@ -257,6 +266,7 @@ function openPayment(content) {
             <input type="hidden" name="date" id="selected-date" required />
             <input type="hidden" name="room" id="selected-room" required />
             <input type="hidden" name="time" id="selected-time" required />
+            <input type="hidden" name="thumb" id="selected-thumb" value="${data.thumb}" required />
             <input
               type="hidden"
               name="personnel"
@@ -286,6 +296,7 @@ function openPayment(content) {
     const selectedDate = document.getElementById('selected-date');
     const selectedRoom = document.getElementById('selected-room');
     const selectedTime = document.getElementById('selected-time');
+    const selectedThumb = document.getElementById('selected-thumb');
     const selectedPersonnel = document.getElementById('selected-personnel');
     const calculatedAmount = document.getElementById('total-amount');
 
@@ -330,6 +341,7 @@ function openPayment(content) {
     calendarRendering(displayDate, selectedDate);
 
     // form 전송
+
     document
       .getElementById('payment-transfer')
       .addEventListener('submit', function (e) {
@@ -339,26 +351,36 @@ function openPayment(content) {
         const room = form.room.value;
         const date = form.date.value;
         const time = form.time.value;
+        const thumb = form.thumb.value;
         const personnel = parseInt(form.personnel.value) + standardPeople;
         const amount = form.amount.value;
+
+        console.log(thumb);
 
         if (!date || !time || !personnel) {
           alert('모든 옵션을 선택해 주세요.');
           return false;
         }
 
-        sessionStorage.setItem(
-          'paymentInfo',
-          JSON.stringify({
-            date: date,
-            room: room,
-            time: time,
-            personnel: personnel,
-            amount: amount,
-          })
-        );
+        const userInfo = sessionStorage.getItem('userInfo');
+        if (!userInfo) {
+          alert('로그인을 해주세요.');
+          window.location.href = './pages/signIn.html';
+        } else {
+          sessionStorage.setItem(
+            'paymentInfo',
+            JSON.stringify({
+              date: date,
+              room: room,
+              time: time,
+              thumb: thumb,
+              personnel: personnel,
+              amount: amount,
+            })
+          );
 
-        window.location.href = './pages/payment.html';
+          window.location.href = './pages/payment.html';
+        }
       });
   }
 }
