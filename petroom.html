@@ -271,8 +271,12 @@
                   </li>
                   <li>
                     <i class="fa-solid fa-paw"></i>
-                    객실 내 반려견 관련 쓰레기는 보호자 책임 하에 처리해 
-                    주시기바랍니다.
+                    객실 내 반려견 관련 쓰레기는 보호자 책임 하에 
+                    <br>
+                    <span>
+                    처리해 
+                      주시기바랍니다.
+                    </span>
                   </li>
                   <li>
                     <i class="fa-solid fa-paw"></i>
@@ -297,7 +301,11 @@
               <div class="times">
                 <table>
                   <tr>
-                    <th class="time" colspan="2">이용 시간</th>
+                    <th class="time" colspan="2"><h3 class="infor-title">
+
+                      이용 시간
+                    </h3>
+                  </th>
                   </tr>
                   <tr>
                     <th>오전권</th>
@@ -331,7 +339,7 @@
             <div class="mapst">
               <h3 class="infor-title">지도</h3>
               <div id="map" style="width: 500px; height: 400px"></div>
-              <div class="map-title">
+              <!-- <div class="map-title">
                 <div id="textToCopy">
                   대전광역시 중구 중앙로121번길 20 빌리슈
                 </div>
@@ -339,14 +347,44 @@
                 <button id="copy">
                   <i class="fa-solid fa-copy"></i> <span> 주소복사 </span>
                 </button>
-              </div>
+              </div> -->
+              <input
+                  type="text"
+                  id="text"
+                  value="대전광역시 중구 중앙로121번길 20 빌리슈"
+                  style="display: none"
+                />
+                <div class="map-copy">
+                  <span class="map-copy-text"
+                    >대전광역시 중구 중앙로121번길 20 빌리슈</span
+                  >
+                  <div class="hover-text">
+                    <i class="fa-solid fa-copy"></i>
+                    <input
+
+                  id="input"
+                  class="inputbtn"
+                      type="button"
+                      onclick="urlCopy()"
+                      value="주소 복사"
+                    
+                    />
+                  
+                  </div>
+                  <div id="copyMessage" class="copy-message">
+                    복사되었습니다!
+                  </div>
+                </div>
+
             </div>
             <!-- 이용후기 -->
             <div id="Reviews">
-              <h3 class="infor-title">이용 후기 <span>4개</span></h3>
-              <button class="Bnt">
-                <a href="pages/postscript.html">이용 후기 작성</a>
-              </button>
+              <div class="location">
+<h3 class="infor-title">이용 후기 <span>4개</span></h3>
+                <button class="clickbtn">
+                  <a href="pages/postscript.html">이용 후기 작성</a>
+                </button>
+              </div>
               <div class="line"></div>
               <!-- 후기 프로필 -->
               <div class="profil-scroll">
@@ -452,13 +490,18 @@
 
             <!-- Q&A -->
             <div id="Q-A">
-              <h3 class="infor-title">
-                Q&A
-                <span>0개</span>
-              </h3>
-              <button class="Bnt"><a href="pages/QnA.html">1:1 문의</a></button>
-              <div class="line"></div>
-              <div class="Reviews-title">등록된 후기가 아직 없습니다.</div>
+              <div class="location">
+
+                <h3 class="infor-title">
+                  Q&A
+                  <span>0개</span>
+                </h3>
+                <button class="clickbtn"><a href="pages/QnA.html">1:1 문의</a></button>
+              </div>
+              <div class="line">
+
+              </div>
+                <div class="Reviews-title">등록된 후기가 아직 없습니다.</div>
             </div>
           </div>
 

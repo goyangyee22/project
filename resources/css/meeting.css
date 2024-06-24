@@ -53,12 +53,11 @@ header {
   align-items: center;
   top: 0;
   gap: 80px;
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(10px);
   color: black;
   border: none;
   border-top: 1px solid #e8f1f5;
   padding: 10px 10px;
-  font-family: "SUITE-Regular";
 }
 
 #meet-menu > li :hover {
@@ -66,7 +65,7 @@ header {
 }
 
 #information {
-  padding: 20px 0;
+  padding: 60px 0;
   display: block;
 }
 
@@ -115,12 +114,56 @@ header {
   /* justify-content: space-between; */
   align-items: center;
 }
+/* ---------------------- 주소 */
+.map-copy-text {
+  font-size: 20px;
+}
+.hover-text {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  border: none;
+  font-size: 15px;
+  padding: 0 15px;
+}
+.hover-text input {
+  background-color: transparent;
+  border: none;
+}
+.hover-input:hover {
+  border-bottom: 1px solid #1a2130;
+}
+.copy-message {
+  visibility: hidden;
+  width: 120px;
+  background-color: #1a2130;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px;
+  position: relative;
+  left: 50%;
+  top: 8px;
+  z-index: 1;
+  /* bottom: 1590px; */
+  /* left: 90px; */
+  /* margin-left: -60px; */
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.show {
+  visibility: visible;
+  opacity: 1;
+}
+/* ----------------------주소 */
 
 .rclick {
   background-color: #eeeeee;
   display: inline-block;
-  padding: 2px 13px;
+  padding: 1px 13px;
   border-radius: 20px;
+  font-size: 15px;
   cursor: pointer;
 }
 
@@ -136,9 +179,11 @@ header {
 }
 
 .ra_button {
+  /* width: 200px; */
+  /* position: relative;
+  top: 0; */
   display: flex;
   justify-content: space-between;
-  /* padding: 70px 0; */
 }
 
 .aclick {
@@ -158,7 +203,7 @@ header {
 
 .ra_menu {
   font-family: "SUITE-Regular";
-  font-size: 27px;
+  font-size: 40px;
 }
 
 .ricon {
@@ -192,7 +237,9 @@ header {
 .review_list {
   padding: 0;
 }
-
+#review {
+  position: static;
+}
 .review-contents {
   display: flex;
   justify-content: space-between;
@@ -229,7 +276,11 @@ header {
 
 .menu_title {
   font-family: "SUITE-Regular";
-  font-size: 30px;
+  font-size: 40px;
+}
+
+.menu_text {
+  font-size: 24px;
 }
 
 .date {
