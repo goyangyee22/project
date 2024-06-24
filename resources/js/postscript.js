@@ -120,7 +120,6 @@ updateBtn.addEventListener("click", async function (e) {
 
   // 제목, 내용의 입력값을 받아옵니다.
   const inputs = document.querySelectorAll(".form-container input");
-  // const inputsArr = Array.from(inputs);
   const addObj = {
     name,
     // 작성일 기준으로 고정합니다.
