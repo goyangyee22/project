@@ -150,12 +150,13 @@ const deleteBtn = document.getElementById("deleteBtn");
 deleteBtn.addEventListener("click", async function () {
   const selectedTrs = document.querySelectorAll(".selected");
   selectedTrs.forEach(async (tr) => {
+    // 작성자의 docId를 가져옵니다.
     const docId = tr.getAttribute("data-id");
-    // 작성자의 sessionStorage에서 docId를 가져옵니다.
     // selected 되어있는 칸에서 이 작성자의 docId를 가져오면 됨
-    // const userInfoString = sessionStorage.getItem("userInfo");
-    // const userInfo = JSON.parse(userInfoString);
-    const writerDocId = docId;
+    const userInfoString = docId.getAttribute(".selected data-id");
+    const userInfo = JSON.parse(userInfoString);
+    const writerDocId = userInfo;
+    console.log(docId, userInfoString, userInfo, writerDocId);
 
     // 현재 로그인한 본인의 sessionStorage에서 docId를 가져옵니다.
     const currentUserInfoString = sessionStorage.getItem("userInfo");
