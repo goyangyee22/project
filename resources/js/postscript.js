@@ -50,11 +50,11 @@ async function getBoard() {
     // const { name, title, content, date } = doc.data();
 
     const data = doc.data();
+    const date = data.date;
     const name = data.name;
     const title = data.title;
     const content = data.content;
-    const date = data.date;
-   
+
     tableTag.insertAdjacentHTML(
       "beforeend",
       `
@@ -62,11 +62,10 @@ async function getBoard() {
       <td class="name">${name}</td>
       <td class="title">${title}</td>
       <td class="content">${content}</td>
-      <td class="date">${date}.</td>
+      <td class="date">${date}</td>
       </tr>
       `
     );
-    // console.log(doc.id);
   });
 }
 getBoard();
@@ -86,6 +85,21 @@ tableTag.addEventListener("click", function (e) {
 const updateBtn = document.getElementById("updateBtn");
 updateBtn.addEventListener("click", async function (e) {
   e.preventDefault();
+
+  // 제목과 내용 입력값을 가져옵니다.
+  const titleInput = document.querySelector('input[name="title"]');
+  const contentInput = document.querySelector('input[name="content"]');
+
+  // 입력 필드의 값에서 양 끝 공백을 제거합니다.
+  const title = titleInput.value.trim();
+  const content = contentInput.value.trim();
+
+  // 제목과 내용이 모두 비어있는지 검사합니다.
+  if (title === "" || content === "") {
+    alert("제목과 내용을 모두 입력해주세요.");
+    return;
+  }
+
   // 작성자명을 불러오는 함수입니다.
   const userNameString = sessionStorage.getItem("userInfo");
   const userInfo = JSON.parse(userNameString);
@@ -106,7 +120,6 @@ updateBtn.addEventListener("click", async function (e) {
 
   // 제목, 내용의 입력값을 받아옵니다.
   const inputs = document.querySelectorAll(".form-container input");
-  // const inputsArr = Array.from(inputs);
   const addObj = {
     name,
     // 작성일 기준으로 고정합니다.
@@ -143,27 +156,99 @@ updateBtn.addEventListener("click", async function (e) {
 
 // 본인이 작성했던 게시글을 수정하는 함수입니다. (한 번에 한 개의 게시글씩 수정 가능)
 const modifyBtn = document.getElementById("modifyBtn");
-modifyBtn.addEventListener("click", async function () {});
+modifyBtn.addEventListener("click", async function () {
+  const selectedTr = document.querySelector(".selected");
+
+  // 선택된 행이 없으면 모달 창을 띄울 수 없습니다.
+  if (!selectedTr) {
+    alert("수정할 게시글을 선택해주세요.");
+    return false;
+  }
+
+  // 선택된 행의 데이터를 불러옵니다.
+  const name = selectedTr.querySelector(".name").textContent;
+  const title = selectedTr.querySelector(".title").textContent;
+  const content = selectedTr.querySelector(".content").textContent;
+  const date = selectedTr.querySelector(".date").textContent;
+
+  // 수정 모달을 열고 해당 데이터를 입력 폼에 채웁니다.
+  const modifyForm = document.getElementById("modifyForm");
+  modifyForm.querySelector("input[name='modifyTitle']").value = title;
+  modifyForm.querySelector("input[name='modifyContent']").value = content;
+
+  // 모달을 화면에 띄웁니다.
+  const modal = document.getElementById("myModal");
+  modal.style.display = "block";
+
+  // 수정 완료 버튼에 이벤트 리스너를 추가합니다.
+  modifyForm.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    // 수정할 데이터를 불러옵니다.
+    const modifyTitle = modifyForm
+      .querySelector('input[name="modifyTitle"]')
+      .value.trim();
+    const modifyContent = modifyForm
+      .querySelector('input[name="modifyContent"]')
+      .value.trim();
+
+    // 제목과 내용이 모두 공백인지 검사합니다.
+    if (modifyTitle === "" || modifyContent === "") {
+      alert("제목과 내용을 모두 입력해주세요.");
+      return false;
+    }
+
+    // 선택된 행의 ID를 가져옵니다.
+    const docId = selectedTr.getAttribute("data-id");
+
+    try {
+      // Firebase에서 해당 문서를 수정합니다.
+      await updateDatas("board", docId, {
+        title: modifyTitle,
+        content: modifyContent,
+      });
+
+      // 화면에서 선택된 행의 데이터를 수정합니다.
+      selectedTr.querySelector(".title").textContent = modifyTitle;
+      selectedTr.querySelector(".content").textContent = modifyContent;
+
+      // 모달을 닫습니다.
+      modal.style.display = "none";
+    } catch (error) {
+      console.error("Error updating document: ", error);
+      alert("게시글을 수정하는 도중 오류가 발생했습니다.");
+    }
+  });
+});
+
+// 모달 닫기 버튼 클릭 시 모달을 닫습니다.
+const closeModalBtn = document.getElementById("closeModalBtn");
+closeModalBtn.addEventListener("click", function () {
+  const modal = document.getElementById("myModal");
+  modal.style.display = "none";
+});
 
 // 본인이 작성했던 게시글을 삭제하는 함수입니다. (한 번에 여러 개의 게시글 삭제 가능)
 const deleteBtn = document.getElementById("deleteBtn");
 deleteBtn.addEventListener("click", async function () {
   const selectedTrs = document.querySelectorAll(".selected");
   selectedTrs.forEach(async (tr) => {
+    // 작성자의 docId를 가져옵니다.
     const docId = tr.getAttribute("data-id");
-    // 작성자의 sessionStorage에서 docId를 가져옵니다.
-    // selected 되어있는 칸에서 이 작성자의 docId를 가져오면 됨
-    // const userInfoString = sessionStorage.getItem("userInfo");
-    // const userInfo = JSON.parse(userInfoString);
-    const writerDocId = docId;
 
     // 현재 로그인한 본인의 sessionStorage에서 docId를 가져옵니다.
     const currentUserInfoString = sessionStorage.getItem("userInfo");
     const currentUserInfo = JSON.parse(currentUserInfoString);
     const currentDocId = currentUserInfo.docId;
 
+    console.log(docId, currentUserInfoString, currentUserInfo, currentDocId);
+
+    // 삭제할 게시글의 작성자 정보를 가져옵니다.
+    const boardDoc = await getDatas("board", docId);
+    const writerDocId = boardDoc.data().docId;
+
     // 작성자와 현재 로그인한 본인의 docId가 같아야 삭제가 됩니다.
-    if (writerDocId == currentDocId) {
+    if (writerDocId === currentDocId) {
       try {
         const result = await deleteDatas("board", docId);
         if (result) {

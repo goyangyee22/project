@@ -43,7 +43,6 @@ async function isIdDuplicate(event) {
   const idConfirm = idEx.test(id);
 
   // ID가 조건에 맞게 입력되지 않으면 그에 따른 alert를 띄우기 위한 조건식을 설정합니다.
-  console.log(idConfirm);
   if (!idConfirm) {
     alert("아이디가 4-16자 사이의 숫자 또는 영소문자가 아닙니다.");
     return false;
@@ -53,7 +52,6 @@ async function isIdDuplicate(event) {
   const usersRef = collection(dbService, "userInfo");
   const q = query(usersRef, where("id", "==", id));
   const querySnapshot = await getDocs(q);
-  console.log(querySnapshot);
 
   // 중복 여부에 따라 idCheck 변수를 설정합니다.
   idCheck = !querySnapshot.empty ? false : true;
@@ -156,7 +154,6 @@ async function handleSignUp() {
   }
 
   // 비밀번호와 비밀번호 확인이 일치하지 않으면 회원가입이 되지 않습니다.
-  console.log(pw !== pwConfirm);
   if (pw !== pwConfirm) {
     alert("비밀번호가 일치하지 않습니다.");
     return false;
