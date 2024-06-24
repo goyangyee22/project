@@ -23,8 +23,10 @@ header {
 #pet {
   /* padding-top: 100px; */
   background-color: #fff;
+padding: 48px 0;
   /* height: 100vh; */
 }
+.detail-slide{margin-bottom: 8px;}
 .pet-detail {
   display: flex;
   align-items: start;
@@ -32,12 +34,13 @@ header {
   position: relative;
 }
 .pet-contents {
-  /* width: 600px; */
+  width: 75%;
   flex-grow: 1;
 }
 /* 스와이퍼 */
 .swiper-slide img {
-  width: 100%;
+  width:100%;
+
   /* border-radius: 30px; */
   /* height: 600px; */
 }
@@ -64,11 +67,11 @@ section {
 }
 .More {
   padding: 16px;
-  border-bottom: 1px solid pink;
+  border-bottom: 1px solid #FFCBCB;
   position: sticky;
   top: 0;
-  font-size: 16px;
-  background-color: rgba(255, 192, 203, 0.1);
+  font-size: 24px;
+  background-color: rgba(255, 192, 203, 0.2);
   backdrop-filter: blur(20px);
 }
 .More ul {
@@ -193,7 +196,7 @@ font-weight: 700;}
   display: flex;
   gap: 40px;
   margin-left: 16px;
-  margin-bottom: 40px;
+  margin-bottom: 48px;
 }
 
 .i-con {
@@ -215,7 +218,7 @@ font-weight: 700;}
 }
 /* 객실용품 */
 .Supplies {
-  margin-bottom: 40px;
+  margin-bottom: 48px;
   padding: 24px;
 }
 .all {
@@ -245,7 +248,7 @@ font-weight: 700;}
   padding: 8px;
 }
 .space {
-  margin-bottom: 40px;
+  margin-bottom: 48px;
 }
 .spaceintroduction p {
   font-size: 24px;
@@ -269,14 +272,17 @@ font-weight: 700;}
 
   padding: 8px;
 }
-.facility-main > li >span{font-size: 16px;
+.facility-main > li >span{
 position: relative;
 left: 10%;}
 /* 이용시간 */
 .times {
-  text-align: center;
+/* display: flex;
+justify-content: center;
+align-items: center;
+text-align: center; */
   padding: 8px;
-  margin-bottom: 40px;
+  margin-bottom: 48px;
 }
 table {
   /* border: 2px solid black; */
@@ -285,10 +291,15 @@ table {
 tr,
 td,
 th {
-  border: 1px solid black;
+  border: 1px solid pink;
   padding: 16px 80px;
+  font-size: 24px;
 }
 .times .time {
+  
+justify-content: center;
+align-items: center;
+/* text-align: center; */
   font-size: 32px;
   color: #e99674;
 }
@@ -305,6 +316,10 @@ th {
   border-top: none;
   margin-bottom: 80px;
 }
+
+.location{display: flex;
+justify-content: space-between;}
+
 .Reviews-heard span {
   color: #dc6b19;
 }
@@ -314,14 +329,19 @@ th {
   /* display: flex; */
   margin: 8px;
 }
-.Bnt {
+.clickbtn{
   padding: 8px;
   margin: 8px;
-  background-color: #ef9c66;
+  background-color: #f5dad2;
   border: none;
   border-radius: 6px;
-  color: #faf3f0;
+ 
   font-size: 15px;
+}
+.clickbtn:hover{
+  color: #fff;
+  background-color: #FF6969;
+
 }
 .Reviews-title {
   text-align: center;
@@ -373,7 +393,7 @@ th {
 }
 /* 지도 */
 .mapst {
-  margin-bottom: 40px;
+  margin-bottom: 48px;
 }
 #copy {
   color: #4b70f5;
@@ -391,12 +411,15 @@ th {
 }
 /* 방 이미지들(스와이퍼) */
 .room-main {
-  border: 1px solid pink;
+  /* border: 1px solid pink; */
   background-color: #fff;
   position: sticky;
+  display: flex;
+  flex-direction: column;
   top: 0;
   padding: 16px;
   border-radius: 8px;
+  width: 30%;
 }
 .btnwrap {
   display: flex;
@@ -412,13 +435,13 @@ th {
 }
 
 .btn-primary:active {
-  background-color: #ca8787 !important;
+  background-color: #FF6969 !important;
 }
 
 
 
 .btnwrap button:hover {
-  background-color: #ca8787;
+  background-color: #FF6969;
   color: #fff;
 }
 .btnwrap button {
@@ -428,15 +451,17 @@ th {
   border: none;
   background-color: #f5dad2;
   border-radius: 6px;
-  font-size: 14px;
+  font-size: 16px;
   transition: 0.5s;
 }
 .room {
-  /* border: 1px solid pink; */
-  border-bottom: 1px dashed pink;
+  border: 1px solid black;
+  /* border-bottom: 1px dashed pink; */
   /* border-radius: 12px; */
-  display: flex;
-  width: 450px;
+ /* padding: 24px; */
+ margin: 24px 0;
+  /* display: flex; */
+  width: 100%;
   height: 200px;
   background-color: #fff;
   margin-bottom: 16px;
@@ -446,23 +471,23 @@ th {
   margin: 0;
 }
 .room-title {
+  position: relative;
+  top: 16px;
   padding-bottom: 0;
   color: black;
 }
-.room-imgs {
-  padding: 16px;
-}
-.room-imgs img {
-  border-radius: 12px;
-}
+
+
 .room-title h3 {
+  color: #FFB1B1;
   padding-bottom: 8px;
   margin: 0;
 }
 
 .room-titles div {
   color: black;
-  font-size: 18px;
+  font-size: 16px;
+  font-weight: 600;
 }
 .room-titles div span {
   font-size: 16px;
@@ -483,4 +508,60 @@ th {
 .roomimg img {
   width: 100%;
   height: 100%;
+}
+/* 지도 */
+.hover-text {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  border: none;
+  width: 130px;
+  font-size: 16px;
+  color:#ca8787;
+}
+.map-copy-text{font-size: 24px;}
+
+.tooltip-text {
+  display: block;
+  visibility: hidden;
+  width: 80px;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px;
+  position: absolute;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+
+
+.copy-message {
+  visibility: hidden;
+  width: 120px;
+  background-color: skyblue;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px;
+  position: relative;
+left: 60%;
+  top: 10px;
+  z-index: 1;
+  transition: opacity 0.2s;
+}
+
+.show {
+  visibility: visible;
+  opacity: 1;
+}
+.inputbtn{
+  color:#ca8787;
+  border: none;
+  background-color: transparent;
+}
+.inputbtn:hover{
+  border-bottom: 1px solid darksalmon;
+  color: #FF6969;
+  font-weight: 800;
 }
