@@ -66,7 +66,6 @@ async function getBoard() {
       </tr>
       `
     );
-    // console.log(doc.id);
   });
 }
 getBoard();
