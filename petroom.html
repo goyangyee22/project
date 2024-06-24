@@ -67,7 +67,7 @@
     </header>
     <main>
       <section id="pet">
-        <div class="pet-hero">
+        <div class="pet-hero wrap">
           <!-- 들어갈 상세페이지 내용 -->
           <div class="swiper mySwiper">
             <div class="swiper-wrapper">
@@ -105,40 +105,60 @@
         <!-- 공간소개 -->
         <h2 class="pet-title">펫 룸</h2>
         <!-- 중간 이미지 꾸미기 -->
-        <div class="middle">
-          <div class="puppy">
-            <img
-              class="middle-img"
-              src="./resources/images/petroom/강아지 1.jpg"
-              width=" 450px"
-              height="300px"
-              alt=""
-            />
-
-            <div class="puppy1">
-              <h2>함께하는 온전한 휴식</h2>
-              <p>보호자와 반려견이 함께 휴식을 즐길 수 있는 공간</p>
+        <div class="main wrap">
+          <div class="card card1">
+            <div class="card-overlay"></div>
+            <div class="card-inner">
+              <img
+                src="./resources/images/petroom/강아지 1.jpg"
+                width="520px"
+                height="350px"
+                alt=""
+              />
             </div>
           </div>
-          <div class="puppy-img">
-            <img
-              class="middle-img"
-              src="./resources/images/petroom/강아지3.webp"
-              width="500px"
-              height="400px"
-              alt=""
-            />
-          </div>
-          <div class="puppy-bot">
-            <img
-              class="middle-img"
-              src="./resources/images/petroom/강아지2.jpg"
-              width="500px"
-              alt=""
-            />
+          <div class="card1title">
+            <h3>함께 하는 온전한 휴식
 
-            <div class="puppy1"></div>
+            </h3>
+            <p>보호자와 반려견이 함께 휴식을 즐길 수 있는 공간</p>
           </div>
+
+          <div class="card fa">
+            <div class="card-overlay"></div>
+            <div class="card-inner size">
+              <img
+                src="./resources/images/petroom/강아지3.webp"
+                width="520px"
+                height="350px"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="fatitle">
+            <h3>사랑하는 댕댕이와 좋은시간을 가져보세요~
+
+            </h3>
+            <p> 사랑하는 반려동물과 함께 좋은시간을 보내며 <br> 맛있는 간식도 먹을 수 있도록 준비해두었습니다.
+              
+            </p>
+          </div>
+          <div class="card card2">
+            <div class="card-overlay"></div>
+            <div class="card-inner">
+              <img
+                src="./resources/images/petroom/강아지2.jpg"
+                width="530px"
+                height="300px"
+                alt=""
+              />
+            </div>
+          </div>
+        <div class="card2title">
+          <h3>편안한 목욕</h3>
+          <p>반려동물과 함께 목욕을 즐기며, 
+            <br>내 아이의 편안한 드라이를 위한 드라이룸이 준비 되어있습니다.</p>
+        </div>
         </div>
         <!--  -->
 
@@ -229,6 +249,7 @@
                       <li><i class="fa-solid fa-minus"></i>바디워시</li>
                       <li><i class="fa-solid fa-minus"></i>욕실슬리퍼</li>
                       <li><i class="fa-solid fa-minus"></i>가운</li>
+                      <li><i class="fa-solid fa-minus"></i>드라이룸</li>
                     </ul>
                   </ul>
                 </div>
@@ -238,16 +259,24 @@
                 <h3 class="infor-title">시설안내</h3>
 
                 <ul class="facility-main">
-                  <li><i class="fa-solid fa-paw"></i>전 객실은 금연입니다.</li>
-                  <li>
-                    <i class="fa-solid fa-paw"></i>
-                    외출 시, 반려견과 반드시 동행하여 주시기 바랍니다. <br />
-                    (반려견만 두고 외출금지)
+                  <li><i class="fa-solid fa-paw"></i>전 객실은 금연입니다.
                   </li>
                   <li>
                     <i class="fa-solid fa-paw"></i>
-                    객실 내 반려견 관련 쓰레기는 보호자 책임 하에 처리에 주시기
-                    바랍니다.
+                      외출 시, 반려견과 반드시 동행하여 주시기 바랍니다.
+                   <br>
+                    <span>
+                      (반려견만 두고 외출금지)
+                    </span> 
+                  </li>
+                  <li>
+                    <i class="fa-solid fa-paw"></i>
+                    객실 내 반려견 관련 쓰레기는 보호자 책임 하에 
+                    <br>
+                    <span>
+                    처리해 
+                      주시기바랍니다.
+                    </span>
                   </li>
                   <li>
                     <i class="fa-solid fa-paw"></i>
@@ -272,7 +301,11 @@
               <div class="times">
                 <table>
                   <tr>
-                    <th class="time" colspan="2">이용 시간</th>
+                    <th class="time" colspan="2"><h3 class="infor-title">
+
+                      이용 시간
+                    </h3>
+                  </th>
                   </tr>
                   <tr>
                     <th>오전권</th>
@@ -306,7 +339,7 @@
             <div class="mapst">
               <h3 class="infor-title">지도</h3>
               <div id="map" style="width: 500px; height: 400px"></div>
-              <div class="map-title">
+              <!-- <div class="map-title">
                 <div id="textToCopy">
                   대전광역시 중구 중앙로121번길 20 빌리슈
                 </div>
@@ -314,14 +347,44 @@
                 <button id="copy">
                   <i class="fa-solid fa-copy"></i> <span> 주소복사 </span>
                 </button>
-              </div>
+              </div> -->
+              <input
+                  type="text"
+                  id="text"
+                  value="대전광역시 중구 중앙로121번길 20 빌리슈"
+                  style="display: none"
+                />
+                <div class="map-copy">
+                  <span class="map-copy-text"
+                    >대전광역시 중구 중앙로121번길 20 빌리슈</span
+                  >
+                  <div class="hover-text">
+                    <i class="fa-solid fa-copy"></i>
+                    <input
+
+                  id="input"
+                  class="inputbtn"
+                      type="button"
+                      onclick="urlCopy()"
+                      value="주소 복사"
+                    
+                    />
+                  
+                  </div>
+                  <div id="copyMessage" class="copy-message">
+                    복사되었습니다!
+                  </div>
+                </div>
+
             </div>
             <!-- 이용후기 -->
             <div id="Reviews">
-              <h3 class="infor-title">이용 후기 <span>4개</span></h3>
-              <button class="Bnt">
-                <a href="pages/postscript.html">이용 후기 작성</a>
-              </button>
+              <div class="location">
+<h3 class="infor-title">이용 후기 <span>4개</span></h3>
+                <button class="clickbtn">
+                  <a href="pages/postscript.html">이용 후기 작성</a>
+                </button>
+              </div>
               <div class="line"></div>
               <!-- 후기 프로필 -->
               <div class="profil-scroll">
@@ -427,13 +490,18 @@
 
             <!-- Q&A -->
             <div id="Q-A">
-              <h3 class="infor-title">
-                Q&A
-                <span>0개</span>
-              </h3>
-              <button class="Bnt"><a href="pages/QnA.html">1:1 문의</a></button>
-              <div class="line"></div>
-              <div class="Reviews-title">등록된 후기가 아직 없습니다.</div>
+              <div class="location">
+
+                <h3 class="infor-title">
+                  Q&A
+                  <span>0개</span>
+                </h3>
+                <button class="clickbtn"><a href="pages/QnA.html">1:1 문의</a></button>
+              </div>
+              <div class="line">
+
+              </div>
+                <div class="Reviews-title">등록된 후기가 아직 없습니다.</div>
             </div>
           </div>
 
@@ -449,7 +517,7 @@
                 />
               </div>
               <div class="room-title">
-                <h3 class="bl">빌리슈</h3>
+               
                 <h3>스위트</h3>
                 <div class="room-titles">
                   <div>정원 <span> 2마리 / 2인 </span></div>
@@ -500,7 +568,7 @@
                 />
               </div>
               <div class="room-title">
-                <h3 class="bl">빌리슈</h3>
+               
                 <h3>디럭스</h3>
                 <div class="room-titles">
                   <div>정원 <span> 2마리 / 4인 </span></div>
@@ -549,7 +617,7 @@
                 />
               </div>
               <div class="room-title">
-                <h3 class="bl">빌리슈</h3>
+               
                 <h3>패밀리</h3>
                 <div class="room-titles">
                   <div>정원 <span> 2마리 / 6인 </span></div>

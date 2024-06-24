@@ -56,23 +56,64 @@ async function addDatas(collectionName, dataObj) {
 }
 
 async function getDatas(collectionName) {
-  const collect = collection(dbService, collectionName);
-  const snapshot = await getDocs(collect);
-  return snapshot;
+  try {
+    const collect = collection(dbService, collectionName);
+    const snapshot = await getDocs(collect);
+    return snapshot;
+  } catch (error) {
+    console.error("Error getting documents: ", error);
+    throw error;
+  }
 }
 
 async function updateDatas(collectionName, docId, updateObj) {
-  const docRef = await doc(dbService, collectionName, docId);
-  await updateDoc(docRef, updateObj);
+  try {
+    const docRef = await doc(dbService, collectionName, docId);
+    await updateDoc(docRef, updateObj);
+  } catch (error) {
+    console.error("Error updating document: ", error);
+    throw error;
+  }
 }
 
 async function deleteDatas(collectionName, docId) {
-  const docRef = await doc(dbService, collectionName, docId);
   try {
+    const docRef = await doc(dbService, collectionName, docId);
     await deleteDoc(docRef);
     return true;
   } catch (error) {
+    console.error("Error deleting document: ", error);
     return false;
+  }
+}
+
+async function deleteDocument(collectionName, docId) {
+  try {
+    // 해당 문서를 가져옵니다.
+    const boardDoc = await getDocs(doc(dbService, collectionName, docId));
+
+    if (!boardDoc.exists()) {
+      throw new Error("삭제할 게시글이 존재하지 않습니다.");
+    }
+
+    // 게시글의 작성자 정보 가져오기
+    const writerDocId = boardDoc.data().docId;
+
+    // 현재 사용자 정보 가져오기
+    const currentUserInfoString = sessionStorage.getItem("userInfo");
+    const currentUserInfo = JSON.parse(currentUserInfoString);
+    const currentDocId = currentUserInfo.docId;
+
+    // 작성자의 아이디와 현재 사용자의 ID가 일치하면 삭제합니다.
+    if (writerDocId === currentDocId) {
+      await deleteDoc(doc(dbService, collectionName, docId));
+      return true;
+    } else {
+      throw new Error("본인이 작성한 글만 삭제할 수 있습니다.");
+    }
+  } catch (error) {
+    console.error("Error deleting document: ", error);
+    throw error;
   }
 }
 
@@ -85,4 +126,5 @@ export {
   getDatas,
   updateDatas,
   deleteDatas,
+  deleteDocument,
 };

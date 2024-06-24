@@ -1,6 +1,5 @@
 import { addDatas, getDatas } from '../../firebase.js  ';
 
-// 로그인이 되어있지 않은 경우, 접근이 제한됩니다.
 const userInfo = sessionStorage.getItem('userInfo');
 if (!userInfo) {
   alert('로그인을 해주세요.');
@@ -9,7 +8,6 @@ if (!userInfo) {
 
 async function getUsers() {
   try {
-    // const userId = firebase.auth().currentUser.uid;
     const snapshot = await getDatas('userInfo');
 
     let userData;
@@ -24,67 +22,118 @@ async function getUsers() {
     if (userData) {
       const { id, name, phone } = userData;
       displayUserData(name, phone);
-      sessionStorage.setItem('id', id);
+      const buyer = {
+        userId: id,
+        userName: name,
+        userPhone: phone,
+      };
+      sessionStorage.setItem('buyer', JSON.stringify(buyer));
     }
   } catch (error) {
     console.log(error);
   }
-}
 
-function displayUserData(name, phone) {
-  document.getElementById('user-name').textContent = name;
-  document.getElementById('user-phone').textContent = phone;
-}
-
-const paymentInfoJSON = sessionStorage.getItem('paymentInfo');
-
-if (paymentInfoJSON) {
-  const paymentInfo = JSON.parse(paymentInfoJSON);
-
-  const date = paymentInfo.date;
-  const room = paymentInfo.room;
-  const time = paymentInfo.time;
-  const personnel = paymentInfo.personnel;
-  const amount = paymentInfo.amount;
-
-  document.getElementById('display-date').textContent = date;
-  document.getElementById('display-time').textContent = time;
-  document.getElementById('display-room').textContent = room;
-  document.getElementById('display-personnel').textContent = personnel;
-
-  function displayCost(id) {
-    document.getElementById(id).textContent = parseInt(amount).toLocaleString();
+  function displayUserData(name, phone) {
+    document.getElementById('user-name').textContent = name;
+    document.getElementById('user-phone').textContent = phone;
   }
 
-  /* 가격 표시 */
-  displayCost('display-amount');
-  displayCost('amount-of-payment');
-  displayCost('total-cost');
+  const paymentInfoJSON = sessionStorage.getItem('paymentInfo');
+  const buyerJSON = sessionStorage.getItem('buyer');
 
-  document
-    .getElementById('final-payment-btn')
-    .addEventListener('click', function (e) {
-      e.preventDefault();
+  if (buyerJSON && paymentInfoJSON) {
+    const paymentInfo = JSON.parse(paymentInfoJSON);
+    const buyer = JSON.parse(buyerJSON);
 
-      // test
-      if (SubmitEvent) {
-        console.log({
-          date: date,
-          room: room,
-          time: time,
-          personnel: personnel,
-          amount: amount,
-        });
-        sessionStorage.removeItem('paymentInfo');
-        window.location.href = './myPage.html';
-      } else {
-        console.log('저장 실패');
-      }
+    const { date, room, amount, personnel, time, thumb } = paymentInfo;
+    const { userId, userName, userPhone } = buyer;
 
-      // 데이터베이스 저장
-      // 데이터 전송 후 마이페이지로 이동해 결제 내역이 표시되게끔 한다.
+    document.getElementById('display-date').textContent = date;
+    document.getElementById('display-thumb').innerHTML = `
+      <img src="../resources/images/${thumb}" alt="">
+    `;
+    document.getElementById('display-time').textContent = time;
+    document.getElementById('display-room').textContent = room;
+    document.getElementById('display-personnel').textContent = personnel;
+
+    function displayCost(id) {
+      document.getElementById(id).textContent =
+        parseInt(amount).toLocaleString();
+    }
+
+    /* 가격 표시 */
+    displayCost('display-amount');
+    displayCost('amount-of-payment');
+    displayCost('total-cost');
+
+    /* 결제수단 선택 */
+    const paymentMethod = document.getElementById('paymentMethod');
+    const methodBtn = document.querySelectorAll('input[name="method"]');
+    methodBtn.forEach((method) => {
+      method.addEventListener('change', function (e) {
+        paymentMethod.value = e.target.value;
+        document.getElementById('select-method').textContent = e.target.value;
+      });
     });
+    /* 현금영수증 여부 */
+    const cashReceiptsBtn = document.querySelectorAll(
+      'input[name="cash-receipt"]'
+    );
+    cashReceiptsBtn.forEach((radio) => {
+      radio.addEventListener('change', function (e) {
+        document.getElementById('cashReceipt').value = e.target.value;
+      });
+    });
+
+    document
+      .getElementById('payment-data-send')
+      .addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        const formData = e.target;
+        const cashReceipt = formData.cashReceipt.value;
+        const chooseMethod = formData.paymentMethod.value;
+
+        const orderData = {
+          amount: parseInt(amount),
+          cashReceipts: cashReceipt,
+          dateOrdered: new Date().toLocaleString(),
+          method: chooseMethod,
+        };
+
+        const paymentData = {
+          appointment: {
+            reservationDate: date,
+            personnel: personnel,
+            room: room,
+            reservationTime: time,
+          },
+          buyer: {
+            id: userId,
+            name: userName,
+            phone: userPhone,
+          },
+          order: orderData,
+        };
+
+        // 파이어베이스에 데이터 추가
+        const sendDatas = await addDatas('payment', paymentData);
+
+        if (sendDatas) {
+          console.log('paymentData:', paymentData);
+          sessionStorage.removeItem('buyer');
+          sessionStorage.removeItem('paymentInfo');
+          window.location.href = './myPage.html';
+        } else {
+          console.log('저장 실패');
+          console.log(sendDatas);
+        }
+      });
+  }
 }
+
+document.addEventListener('DOMContentLoaded', getUsers);
+
 const radioBtns = document.querySelectorAll('input[name="method"]');
 
 radioBtns.forEach((radio) => {
@@ -126,25 +175,3 @@ let cardSwiper = new Swiper('.card-slide ', {
     prevEl: '.swiper-button-prev',
   },
 });
-
-// payment: {
-//   appointment: {
-//     date: '예약날짜',
-//     personnel: '인원',
-//     room: '방 이름',
-//     time: '예약시간'
-//   },
-//   buyer: {
-//     id: '아이디',
-//     name: '이름',
-//     phone: '전화번호'
-//   },
-//   order: {
-//     amount: 금액,
-//     cashReceipts: '현금영수증 신청 여부(true or false)',
-//     method: '결제수단',
-//     time: '주문한 날짜'
-//   }
-// }
-
-document.addEventListener('DOMContentLoaded', getUsers);

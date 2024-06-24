@@ -1,14 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
-import {
-  // app,
-  // db,
-  dbService,
-  storageService,
-  addDatas,
-  getDatas,
-  updateDatas,
-  deleteDatas,
-} from "../../firebase.js";
+import { dbService, getDatas, deleteDocument } from "../../firebase.js";
 import {
   getFirestore,
   collection,
@@ -16,6 +7,8 @@ import {
   query,
   where,
   getDocs,
+  getDoc,
+  doc as firestoreDoc,
 } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
 
 // Firebase를 구성하는 정보
@@ -50,10 +43,10 @@ async function getBoard() {
     // const { name, title, content, date } = doc.data();
 
     const data = doc.data();
+    const date = data.date;
     const name = data.name;
     const title = data.title;
     const content = data.content;
-    const date = data.date;
 
     tableTag.insertAdjacentHTML(
       "beforeend",
@@ -66,7 +59,6 @@ async function getBoard() {
       </tr>
       `
     );
-    // console.log(doc.id);
   });
 }
 getBoard();
@@ -86,6 +78,21 @@ tableTag.addEventListener("click", function (e) {
 const updateBtn = document.getElementById("updateBtn");
 updateBtn.addEventListener("click", async function (e) {
   e.preventDefault();
+
+  // 제목과 내용 입력값을 가져옵니다.
+  const titleInput = document.querySelector('input[name="title"]');
+  const contentInput = document.querySelector('input[name="content"]');
+
+  // 입력 필드의 값에서 양 끝 공백을 제거합니다.
+  const title = titleInput.value.trim();
+  const content = contentInput.value.trim();
+
+  // 제목과 내용이 모두 비어있는지 검사합니다.
+  if (title === "" || content === "") {
+    alert("제목과 내용을 모두 입력해주세요.");
+    return;
+  }
+
   // 작성자명을 불러오는 함수입니다.
   const userNameString = sessionStorage.getItem("userInfo");
   const userInfo = JSON.parse(userNameString);
@@ -106,7 +113,6 @@ updateBtn.addEventListener("click", async function (e) {
 
   // 제목, 내용의 입력값을 받아옵니다.
   const inputs = document.querySelectorAll(".form-container input");
-  // const inputsArr = Array.from(inputs);
   const addObj = {
     name,
     // 작성일 기준으로 고정합니다.
@@ -141,47 +147,46 @@ updateBtn.addEventListener("click", async function (e) {
   }
 });
 
-// 본인이 작성했던 게시글을 수정하는 함수입니다. (한 번에 한 개의 게시글씩 수정 가능)
-const modifyBtn = document.getElementById("modifyBtn");
-modifyBtn.addEventListener("click", async function () {});
-
 // 본인이 작성했던 게시글을 삭제하는 함수입니다. (한 번에 여러 개의 게시글 삭제 가능)
 const deleteBtn = document.getElementById("deleteBtn");
 deleteBtn.addEventListener("click", async function () {
   const selectedTrs = document.querySelectorAll(".selected");
-  selectedTrs.forEach(async (tr) => {
-    // 작성자의 docId를 가져옵니다.
-    const docId = tr.getAttribute("data-id");
-    // selected 되어있는 칸에서 이 작성자의 docId를 가져오면 됨
-    const userInfoString = docId.getAttribute(".selected data-id");
-    const userInfo = JSON.parse(userInfoString);
-    const writerDocId = userInfo;
-    console.log(docId, userInfoString, userInfo, writerDocId);
 
-    // 현재 로그인한 본인의 sessionStorage에서 docId를 가져옵니다.
+  // 선택된 행에 대한 반복 처리
+  selectedTrs.forEach(async (tr) => {
+    const docId = tr.getAttribute("data-id");
+
+    // 현재 로그인한 사용자의 정보를 sessionStorage에서 가져옴
     const currentUserInfoString = sessionStorage.getItem("userInfo");
     const currentUserInfo = JSON.parse(currentUserInfoString);
     const currentDocId = currentUserInfo.docId;
 
-    // 작성자와 현재 로그인한 본인의 docId가 같아야 삭제가 됩니다.
-    if (writerDocId == currentDocId) {
-      try {
-        const result = await deleteDatas("board", docId);
+    try {
+      // Firebase에서 해당 회원의 정보를 가져옵니다.
+      const boardDoc = await getDoc(doc(dbService, "board", docId));
+      if (!boardDoc.exists()) {
+        throw new Error(`Document ${docId} not found.`);
+      }
+
+      // 회원 정보의 작성자 ID를 가져옵니다.
+      const writerInfo = boardDoc.data().writerInfo;
+      const writerDocId = writerInfo().docId;
+
+      // 현재 로그인 되어있는 사용자와 작성자 ID가 일치하면 삭제합니다.
+      if (currentDocId === writerDocId) {
+        // 회원 정보를 삭제합니다.
+        const result = await deleteDocument("board", docId);
         if (result) {
           tr.remove();
         } else {
-          alert(
-            "삭제 중 오류가 발생했습니다. 관리자에게 문의하여 주시기 바랍니다."
-          );
+          throw new Error("Delete operation failed.");
         }
-      } catch (error) {
-        console.error("Error deleting document: ", error);
-        alert(
-          "삭제 중 오류가 발생했습니다. 관리자에게 문의하여 주시기 바랍니다."
-        );
+      } else {
+        throw new Error("You are not authorized to delete this member");
       }
-    } else {
-      alert("본인이 작성한 글만 삭제할 수 있습니다.");
+    } catch (error) {
+      console.error("Error deleting member: ", error.message);
+      alert("삭제 중 오류가 발생했습니다.");
     }
   });
 });
