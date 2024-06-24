@@ -1,6 +1,5 @@
 import { addDatas, getDatas } from '../../firebase.js  ';
 
-// 로그인이 되어있지 않은 경우, 접근이 제한됩니다.
 const userInfo = sessionStorage.getItem('userInfo');
 if (!userInfo) {
   alert('로그인을 해주세요.');

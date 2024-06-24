@@ -74,31 +74,63 @@
         <div class="wrap">
           <!-- 들어갈 상세페이지 내용 -->
           <!-- 패딩 100px 정도 주고 작업하세용 -->
-
           <div class="swiper mySwiper">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide">
-                <img src="resources/images/partyimg/카톡3.jpg" />
+            <div class="detail-hero">
+              <div
+                style="
+                  --swiper-navigation-color: #fff;
+                  --swiper-pagination-color: #fff;
+                "
+                class="swiper detail-slide"
+              >
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <img src="../resources/images/partyimg/6인1.jpg" />
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="../resources/images/partyimg/6인2.jpg" />
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="../resources/images/partyimg/6인3.jpg" />
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="../resources/images/partyimg/6인4.jpg" />
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="../resources/images/partyimg/6인5.jpg" />
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="../resources/images/partyimg/6인6.jpg" />
+                  </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
               </div>
-              <div class="swiper-slide">
-                <img src="./resources/images/partyimg/카톡1.png" />
-              </div>
-              <div class="swiper-slide">
-                <img src="./resources/images/partyimg/카톡2.png" />
-              </div>
-
-              <div class="swiper-slide">
-                <img src="resources/images/partyimg/카톡6.jpg" />
-              </div>
-              <div class="swiper-slide">
-                <img src="resources/images/partyimg/카톡4.png" />
-              </div>
-              <div class="swiper-slide">
-                <img src="resources/images/partyimg/카톡7.jpg" />
+              <div thumbsSlider="" class="swiper detail-slide-thumb">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <img src="../resources/images/partyimg/6인1.jpg" />
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="../resources/images/partyimg/6인2.jpg" />
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="../resources/images/partyimg/6인3.jpg" />
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="../resources/images/partyimg/6인4.jpg" />
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="../resources/images/partyimg/6인5.jpg" />
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="../resources/images/partyimg/6인6.jpg" />
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
+            <!-- <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div> -->
           </div>
         </div>
         <div class="party-contents wrap">
@@ -253,7 +285,7 @@
                   </li>
                 </ol>
               </div>
-              <div>
+              <div class="party-span">
                 <h1 class="party-mainfour">환불규정 안내</h1>
                 <i class="fa-solid fa-minus" style="color: #ffd43b"></i>
                 <span style="color: red">
@@ -289,19 +321,16 @@
                     >대전광역시 중구 중앙로121번길 20 빌리슈</span
                   >
                   <div class="hover-text">
-                    <i
-                      class="fa-solid fa-clone"
-                      style="color: rgb(148, 84, 148)"
-                    ></i>
+                    <i class="fa-solid fa-clone icon-hover"> </i>
                     <input
                       type="button"
                       onclick="urlCopy()"
-                      value="주소 복사 하기"
+                      value="주소 복사"
                       style="border: none"
                     />
-                    <span class="tooltip-text"
+                    <!-- <span class="tooltip-text"
                       >대전광역시 중구 중앙로121번길 20 빌리슈</span
-                    >
+                    > -->
                   </div>
                   <div id="copyMessage" class="copy-message">
                     복사되었습니다!
@@ -396,94 +425,85 @@
                     <a href="pages/postscript.html">이용 후기 작성</a>
                   </button>
                 </div>
-                <i class="fa-solid fa-minus" style="color: #ffd43b"></i>
+                <div class="guest-main-img">
+                  <i class="fa-solid fa-minus" style="color: #ffd43b"></i>
 
-                <div class="QnA-boxs">
-                  <span class="guest-img"
-                    ><img
-                      class="guest-imgs"
-                      src="resources/images/partyimg/게스트이미지1.jpg"
-                      width="60px"
-                      height="60px"
-                  /></span>
-                  <div class="QnA-num">
-                    <strong class="guest-name"
-                      >병아리 <span>⭐⭐⭐⭐⭐</span></strong
-                    >
-                    <p class="QnA-ment">
-                      완전 조용하고 저희만 있는 거 같아요. 분위기 너무 좋습니다~
-                    </p>
-                    <img
-                      src="resources/images/partyimg/후기1.jpg"
-                      width="56px"
-                      height="56px"
-                    />
-                    <span class="QnA-time">2024-06-11 08:38</span>
+                  <div class="QnA-boxs">
+                    <span class="guest-imgx"
+                      ><img
+                        class="guest-imgs"
+                        src="resources/images/partyimg/게스트이미지1.jpg"
+                    /></span>
+                    <div class="QnA-num">
+                      <strong class="guest-name"
+                        >병아리 <span>⭐⭐⭐⭐⭐</span></strong
+                      >
+                      <p class="QnA-ment">
+                        완전 조용하고 저희만 있는 거 같아요. 분위기 너무
+                        좋습니다~
+                      </p>
+                      <img
+                        src="resources/images/partyimg/후기1.jpg"
+                        width="56px"
+                        height="56px"
+                      />
+                      <span class="QnA-time">2024-06-11 08:38</span>
+                    </div>
                   </div>
-                </div>
-                <div class="QnA-boxs">
-                  <span class="guest-img"
-                    ><img
-                      class="guest-imgs"
-                      src="resources/images/partyimg/게스트이미지2.jpg"
-                      width="62px"
-                      height="62px"
-                  /></span>
-                  <div class="QnA-num">
-                    <strong class="guest-name"
-                      >대전미꾸라지 <span>⭐⭐⭐⭐⭐</span>
-                    </strong>
-                    <p class="QnA-ment">잘 놀다갑니다. 재방문 의사 있어요~~</p>
+                  <div class="QnA-boxs">
+                    <span class="guest-imgx"
+                      ><img
+                        class="guest-imgs"
+                        src="resources/images/partyimg/게스트이미지2.jpg"
+                    /></span>
+                    <div class="QnA-num">
+                      <strong class="guest-name"
+                        >대전미꾸라지 <span>⭐⭐⭐⭐⭐</span>
+                      </strong>
+                      <p class="QnA-ment">
+                        잘 놀다갑니다. 재방문 의사 있어요~~
+                      </p>
 
-                    <span class="QnA-time">2024-06-16 09:07</span>
+                      <span class="QnA-time">2024-06-16 09:07</span>
+                    </div>
                   </div>
-                </div>
-                <div class="QnA-boxs">
-                  <span class="guest-img"
-                    ><img
-                      class="guest-imgs"
-                      src="resources/images/partyimg/게스트이미지3.jpg"
-                      width="60px"
-                      height="60px"
-                  /></span>
-                  <div class="QnA-num">
-                    <strong class="guest-name"
-                      >부산사자<span> ⭐⭐⭐⭐⭐ </span></strong
-                    >
-                    <p class="QnA-ment">
-                      다른 것 말 할 것도 없이 다 좋았고 저는 화장실이 너무
-                      깨끗해서 더 좋았습니다.
-                    </p>
-                    <img
-                      src="resources/images/partyimg/후기2.jpg"
-                      width="56px"
-                      height="56px"
-                    />
-                    <span class="QnA-time">2024-06-20 20:12</span>
+                  <div class="QnA-boxs">
+                    <span class="guest-imgx"
+                      ><img
+                        class="guest-imgs"
+                        src="resources/images/partyimg/게스트이미지3.jpg"
+                    /></span>
+                    <div class="QnA-num">
+                      <strong class="guest-name"
+                        >부산사자<span> ⭐⭐⭐⭐⭐ </span></strong
+                      >
+                      <p class="QnA-ment">
+                        다른 것 말 할 것도 없이 다 좋았고 저는 화장실이 너무
+                        깨끗해서 더 좋았습니다.
+                      </p>
+                      <img
+                        src="resources/images/partyimg/후기2.jpg"
+                        width="56px"
+                        height="56px"
+                      />
+                      <span class="QnA-time">2024-06-20 20:12</span>
+                    </div>
                   </div>
                 </div>
               </div>
-
               <!--  -->
             </div>
           </div>
           <div id="party-payment">
             <div class="container-one">
               <div class="payment-container">
-                <div class="pay-img">
-                  <img
-                    id="imga"
-                    src="resources/images/partyimg/6인3.jpg"
-                    alt=""
-                  />
-                </div>
                 <div class="container-main">
                   <div class="pay-text">
                     <h2>스페이스 파티룸</h2>
                     <p>인원: 4~6인</p>
                     <p>-가격 (4인기준)-</p>
-                    <p>주간: 60,000</p>
-                    <p>야간: 70,000</p>
+                    <p>주,야간: 60,000</p>
+
                     <p>종일: 90,000원</p>
                   </div>
                   <div class="pay-click">
@@ -514,16 +534,13 @@
             </div>
             <div class="container-one">
               <div class="payment-container">
-                <div class="pay-img">
-                  <img src="resources/images/partyimg/6인1.jpg" alt="" />
-                </div>
                 <div class="container-main">
                   <div class="pay-text">
                     <h2>스페셜 파티룸</h2>
                     <p>인원: 6~8인</p>
                     <p>-가격 (6인기준)-</p>
-                    <p>주간: 80,000</p>
-                    <p>야간: 80,000</p>
+                    <p>주,야간: 80,000</p>
+
                     <p>종일: 120,000원</p>
                   </div>
                   <div class="pay-click">
@@ -554,20 +571,17 @@
             </div>
             <div class="container-one">
               <div class="payment-container">
-                <div class="pay-img">
-                  <img src="resources/images/partyimg/6인7.jpg" alt="" />
-                </div>
                 <div class="container-main">
                   <div class="pay-text">
                     <h2>다모여 파티룸</h2>
                     <p>인원: 8~12인</p>
                     <p>-가격 (8인기준)-</p>
-                    <p>주간: 100,000</p>
-                    <p>야간: 100,000</p>
+                    <p>주,야간: 100,000</p>
+
                     <p>종일: 150,000원</p>
                   </div>
                   <div class="pay-click">
-                    <!-- ddddddddddddddddddddddd -->
+                    <!-- 사진 모두 보기 -->
                     <div id="click-button">
                       <button
                         type="button"
@@ -580,7 +594,7 @@
                         사진 모두보기
                       </button>
                     </div>
-                    <!--  ddddddddddddddddddddd-->
+                    <!--ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ-->
                     <button
                       type="button"
                       class="btn btn-primary"

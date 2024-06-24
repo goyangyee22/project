@@ -25,6 +25,31 @@ var swiper = new Swiper(".meeting-medium", {
   },
 });
 
+const sectionMenus = document.querySelectorAll("#meet-menu a");
+let isScrolling = false;
+
+// function setActiveLink(link) {
+//   sectionMenus.forEach((a) => a.classList.remove("active"));
+//   link.classList.add("active");
+// }
+
+sectionMenus.forEach((link) => {
+  link.addEventListener("click", function (e) {
+    e.preventDefault();
+    isScrolling = true;
+
+    // setActiveLink(link);
+
+    const target = document.querySelector(link.getAttribute("href"));
+
+    target.scrollIntoView({ behavior: "smooth" });
+
+    setTimeout(() => {
+      isScrolling = false;
+    }, 1000);
+  });
+});
+
 // ----------------------------
 function meeting(room) {
   console.log(room);
@@ -63,6 +88,48 @@ function meeting(room) {
       clickable: true,
     },
   });
+}
+
+var swiper = new Swiper(".detail-slide-thumb", {
+  loop: true,
+  spaceBetween: 10,
+  slidesPerView: 4,
+  freeMode: true,
+  watchSlidesProgress: true,
+});
+var swiper2 = new Swiper(".detail-slide", {
+  loop: true,
+  spaceBetween: 10,
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+  thumbs: {
+    swiper: swiper,
+  },
+});
+
+// ---------------------------- 주소복사
+function urlCopy() {
+  var copyText = document.getElementById("text");
+  copyText.style.display = "block";
+  copyText.select();
+  copyText.setSelectionRange(0, 99999);
+
+  navigator.clipboard.writeText(copyText.value).then(
+    function () {
+      var copyMessage = document.getElementById("copyMessage");
+      copyMessage.classList.add("show");
+      setTimeout(function () {
+        copyMessage.classList.remove("show");
+      }, 1000);
+    },
+    function (err) {
+      console.error("Failed to copy: ", err);
+    }
+  );
+
+  copyText.style.display = "none";
 }
 
 mapRendering();
