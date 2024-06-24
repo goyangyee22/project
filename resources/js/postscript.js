@@ -50,10 +50,10 @@ async function getBoard() {
     // const { name, title, content, date } = doc.data();
 
     const data = doc.data();
+    const date = data.date;
     const name = data.name;
     const title = data.title;
     const content = data.content;
-    const date = data.date;
 
     tableTag.insertAdjacentHTML(
       "beforeend",
@@ -86,6 +86,21 @@ tableTag.addEventListener("click", function (e) {
 const updateBtn = document.getElementById("updateBtn");
 updateBtn.addEventListener("click", async function (e) {
   e.preventDefault();
+
+  // 제목과 내용 입력값을 가져옵니다.
+  const titleInput = document.querySelector('input[name="title"]');
+  const contentInput = document.querySelector('input[name="content"]');
+
+  // 입력 필드의 값에서 양 끝 공백을 제거합니다.
+  const title = titleInput.value.trim();
+  const content = contentInput.value.trim();
+
+  // 제목과 내용이 모두 비어있는지 검사합니다.
+  if (title === "" || content === "") {
+    alert("제목과 내용을 모두 입력해주세요.");
+    return; // 함수 종료
+  }
+
   // 작성자명을 불러오는 함수입니다.
   const userNameString = sessionStorage.getItem("userInfo");
   const userInfo = JSON.parse(userNameString);
@@ -153,18 +168,23 @@ deleteBtn.addEventListener("click", async function () {
     // 작성자의 docId를 가져옵니다.
     const docId = tr.getAttribute("data-id");
     // selected 되어있는 칸에서 이 작성자의 docId를 가져오면 됨
-    const userInfoString = docId.getAttribute(".selected data-id");
-    const userInfo = JSON.parse(userInfoString);
-    const writerDocId = userInfo;
-    console.log(docId, userInfoString, userInfo, writerDocId);
+    // const userInfoString = docId.getAttribute(".selected data-id");
+    // const userInfo = JSON.parse(userInfoString);
+    // const writerDocId = userInfo;
 
     // 현재 로그인한 본인의 sessionStorage에서 docId를 가져옵니다.
     const currentUserInfoString = sessionStorage.getItem("userInfo");
     const currentUserInfo = JSON.parse(currentUserInfoString);
     const currentDocId = currentUserInfo.docId;
 
+    console.log(docId, currentUserInfoString, currentUserInfo, currentDocId);
+
+    // 삭제할 게시글의 작성자 정보를 가져옵니다.
+    const boardDoc = await getDatas("board", docId);
+    const writerDocId = boardDoc.data().docId;
+
     // 작성자와 현재 로그인한 본인의 docId가 같아야 삭제가 됩니다.
-    if (writerDocId == currentDocId) {
+    if (writerDocId === currentDocId) {
       try {
         const result = await deleteDatas("board", docId);
         if (result) {
