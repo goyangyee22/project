@@ -55,9 +55,7 @@ padding: 48px 0;
   padding-top: 40px;
   /* border-radius: 12px; */
 }
-/* .swiper-button-disabled {
-  background-color: #545b77;
-} */
+.main-img{padding-bottom: 32px;}
 .center img {
   width: 100%;
   height: 500px;
@@ -71,8 +69,13 @@ section {
   position: sticky;
   top: 0;
   font-size: 24px;
-  background-color: rgba(255, 192, 203, 0.2);
+  color: #FF8080;
+  background-color: rgba(252, 249, 249, 0.2);
   backdrop-filter: blur(20px);
+}
+.More>ul>li>a:hover{
+  color: #FFB4B4;
+  border-bottom: 1px dashed #FD8A8A;
 }
 .More ul {
   display: flex;
@@ -94,7 +97,7 @@ section {
   color: burlywood;
 }
 .infor-title {
-  color: darksalmon;
+  color: #41444B;
   font-weight: 500;
   font-size: 40px;
   font-family: "MangoByeolbyeol";
@@ -217,9 +220,9 @@ font-weight: 700;}
   font-size: 16px;
 }
 /* 객실용품 */
-.Supplies {
-  margin-bottom: 48px;
-  padding: 24px;
+.Supplies {padding-top: 120px;
+  /* margin-bottom: 48px; */
+  /* padding: 24px; */
 }
 .all {
   padding-top: 16px;
@@ -245,10 +248,11 @@ font-weight: 700;}
 }
 /* 공간소개 */
 .spaceintroduction {
-  padding: 8px;
+  padding: 16px;
 }
 .space {
-  margin-bottom: 48px;
+ padding-left: 0;
+  padding-top: 120px;
 }
 .spaceintroduction p {
   font-size: 24px;
@@ -260,7 +264,8 @@ font-weight: 700;}
 }
 /* 시설안내 */
 .facility {
-  margin-bottom: 80px;
+  /* margin-bottom: 80px; */
+  padding-top: 120px;
 }
 
 .facility-main > li {
@@ -277,24 +282,20 @@ position: relative;
 left: 10%;}
 /* 이용시간 */
 .times {
-/* display: flex;
-justify-content: center;
-align-items: center;
-text-align: center; */
-  padding: 8px;
-  margin-bottom: 48px;
+  padding-top: 120px;
+  /* margin-bottom: 48px; */
 }
 table {
   /* border: 2px solid black; */
   border-collapse: collapse;
 }
 tr,
-td,
-th {
-  border: 1px solid pink;
-  padding: 16px 80px;
+td,th {
+  /* border: 1px solid pink; */
+  padding: 8px 16px;
   font-size: 24px;
 }
+
 .times .time {
   
 justify-content: center;
@@ -305,7 +306,8 @@ align-items: center;
 }
 /* 환불규정 */
 .refund {
-  padding-bottom: 40px;
+  padding-top: 120px;
+  /* padding-bottom: 40px; */
 }
 .refund-main > li {
   font-size: 24px;
@@ -314,7 +316,8 @@ align-items: center;
 /* 이용후기 */
 #Reviews {
   border-top: none;
-  margin-bottom: 80px;
+  /* margin-bottom: 80px; */
+  padding-top: 120px;
 }
 
 .location{display: flex;
@@ -385,7 +388,8 @@ justify-content: space-between;}
 /* Q&A */
 #Q-A {
   height: 300px;
-  padding-bottom: 40px;
+  padding-top: 120px;
+  
 }
 .infor-title > span {
   font-size: 25px;
@@ -393,8 +397,8 @@ justify-content: space-between;}
 }
 /* 지도 */
 .mapst {
-  margin-bottom: 48px;
-}
+
+padding-top: 120px;}
 #copy {
   color: #4b70f5;
   border: none;
@@ -423,77 +427,57 @@ justify-content: space-between;}
 }
 .btnwrap {
   display: flex;
-  gap: 12px;
-  border: none;
-  margin-top: 16px;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+.btn-icon{display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
 }
 .btn-primary {
-  /* padding: 0; */
+  padding:8px 0;
   color: black;
-  display: flex;
-  align-items: center;
 }
 
 .btn-primary:active {
   background-color: #FF6969 !important;
 }
 
-
-
 .btnwrap button:hover {
   background-color: #FF6969;
   color: #fff;
 }
 .btnwrap button {
+  padding: 8px 0;
   width: 100%;
-  height: 30px;
-  padding: 0 8px;
-  border: none;
-  background-color: #f5dad2;
-  border-radius: 6px;
   font-size: 16px;
+  border-radius: 8px;
+  background-color: #FFD0D0;
+  border: none;
   transition: 0.5s;
 }
 .room {
-  border: 1px solid black;
-  /* border-bottom: 1px dashed pink; */
-  /* border-radius: 12px; */
- /* padding: 24px; */
- margin: 24px 0;
-  /* display: flex; */
-  width: 100%;
-  height: 200px;
+  width: 280px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding:8px 24px;
   background-color: #fff;
-  margin-bottom: 16px;
+  border: 2px solid rgba(255, 128, 128, 0.5);
+  border-radius: 16px;
+  box-shadow: 0 0 5px 0 rgba(255, 128, 128, 0.5);
 }
-.room-a {
-  border: none;
-  margin: 0;
-}
-.room-title {
-  position: relative;
-  top: 16px;
-  padding-bottom: 0;
-  color: black;
-}
+.room h2{color: #FF8080;}
+.room span{color: #000;
+font-size: 16px;
+font-weight: 700;}
 
 
-.room-title h3 {
-  color: #FFB1B1;
-  padding-bottom: 8px;
-  margin: 0;
-}
 
-.room-titles div {
-  color: black;
-  font-size: 16px;
-  font-weight: 600;
-}
-.room-titles div span {
-  font-size: 16px;
-  color: #686d76;
-  padding-left: 8px;
-}
+
 /* 팝업창 객실사진 */
 .petroom {
   width: 100%;
@@ -565,3 +549,66 @@ left: 60%;
   color: #FF6969;
   font-weight: 800;
 }
+/* 태블릿 */
+@media screen and (max-width: 1023px){
+.pet-contents{width: 100%;}
+.pet-detail{display: block;}
+.More ul{font-size: 1rem;}
+.infor-title{font-size: 2rem;}
+.spaceintroduction{font-size: 1rem;}
+.space{padding-top: 2.5rem;}
+.spaceintroduction p{font-size: 1rem;}
+
+.iconsort p{font-size: 1rem;}
+.main-icon{
+  margin: 0;
+  display: grid;
+grid-template-columns: 1fr 1fr;
+width: 2rem;
+gap: .5rem;
+}
+.Supplies{padding-top: 2.5rem;}
+.All-Supplies ul,li{padding: 0;}
+
+.common-main li{padding: 0  0 0 .5rem;}
+.common-title{margin: 1rem 0;
+font-size: 1rem;}
+.common-main{display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+font-size: 1rem;}
+.common-1{display: grid;
+grid-template-columns: 1fr 1fr;}
+.all-1{height: 18.75rem;}
+.facility-main{padding: 0;}
+.facility-main li{font-size: 1rem;
+  margin: 0;
+padding:.5rem;}
+.times{padding-top: 2.5rem;}
+.times td,th{font-size: 1rem;}
+
+.refund{padding-top: 2.5rem;}
+.refund-main li{font-size: 1rem;
+margin: 0;padding-top: .5rem;}
+.facility{padding-top: 2.5rem;}
+.facility-main > li > .fa-solid{padding: .5rem 0;
+font-size: 1rem;}
+
+.mapst{padding-top: 2.5rem;}
+.mapst span{font-size: 1rem;}
+.hover-text{font-size: 1rem;}
+}
+
+
+
+
+
+/* .More{width: 100%;
+height: 100%;padding: 0;
+}
+.More ul{font-size: 1rem; margin: 0
+;padding: 0 8px;
+
+}
+
+.iconsort{font-size: .5rem;
+} */

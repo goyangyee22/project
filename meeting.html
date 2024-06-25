@@ -39,37 +39,33 @@
   </head>
   <body>
     <header>
-      <div class="wrap">
-        <h1 class="logo"><a href="./index.html">빌리슈</a></h1>
-        <nav>
-          <ul class="main-menu">
-            <li><a href="./party.html">파티룸</a></li>
-            <li><a href="./meeting.html">세미나룸</a></li>
-            <li><a href="./petroom.html">펫룸</a></li>
-          </ul>
-        </nav>
-        <ul class="spot">
-          <li class="spot-login">
-            <a href="./pages/signIn.html"
-              ><i class="fa-solid fa-right-to-bracket"></i
-            ></a>
-          </li>
-          <li class="spot-join">
-            <a href="./pages/signUp.html"
-              ><i class="fa-solid fa-user-plus"></i
-            ></a>
-          </li>
-          <li class="spot-page">
-            <a href="./pages/myPage.html"><i class="fa-solid fa-gear"></i></a>
-          </li>
-        </ul>
+      <h1 class="logo">
+        <a href="./index.html">
+          <span class="logo-en">BILLISHU</span>
+          <span class="logo-ko">빌리슈</span>
+        </a>
+      </h1>
+      <div class="ham-menu">
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
+      <nav>
+        <ul class="main-menu">
+          <li><a href="#">EVENT</a></li>
+          <li><a href="./party.html">PARTY</a></li>
+          <li><a href="./meeting.html">MEETING</a></li>
+          <li><a href="./petroom.html">PET</a></li>
+          <li><a href="./pages/postscript.html">REVIEW</a></li>
+          <li><a href="./pages/QnA.html">Q&A</a></li>
+        </ul>
+      </nav>
+      <ul class="spot"></ul>
     </header>
     <main>
       <section id="detail">
         <div id="detail-wrap" class="wrap">
           <div class="detail-container">
-            <br />
             <div class="meet-contents wrap">
               <div class="meet-details">
                 <div class="detail-hero">
@@ -177,12 +173,14 @@
                   </div>
                 </div>
                 <ul id="meet-menu">
-                  <li><a href="#information">상세정보</a></li>
+                  <li><a href="#menu_title1">공간소개</a></li>
+                  <li><a href="#menu_title2">시설안내</a></li>
+                  <li><a href="#menu_title3">주의사항</a></li>
                   <li><a href="#review">이용후기</a></li>
                   <li><a href="#ask">Q&A</a></li>
                 </ul>
                 <div id="information">
-                  <h1 class="menu_title">공간 소개</h1>
+                  <h1 class="menu_title" id="menu_title1">공간 소개</h1>
                   <p class="information-list">
                     <span>#회의실</span>
                     <span>#미팅룸</span>
@@ -223,7 +221,7 @@
                     </div>
                   </div>
                   <br />
-                  <h1 class="menu_title">시설 안내</h1>
+                  <h1 class="menu_title" id="menu_title1">시설 안내</h1>
                   <ol class="menu-text">
                     <!-- 🤍 ⋈ ① ⊳   -->
                     <li>
@@ -242,7 +240,7 @@
                     <li>⊳ 개수대 및 내부 화장실</li>
                   </ol>
                   <br />
-                  <h1 class="menu_title">유의 사항</h1>
+                  <h1 class="menu_title" id="menu_title1">주의 사항</h1>
                   <ol class="menu-text">
                     <li>⊳ 예약시간 및 대관인원을 꼭 지켜주세요.</li>
                     <li>
@@ -453,113 +451,106 @@
                   </ul>
                 </div>
               </div>
-              <div class="meeting-imgs">
-                <div class="meeting-imgs-contents">
-                  <div class="one_img">
-                    <div class="room_titles">
-                      <div class="room_text">
-                        <h3>소회의실</h3>
-                        <div>
-                          <strong>인원</strong>
-                          <p>4~6명</p>
-                        </div>
-                        <div>
-                          <strong>구성</strong>
-                          <p>책상/의자/70인치 칠판</p>
-                        </div>
-                      </div>
-                      <div class="reservation_button">
-                        <button
-                          class="btn_pohoto"
-                          type="button"
-                          class="reservation_button"
-                          data-bs-toggle="modal"
-                          data-bs-target="#all_pohoto"
-                          onclick="meeting('small')"
-                        >
-                          <i class="fa-solid fa-images"></i>사진 모두보기
-                        </button>
-                        <button
-                          type="button"
-                          class="reservation_button"
-                          data-bs-toggle="modal"
-                          data-bs-target="#payment-form-modal"
-                          onclick="openPayment('meeting1')"
-                        >
-                          예약하기
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="two_img">
-                    <div class="room_titles">
-                      <h3>중회의실</h3>
-                      <div>
-                        <strong>인원</strong>
-                        <p>6~15명</p>
-                      </div>
-                      <div>
-                        <strong>구성</strong>
-                        <p>책상/의자/55인치 스마트TV/75인치 전자칠판(OTT)</p>
-                      </div>
-                      <div class="reservation_button">
-                        <button
-                          class="btn_pohoto"
-                          type="button"
-                          class="reservation_button"
-                          data-bs-toggle="modal"
-                          data-bs-target="#all_pohoto"
-                          onclick="meeting('medium')"
-                        >
-                          <i class="fa-solid fa-images"></i>사진 모두보기
-                        </button>
-                        <button
-                          type="button"
-                          class="reservation_button"
-                          data-bs-toggle="modal"
-                          data-bs-target="#payment-form-modal"
-                          onclick="openPayment('meeting2')"
-                        >
-                          예약하기
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="three_img">
-                    <div class="room_titles">
-                      <h3>대회의실</h3>
-                      <div>
-                        <strong>인원</strong>
-                        <p>15~30명</p>
-                      </div>
-                      <div>
-                        <strong>구성</strong>
-                        <p>책상/의자/스마트 스크린</p>
-                      </div>
-                      <div class="reservation_button">
-                        <button
-                          class="btn_pohoto"
-                          type="button"
-                          class="reservation_button"
-                          data-bs-toggle="modal"
-                          data-bs-target="#all_pohoto"
-                          onclick="meeting('big')"
-                        >
-                          <i class="fa-solid fa-images"></i>사진 모두보기
-                        </button>
-                        <button
-                          type="button"
-                          class="reservation_button"
-                          data-bs-toggle="modal"
-                          data-bs-target="#payment-form-modal"
-                          onclick="openPayment('meeting3')"
-                        >
-                          예약하기
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              <!-- --------------------------- -->
+              <div class="meeting-room">
+                <ul class="meeting_small">
+                  <li>
+                    <h3>소회의실</h3>
+                  </li>
+                  <li>
+                    <span>인원 4~6인</span>
+                  </li>
+                  <li>
+                    <span>구성 책상/의자/70인치 칠판</span>
+                  </li>
+                  <li class="reservation_button">
+                    <button
+                      type="button"
+                      class="button1"
+                      data-bs-toggle="modal"
+                      data-bs-target="#all_pohoto"
+                      onclick="meeting('small')"
+                    >
+                      사진보기
+                    </button>
+                    <button
+                      type="button"
+                      class="button2"
+                      data-bs-toggle="modal"
+                      data-bs-target="#payment-form-modal"
+                      onclick="openPayment('meeting1')"
+                    >
+                      예약하기
+                    </button>
+                  </li>
+                </ul>
+
+                <ul class="meeting_medium">
+                  <li>
+                    <h3>중회의실</h3>
+                  </li>
+                  <li>
+                    <span>인원 6~15인</span>
+                  </li>
+                  <li>
+                    <span
+                      >구성 책상/의자/55인치 스마트TV/<br />
+                      75인치 전자칠판(OTT)</span
+                    >
+                  </li>
+                  <li class="reservation_button">
+                    <button
+                      type="button"
+                      class="button1"
+                      data-bs-toggle="modal"
+                      data-bs-target="#all_pohoto"
+                      onclick="meeting('medium')"
+                    >
+                      사진보기
+                    </button>
+                    <button
+                      type="button"
+                      class="button2"
+                      data-bs-toggle="modal"
+                      data-bs-target="#payment-form-modal"
+                      onclick="openPayment('meeting2')"
+                    >
+                      예약하기
+                    </button>
+                  </li>
+                </ul>
+
+                <ul class="meeting_big">
+                  <li>
+                    <h3>대회의실</h3>
+                  </li>
+                  <li>
+                    <span>인원 15~30인</span>
+                  </li>
+                  <li>
+                    <span>구성 책상/의자/스마트 스크린</span>
+                  </li>
+                  <li class="reservation_button">
+                    <button
+                      type="button"
+                      class="button1"
+                      data-bs-toggle="modal"
+                      data-bs-target="#all_pohoto"
+                      onclick="meeting('big')"
+                    >
+                      사진보기
+                    </button>
+                    <button
+                      type="button"
+                      class="button2"
+                      data-bs-toggle="modal"
+                      data-bs-target="#payment-form-modal"
+                      onclick="openPayment('meeting3')"
+                    >
+                      예약하기
+                    </button>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
