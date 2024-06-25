@@ -176,10 +176,19 @@ deleteBtn.addEventListener("click", async () => {
 });
 
 // 수정 버튼 이벤트 리스너
-// const modifyBtn = document.querySelector(".modifyBtn");
-// modifyBtn.addEventListener("click", async () => {
-//   alert("화면을 구축하는 중입니다!");
-// });
+const modifyBtn = document.querySelector(".modifyBtn");
+modifyBtn.addEventListener("click", async () => {
+  alert("화면을 구축하는 중입니다!");
+  const modifyModal = document.querySelector("#modifyModal");
+  modifyModal.style.display = "block";
+});
+
+// 수정이 완료되면 수정 버튼을 눌러 저장합니다.
+const closeModifyBtn = document.querySelector(".closeModifyBtn");
+closeModifyBtn.addEventListener("click", async () => {
+  const modifyModal = document.querySelector("#modifyModal");
+  modifyModal.style.display = "none";
+});
 
 // 모달창 닫기 버튼을 클릭하면 모달 창을 닫습니다.
 const closeBtn = document.querySelector(".closeBtn");
