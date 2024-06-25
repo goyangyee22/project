@@ -276,7 +276,7 @@ createBtn.addEventListener("click", async () => {
 // });
 
 // 작성 모달 창에서 작성 버튼을 누를 시 Firestore database 및 게시판 화면에 게시글이 저장됩니다.
-// authorDocId, name, title, content, date가 저장 됩니다.
+// userDocId, name, title, content, date가 저장 됩니다.
 const submitBtn = document.querySelector(".submitBtn");
 submitBtn.addEventListener("click", async () => {
   // 입력한 제목 및 내용의 값을 불러옵니다.
