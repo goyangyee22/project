@@ -78,14 +78,40 @@ async function getBoard() {
 
 // 수정 버튼을 클릭하면 input 창이 주어지면서 내용을 수정할 수 있습니다.
 const modifyBtn = document.querySelector(".modifyBtn");
-modifyBtn.addEventListener("click", () => {
-  
-})
+modifyBtn.addEventListener("click", () => {});
 
 // 삭제 버튼을 클릭하면 게시글을 삭제 합니다.
 const deleteBtn = document.querySelector(".deleteBtn");
-deleteBtn.addEventListener("click", () => {
-})
+deleteBtn.addEventListener("click", async function () {
+  alert("정말로 삭제 하시겠습니까?");
+  // 선택된 게시글의 docId를 찾습니다
+  const modal = document.getElementById("modal");
+  const docId = modal.getAttribute("data-id");
+
+  if (docId) {
+    // Firestore에서 게시글을 삭제합니다.
+    db.collection("board")
+      .doc("docId")
+      .delete()
+      .then(() => {
+        console.log("게시글이 성공적으로 삭제 되었습니다.");
+
+        // DOM에서 게시글을 삭제합니다.
+        const board = document.querySelector(`tr[data-id="${docId}"]`);
+        if (board) {
+          board.remove();
+        }
+
+        // 게시글이 삭제가 되면 모달 창을 닫습니다.
+        modal.style.display = "none";
+      })
+      .catch((error) => {
+        console.error("게시글을 삭제하는 데 오류가 발생하였습니다: ", error);
+      });
+  } else {
+    console.error("문서를 찾을 수 없습니다.");
+  }
+});
 
 // 모달창 닫기 버튼을 클릭하면 모달 창을 닫습니다.
 const closeBtn = document.querySelector(".closeBtn");
