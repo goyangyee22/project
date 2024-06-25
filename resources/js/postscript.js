@@ -52,6 +52,8 @@ async function getBoard() {
     <td class="date">${date}</td>
     `;
 
+    tableBody.append(row);
+
     row.addEventListener("click", () => {
       // 선택된 행을 표시합니다.
       const selectedRow = document.querySelector(".selected");
@@ -76,41 +78,75 @@ async function getBoard() {
   });
 }
 
-// 수정 버튼을 클릭하면 input 창이 주어지면서 내용을 수정할 수 있습니다.
-const modifyBtn = document.querySelector(".modifyBtn");
-modifyBtn.addEventListener("click", () => {});
-
 // 삭제 버튼을 클릭하면 게시글을 삭제 합니다.
-const deleteBtn = document.querySelector(".deleteBtn");
-deleteBtn.addEventListener("click", async function () {
-  alert("정말로 삭제 하시겠습니까?");
-  // 선택된 게시글의 docId를 찾습니다
-  const modal = document.getElementById("modal");
-  const docId = modal.getAttribute("data-id");
+document.addEventListener("DOMContentLoaded", async function () {
+  const deleteBtn = document.querySelector(".deleteBtn");
+  deleteBtn.addEventListener("click", async function () {
+    const confirmation = confirm("정말로 삭제 하시겠습니까?");
+    if(confirmation){
+      const tr = document.querySelector("table tbody tr");
+      const docId = tr.getAttribute("data-id");
+      console.log(docId);
+    }
+  
+      // 선택된 게시글의 docId를 찾습니다.
+      
+          // Firebase에서 게시글을 삭제 합니다.
+         
+          // 게시판에서 게시글을 삭제합니다.
+        
+          // 게시글이 삭제되면 모달 창을 닫습니다.
+  });
 
-  if (docId) {
-    // Firestore에서 게시글을 삭제합니다.
-    db.collection("board")
-      .doc("docId")
-      .delete()
-      .then(() => {
-        console.log("게시글이 성공적으로 삭제 되었습니다.");
+  // 수정 버튼 이벤트 리스너
+  const modifyBtn = document.querySelector(".modifyBtn");
+  modifyBtn.addEventListener("click", () => {
+    const modal = document.getElementById("modal");
+    const docId = modal.getAttribute("data-id");
+    const titleElement = modal.querySelector(".modal-title");
+    const contentElement = modal.querySelector(".modal-content");
 
-        // DOM에서 게시글을 삭제합니다.
-        const board = document.querySelector(`tr[data-id="${docId}"]`);
-        if (board) {
-          board.remove();
-        }
+    if (docId) {
+      const newTitle = prompt(
+        "새 제목을 입력하세요:",
+        titleElement.textContent
+      );
+      const newContent = prompt(
+        "새 내용을 입력하세요:",
+        contentElement.textContent
+      );
 
-        // 게시글이 삭제가 되면 모달 창을 닫습니다.
-        modal.style.display = "none";
-      })
-      .catch((error) => {
-        console.error("게시글을 삭제하는 데 오류가 발생하였습니다: ", error);
-      });
-  } else {
-    console.error("문서를 찾을 수 없습니다.");
-  }
+      if (newTitle !== null && newContent !== null) {
+        // Firestore에서 게시글을 수정합니다.
+        db.collection("board")
+          .doc(docId)
+          .update({
+            title: newTitle,
+            content: newContent,
+          })
+          .then(() => {
+            console.log("게시글이 성공적으로 수정되었습니다.");
+
+            // DOM에서 게시글 제목과 내용을 업데이트합니다.
+            titleElement.textContent = newTitle;
+            contentElement.textContent = newContent;
+
+            const boardRow = document.querySelector(`tr[data-id="${docId}"]`);
+            if (boardRow) {
+              boardRow.children[1].textContent = newTitle;
+            }
+          })
+          .catch((error) => {
+            console.error(
+              "게시글을 수정하는 데 오류가 발생하였습니다: ",
+              error
+            );
+          });
+      }
+    } else {
+      console.error("문서를 찾을 수 없습니다.");
+    }
+  });
 });
 
 // 모달창 닫기 버튼을 클릭하면 모달 창을 닫습니다.
