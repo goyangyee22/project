@@ -1,3 +1,5 @@
+"https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
+"https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
 import { dbService } from "../../firebase.js";
 import {
@@ -25,7 +27,6 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-// const auth = getAuth(app);
 
 // 로그인이 되어있지 않은 경우, 접근이 제한됩니다.
 const userInfo = sessionStorage.getItem("userInfo");
@@ -78,75 +79,125 @@ async function getBoard() {
   });
 }
 
-// 삭제 버튼을 클릭하면 게시글을 삭제 합니다.
-document.addEventListener("DOMContentLoaded", async function () {
-  const deleteBtn = document.querySelector(".deleteBtn");
-  deleteBtn.addEventListener("click", async function () {
-    const confirmation = confirm("정말로 삭제 하시겠습니까?");
-    if(confirmation){
-      const tr = document.querySelector("table tbody tr");
-      const docId = tr.getAttribute("data-id");
-      console.log(docId);
+// table에 클릭 이벤트를 생성합니다.
+let selectedRow;
+const tableTag = document.querySelector("table");
+tableTag.addEventListener("click", function (e) {
+  if (e.target.tagName != "TH" && e.target.tagName != "TABLE") {
+    if (selectedRow) {
+      selectedRow.classList.remove("selected");
     }
-  
-      // 선택된 게시글의 docId를 찾습니다.
-      
-          // Firebase에서 게시글을 삭제 합니다.
-         
-          // 게시판에서 게시글을 삭제합니다.
-        
-          // 게시글이 삭제되면 모달 창을 닫습니다.
-  });
+    e.target.parentElement.classList.add("selected");
+    selectedRow = e.target.parentElement;
+    console.log("현재 작성되어 있는 게시글의 정보: ", selectedRow);
+  }
+});
 
-  // 수정 버튼 이벤트 리스너
-  const modifyBtn = document.querySelector(".modifyBtn");
-  modifyBtn.addEventListener("click", () => {
-    const modal = document.getElementById("modal");
-    const docId = modal.getAttribute("data-id");
-    const titleElement = modal.querySelector(".modal-title");
-    const contentElement = modal.querySelector(".modal-content");
+// 삭제 버튼을 클릭하면 게시글을 삭제 합니다.
+const deleteBtn = document.querySelector(".deleteBtn");
+deleteBtn.addEventListener("click", async () => {
+  if (confirm("정말로 삭제 하시겠습니까?")) {
+    if (selectedRow) {
+      // 선택된 행에서 게시글의 docId를 가져옵니다.
+      const postDocId = selectedRow.getAttribute("data-id");
+      console.log("선택된 게시글의 docId: ", postDocId);
 
-    if (docId) {
-      const newTitle = prompt(
-        "새 제목을 입력하세요:",
-        titleElement.textContent
-      );
-      const newContent = prompt(
-        "새 내용을 입력하세요:",
-        contentElement.textContent
-      );
+      if (postDocId) {
+        try {
+          // Firestore에서 해당 게시글 문서를 가져옵니다.
+          const docRef = firestoreDoc(db, "board", postDocId);
+          const docSnapshot = await getDoc(docRef);
+          if (docSnapshot.exists()) {
+            // 게시글 데이터에서 작성자의 docId를 가져옵니다.
+            const userInfo = docSnapshot.data();
+            const authorDocId = userInfo.authorDocId;
+            console.log(userInfo);
+            console.log("게시글 작성자의 docId: ", authorDocId);
 
-      if (newTitle !== null && newContent !== null) {
-        // Firestore에서 게시글을 수정합니다.
-        db.collection("board")
-          .doc(docId)
-          .update({
-            title: newTitle,
-            content: newContent,
-          })
-          .then(() => {
-            console.log("게시글이 성공적으로 수정되었습니다.");
-
-            // DOM에서 게시글 제목과 내용을 업데이트합니다.
-            titleElement.textContent = newTitle;
-            contentElement.textContent = newContent;
-
-            const boardRow = document.querySelector(`tr[data-id="${docId}"]`);
-            if (boardRow) {
-              boardRow.children[1].textContent = newTitle;
-            }
-          })
-          .catch((error) => {
-            console.error(
-              "게시글을 수정하는 데 오류가 발생하였습니다: ",
-              error
+            // 현재 sessionStorage에 로그인 되어있는 사용자의 정보를 가져옵니다.
+            const currentUser = JSON.parse(sessionStorage.getItem("userInfo"));
+            const currentUserDocId = currentUser.docId;
+            console.log(
+              "현재 로그인 되어있는 사용자의 docId: ",
+              currentUserDocId
             );
-          });
+
+            // 현재 sessionStorage에 로그인 되어있는 사용자의 docId와 게시글 작성자의 docId를 비교하여 일치하면 삭제합니다.
+            if (currentUserDocId === authorDocId) {
+              // Firebase에서 데이터를 삭제합니다.
+              await dbService.collection("board").doc(postDocId).delete();
+              console.log("게시글이 성공적으로 삭제되었습니다.");
+
+              // 화면에 삭제한 게시글을 제거합니다.
+              const boardRow = document.querySelector(
+                `tr[data-id="${postDocId}"]`
+              );
+              if (boardRow) {
+                boardRow.remove();
+              }
+
+              // 모달 창을 닫습니다.
+              modal.style.display = "none";
+            } else {
+              console.log("삭제 권한이 없습니다.");
+            }
+          } else {
+            console.error("해당 게시글을 찾을 수 없습니다.");
+          }
+        } catch (error) {
+          console.error("게시글을 삭제하는 동안 오류가 발생했습니다.: ", error);
+        }
+      } else {
+        console.error("게시글 ID를 찾을 수 없습니다.");
       }
     } else {
-      console.error("문서를 찾을 수 없습니다.");
+      console.error("선택된 게시글이 없습니다.");
     }
-  });
+  }
+});
+
+// 수정 버튼 이벤트 리스너
+const modifyBtn = document.querySelector(".modifyBtn");
+modifyBtn.addEventListener("click", () => {
+  const modal = document.getElementById("modal");
+  const docId = modal.getAttribute("data-id");
+  const titleElement = modal.querySelector(".modal-title");
+  const contentElement = modal.querySelector(".modal-content");
+
+  if (docId) {
+    const newTitle = prompt("새 제목을 입력하세요:", titleElement.textContent);
+    const newContent = prompt(
+      "새 내용을 입력하세요:",
+      contentElement.textContent
+    );
+
+    if (newTitle !== null && newContent !== null) {
+      // Firestore에서 게시글을 수정합니다.
+      db.collection("board")
+        .doc(docId)
+        .update({
+          title: newTitle,
+          content: newContent,
+        })
+        .then(() => {
+          console.log("게시글이 성공적으로 수정되었습니다.");
+
+          // DOM에서 게시글 제목과 내용을 업데이트합니다.
+          titleElement.textContent = newTitle;
+          contentElement.textContent = newContent;
+
+          const boardRow = document.querySelector(`tr[data-id="${docId}"]`);
+          if (boardRow) {
+            boardRow.children[1].textContent = newTitle;
+          }
+        })
+        .catch((error) => {
+          console.error("게시글을 수정하는 데 오류가 발생하였습니다: ", error);
+        });
+    }
+  } else {
+    console.error("문서를 찾을 수 없습니다.");
+  }
 });
 
 // 모달창 닫기 버튼을 클릭하면 모달 창을 닫습니다.
@@ -160,17 +211,6 @@ closeBtn.addEventListener("click", () => {
 window.onload = () => {
   getBoard();
 };
-
-// table에 클릭 이벤트를 생성합니다.
-let updateTarget;
-const tableTag = document.querySelector("table");
-tableTag.addEventListener("click", function (e) {
-  if (updateTarget) return false;
-  if (e.target.tagName != "TH" && e.target.tagName != "TABLE") {
-    e.target.parentElement.classList.toggle("selected");
-  }
-  console.log(e.target.parentElement);
-});
 
 // 게시글을 작성하는 함수입니다.
 const updateBtn = document.getElementById("updateBtn");
@@ -195,6 +235,7 @@ updateBtn.addEventListener("click", async function (e) {
   const userNameString = sessionStorage.getItem("userInfo");
   const userInfo = JSON.parse(userNameString);
   const name = userInfo.name;
+  const authorDocId = userInfo.docId;
 
   // Firestore에서 "userInfo" 컬렉션을 참조하는 변수 생성
   const usersRef = collection(dbService, "userInfo");
@@ -215,6 +256,7 @@ updateBtn.addEventListener("click", async function (e) {
     name,
     // 작성일 기준으로 고정합니다.
     date: new Date().toLocaleDateString("ko-KR"),
+    authorDocId,
   };
   inputs.forEach((input) => {
     addObj[input.name] = input.value;
