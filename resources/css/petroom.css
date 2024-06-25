@@ -605,6 +605,13 @@ height: 200px;}
 .copyMessage{position: absolute;
 top: 0;
 }
+/* 후기 */
+.profile-img{margin: 0;}
+.profile-img img{width: 1.5rem;
+  height: 1.5rem;
+}
+.customer{display: block;}
+.name{font-size: 1rem;}
 }
 
 
