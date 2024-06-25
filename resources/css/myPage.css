@@ -3,17 +3,147 @@
 @import url(./common.css);
 
 main {
-  padding: 150px 0;
+  padding: 160px 0;
+  min-height: calc(100vh - 243px);
 }
 
-.myPageMyName {
-  margin-bottom: 24px;
+/* side menu */
+.side-menu {
+  position: fixed;
+  border-top: 2px solid var(--accent-color);
+  border-bottom: 2px solid var(--accent-color);
+}
+
+.menu-title h2 {
+  padding: 24px;
+  font-size: 24px;
+  text-transform: uppercase;
+}
+
+.side-menu ul {
+  padding: 24px 0;
+  border-top: 1px dashed var(--sub-color);
+}
+.side-menu ul li {
+  text-align: center;
+}
+.side-menu ul li button {
+  padding: 16px;
+  width: 100%;
+  font-size: 1rem;
+  background-color: transparent;
+}
+.side-menu ul li button:hover {
+  background-color: var(--hover-color);
+  color: var(--main-color);
+}
+
+.container {
+  width: 100%;
+  height: fit-content;
+}
+
+section {
+  display: none;
+  padding-bottom: 48px;
+  /* outline: 1px dotted blue; */
+}
+.active {
+  display: block;
+}
+
+.section-title {
+  margin-bottom: 48px;
   font-size: 32px;
-  font-weight: 700;
+  text-align: center;
 }
 
-.buttons button {
-  margin: 5px;
-  padding: 16px 24px;
+/* profile */
+#my-info {
+  padding-bottom: 120px;
+}
+.contents {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+}
+
+.profile-img {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.profile-img img {
+  height: 150px;
+}
+.profile-img button {
+  padding: 8px 24px;
+  font-size: 14px;
+  border-radius: 8px;
+  background-color: var(--common-color);
+}
+.profile-img button:hover {
+  background-color: var(--hover-color);
+  color: var(--main-color);
+}
+.profile-info {
+  font-size: 24px;
+}
+
+.profile-info .table {
+  margin-bottom: 0;
+}
+.table > :not(caption) > * > * {
+  padding: 1rem;
+}
+th {
+  text-align: center;
+  vertical-align: middle;
+}
+/* change info */
+#change-info input {
+  padding: 8px;
+  outline: 0;
+  border: 1px solid var(--sub-color);
+  border-radius: 8px;
+}
+.change-btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+.change-btns > button {
+  padding: 16px 32px;
+  border-radius: 8px;
+  background-color: var(--common-color);
+}
+.change-btns > button:hover {
+  background-color: var(--hover-color);
+  color: var(--main-color);
+}
+
+/* withdrawal */
+#withdrawal .contents {
+  flex-direction: column;
+}
+#withdrawal .contents h3 {
+  font-size: 24px;
+}
+#withdrawal .content {
+  text-align: center;
+  line-height: 1.6;
+}
+
+.withdrawal-btns {
+  text-align: center;
+}
+
+#withdrawal-btn {
+  padding: 16px 32px;
   font-size: 16px;
 }

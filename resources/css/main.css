@@ -475,13 +475,17 @@ body {
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
   }
+  .info-icons li {
+    width: 120px;
+    height: 120px;
+  }
 
   .service-container {
     gap: 3rem;
   }
   .service-contents {
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.5rem;
   }
   .service-img {
     width: 100%;
@@ -491,21 +495,21 @@ body {
     text-align: center;
   }
   .service-desc > h3 {
-    font-size: 1.5rem;
+    font-size: 2rem;
   }
   .service-desc > span {
-    font-size: 1rem;
+    font-size: 1.5rem;
   }
   .service-desc > p {
     margin: 1rem 0;
-    font-size: 1rem;
+    font-size: 1.5rem;
   }
   .service-inquiry {
     align-items: center;
   }
   .service-inquiry > span {
     padding-top: 0;
-    font-size: 8px;
+    font-size: 1rem;
   }
   .eventMC {
     flex-direction: column-reverse;
@@ -529,7 +533,6 @@ body {
   }
   #map {
     height: 20rem;
-    outline: 1px dotted red;
   }
 }
 
@@ -565,8 +568,8 @@ body {
     gap: 8px;
   }
   .info-icons li {
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
     border: 3px solid var(--font-color);
     border-radius: 16px;
     gap: 8px;
@@ -588,6 +591,18 @@ body {
   .service-img {
     height: 240px;
   }
+  .service-desc > h3 {
+    font-size: 1.5rem;
+  }
+  .service-desc > span {
+    font-size: 1rem;
+  }
+  .service-desc > p {
+    font-size: 1rem;
+  }
+  .service-inquiry > span {
+    font-size: 0.75rem;
+  }
 
   .booking-icons {
     gap: 1rem;
@@ -600,6 +615,6 @@ body {
     font-size: 1rem;
   }
   .transportation > ul p {
-    font-size: 8px;
+    font-size: 0.75rem;
   }
 }

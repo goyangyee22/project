@@ -64,11 +64,11 @@ section {
   color: #545b77;
 }
 .More {
-  padding: 16px;
+  padding: 1rem;
   border-bottom: 1px solid #FFCBCB;
   position: sticky;
   top: 0;
-  font-size: 24px;
+  font-size: 1.5rem;
   color: #FF8080;
   background-color: rgba(252, 249, 249, 0.2);
   backdrop-filter: blur(20px);
@@ -549,27 +549,69 @@ left: 60%;
   color: #FF6969;
   font-weight: 800;
 }
+#map{width: 100%;
+height: 400px;}
 /* 태블릿 */
 @media screen and (max-width: 1023px){
 .pet-contents{width: 100%;}
 .pet-detail{display: block;}
-.More ul{font-size: 1.5rem;}
+.More ul{font-size: 5px;}
 .infor-title{font-size: 2rem;}
 .spaceintroduction{font-size: 1rem;}
 .space{padding-top: 2.5rem;}
-.spaceintroduction p{font-size: 1.5rem;}
+.spaceintroduction p{font-size: 1rem;}
+
+
+
+.iconsort p{font-size: 1rem;}
+.main-icon{
+  margin: 0;
+  display: grid;
+grid-template-columns: 1fr 1fr;
+width: 2rem;
+gap: .5rem;
+}
 .Supplies{padding-top: 2.5rem;}
 .All-Supplies ul,li{padding: 0;}
+
+.common-main li{padding: 0  0 0 .5rem;}
 .common-title{margin: 1rem 0;
-font-size: 24px;}
+font-size: 1rem;}
 .common-main{display: grid;
 grid-template-columns: 1fr 1fr 1fr;
-font-size: 1.5rem;}
+font-size: 1rem;}
+.common-1{display: grid;
+grid-template-columns: 1fr 1fr;}
+.all-1{height: 18.75rem;}
 .facility-main{padding: 0;}
-.facility-main li{font-size: 1.5rem;}
+.facility-main li{font-size: 1rem;
+  margin: 0;
+padding:.5rem;}
 .times{padding-top: 2.5rem;}
-.refund{padding-top: 2.5rem;}
+.times td,th{font-size: 1rem;}
 
+.refund{padding-top: 2.5rem;}
+.refund-main li{font-size: 1rem;
+margin: 0;padding-top: .5rem;}
+.facility{padding-top: 2.5rem;}
+.facility-main > li > .fa-solid{padding: .5rem 0;
+font-size: 1rem;}
+
+.mapst{padding-top: 2.5rem;}
+.mapst span{font-size: 1rem;}
+.hover-text{font-size: 1rem;}
+#map{width: 100%;
+height: 200px;}
+.copyMessage{position: absolute;
+top: 0;
+}
+/* 후기 */
+.profile-img{margin: 0;}
+.profile-img img{width: 1.5rem;
+  height: 1.5rem;
+}
+.customer{display: block;}
+.name{font-size: 1rem;}
 }
 
 
