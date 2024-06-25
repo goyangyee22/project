@@ -67,10 +67,6 @@ header {
   display: block;
 }
 
-#information p {
-  font-size: large;
-}
-
 .information-list span {
   background-color: #eeeeee;
   display: inline-block;
@@ -91,7 +87,7 @@ header {
   align-items: center;
 }
 .iconsort p {
-  font-size: 13px;
+  font-size: 18px;
 }
 
 .i-con {
@@ -401,6 +397,9 @@ header {
   .meet-details {
     width: 100%;
   }
+  #detail-wrap {
+    padding: 40px;
+  }
   /* .swiper-wrapper {
     width: 200px;
     height: 500px;
@@ -410,9 +409,12 @@ header {
     height: 200px;
   }
   #meet-menu {
-    font-size: 1rem;
-    padding: 10px 10px;
+    font-size: 1.5rem;
+    padding: 20px 10px;
     gap: 60px;
+  }
+  .ra_menu {
+    font-size: 30px;
   }
   .meeting-room {
     position: sticky;
@@ -428,6 +430,13 @@ header {
   .menu_title {
     font-size: 30px;
   }
+  .menu-text {
+    font-size: 1.5rem;
+  }
+  .map-copy-text {
+    font-size: 1.5rem;
+  }
+  /* 사이드 메뉴 */
   .meeting_small {
     width: 150px;
     height: 150px;
@@ -449,8 +458,106 @@ header {
     border-radius: 10px;
   }
 }
-
+.swiper-slide img {
+  width: 100%;
+}
 /* media - mobile */
 @media screen and (max-width: 767px) {
   /* width: 768px~992px; */
+  .detail-hero {
+    padding-bottom: 2rem;
+  }
+  .meet-contents.wrap {
+    display: block;
+  }
+  .meet-details {
+    width: 100%;
+  }
+  #detail-wrap {
+    padding: 30px;
+  }
+  /* .swiper-wrapper {
+    width: 200px;
+    height: 500px;
+  } */
+  #meeting-room {
+    width: 40px;
+    height: 200px;
+  }
+  #meet-menu {
+    display: flex;
+    font-size: 1rem;
+    padding: 10px 0px;
+    gap: 20px;
+  }
+  .meeting-room {
+    position: sticky;
+    top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+  #information {
+    padding: 10px 0px;
+    font-size: 16px;
+  }
+  .information-list span {
+    font-size: 1.2rem;
+    padding: 1px 3px;
+    border-radius: 9px;
+  }
+  .main-icon {
+    display: flex;
+    padding-left: 3px;
+    gap: 10px;
+  }
+  .i-con {
+    width: 40px;
+    height: 40px;
+  }
+  .i-con .fa-solid {
+    font-size: 20px;
+  }
+  .iconsort {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .iconsort p {
+    font-size: 12px;
+  }
+  .menu_title {
+    font-size: 25px;
+  }
+  .menu-text {
+    font-size: 1.3rem;
+  }
+  .map-copy-text {
+    font-size: 13px;
+  }
+  .hover-text {
+    padding: 3px;
+    font-size: 1rem;
+  }
+  /* 사이드 메뉴 */
+  .meeting_small {
+    width: 150px;
+    height: 150px;
+  }
+  .meeting_medium {
+    width: 150px;
+    height: 150px;
+  }
+  .meeting_big {
+    width: 150px;
+    height: 150px;
+  }
+  .button1 {
+    padding: 1px 8px;
+    border-radius: 10px;
+  }
+  .button2 {
+    padding: 1px 8px;
+    border-radius: 10px;
+  }
 }
