@@ -310,6 +310,7 @@ body {
   background-color: var(--accent-color);
   color: var(--main-color);
   border-radius: 1rem;
+  font-size: 1rem;
 }
 .service-inquiry > button:hover {
   background-color: var(--hover-color);
