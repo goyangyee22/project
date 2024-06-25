@@ -57,7 +57,7 @@ hamMenu.addEventListener('click', function () {
 });
 
 window.addEventListener('resize', function () {
-  if (window.innerWidth <= 1024) {
+  if (window.innerWidth < 1024) {
     // 모바일 화면일 때
     if (!hamMenu.classList.contains('show-menu')) {
       navEl.style.height = 0;
@@ -73,7 +73,7 @@ window.addEventListener('resize', function () {
 });
 
 // 페이지 로드 시 초기 상태 설정
-if (window.innerWidth <= 1024) {
+if (window.innerWidth < 1024) {
   navEl.style.height = 0;
   navEl.firstElementChild.style.display = 'none';
 } else {

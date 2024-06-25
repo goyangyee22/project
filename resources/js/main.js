@@ -1,23 +1,33 @@
-let heroSwiper = new Swiper('.hero-swiper', {
-  spaceBetween: 30,
-  effect: 'fade',
-  speed: 600,
-  grabCursor: true,
-  loop: true,
-  autoplay: {
-    delay: 3000,
-    disableOnInteraction: false,
-  },
-});
+// let heroSwiper = new Swiper('.hero-swiper', {
+//   spaceBetween: 30,
+//   effect: 'fade',
+//   speed: 600,
+//   grabCursor: true,
+//   loop: true,
+//   autoplay: {
+//     delay: 3000,
+//     disableOnInteraction: false,
+//   },
+// });
 
 let previewSwiper = new Swiper('.preview-slide', {
   loop: true,
   speed: 10000,
-  slidesPerView: 3,
+  slidesPerView: 1,
   spaceBetween: 16,
   autoplay: {
     delay: 0,
     disableOnInteraction: false,
+  },
+  breakpoints: {
+    768: {
+      slidesPerView: 2,
+      spaceBetween: 16,
+    },
+    1024: {
+      slidesPerView: 3,
+      spaceBetween: 16,
+    },
   },
 });
 
