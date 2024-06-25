@@ -557,7 +557,7 @@ left: 60%;
 .infor-title{font-size: 2rem;}
 .spaceintroduction{font-size: 1rem;}
 .space{padding-top: 2.5rem;}
-.spaceintroduction p{font-size: 1.5rem;}
+.spaceintroduction p{font-size: 1rem;}
 .Supplies{padding-top: 2.5rem;}
 .All-Supplies ul,li{padding: 0;}
 .common-title{margin: 1rem 0;
@@ -565,10 +565,14 @@ font-size: 24px;}
 .common-main{display: grid;
 grid-template-columns: 1fr 1fr 1fr;
 font-size: 1.5rem;}
+.all-1{height: 21.875rem;}
 .facility-main{padding: 0;}
 .facility-main li{font-size: 1.5rem;}
 .times{padding-top: 2.5rem;}
 .refund{padding-top: 2.5rem;}
+.facility{padding-top: 2.5rem;}
+.facility-main > li > .fa-solid{padding: .5rem 0;}
+.mapst{padding-top: 2.5rem;}
 
 }
 
