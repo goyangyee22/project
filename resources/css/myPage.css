@@ -91,7 +91,7 @@ section {
   color: var(--main-color);
 }
 .profile-info {
-  font-size: 24px;
+  font-size: 1rem;
 }
 
 .profile-info .table {

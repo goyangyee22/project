@@ -3,39 +3,45 @@
 @import url(./common.css);
 @import url(./payment_form.css);
 
-/* mobile */
+/* 테블릿 */
 @media screen and (max-width: 1023px) {
-  .detail-container {
-  }
-  /* body {
-    width: 768px;
-  } */
-  .party-detalis {
+  .maini header {
     font-size: 1rem;
   }
-  .party-contents {
+  .detail-container {
     padding: 10px;
   }
-  .ment {
-    text-align: none;
+  .detail-container .wrap {
+    padding: 0;
   }
-  .party-contents h1 {
-    font-size: 1.5rem;
+  .detail-container .party-main {
+    padding-top: 10px;
   }
-  .party-serve {
+  .detail-container .result {
+    padding-top: 10px;
+  }
+  .party-menu a {
+    font-size: 0.7rem;
+  }
+  .text-list h3,
+  span,
+  strong {
+    font-size: 0.7rem;
+  }
+  .detail-container .party-serve {
+    padding-bottom: 0;
+  }
+  .detail-container h1 {
     font-size: 1rem;
   }
-  .text-list h3 {
-    font-size: 1rem;
+  .detail-container .party-serve {
+    font-size: 0.5rem;
   }
-  .text-list span {
-    font-size: 1.2rem;
+  .party-span {
+    font-size: 0.7rem;
   }
-  /* .detail-hero {
-    display: block;
-  } */
 }
-
+/* 테블릿 */
 header {
   position: static;
 }
@@ -57,38 +63,22 @@ header {
   flex-direction: column; */
 
   background-color: rgb(247, 241, 230);
-  height: 100%;
+  /* height: 100%; */
 }
 
 .party-wrap-main {
   display: flex;
 }
 
-/* .party-s .mySwiperoption {
-  width: 100%;
-  height: 100%;
-} */
-.party-option {
-  margin: 50px 0;
-  display: flex;
-  justify-content: center;
-  /* margin: 20px; */
-  border: 2px solid black;
-  flex-direction: column;
-
-  /* width: 100%;
-  height: 100%; */
-  text-align: center;
-}
-.swiper {
+.swiper-slide img {
   width: 900px;
-  height: 100%;
+  height: 480px;
   /* margin: 0; */
 }
 
-.swiper-wrapper img {
-  /* width: 500px;
-  height: 500px; */
+.detail-slide-thumb img {
+  /* width: 500px; */
+  height: 150px;
 }
 
 /* .swiper-slide {
@@ -104,10 +94,10 @@ header {
   width: 100%;
   height: 100%;
 } */
-.party-option img {
+/* .party-option img {
   width: 100%;
   height: 300px;
-}
+} */
 
 .swiper-title {
   padding: 25px;
@@ -535,19 +525,6 @@ header {
 }
 .detail-hero {
   margin-bottom: 16px;
-  height: 100%;
-  width: 100%;
-}
-
-.spot {
-  display: flex;
-}
-.spot li {
-  padding: 10px;
-}
-
-.detail-slide-thumb {
-  height: 100%;
 }
 
 .swiper-slide {
@@ -562,16 +539,7 @@ header {
 .swiper-slide img {
   display: block;
   width: 100%;
-
   object-fit: cover;
-  height: 100%;
-}
-
-.wrap {
-  display: flex;
-  /* position: relative; */
-  /* gap: 0; */
-  /* left: -200px; */
 }
 
 #detail-wrap {

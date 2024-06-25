@@ -194,7 +194,18 @@ window.onload = () => {
 
 // 게시글을 작성하는 함수입니다.
 const createBtn = document.getElementById("createBtn");
-createBtn.addEventListener("click");
+createBtn.addEventListener("click", async () => {
+  alert("화면을 구축하는 중입니다!");
+  const createModal = document.querySelector("#createModal");
+  createModal.style.display = "block";
+});
+
+// 작성 모달 창에서 취소 버튼을 누를 시 원래 페이지로 돌아갑니다.
+const closeCreateBtn = document.querySelector(".closeCreateBtn");
+closeCreateBtn.addEventListener("click", () => {
+  const createModal = document.querySelector("#createModal");
+  createModal.style.display = "none";
+})
 // (밑에 주석 혹시 몰라서 주석처리 해 놨어요)
 // const updateBtn = document.getElementById("updateBtn");
 // updateBtn.addEventListener("click", async function (e) {

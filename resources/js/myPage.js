@@ -1,6 +1,11 @@
-import { getDatas, updateDatas, deleteDatas } from '../../firebase.js';
+import {
+  getDatas,
+  updateDatas,
+  deleteDatas,
+  addDatas,
+} from '../../firebase.js';
 
-const userInfo = sessionStorage.getItem('userInfo');
+const userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
 if (!userInfo) {
   alert('로그인을 해주세요.');
   window.location.href = './signIn.html';
@@ -24,7 +29,7 @@ async function getMembers() {
 
     snapshot.forEach((doc) => {
       const data = doc.data();
-      if (data.id === JSON.parse(userInfo).id) {
+      if (data.id === userInfo.id) {
         userData = data;
       }
     });
@@ -32,6 +37,9 @@ async function getMembers() {
     if (userData) {
       const { id, name, phone } = userData;
       const profileInfo = document.querySelector('.profile-info');
+      const userName = document.getElementById('user-name');
+      const userId = document.getElementById('user-id');
+
       profileInfo.innerHTML = `
         <table class="table">
           <tr>
@@ -48,13 +56,16 @@ async function getMembers() {
           </tr>
         </table>
       `;
+
+      userName.value = name;
+      userId.value = id;
     }
   } catch (err) {
     console.log(err);
   }
 }
 
-// section 이동 핸들러
+// section 이동
 const settingBtns = document.querySelectorAll('.setting-btn');
 const sections = document.querySelectorAll('section');
 
@@ -78,17 +89,64 @@ settingBtns.forEach((link) => {
 //     console.log(e.target.checked);
 //   });
 
-// 회원탈퇴하기 버튼 핸들러
+// 정보수정
+const pwEx = /^[0-9A-Za-z\d$@$!%*?&]{4,16}/g;
+const phoneEx = /^\d{3}-\d{4}-\d{4}$/;
+
+const changeBtn = document.getElementById('change-info-btn');
+
+changeBtn.addEventListener('click', async function () {
+  const newPw = document.getElementById('new-pw').value;
+  const newPwConfirm = document.getElementById('new-pw-confirm').value;
+  const newPhone = document.getElementById('new-phone').value;
+
+  // if (!pwEx.test(newPw)) {
+  //   alert(
+  //     '비밀번호 형식이 올바르지 않습니다. 4자-16자 사이의 대문자, 소문자, 숫자, 특수문자를 포함해야 합니다.'
+  //   );
+  //   return false;
+  // } else if (!phoneEx.test(newPhone)) {
+  //   alert(
+  //     '유효하지 않은 핸드폰 번호입니다. 핸드폰 번호 형식을 지켜주세요. \n ex) 010-1234-1234'
+  //   );
+  //   return false;
+  // }
+
+  // if (newPw !== newPwConfirm) {
+  //   alert('비밀번호가 일치하지 않습니다.');
+  //   return false;
+  // }
+
+  console.log(userInfo);
+  try {
+    const updateInfo = {
+      ...userInfo,
+      pw: newPw,
+      phone: newPhone,
+    };
+
+    await addDatas('userInfo', userInfo.docId, updateInfo);
+
+    sessionStorage.setItem(
+      'userInfo',
+      JSON.stringify({ ...userInfo, pw: newPw, phone: newPhone })
+    );
+
+    alert('정보가 성공적으로 변경되었습니다!');
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+// 회원탈퇴
 const withdrawalBtn = document.getElementById('withdrawal-btn');
 withdrawalBtn.addEventListener('click', async function () {
   // 삭제를 하기 전 확인 메세지를 표시합니다.
   if (confirm('정말 회원 탈퇴 하시겠습니까?')) {
     try {
       // 세션 스토리지에서 사용자 정보를 가져옵니다.
-      const userInfoString = sessionStorage.getItem('userInfo');
-      const userInfo = JSON.parse(userInfoString);
 
-      if (userInfoString) {
+      if (userInfo) {
         await deleteDatas('userInfo', userInfo.docId);
 
         sessionStorage.removeItem('userInfo');

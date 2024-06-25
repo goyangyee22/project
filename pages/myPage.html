@@ -102,23 +102,23 @@
             <div class="content">
               <table class="table">
                 <tr>
-                  <th>이름</th>
+                  <th>아이디</th>
                   <td>
-                    <input type="text" value="이름" disabled />
+                    <input id="user-id" type="text" disabled />
                   </td>
                 </tr>
                 <tr>
-                  <th>아이디</th>
+                  <th>이름</th>
                   <td>
-                    <input type="text" value="아이디" disabled />
+                    <input id="user-name" type="text" disabled />
                   </td>
                 </tr>
                 <tr>
                   <th>비밀번호</th>
                   <td>
                     <input
-                      type="text"
-                      value=""
+                      id="new-pw"
+                      type="password"
                       placeholder="새로운 비밀번호를 입력해주세요."
                     />
                   </td>
@@ -127,8 +127,8 @@
                   <th>비밀번호 확인</th>
                   <td>
                     <input
-                      type="text"
-                      value=""
+                      id="new-pw-confirm"
+                      type="password"
                       placeholder="비밀번호를 한번 더 입력해주세요."
                     />
                   </td>
@@ -137,8 +137,8 @@
                   <th>전화번호</th>
                   <td>
                     <input
+                      id="new-phone"
                       type="text"
-                      value=""
                       placeholder="새로운 전화번호를 입력해주세요."
                     />
                   </td>
@@ -146,7 +146,7 @@
               </table>
               <div class="change-btns">
                 <button id="change-info-btn">수정하기</button>
-                <button id="cancel">취소</button>
+                <button class="setting-btn" data-section="my-info">취소</button>
               </div>
             </div>
           </div>
@@ -185,6 +185,7 @@
                 </label>
               </div>
               <button id="withdrawal-btn">탈퇴하기</button>
+              <button class="setting-btn" data-section="my-info">취소</button>
             </div>
           </div>
         </section>
