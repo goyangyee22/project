@@ -24,22 +24,30 @@ var swiper2 = new Swiper(".detail-slide", {
   },
 });
 
-// const btn = document.getElementById("popupBtn");
-// const modal = document.getElementById("modalnum");
-// const closeBtn = document.getElementById("closebutton");
-// btn.onclick = function () {
-//   modal.style.display = "block";
-// };
+const sectionMenus = document.querySelectorAll(".party-menu a");
+let isScrolling = false;
 
-// closeBtn.onclick = function () {
-//   modal.style.display = "none";
-// };
+function setActiveLink(link) {
+  sectionMenus.forEach((a) => a.classList.remove("active"));
+  link.classList.add("active");
+}
 
-// window.onclick = function (event) {
-//   if (event.target == modal) {
-//     modal.style.display = "none";
-//   }
-// };
+sectionMenus.forEach((link) => {
+  link.addEventListener("click", function (e) {
+    e.preventDefault();
+    isScrolling = true;
+
+    setActiveLink(link);
+
+    const target = document.querySelector(link.getAttribute("href"));
+
+    target.scrollIntoView({ behavior: "smooth" });
+
+    setTimeout(() => {
+      isScrolling = false;
+    }, 1000);
+  });
+});
 
 function partyroom(room) {
   console.log(room);
@@ -102,15 +110,5 @@ function urlCopy() {
 
   copyText.style.display = "none"; // 다시 텍스트 숨김
 }
-
-// function urlCopy() {
-//   var url = document.getElementById("text");
-//   url.style.display = "block"; // 숨겨둔 input 태그 block처리
-//   url.select(); // 복사할 text 블럭
-//   document.execCommand("copy"); // 드레그된 text 클립보드에 복사
-
-//   url.style.display = "none"; // 다시 숨기기
-//   // alert("주소가 복사 되었습니다.");
-// }
 
 mapRendering();
