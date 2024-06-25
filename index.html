@@ -23,491 +23,528 @@
     <script defer src="./resources/js/main.js"></script>
   </head>
   <body>
-    <header>
-      <div class="wrap">
+    <div id="wrapper">
+      <header>
         <h1 class="logo">
           <a href="./index.html">
             <span class="logo-en">BILLISHU</span>
             <span class="logo-ko">빌리슈</span>
           </a>
         </h1>
+        <div class="ham-menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
         <nav>
           <ul class="main-menu">
             <li><a href="#">EVENT</a></li>
             <li><a href="./party.html">PARTY</a></li>
             <li><a href="./meeting.html">MEETING</a></li>
             <li><a href="./petroom.html">PET</a></li>
-            <li><a href="#">REVIEW</a></li>
-            <li><a href="#">Q&A</a></li>
+            <li><a href="./pages/postscript.html">REVIEW</a></li>
+            <li><a href="./pages/QnA.html">Q&A</a></li>
           </ul>
         </nav>
-        <ul class="spot">
-          <li class="spot-login">
-            <a href="./pages/signIn.html">로그인</a>
-          </li>
-          <li class="spot-join">
-            <a href="./pages/signUp.html">회원가입</a>
-          </li>
-        </ul>
-      </div>
-    </header>
-    <main>
-      <section id="hero">
-        <div class="swiper hero-swiper">
-          <div class="swiper-wrapper hero-wrapper">
-            <div class="swiper-slide hero-slide hero-event">
-              <div class="hero-contents">
-                <div class="wrap">
-                  <div class="hero-title">
-                    <div class="sub-title-wrap">
-                      <span>케이터링</span>
-                      <span>행사진행 MC</span>
-                      <span>청소 대행</span>
+        <ul class="spot"></ul>
+      </header>
+      <main>
+        <section id="hero">
+          <div class="swiper hero-swiper">
+            <div class="swiper-wrapper hero-wrapper">
+              <div class="swiper-slide hero-slide hero-event">
+                <div class="hero-contents">
+                  <div class="wrap">
+                    <div class="hero-title">
+                      <div class="sub-title-wrap">
+                        <span>케이터링</span>
+                        <span>행사진행 MC</span>
+                        <span>청소 대행</span>
+                      </div>
+                      <h2>6월 한 달간 서비스 할인</h2>
                     </div>
-                    <h2>6월 한 달간 서비스 할인</h2>
+                    <div class="hero-content-desc">
+                      <p>
+                        당신이 찾던 완벽한 행사 서비스<br />
+                        6월에 예약하시면 10%를 할인해드립니다.
+                      </p>
+                    </div>
+                    <button class="hero-btn">이벤트 자세히 보기</button>
                   </div>
-                  <div class="hero-content-desc">
-                    <p>
-                      당신이 찾던 완벽한 행사 서비스<br />
-                      6월에 예약하시면 10%를 할인해드립니다.
-                    </p>
-                  </div>
-                  <button class="hero-btn">이벤트 자세히 보기</button>
                 </div>
               </div>
-            </div>
-            <div class="swiper-slide hero-slide hero-party">
-              <div class="hero-contents">
-                <div class="wrap">
-                  <div class="hero-title">
-                    <div class="sub-title-wrap">
-                      <span>프라이빗한 공간</span>
-                      <span>완벽한 방음</span>
-                      <span>무드와 감성</span>
+              <div class="swiper-slide hero-slide hero-party">
+                <div class="hero-contents">
+                  <div class="wrap">
+                    <div class="hero-title">
+                      <div class="sub-title-wrap">
+                        <span>프라이빗한 공간</span>
+                        <span>완벽한 방음</span>
+                        <span>무드와 감성</span>
+                      </div>
+                      <h2>빌리슈 파티룸</h2>
                     </div>
-                    <h2>빌리슈 파티룸</h2>
+                    <div class="hero-content-desc">
+                      <p>파티룸 소개글</p>
+                    </div>
+                    <button
+                      class="hero-btn"
+                      onclick="location.href='./party.html'"
+                    >
+                      파티룸 보러가기
+                    </button>
                   </div>
-                  <div class="hero-content-desc">
-                    <p>파티룸 소개글</p>
-                  </div>
-                  <button
-                    class="hero-btn"
-                    onclick="location.href='./party.html'"
-                  >
-                    파티룸 보러가기
-                  </button>
                 </div>
               </div>
-            </div>
-            <div class="swiper-slide hero-slide hero-meeting">
-              <div class="hero-contents">
-                <div class="wrap">
-                  <div class="hero-title">
-                    <div class="sub-title-wrap">
-                      <span>고품격 회의실</span>
-                      <span>최대 30명 수용</span>
-                      <span>풀옵션 완비</span>
+              <div class="swiper-slide hero-slide hero-meeting">
+                <div class="hero-contents">
+                  <div class="wrap">
+                    <div class="hero-title">
+                      <div class="sub-title-wrap">
+                        <span>고품격 회의실</span>
+                        <span>최대 30명 수용</span>
+                        <span>풀옵션 완비</span>
+                      </div>
+                      <h2>빌리슈 세미나룸</h2>
                     </div>
-                    <h2>빌리슈 세미나룸</h2>
+                    <div class="hero-content-desc">
+                      <p>세미나룸 소개글</p>
+                    </div>
+                    <button
+                      class="hero-btn"
+                      onclick="location.href='./meeting.html'"
+                    >
+                      세미나룸 보러가기
+                    </button>
                   </div>
-                  <div class="hero-content-desc">
-                    <p>세미나룸 소개글</p>
-                  </div>
-                  <button
-                    class="hero-btn"
-                    onclick="location.href='./meeting.html'"
-                  >
-                    세미나룸 보러가기
-                  </button>
                 </div>
               </div>
-            </div>
-            <div class="swiper-slide hero-slide hero-pet">
-              <div class="hero-contents">
-                <div class="wrap">
-                  <div class="hero-title">
-                    <div class="sub-title-wrap">
-                      <span>아늑한 공간</span>
-                      <span>반려동물과의 힐링</span>
-                      <span>추억 쌓기</span>
+              <div class="swiper-slide hero-slide hero-pet">
+                <div class="hero-contents">
+                  <div class="wrap">
+                    <div class="hero-title">
+                      <div class="sub-title-wrap">
+                        <span>아늑한 공간</span>
+                        <span>반려동물과의 힐링</span>
+                        <span>추억 쌓기</span>
+                      </div>
+                      <h2>빌리슈 펫룸</h2>
                     </div>
-                    <h2>빌리슈 펫룸</h2>
+                    <div class="hero-content-desc">
+                      <p>펫룸 소개글</p>
+                    </div>
+                    <button
+                      class="hero-btn"
+                      onclick="location.href='./meeting.html'"
+                    >
+                      펫룸 보러가기
+                    </button>
                   </div>
-                  <div class="hero-content-desc">
-                    <p>펫룸 소개글</p>
-                  </div>
-                  <button
-                    class="hero-btn"
-                    onclick="location.href='./meeting.html'"
-                  >
-                    펫룸 보러가기
-                  </button>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-      <section id="intro" class="main-section">
-        <div class="wrap">
-          <div class="intro-container">
+        </section>
+        <section id="intro" class="main-section">
+          <div class="wrap">
+            <div class="intro-container">
+              <h2 class="section-title">
+                <span>#놀다</span> 빌리슈에서의 특별한 순간
+              </h2>
+              <div class="intro-contents section-desc">
+                <p>
+                  빌리슈는 다양한 공간을 대여하여 여러분의 특별한 순간을 더욱
+                  빛나게 합니다. <br /><span>친구들과 함께하는 파티룸</span>,
+                  <span>중요한 비즈니스 회의를 위한 세미나룸</span>,
+                  <span>사랑스러운 반려동물과 함께하는 펫룸까지</span>,<br />
+                  다양한 테마와 목적에 맞춘 공간을 제공합니다.<br />
+                  각 공간은 최신 시설과 편리한 서비스를 갖추고 있어,<br />
+                  여러분의 소중한 시간이 더욱 특별하고 즐거운 추억으로 남을 수
+                  있도록 도와드립니다.<br />
+                  <span
+                    >지금 바로 빌리슈에서 여러분만의 특별한 순간을
+                    만들어보세요!</span
+                  >
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="preview">
+            <div class="swiper preview-slide">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <img src="./resources/images/meeting/후기 사진2.jpg" alt="" />
+                </div>
+                <div class="swiper-slide">
+                  <img src="./resources/images/meeting/후기1.jpg" alt="" />
+                </div>
+                <div class="swiper-slide">
+                  <img src="./resources/images/meeting/후기2.jpeg" alt="" />
+                </div>
+                <div class="swiper-slide">
+                  <img
+                    src="./resources/images/review/main-review01.jpg"
+                    alt=""
+                  />
+                </div>
+                <div class="swiper-slide">
+                  <img
+                    src="./resources/images/review/main-review02.jpg"
+                    alt=""
+                  />
+                </div>
+                <div class="swiper-slide">
+                  <img
+                    src="./resources/images/review/main-review03.jpg"
+                    alt=""
+                  />
+                </div>
+                <div class="swiper-slide">
+                  <img
+                    src="./resources/images/review/main-review04.jpg"
+                    alt=""
+                  />
+                </div>
+                <div class="swiper-slide">
+                  <img
+                    src="./resources/images/review/main-review05.jpg"
+                    alt=""
+                  />
+                </div>
+                <div class="swiper-slide">
+                  <img
+                    src="./resources/images/review/main-review06.jpg"
+                    alt=""
+                  />
+                </div>
+                <div class="swiper-slide">
+                  <img
+                    src="./resources/images/review/main-review07.jpg"
+                    alt=""
+                  />
+                </div>
+                <div class="swiper-slide">
+                  <img
+                    src="./resources/images/review/main-review08.jpg"
+                    alt=""
+                  />
+                </div>
+                <div class="swiper-slide">
+                  <img
+                    src="./resources/images/review/main-review09.jpg"
+                    alt=""
+                  />
+                </div>
+                <div class="swiper-slide">
+                  <img
+                    src="./resources/images/review/main-review10.jpg"
+                    alt=""
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="options" class="main-section">
+          <div class="wrap">
+            <div class="option-info">
+              <h2 class="section-title">
+                <span>#즐기다</span> 편리함이 넘치는 올인원 공간
+              </h2>
+              <div class="section-desc">
+                <p>
+                  빌리슈는 다양한 요구를 만족시키는
+                  <span>올인원 공간을 제공</span>합니다.
+                  <br />
+                  파티룸, 세미나룸, 펫룸 등 여러분의 필요에 맞춘
+                  <span>다채로운 공간을 한 곳에서</span> 만날 수 있습니다.
+                  <br />
+                  모든 공간은 <span>최신 시설과 편의 시설로 완비</span>되어
+                  있어, 편리하고 쾌적하게 이용하실 수 있습니다.<br />
+                  특별한 이벤트부터 일상적인 모임까지, 빌리슈에서 모든 것을
+                  한번에 해결하세요.<br />
+                  <span
+                    >손쉽고 편리하게 이용할 수 있는 빌리슈에서 모두 경험해
+                    보세요!</span
+                  >
+                </p>
+              </div>
+              <div id="options-container">
+                <div class="room-options">
+                  <div id="option-common" class="room-option">
+                    <h3>공통 옵션</h3>
+                    <ul class="use-icons info-icons"></ul>
+                  </div>
+                  <div id="option-party" class="room-option">
+                    <h3>파티룸 옵션</h3>
+                    <ul class="option-icons info-icons"></ul>
+                  </div>
+                  <div id="option-meeting" class="room-option">
+                    <h3>세미나룸 옵션</h3>
+                    <ul class="option-icons info-icons"></ul>
+                  </div>
+                  <div id="option-pet" class="room-option">
+                    <h3>펫룸 옵션</h3>
+                    <ul class="option-icons info-icons"></ul>
+                  </div>
+                </div>
+                <div id="section-menu">
+                  <ul>
+                    <li>
+                      <a href="#option-common">공통</a>
+                    </li>
+                    <li>
+                      <a href="#option-party">파티룸</a>
+                    </li>
+                    <li>
+                      <a href="#option-meeting">세미나룸</a>
+                    </li>
+                    <li>
+                      <a href="#option-pet">펫룸</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="service" class="main-section">
+          <div class="wrap">
             <h2 class="section-title">
-              <span>#놀다</span> 빌리슈에서의 특별한 순간
+              <span>#만나다</span> 빌리슈에서 제공하는 특급 서비스
             </h2>
-            <div class="intro-contents section-desc">
-              <p>
-                빌리슈는 다양한 공간을 대여하여 여러분의 특별한 순간을 더욱
-                빛나게 합니다. <br /><span>친구들과 함께하는 파티룸</span>,
-                <span>중요한 비즈니스 회의를 위한 세미나룸</span>,
-                <span>사랑스러운 반려동물과 함께하는 펫룸까지</span>,<br />
-                다양한 테마와 목적에 맞춘 공간을 제공합니다.<br />
-                각 공간은 최신 시설과 편리한 서비스를 갖추고 있어,<br />
-                여러분의 소중한 시간이 더욱 특별하고 즐거운 추억으로 남을 수
-                있도록 도와드립니다.<br />
-                <span
-                  >지금 바로 빌리슈에서 여러분만의 특별한 순간을
-                  만들어보세요!</span
-                >
-              </p>
+            <div class="service-container">
+              <div class="service-contents catering">
+                <div class="service-img">
+                  <img src="./resources/images/main/catering.jpg" alt="" />
+                </div>
+                <div class="service-desc">
+                  <span>Catering Services</span>
+                  <h3>케이터링 서비스</h3>
+                  <p>
+                    다양한 행사와 모임에
+                    <span>맞춤형 메뉴</span>를 준비해드립니다.<br />
+                    <span>신선한 재료와 정성</span>으로 준비한 요리를 통해
+                    <span>특별한 날을 더욱 빛나게</span> 해드립니다.
+                  </p>
+                  <div class="service-inquiry">
+                    <span>
+                      사전에 메뉴, 서비스 방식, 식사 내용 등을 협의하실 수
+                      있습니다.
+                    </span>
+                    <button>문의하기</button>
+                  </div>
+                </div>
+              </div>
+              <div class="service-contents eventMC">
+                <div class="service-desc">
+                  <span>Event MC</span>
+                  <h3>행사진행 MC</h3>
+                  <p>
+                    기업행사부터 소규모 파티까지<br />
+                    <span>행사 진행의 품격을 올려보세요.</span>
+                  </p>
+                  <div class="service-inquiry">
+                    <span>
+                      사전에 진행자와 프로그램, 진행방법, 내용들을 협의하실 수
+                      있습니다.
+                    </span>
+                    <button>문의하기</button>
+                  </div>
+                </div>
+                <div class="service-img">
+                  <img src="./resources/images/main/eventMC.jpg" alt="" />
+                </div>
+              </div>
+              <div class="service-contents cleaning">
+                <div class="service-img">
+                  <img src="./resources/images/main/cleaning.jpg" alt="" />
+                </div>
+                <div class="service-desc">
+                  <span>Cleaning Agent</span>
+                  <h3>청소 대행</h3>
+                  <p>
+                    청소 및 입실 시의 원상복구 후<br />
+                    퇴실이 원칙입니다. <br />대행 서비스를 이용할 경우,<br />
+                    <span>그냥 퇴실하셔도 됩니다!</span>
+                  </p>
+                  <div class="service-inquiry">
+                    <span> 인원, 대관 형태에 따라 금액이 상이합니다.</span>
+                    <button>문의하기</button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="preview">
-          <div class="swiper preview-slide">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide">
-                <img src="./resources/images/meeting/후기 사진2.jpg" alt="" />
-              </div>
-              <div class="swiper-slide">
-                <img src="./resources/images/meeting/후기1.jpg" alt="" />
-              </div>
-              <div class="swiper-slide">
-                <img src="./resources/images/meeting/후기2.jpeg" alt="" />
-              </div>
-              <div class="swiper-slide">
-                <img src="./resources/images/review/main-review01.jpg" alt="" />
-              </div>
-              <div class="swiper-slide">
-                <img src="./resources/images/review/main-review02.jpg" alt="" />
-              </div>
-              <div class="swiper-slide">
-                <img src="./resources/images/review/main-review03.jpg" alt="" />
-              </div>
-              <div class="swiper-slide">
-                <img src="./resources/images/review/main-review04.jpg" alt="" />
-              </div>
-              <div class="swiper-slide">
-                <img src="./resources/images/review/main-review05.jpg" alt="" />
-              </div>
-              <div class="swiper-slide">
-                <img src="./resources/images/review/main-review06.jpg" alt="" />
-              </div>
-              <div class="swiper-slide">
-                <img src="./resources/images/review/main-review07.jpg" alt="" />
-              </div>
-              <div class="swiper-slide">
-                <img src="./resources/images/review/main-review08.jpg" alt="" />
-              </div>
-              <div class="swiper-slide">
-                <img src="./resources/images/review/main-review09.jpg" alt="" />
-              </div>
-              <div class="swiper-slide">
-                <img src="./resources/images/review/main-review10.jpg" alt="" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section id="options" class="main-section">
-        <div class="wrap">
-          <div class="option-info">
+        </section>
+        <section id="booking">
+          <div class="wrap">
             <h2 class="section-title">
-              <span>#즐기다</span> 편리함이 넘치는 올인원 공간
+              <span>#계획하다</span> 손끝에서 시작되는 특별한 추억
             </h2>
             <div class="section-desc">
               <p>
-                빌리슈는 다양한 요구를 만족시키는
-                <span>올인원 공간을 제공</span>합니다.
+                빌리슈에서의 <span>특별한 순간을 계획</span>하세요.
                 <br />
-                파티룸, 세미나룸, 펫룸 등 여러분의 필요에 맞춘
-                <span>다채로운 공간을 한 곳에서</span> 만날 수 있습니다.
+                <span>간편하고 빠른 예약 시스템</span>을 통해 손쉽게 원하는
+                이벤트를 준비 할 수 있습니다.
                 <br />
-                모든 공간은 <span>최신 시설과 편의 시설로 완비</span>되어 있어,
-                편리하고 쾌적하게 이용하실 수 있습니다.<br />
-                특별한 이벤트부터 일상적인 모임까지, 빌리슈에서 모든 것을 한번에
-                해결하세요.<br />
-                <span
-                  >손쉽고 편리하게 이용할 수 있는 빌리슈에서 모두 경험해
-                  보세요!</span
-                >
+                당신의 소중한 시간을 더욱 특별하게 만들기 위해
+                <span>맞춤형 서비스와 다양한 옵션을 제공</span>합니다.<br />
+                지금 바로 계획을 시작하고, 빌리슈에서
+                <span>잊지 못할 추억</span>을 만들어 보세요.
               </p>
             </div>
-            <div id="options-container">
-              <div class="room-options">
-                <div id="option-common" class="room-option">
-                  <h3>공통 옵션</h3>
-                  <ul class="use-icons info-icons"></ul>
-                </div>
-                <div id="option-party" class="room-option">
-                  <h3>파티룸 옵션</h3>
-                  <ul class="option-icons info-icons"></ul>
-                </div>
-                <div id="option-meeting" class="room-option">
-                  <h3>세미나룸 옵션</h3>
-                  <ul class="option-icons info-icons"></ul>
-                </div>
-                <div id="option-pet" class="room-option">
-                  <h3>펫룸 옵션</h3>
-                  <ul class="option-icons info-icons"></ul>
-                </div>
+            <div class="booking-icons">
+              <div class="booking-icon party-icon">
+                <a href="./party.html"></a>
               </div>
-              <div id="section-menu">
-                <ul>
-                  <li>
-                    <a href="#option-common">공통</a>
-                  </li>
-                  <li>
-                    <a href="#option-party">파티룸</a>
-                  </li>
-                  <li>
-                    <a href="#option-meeting">세미나룸</a>
-                  </li>
-                  <li>
-                    <a href="#option-pet">펫룸</a>
-                  </li>
-                </ul>
+              <div class="booking-icon seminar-icon">
+                <a href="./meeting.html"></a>
+              </div>
+              <div class="booking-icon pet-icon">
+                <a href="./petroom.html"></a>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-      <section id="service" class="main-section">
+        </section>
+        <section id="way" class="main-section">
+          <div class="wrap">
+            <h2 class="section-title">
+              <span>#찾아오다</span> 빌리슈로 쉽게 오는 방법
+            </h2>
+            <div class="way-contents">
+              <div id="map" class="way-map"></div>
+              <div class="way-to-come">
+                <div class="public-transport transportation">
+                  <h3>대중교통 이용</h3>
+                  <ul>
+                    <li>
+                      <h4><i class="fa-solid fa-location-dot"></i> 판암역행</h4>
+                      <p>
+                        반석역 → 지족역 → 노은역 → 월드컵경기장역 → 현충원역 →
+                        구암역 → 유성온천역 → 갑천역 → 월평역 → 갈마역 →
+                        정부청사역 → 시청역 → 탄방역 → 용문역 → 오룡역 → 서대전
+                        네거리역 → 중구청역 → <span>중앙로역</span>
+                      </p>
+                    </li>
+                    <li>
+                      <h4><i class="fa-solid fa-location-dot"></i> 반석역행</h4>
+                      <p>
+                        판암역 → 신흥역 → 대동역 → 대전역 →
+                        <span>중앙로역</span>
+                      </p>
+                    </li>
+                    <li>
+                      <h4><i class="fa-solid fa-location-dot"></i> 버스노선</h4>
+                      <p>
+                        1, 201, 202, 2002, 101, 311, 313, 317, 511, 514, 603,
+                        604, 606, 614, 615, 620, 701, 802
+                      </p>
+                    </li>
+                  </ul>
+                </div>
+                <div class="own-car transportation">
+                  <h3>자가용 이용</h3>
+                  <ul>
+                    <li>
+                      <h4>
+                        <i class="fa-solid fa-location-dot"></i>
+                        경부고속도로(서울방면)
+                      </h4>
+                      <p>
+                        출발→회덕분기점→호남고속도로→북대전/대덕밸리IC →
+                        <a href="#">이후 길찾기 참조</a>
+                      </p>
+                    </li>
+                    <li>
+                      <h4>
+                        <i class="fa-solid fa-location-dot"></i>
+                        경부고속도로(부산방면)
+                      </h4>
+                      <p>
+                        출발→대전IC(통과)→회덕분기점→호남고속도로→북대전/대덕밸리IC
+                        →
+                        <a href="#">이후 길찾기 참조</a>
+                      </p>
+                    </li>
+                    <li>
+                      <h4>
+                        <i class="fa-solid fa-location-dot"></i>
+                        호남고속도로(광주방면)
+                      </h4>
+                      <p>
+                        출발→서대전IC(통과)→유성IC →
+                        <a href="#">이후 길찾기 참조</a>
+                      </p>
+                    </li>
+                    <li>
+                      <h4>
+                        <i class="fa-solid fa-location-dot"></i>
+                        대전통영고속도로(진주방면)
+                      </h4>
+                      <p>
+                        출발→산내분기점→대전남부순환고속도로(서울/광주
+                        방향→서대전IC(통과→서대전분기점→호남고속도로(서울방향)→유성
+                        IC →
+                        <a href="#">이후 길찾기 참조</a>
+                      </p>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer>
         <div class="wrap">
-          <h2 class="section-title">
-            <span>#만나다</span> 빌리슈에서 제공하는 특급 서비스
-          </h2>
-          <div class="service-container">
-            <div class="service-contents catering">
-              <div class="service-img">
-                <img src="./resources/images/main/catering.jpg" alt="" />
-              </div>
-              <div class="service-desc">
-                <span>Catering Services</span>
-                <h3>케이터링 서비스</h3>
-                <p>
-                  다양한 행사와 모임에
-                  <span>맞춤형 메뉴</span>를 준비해드립니다.<br />
-                  <span>신선한 재료와 정성</span>으로 준비한 요리를 통해
-                  <span>특별한 날을 더욱 빛나게</span> 해드립니다.
-                </p>
-                <div class="service-inquiry">
-                  <span>
-                    사전에 메뉴, 서비스 방식, 식사 내용 등을 협의하실 수
-                    있습니다.
-                  </span>
-                  <button>문의하기</button>
-                </div>
-              </div>
-            </div>
-            <div class="service-contents eventMC">
-              <div class="service-desc">
-                <span>Event MC</span>
-                <h3>행사진행 MC</h3>
-                <p>
-                  기업행사부터 소규모 파티까지<br />
-                  <span>행사 진행의 품격을 올려보세요.</span>
-                </p>
-                <div class="service-inquiry">
-                  <span>
-                    사전에 진행자와 프로그램, 진행방법, 내용들을 협의하실 수
-                    있습니다.
-                  </span>
-                  <button>문의하기</button>
-                </div>
-              </div>
-              <div class="service-img">
-                <img src="./resources/images/main/eventMC.jpg" alt="" />
-              </div>
-            </div>
-            <div class="service-contents cleaning">
-              <div class="service-img">
-                <img src="./resources/images/main/cleaning.jpg" alt="" />
-              </div>
-              <div class="service-desc">
-                <span>Cleaning Agent</span>
-                <h3>청소 대행</h3>
-                <p>
-                  기본적으로 청소 및 입실 시의 원상복구 후<br />
-                  퇴실이 원칙입니다. <br />대행 서비스를 이용할 경우,<br />
-                  <span>그냥 퇴실하셔도 됩니다!</span>
-                </p>
-                <div class="service-inquiry">
-                  <span> 인원, 대관 형태에 따라 금액이 상이합니다.</span>
-                  <button>문의하기</button>
-                </div>
-              </div>
-            </div>
+          <div class="footer-info">
+            <h1 class="footer-logo">
+              <a href="./index.html">
+                <span class="logo-en">BILLISHU</span>
+                <span class="logo-ko">빌리슈</span>
+              </a>
+            </h1>
+            <ul class="footer-menu">
+              <li><a href="#">이용약관</a></li>
+              <li><a href="#">개인정보처리방침</a></li>
+              <li><a href="#">운영정책</a></li>
+              <li><a href="#">고객문의</a></li>
+            </ul>
+          </div>
+          <div class="footer-contents">
+            <ul class="footer-company">
+              <li>상호명 : <span>빌리슈</span></li>
+              <li>대표 : 원빌리버블</li>
+              <li>사업자등록번호 : 000-00-00000</li>
+              <li>통신판매업신고 : 0000-대전중구-0000</li>
+              <li>영업소재지 : 대전 중구 선화동</li>
+              <li>이메일 : onebelievable@billishu.com</li>
+              <li>대표전화 : 0000-0000 (평일 오전 10시 ~ 오후 6시)</li>
+            </ul>
+            <ul class="footer-sns">
+              <li>
+                <a href="#"><i class="fa-brands fa-blogger-b"></i></a>
+              </li>
+              <li>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+              </li>
+              <li>
+                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+              </li>
+              <li>
+                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+              </li>
+            </ul>
+          </div>
+          <div class="copy">
+            <small>
+              Copyright <strong>OneBelievable</strong> All Rights Reserved.
+            </small>
           </div>
         </div>
-      </section>
-      <section id="booking">
-        <div class="wrap">
-          <h2 class="section-title">
-            <span>#계획하다</span> 손끝에서 시작되는 특별한 추억
-          </h2>
-          <div class="section-desc">
-            <p>
-              빌리슈에서의 <span>특별한 순간을 계획</span>하세요.
-              <br />
-              <span>간편하고 빠른 예약 시스템</span>을 통해 손쉽게 원하는
-              이벤트를 준비 할 수 있습니다.
-              <br />
-              당신의 소중한 시간을 더욱 특별하게 만들기 위해
-              <span>맞춤형 서비스와 다양한 옵션을 제공</span>합니다.<br />
-              지금 바로 계획을 시작하고, 빌리슈에서
-              <span>잊지 못할 추억</span>을 만들어 보세요.
-            </p>
-          </div>
-          <div class="booking-icons">
-            <div class="booking-icon party-icon">
-              <a href="./party.html"></a>
-            </div>
-            <div class="booking-icon seminar-icon">
-              <a href="./meeting.html"></a>
-            </div>
-            <div class="booking-icon pet-icon">
-              <a href="./petroom.html"></a>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section id="way" class="main-section">
-        <div class="wrap">
-          <h2 class="section-title">
-            <span>#찾아오다</span> 빌리슈로 쉽게 오는 방법
-          </h2>
-          <div class="way-contents">
-            <div id="map" class="way-map"></div>
-            <div class="way-to-come">
-              <div class="public-transport transportation">
-                <h3>대중교통 이용</h3>
-                <ul>
-                  <li>
-                    <h4><i class="fa-solid fa-location-dot"></i> 판암역행</h4>
-                    <p>
-                      반석역 → 지족역 → 노은역 → 월드컵경기장역 → 현충원역 →
-                      구암역 → 유성온천역 → 갑천역 → 월평역 → 갈마역 →
-                      정부청사역 → 시청역 → 탄방역 → 용문역 → 오룡역 → 서대전
-                      네거리역 → 중구청역 → <span>중앙로역</span>
-                    </p>
-                  </li>
-                  <li>
-                    <h4><i class="fa-solid fa-location-dot"></i> 반석역행</h4>
-                    <p>
-                      판암역 → 신흥역 → 대동역 → 대전역 → <span>중앙로역</span>
-                    </p>
-                  </li>
-                  <li>
-                    <h4><i class="fa-solid fa-location-dot"></i> 버스노선</h4>
-                    <p>
-                      1, 201, 202, 2002, 101, 311, 313, 317, 511, 514, 603, 604,
-                      606, 614, 615, 620, 701, 802
-                    </p>
-                  </li>
-                </ul>
-              </div>
-              <div class="own-car transportation">
-                <h3>자가용 이용</h3>
-                <ul>
-                  <li>
-                    <h4>
-                      <i class="fa-solid fa-location-dot"></i>
-                      경부고속도로(서울방면)
-                    </h4>
-                    <p>
-                      출발→회덕분기점→호남고속도로→북대전/대덕밸리IC →
-                      <a href="#">이후 길찾기 참조</a>
-                    </p>
-                  </li>
-                  <li>
-                    <h4>
-                      <i class="fa-solid fa-location-dot"></i>
-                      경부고속도로(부산방면)
-                    </h4>
-                    <p>
-                      출발→대전IC(통과)→회덕분기점→호남고속도로→북대전/대덕밸리IC
-                      →
-                      <a href="#">이후 길찾기 참조</a>
-                    </p>
-                  </li>
-                  <li>
-                    <h4>
-                      <i class="fa-solid fa-location-dot"></i>
-                      호남고속도로(광주방면)
-                    </h4>
-                    <p>
-                      출발→서대전IC(통과)→유성IC →
-                      <a href="#">이후 길찾기 참조</a>
-                    </p>
-                  </li>
-                  <li>
-                    <h4>
-                      <i class="fa-solid fa-location-dot"></i>
-                      대전통영고속도로(진주방면)
-                    </h4>
-                    <p>
-                      출발→산내분기점→대전남부순환고속도로(서울/광주
-                      방향→서대전IC(통과→서대전분기점→호남고속도로(서울방향)→유성
-                      IC →
-                      <a href="#">이후 길찾기 참조</a>
-                    </p>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-    <footer>
-      <div class="wrap">
-        <div class="footer-info">
-          <h1 class="footer-logo">
-            <a href="./index.html">
-              <span class="logo-en">BILLISHU</span>
-              <span class="logo-ko">빌리슈</span>
-            </a>
-          </h1>
-          <ul class="footer-menu">
-            <li><a href="#">이용약관</a></li>
-            <li><a href="#">개인정보처리방침</a></li>
-            <li><a href="#">운영정책</a></li>
-            <li><a href="#">고객문의</a></li>
-          </ul>
-        </div>
-        <div class="footer-contents">
-          <ul class="footer-company">
-            <li>상호명 : <span>빌리슈</span></li>
-            <li>대표 : 원빌리버블</li>
-            <li>사업자등록번호 : 000-00-00000</li>
-            <li>통신판매업신고 : 0000-대전중구-0000</li>
-            <li>영업소재지 : 대전 중구 선화동</li>
-            <li>이메일 : onebelievable@billishu.com</li>
-            <li>대표전화 : 0000-0000 (평일 오전 10시 ~ 오후 6시)</li>
-          </ul>
-          <ul class="footer-sns">
-            <li><a href="#">블로그</a></li>
-            <li><a href="#">인스타그램</a></li>
-            <li><a href="#">페이스북</a></li>
-            <li><a href="#">트위터</a></li>
-          </ul>
-        </div>
-        <div class="copy">
-          <small>
-            Copyright <strong>OneBelievable</strong> All Rights Reserved.
-          </small>
-        </div>
-      </div>
-    </footer>
+      </footer>
+    </div>
   </body>
 </html>

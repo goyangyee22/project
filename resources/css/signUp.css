@@ -21,27 +21,27 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 48px;
-  padding: 48px 64px;
-  border-radius: 24px;
+  gap: 3rem;
+  padding: 3rem 4rem;
+  border-radius: 1.5rem;
   background-color: #fff;
-  box-shadow: 0 0 10px 0 var(--common-color);
+  box-shadow: 0 0 0.625rem 0 var(--common-color);
 }
 
 /* 회원가입 헤더 */
 .join-header h1 {
-  font-size: 48px;
+  font-size: 3rem;
 }
 
 /* 회원가입 컨텐츠 */
 #join-form {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 0.5rem;
 }
 .join-content {
   position: relative;
-  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
 }
 
 /* 인풋그룹 */
@@ -49,7 +49,7 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  font-size: 16px;
+  font-size: 1rem;
   color: rgba(0, 0, 0, 0);
   pointer-events: none;
   transition: 0.3s;
@@ -57,11 +57,11 @@ body {
 .join-content input {
   display: block;
   width: 100%;
-  padding: 8px;
+  padding: 0.5rem;
   outline: 0;
   border: 0;
-  border-bottom: 2px solid var(--main-color);
-  font-size: 24px;
+  border-bottom: 0.125rem solid var(--main-color);
+  font-size: 1.5rem;
   color: var(--font-color);
   transition: 0.3s;
 }
@@ -73,8 +73,8 @@ body {
   color: rgba(50, 61, 76, 0.3);
 }
 .join-content input:focus + label {
-  top: -16px;
-  font-size: 14px;
+  top: -1rem;
+  font-size: 0.875rem;
   color: var(--hover-color);
 }
 .join-content input:focus + label + .highlight {
@@ -85,7 +85,7 @@ body {
   bottom: 0;
   left: 0;
   width: 0;
-  height: 2px;
+  height: 0.125rem;
   background-color: var(--hover-color);
   transition: 0.3s;
 }
@@ -93,14 +93,14 @@ body {
 .input-id {
   display: flex;
   align-items: flex-start;
-  gap: 8px;
+  gap: 0.5rem;
 }
 
 /* 가입 & 취소 버튼 */
 .join-btn {
-  padding: 14px 24px;
-  font-size: 16px;
-  border-radius: 8px;
+  padding: 0.875rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 0.5rem;
   background-color: var(--accent-color);
   color: var(--main-color);
   cursor: pointer;
@@ -110,8 +110,29 @@ body {
 }
 .join-footer {
   display: flex;
-  gap: 8px;
+  gap: 0.5rem;
 }
 .join-footer > button {
-  padding: 16px 32px;
+  padding: 1rem 2rem;
+}
+
+/* media - mobile */
+@media screen and (max-width: 767px) {
+  .container {
+    padding: 2rem 3rem;
+    gap: 2rem;
+  }
+  .join-header h1 {
+    font-size: 2rem;
+  }
+  .join-content input {
+    font-size: 1rem;
+  }
+  .join-content label {
+    font-size: 1rem;
+  }
+  .join-btn {
+    padding: 0.5rem 1rem;
+    font-weight: 200;
+  }
 }

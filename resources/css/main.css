@@ -51,7 +51,7 @@ body {
   justify-content: flex-end;
   align-items: center;
   flex-direction: column;
-  gap: 24px;
+  gap: 1.5rem;
   color: var(--main-color);
   background-image: linear-gradient(
     rgba(0, 0, 0, 0.5) 0%,
@@ -63,26 +63,26 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 32px;
-  height: calc(100% - 117px);
+  gap: 2rem;
+  height: calc(100% - 7.3125rem);
 }
 .hero-title {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 16px;
-  font-size: 32px;
+  gap: 1rem;
+  font-size: 2rem;
 }
 .sub-title-wrap span {
-  padding: 8px 16px;
+  padding: 0.5rem 1rem;
   border: 1px solid var(--main-color);
-  border-radius: 16px;
-  font-size: 16px;
+  border-radius: 1rem;
+  font-size: 1rem;
 }
 
 .hero-content-desc {
-  font-size: 24px;
+  font-size: 1.5rem;
   text-align: center;
 }
 .hero-content-desc p {
@@ -91,8 +91,8 @@ body {
 
 .hero-btn {
   position: relative;
-  padding: 16px 24px;
-  font-size: 24px;
+  padding: 1rem 1.5rem;
+  font-size: 1.5rem;
   color: var(--main-color);
   border: 2px solid var(--main-color);
   background-color: transparent;
@@ -118,14 +118,14 @@ body {
 
 /* section */
 .main-section {
-  padding: 160px 0;
+  padding: 10rem 0;
 }
 .section-title {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 16px;
-  font-size: 48px;
+  gap: 1rem;
+  font-size: 3rem;
 }
 .section-title span {
   display: flex;
@@ -138,9 +138,9 @@ body {
   color: var(--main-color); */
 }
 .section-desc {
-  padding: 48px 0;
+  padding: 3rem 0;
   text-align: center;
-  font-size: 24px;
+  font-size: 1.5rem;
   line-height: 1.6;
 }
 .section-desc span {
@@ -158,14 +158,14 @@ body {
 }
 .preview-slide {
   width: 100%;
-  height: 300px;
+  height: 18.75rem;
 }
 .preview-slide > .swiper-wrapper {
   transition-timing-function: linear;
 }
 .preview-slide .swiper-slide {
   background-color: #fff;
-  border-radius: 24px;
+  border-radius: 1.5rem;
   overflow: hidden;
 }
 .preview-slide .swiper-slide img {
@@ -179,27 +179,27 @@ body {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   justify-items: center;
-  gap: 24px;
+  gap: 1.5rem;
 }
 .info-icons li {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 24px;
-  width: 160px;
-  height: 160px;
+  gap: 1.5rem;
+  width: 10rem;
+  height: 10rem;
   border: 4px solid var(--font-color);
-  border-radius: 32px;
+  border-radius: 2rem;
 }
 .info-icons li > i {
-  font-size: 48px;
+  font-size: 3rem;
   color: var(--accent-color);
 }
 
 /* 이용 안내 */
 .use-info {
-  padding: 64px 0 48px;
+  padding: 4rem 0 3rem;
 }
 
 /* 옵션 안내 */
@@ -210,25 +210,25 @@ body {
 
 #section-menu {
   position: relative;
-  top: 216px;
+  top: 13.5rem;
 }
 #section-menu > ul {
   position: sticky;
   top: 50%;
   right: 0;
-  padding: 205px 0 0;
+  padding: 12.8125rem 0 0;
   transform: translateY(-50%);
 }
 #section-menu > ul > li {
-  margin-bottom: 8px;
+  margin-bottom: 0.5rem;
   text-align: center;
 }
 #section-menu > ul > li a {
-  border-radius: 16px;
+  border-radius: 1rem;
   background-color: var(--accent-color);
   color: var(--main-color);
   display: block;
-  padding: 16px 48px;
+  padding: 1rem 3rem;
   transition: 0.3s;
 }
 #section-menu > ul > li a:hover {
@@ -236,11 +236,11 @@ body {
 }
 
 .room-option {
-  padding-top: 160px;
+  padding-top: 10rem;
 }
 .room-option h3 {
-  font-size: 24px;
-  margin-bottom: 16px;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 /* service */
@@ -248,21 +248,21 @@ body {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  gap: 32px;
-  padding: 48px 0;
+  gap: 2rem;
+  padding: 3rem 0;
 }
 .service-contents {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 32px;
+  gap: 2rem;
 }
 .service-img {
   width: 60%;
-  height: 450px;
-  border-radius: 24px;
+  height: 28.125rem;
+  border-radius: 1.5rem;
   overflow: hidden;
-  box-shadow: 0 0 10px 0 var(--sub-color);
+  box-shadow: 0 0 0.625rem 0 var(--sub-color);
 }
 .service-img > img {
   width: 100%;
@@ -273,17 +273,17 @@ body {
   width: 40%;
 }
 .service-desc > span {
-  font: italic 500 24px 'DM Serif Text', serif;
+  font: italic 500 1.5rem 'DM Serif Text', serif;
   color: var(--sub-color);
 }
 .service-desc > h3 {
-  font-size: 32px;
+  font-size: 2rem;
   color: var(--accent-color);
 }
 .service-desc > p {
   word-break: keep-all;
-  margin: 32px 0;
-  font-size: 24px;
+  margin: 2rem 0;
+  font-size: 1.5rem;
   line-height: 1.6;
 }
 .service-desc > p > span {
@@ -294,22 +294,23 @@ body {
   display: flex;
   flex-direction: column;
   align-items: start;
-  gap: 16px;
+  gap: 1rem;
 }
 .service-inquiry::before {
   content: '';
   width: 65%;
-  height: 2px;
+  height: 0.125rem;
   background-color: var(--common-color);
 }
 .service-inquiry > span {
-  padding-top: 14px;
+  padding-top: 0.875rem;
 }
 .service-inquiry > button {
-  padding: 16px 48px;
+  padding: 1rem 3rem;
   background-color: var(--accent-color);
   color: var(--main-color);
-  border-radius: 16px;
+  border-radius: 1rem;
+  font-size: 1rem;
 }
 .service-inquiry > button:hover {
   background-color: var(--hover-color);
@@ -326,18 +327,18 @@ body {
 
 /* booking */
 #booking {
-  padding: 64px 0;
+  padding: 4rem 0;
 }
 .booking-icons {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 32px;
+  gap: 2rem;
 }
 .booking-icon {
   position: relative;
-  width: 300px;
-  height: 300px;
+  width: 18.75rem;
+  height: 18.75rem;
   border-radius: 50%;
   overflow: hidden;
   transition: 0.3s;
@@ -351,7 +352,7 @@ body {
   z-index: 3;
   width: 100%;
   height: 100%;
-  font-size: 24px;
+  font-size: 1.5rem;
 }
 .booking-icon:hover {
   background-size: 120%;
@@ -402,44 +403,44 @@ body {
 }
 .way-contents {
   display: flex;
-  gap: 24px;
+  gap: 1.5rem;
   flex-wrap: wrap;
-  padding: 48px 0 64px;
+  padding: 3rem 0 4rem;
 }
 #map {
   height: auto;
 }
 
 .way-contents > div {
-  width: calc(50% - 12px);
+  width: calc(50% - 0.75rem);
 }
 
 .way-to-come {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 1.5rem;
 }
 .transportation {
-  padding: 24px;
-  border-radius: 16px;
+  padding: 1.5rem;
+  border-radius: 1rem;
   background-color: #fff;
   box-shadow: 0 0 8px 3px var(--common-color);
 }
 
 .transportation > h3 {
-  margin-bottom: 16px;
-  font-size: 24px;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
 }
 
 .transportation > ul {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  padding: 0 8px;
+  gap: 1rem;
+  padding: 0 0.5rem;
 }
 .transportation > ul h4 {
-  margin-bottom: 8px;
-  font-size: 16px;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
 }
 .transportation > ul p {
   padding: 0 8px;
@@ -449,4 +450,156 @@ body {
 .transportation > ul p > span,
 .transportation > ul p > a {
   font-weight: 700;
+}
+
+/* media - tablet */
+@media screen and (max-width: 1023px) {
+  #hero {
+    height: 50rem;
+  }
+  .room-option {
+    padding-top: 5.5rem;
+  }
+
+  .main-section {
+    padding: 5rem 0;
+  }
+
+  .section-title {
+    flex-direction: column;
+    gap: 8px;
+    font-size: 2.5rem;
+  }
+
+  .info-icons {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  .service-container {
+    gap: 3rem;
+  }
+  .service-contents {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .service-img {
+    width: 100%;
+  }
+  .service-desc {
+    width: 100%;
+    text-align: center;
+  }
+  .service-desc > h3 {
+    font-size: 1.5rem;
+  }
+  .service-desc > span {
+    font-size: 1rem;
+  }
+  .service-desc > p {
+    margin: 1rem 0;
+    font-size: 1rem;
+  }
+  .service-inquiry {
+    align-items: center;
+  }
+  .service-inquiry > span {
+    padding-top: 0;
+    font-size: 8px;
+  }
+  .eventMC {
+    flex-direction: column-reverse;
+  }
+  .eventMC > .service-desc {
+    text-align: center;
+  }
+  .eventMC .service-inquiry {
+    align-items: center;
+  }
+
+  .booking-icon {
+    width: 180px;
+    height: 180px;
+  }
+  .way-contents {
+    flex-direction: column;
+  }
+  .way-contents > div {
+    width: 100%;
+  }
+  #map {
+    height: 20rem;
+    outline: 1px dotted red;
+  }
+}
+
+/* media - mobile */
+@media screen and (max-width: 767px) {
+  .hero-title {
+    font-size: 1.5rem;
+  }
+
+  .sub-title-wrap span {
+    font-size: 10px;
+  }
+  .hero-content-desc {
+    font-size: 1rem;
+  }
+
+  .hero-btn {
+    font-size: 1rem;
+  }
+
+  .main-section {
+    padding: 3rem 0;
+  }
+  .section-title {
+    font-size: 1.5rem;
+  }
+  .section-desc {
+    padding: 2rem 0;
+    font-size: 1rem;
+  }
+  .info-icons {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+  .info-icons li {
+    width: 80px;
+    height: 80px;
+    border: 3px solid var(--font-color);
+    border-radius: 16px;
+    gap: 8px;
+  }
+  #options-container {
+    gap: 8px;
+  }
+  #section-menu {
+    top: 11.5rem;
+  }
+  #section-menu > ul {
+    padding: 5rem 0 0;
+  }
+
+  #section-menu > ul > li a {
+    padding: 8px 16px;
+  }
+
+  .service-img {
+    height: 240px;
+  }
+
+  .booking-icons {
+    gap: 1rem;
+  }
+  .booking-icon {
+    width: 80px;
+    height: 80px;
+  }
+  .booking-icon > a {
+    font-size: 1rem;
+  }
+  .transportation > ul p {
+    font-size: 8px;
+  }
 }

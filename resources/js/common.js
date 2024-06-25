@@ -4,21 +4,31 @@ const spotMenu = document.querySelector('.spot');
 if (!userInfo) {
   // spot
   spotMenu.innerHTML = `
-    <li>
-      <a href="./pages/signIn.html">로그인</a>
+    <li class='login'>
+      <a href="./pages/signIn.html">
+        <i class="fa-solid fa-right-to-bracket"></i>
+        <span>로그인</span>
+      </a>
     </li>
-    <li>
-      <a href="./pages/signUp.html">회원가입</a>
+    <li class='join'>
+      <a href="./pages/signUp.html">
+        <i class="fa-solid fa-user-plus"></i>
+        <span>회원가입</span>
+      </a>
     </li>
   `;
 } else {
   // spot
   spotMenu.innerHTML = `
     <li id="logout">
-      로그아웃
+      <i class="fa-solid fa-right-from-bracket"></i>
+      <span>로그아웃</span>
     </li>
-    <li>
-      <a href="./pages/myPage.html">마이페이지</a>
+    <li class='mypage'>
+      <a href="./pages/myPage.html">
+        <i class="fa-solid fa-user-gear"></i>
+        <span>마이페이지</span>
+      </a>
     </li>
 `;
 
@@ -29,6 +39,47 @@ if (!userInfo) {
       window.location.reload();
     }
   });
+}
+
+/* 햄버거 메뉴 */
+const hamMenu = document.querySelector('.ham-menu');
+const navEl = document.querySelector('nav');
+hamMenu.addEventListener('click', function () {
+  this.classList.toggle('show-menu');
+  if (this.classList.contains('show-menu')) {
+    navEl.style.display = 'flex';
+    navEl.style.height = '4.5625rem';
+    navEl.firstElementChild.style.display = 'flex';
+  } else {
+    navEl.style.height = 0;
+    navEl.firstElementChild.style.display = 'none';
+  }
+});
+
+window.addEventListener('resize', function () {
+  if (window.innerWidth < 1024) {
+    // 모바일 화면일 때
+    if (!hamMenu.classList.contains('show-menu')) {
+      navEl.style.height = 0;
+      navEl.firstElementChild.style.display = 'none';
+    }
+  } else {
+    // 데스크탑 화면일 때
+    hamMenu.classList.remove('show-menu');
+    navEl.style.display = 'flex';
+    navEl.style.height = 0;
+    navEl.firstElementChild.style.display = 'flex';
+  }
+});
+
+// 페이지 로드 시 초기 상태 설정
+if (window.innerWidth < 1024) {
+  navEl.style.height = 0;
+  navEl.firstElementChild.style.display = 'none';
+} else {
+  navEl.style.display = 'flex';
+  navEl.style.height = 0;
+  navEl.firstElementChild.style.display = 'flex';
 }
 
 // 달력 렌더링

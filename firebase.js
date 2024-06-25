@@ -76,6 +76,18 @@ async function updateDatas(collectionName, docId, updateObj) {
   }
 }
 
+async function updateDocument(collectionName, docId, updateObj) {
+  try {
+    const docRef = doc(dbService, collectionName, docId);
+    await updateDoc(docRef, updateObj);
+    console.log("Document successfully updated!");
+    return true;
+  } catch (error) {
+    console.error("Error updating document: ", error);
+    return false;
+  }
+}
+
 async function deleteDatas(collectionName, docId) {
   try {
     const docRef = await doc(dbService, collectionName, docId);
@@ -127,4 +139,5 @@ export {
   updateDatas,
   deleteDatas,
   deleteDocument,
+  updateDocument,
 };
