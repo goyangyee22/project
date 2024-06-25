@@ -553,11 +553,20 @@ left: 60%;
 @media screen and (max-width: 1023px){
 .pet-contents{width: 100%;}
 .pet-detail{display: block;}
-.More ul{font-size: 1.5rem;}
+.More ul{font-size: 1rem;}
 .infor-title{font-size: 2rem;}
 .spaceintroduction{font-size: 1rem;}
 .space{padding-top: 2.5rem;}
 .spaceintroduction p{font-size: 1rem;}
+
+.iconsort p{font-size: 1rem;}
+.main-icon{
+  margin: 0;
+  display: grid;
+grid-template-columns: 1fr 1fr;
+width: 2rem;
+gap: .5rem;
+}
 .Supplies{padding-top: 2.5rem;}
 .All-Supplies ul,li{padding: 0;}
 .common-title{margin: 1rem 0;
