@@ -4,13 +4,10 @@ import {
   getFirestore,
   getDocs,
   collection,
-  setDoc,
   doc,
   addDoc,
   deleteDoc,
-  getDoc,
   updateDoc,
-  getDocFromCache,
   query,
   where,
 } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
