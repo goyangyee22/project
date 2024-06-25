@@ -27,15 +27,20 @@ header {
   margin-bottom: 8px;
 }
 .meet-contents.wrap {
-  display: flex;
-  gap: 25px;
-  padding: 25px 0;
-  align-items: start;
   position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 24px;
+  height: max-content;
+  padding: 48px 0;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1200px;
 }
 
 .meet-details {
-  width: 80%;
+  width: 75%;
 }
 #meet-menu {
   position: sticky;
@@ -47,8 +52,9 @@ header {
   backdrop-filter: blur(10px);
   color: black;
   border: none;
-  border-top: 1px solid #e8f1f5;
-  padding: 10px 10px;
+  border-bottom: 2px solid #e8f1f5;
+  padding: 25px 10px;
+  font-size: 18px;
 }
 
 #meet-menu > li :hover {
@@ -193,7 +199,6 @@ header {
 }
 
 .ra_menu {
-  font-family: "SUITE-Regular";
   font-size: 40px;
 }
 
@@ -266,7 +271,6 @@ header {
 }
 
 .menu_title {
-  font-family: "SUITE-Regular";
   font-size: 40px;
 }
 
@@ -283,72 +287,74 @@ header {
   height: 100px;
 }
 
-.meeting-imgs {
-  /* padding: 44px 0; */
+/* 사이드 전체 */
+.meeting-room {
   position: sticky;
-  top: 0;
-  left: 0;
+  top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  width: 25%;
 }
 
-.meeting-imgs-contents {
-  padding: 24px 0;
+.meeting_small {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.12);
+  border: 2px solid rgba(255, 255, 255, 0.222);
+  backdrop-filter: blur(20px);
+  border-radius: 16px;
+  box-shadow: 0 0 5px 0 #1a2130;
+}
+
+.meeting_medium {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
   background-color: rgba(255, 255, 255, 0.2);
   border: 2px solid rgba(255, 255, 255, 0.222);
-  -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
-  border-radius: 0.7rem;
-  transition: all ease 0.1s;
+  border-radius: 16px;
+  box-shadow: 0 0 5px 0 #1a2130;
 }
 
-.meeting-imgs-contents:hover {
-  box-shadow: 0px 0px 5px 1px #6e83b1cc;
-  border: 1px solid rgba(255, 255, 255, 0.454);
-}
-
-.one_img,
-.two_img,
-.three_img {
+.meeting_big {
   display: flex;
-  padding: 10px;
-  gap: 60px;
-}
-
-.one_img,
-.two_img {
-  border-bottom: 1px dotted #fdffe2;
-}
-
-/* 정은 */
-.roomimg img {
-  width: 250px;
-  height: 90%;
-}
-.roomimg {
-  width: 210px;
-}
-
-.room_titles {
-  width: 180px;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.222);
+  backdrop-filter: blur(20px);
+  border-radius: 16px;
+  box-shadow: 0 0 5px 0 #1a2130;
 }
 
 .reservation_button {
   display: flex;
-  flex-direction: row;
-  border-radius: 10px;
-  gap: 5px;
-  color: black;
-  transform-style: preserve-3d;
-  padding: 5px 3px;
-  border: 0;
-  font-family: "SUITE-Regular";
+  justify-content: space-between;
+  align-items: center;
+  /* gap: 1px; */
 }
 
 .reservation_button :hover {
   background-color: #1a2130;
-  box-shadow: 0px 15px 20px rgba(27, 39, 63, 0.4);
+  box-shadow: 0 15px 20px rgba(27, 39, 63, 0.4);
   color: whitesmoke;
-  transform: translateY(3px);
-  /* text-shadow: -1px -1px 0; */
+  transform: translateY(2px);
+}
+
+.button1 {
+  padding: 7px 28px;
+  border-radius: 10px;
+}
+
+.button2 {
+  padding: 7px 28px;
+  border-radius: 10px;
 }
 
 .fa-solid .fa-images {
