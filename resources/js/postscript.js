@@ -130,7 +130,7 @@ deleteBtn.addEventListener("click", async () => {
           if (docSnapshot.exists()) {
             // 게시글 데이터에서 작성자의 docId를 가져옵니다.
             const postData = docSnapshot.data();
-            const postAuthorDocId = postData.authorDocId;
+            const postAuthorDocId = postData.userDocId;
             console.log(postData);
             console.log("게시글 작성자의 docId: ", postAuthorDocId);
 
@@ -196,7 +196,6 @@ window.onload = () => {
 // 게시글을 작성하는 함수입니다.
 const createBtn = document.getElementById("createBtn");
 createBtn.addEventListener("click", async () => {
-  alert("화면을 구축하는 중입니다!");
   const createModal = document.querySelector("#createModal");
   createModal.style.display = "block";
 });
