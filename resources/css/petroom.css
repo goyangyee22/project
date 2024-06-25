@@ -599,7 +599,10 @@ font-size: 1rem;}
 
 .mapst{padding-top: 2.5rem;}
 .mapst span{font-size: 1rem;}
-.hover-text{font-size: 1rem;}
+.hover-text{font-size: 1rem;
+}
+
+.map-copy{}
 #map{width: 100%;
 height: 200px;}
 .copyMessage{position: absolute;
@@ -607,8 +610,8 @@ top: 0;
 }
 /* 후기 */
 .profile-img{margin: 0;}
-.profile-img img{width: 1.5rem;
-  height: 1.5rem;
+.profile-img img{width: 2rem;
+  height: 2rem;
 }
 .customer{display: block;}
 .name{font-size: 1rem;}
