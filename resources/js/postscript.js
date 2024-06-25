@@ -62,7 +62,7 @@ async function getBoard() {
   });
 }
 
-// table에 클릭 이벤트를 생성합니다.
+// table에 클릭 이벤트를 생성합니다. (클릭을 하면 노란색 배경이 씌워지며 모달 창이 나타납니다.)
 let selectedRow;
 const tableTag = document.querySelector("table");
 tableTag.addEventListener("click", async function (e) {
@@ -176,11 +176,9 @@ deleteBtn.addEventListener("click", async () => {
 });
 
 // 수정 버튼 이벤트 리스너
-const modifyBtn = document.querySelector(".modifyBtn");
-modifyBtn.addEventListener("click", async () => {
-  if (confirm("정말 이 내용대로 수정 하시겠습니까?")) {
-  }
-});
+// const modifyBtn = document.querySelector(".modifyBtn");
+// modifyBtn.addEventListener("click", async () => {
+// });
 
 // 모달창 닫기 버튼을 클릭하면 모달 창을 닫습니다.
 const closeBtn = document.querySelector(".closeBtn");
@@ -195,75 +193,78 @@ window.onload = () => {
 };
 
 // 게시글을 작성하는 함수입니다.
-const updateBtn = document.getElementById("updateBtn");
-updateBtn.addEventListener("click", async function (e) {
-  e.preventDefault();
+const createBtn = document.getElementById("createBtn");
+createBtn.addEventListener("click");
+// (밑에 주석 혹시 몰라서 주석처리 해 놨어요)
+// const updateBtn = document.getElementById("updateBtn");
+// updateBtn.addEventListener("click", async function (e) {
+//   e.preventDefault();
 
-  // 제목과 내용 입력값을 가져옵니다.
-  const titleInput = document.querySelector('input[name="title"]');
-  const contentInput = document.querySelector('input[name="content"]');
+//   // 제목과 내용 입력값을 가져옵니다.
+//   const titleInput = document.querySelector('input[name="title"]');
+//   const contentInput = document.querySelector('input[name="content"]');
 
-  // 입력 필드의 값에서 양 끝 공백을 제거합니다.
-  const title = titleInput.value.trim();
-  const content = contentInput.value.trim();
+//   // 입력 필드의 값에서 양 끝 공백을 제거합니다.
+//   const title = titleInput.value.trim();
+//   const content = contentInput.value.trim();
 
-  // 제목과 내용이 모두 비어있는지 검사합니다.
-  if (title === "" || content === "") {
-    alert("제목과 내용을 모두 입력해주세요.");
-    return;
-  }
+//   // 제목과 내용이 모두 비어있는지 검사합니다.
+//   if (title === "" || content === "") {
+//     alert("제목과 내용을 모두 입력해주세요.");
+//     return;
+//   }
 
-  // 작성자명을 불러오는 함수입니다.
-  const userNameString = sessionStorage.getItem("userInfo");
-  const userInfo = JSON.parse(userNameString);
-  const name = userInfo.name;
-  const authorDocId = userInfo.docId;
+//   // 작성자명을 불러오는 함수입니다.
+//   const userNameString = sessionStorage.getItem("userInfo");
+//   const userInfo = JSON.parse(userNameString);
+//   const name = userInfo.name;
+//   const authorDocId = userInfo.docId;
 
-  // Firestore에서 "userInfo" 컬렉션을 참조하는 변수 생성
-  const usersRef = collection(dbService, "userInfo");
+//   // Firestore에서 "userInfo" 컬렉션을 참조하는 변수 생성
+//   const usersRef = collection(dbService, "userInfo");
 
-  // "userInfo" 컬렉션에서 "name" 필드가 JSON.parse(userInfoString).name과 같은 문서만을 검색하는 쿼리를 생성합니다.
-  const q = query(usersRef, where("name", "==", userInfo.name));
+//   // "userInfo" 컬렉션에서 "name" 필드가 JSON.parse(userInfoString).name과 같은 문서만을 검색하는 쿼리를 생성합니다.
+//   const q = query(usersRef, where("name", "==", userInfo.name));
 
-  // 생성한 쿼리를 Firestore에 실행하여 결과를 가져옵니다.
-  const querySnapshot = await getDocs(q);
+//   // 생성한 쿼리를 Firestore에 실행하여 결과를 가져옵니다.
+//   const querySnapshot = await getDocs(q);
 
-  // 검색된 문서들 중 첫 번째 문서의 ID를 추출합니다. (자동으로 주어진 문서 고유 ID)
-  const userDoc = querySnapshot.docs[0];
-  const userData = userDoc.data();
+//   // 검색된 문서들 중 첫 번째 문서의 ID를 추출합니다. (자동으로 주어진 문서 고유 ID)
+//   const userDoc = querySnapshot.docs[0];
+//   const userData = userDoc.data();
 
-  // 제목, 내용의 입력값을 받아옵니다.
-  const inputs = document.querySelectorAll(".form-container input");
-  const addObj = {
-    name,
-    // 작성일 기준으로 고정합니다.
-    date: new Date().toLocaleDateString("ko-KR"),
-    authorDocId,
-  };
-  inputs.forEach((input) => {
-    addObj[input.name] = input.value;
-  });
+//   // 제목, 내용의 입력값을 받아옵니다.
+//   const inputs = document.querySelectorAll(".form-container input");
+//   const addObj = {
+//     name,
+//     // 작성일 기준으로 고정합니다.
+//     date: new Date().toLocaleDateString("ko-KR"),
+//     authorDocId,
+//   };
+//   inputs.forEach((input) => {
+//     addObj[input.name] = input.value;
+//   });
 
-  try {
-    // Firebase에 데이터를 추가합니다.
-    const docRef = await addDoc(collection(dbService, "board"), addObj);
-    // 추가된 문서의 ID입니다.
-    const docId = docRef.id;
+//   try {
+//     // Firebase에 데이터를 추가합니다.
+//     const docRef = await addDoc(collection(dbService, "board"), addObj);
+//     // 추가된 문서의 ID입니다.
+//     const docId = docRef.id;
 
-    // 화면에 추가된 데이터를 표시합니다.
-    const tableTag = document.querySelector("table");
-    tableTag.lastElementChild.insertAdjacentHTML(
-      "afterbegin",
-      `
-      <tr data-id=${docId}>
-      <td class="name">${addObj.name}</td>
-      <td class="title">${addObj.title}</td>
-      <td class="date">${addObj.date}</td>
-      </tr>
-      `
-    );
-    console.log(docId, addObj.name, addObj.title, addObj.content, addObj.date);
-  } catch (error) {
-    console.error("Error adding document: ", error);
-  }
-});
+//     // 화면에 추가된 데이터를 표시합니다.
+//     const tableTag = document.querySelector("table");
+//     tableTag.lastElementChild.insertAdjacentHTML(
+//       "afterbegin",
+//       `
+//       <tr data-id=${docId}>
+//       <td class="name">${addObj.name}</td>
+//       <td class="title">${addObj.title}</td>
+//       <td class="date">${addObj.date}</td>
+//       </tr>
+//       `
+//     );
+//     console.log(docId, addObj.name, addObj.title, addObj.content, addObj.date);
+//   } catch (error) {
+//     console.error("Error adding document: ", error);
+//   }
+// });

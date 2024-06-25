@@ -9,6 +9,10 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.0/js/bootstrap.bundle.min.js"></script>
   </head>
   <style>
+    .functionsBtn a {
+      color: #000;
+      text-decoration: none;
+    }
     .functions {
       right: 0;
       padding: 0 8px;
@@ -88,7 +92,7 @@
             </button>
             <button id="createBtn">작성하기</button>
           </div>
-          <div class="form-container">
+          <!-- <div class="form-container">
             <button id="updateBtn">저장하기</button>
             <div class="form-item">
               <div class="form-label"><span>제목</span></div>
@@ -98,7 +102,7 @@
               <div class="form-label"><span>내용</span></div>
               <div class="form-input"><input type="text" name="content" /></div>
             </div>
-          </div>
+          </div> -->
           <table border="1">
             <thead>
               <tr>
@@ -120,9 +124,15 @@
           <div class="top">
             <div class="modal-title"></div>
             <div class="functions">
-              <a class="modifyBtn">수정</a>
-              <a class="deleteBtn">삭제</a>
-              <a href="#" class="closeBtn">닫기</a>
+              <button class="functionsBtn">
+                <a class="modifyBtn">수정</a>
+              </button>
+              <button class="functionsBtn">
+                <a class="deleteBtn">삭제</a>
+              </button>
+              <button class="functionsBtn">
+                <a href="#" class="closeBtn">닫기</a>
+              </button>
             </div>
           </div>
           <div class="ct">
@@ -137,14 +147,31 @@
       <div class="tb">
         <div class="inner" style="max-width: 800px">
           <div class="top">
-            <textarea id="modifyContent" class="modal-title"></textarea>
+            <textarea class="modifyTitle"></textarea>
             <div class="functions">
               <a id="modifyBtn" class="modifyBtn">수정</a>
               <a href="#" class="closeBtn">취소</a>
             </div>
           </div>
           <div class="ct">
-            <textarea id="modifyContent" class="modal-content" rows="5"></textarea>
+            <textarea class="modifyContent" rows="5"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 작성 모달 창 -->
+    <div id="createModal" class="dialog">
+      <div class="tb">
+        <div class="inner" style="max-width: 800px">
+          <div class="top">
+            <textarea class="createTitle"></textarea>
+            <div class="functions">
+              <a href="#" class="closeBtn">취소</a>
+            </div>
+          </div>
+          <div class="ct">
+            <textarea class="createContent"></textarea>
           </div>
         </div>
       </div>
