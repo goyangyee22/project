@@ -1,15 +1,17 @@
-"https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
-"https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
+// "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
+// "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
-import { dbService } from "../../firebase.js";
+import { dbService, deleteDocument } from "../../firebase.js";
 import {
   getFirestore,
+  orderBy,
   collection,
   addDoc,
   query,
   where,
   getDocs,
   getDoc,
+  deleteDoc,
   doc as firestoreDoc,
 } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
 
@@ -37,7 +39,8 @@ if (!userInfo) {
 
 // 작성한 게시글을 화면에 반영합니다.
 async function getBoard() {
-  const tableBody = document.querySelector("tbody");
+  const tableBody = document.querySelector("#tbody");
+  console.log(tableBody);
   const querySnapshot = await getDocs(collection(db, "board"));
   querySnapshot.forEach((doc) => {
     // 게시글의 정보를 저장할 객체를 생성합니다.
@@ -47,49 +50,61 @@ async function getBoard() {
     row.setAttribute("data-id", doc.id);
 
     // 각 열에 데이터를 삽입합니다.
-    row.innerHTML = `
+    row.innerHTML =
+      ("afterbegin",
+      `
     <td class="name">${name}</td>
     <td class="title">${title}</td>
     <td class="date">${date}</td>
-    `;
+    `);
 
     tableBody.append(row);
-
-    row.addEventListener("click", () => {
-      // 선택된 행을 표시합니다.
-      const selectedRow = document.querySelector(".selected");
-      if (selectedRow) {
-        selectedRow.classList.remove("selected");
-      }
-      row.classList.add("selected");
-
-      // 모달 창 내용을 업데이트 합니다.
-      const modalTitleElement = document.querySelector(".modal-title");
-      const modalContentElement = document.querySelector(".modal-content");
-
-      modalTitleElement.textContent = title;
-      modalContentElement.textContent = data.content;
-
-      // 모달 창을 엽니다.
-      const modal = document.querySelector("#modal");
-      modal.style.display = "block";
-    });
-
-    tableBody.appendChild(row);
   });
 }
 
 // table에 클릭 이벤트를 생성합니다.
 let selectedRow;
 const tableTag = document.querySelector("table");
-tableTag.addEventListener("click", function (e) {
+tableTag.addEventListener("click", async function (e) {
   if (e.target.tagName != "TH" && e.target.tagName != "TABLE") {
     if (selectedRow) {
       selectedRow.classList.remove("selected");
     }
     e.target.parentElement.classList.add("selected");
     selectedRow = e.target.parentElement;
-    console.log("현재 작성되어 있는 게시글의 정보: ", selectedRow);
+
+    // 선택된 행의 data-id를 가져옵니다.
+    const postDocId = selectedRow.getAttribute("data-id");
+    if (!postDocId) {
+      console.error("게시글 ID를 찾을 수 없습니다.");
+      return false;
+    }
+
+    try {
+      // Firestore에서 해당 게시글 문서를 가져옵니다.
+      const docSnapshot = await getDoc(firestoreDoc(db, "board", postDocId));
+      if (docSnapshot.exists()) {
+        const data = docSnapshot.data();
+        const { title, content } = data;
+
+        // 모달 창 내용을 업데이트 합니다.
+        const modalTitleElement = document.querySelector(".modal-title");
+        const modalContentElement = document.querySelector(".modal-content");
+
+        // db에서 가져온 title, content
+        modalTitleElement.textContent = title;
+        modalContentElement.textContent = content;
+
+        // 모달 창을 엽니다.
+        const modal = document.querySelector("#modal");
+        modal.style.display = "block";
+        console.log("현재 작성되어 있는 게시글의 정보: ", selectedRow);
+      } else {
+        console.error("해당 게시글을 찾을 수 없습니다.");
+      }
+    } catch (error) {
+      console.error("게시글을 가져오는 동안 오류가 발생했습니다: ", error);
+    }
   }
 });
 
@@ -97,6 +112,11 @@ tableTag.addEventListener("click", function (e) {
 const deleteBtn = document.querySelector(".deleteBtn");
 deleteBtn.addEventListener("click", async () => {
   if (confirm("정말로 삭제 하시겠습니까?")) {
+    // 현재 sessionStorage에 로그인 되어있는 사용자의 정보를 가져옵니다.
+    const currentUser = JSON.parse(sessionStorage.getItem("userInfo"));
+    const currentUserDocId = currentUser.docId;
+    console.log("현재 로그인 되어있는 사용자의 docId: ", currentUserDocId);
+
     if (selectedRow) {
       // 선택된 행에서 게시글의 docId를 가져옵니다.
       const postDocId = selectedRow.getAttribute("data-id");
@@ -109,23 +129,16 @@ deleteBtn.addEventListener("click", async () => {
           const docSnapshot = await getDoc(docRef);
           if (docSnapshot.exists()) {
             // 게시글 데이터에서 작성자의 docId를 가져옵니다.
-            const userInfo = docSnapshot.data();
-            const authorDocId = userInfo.authorDocId;
-            console.log(userInfo);
-            console.log("게시글 작성자의 docId: ", authorDocId);
-
-            // 현재 sessionStorage에 로그인 되어있는 사용자의 정보를 가져옵니다.
-            const currentUser = JSON.parse(sessionStorage.getItem("userInfo"));
-            const currentUserDocId = currentUser.docId;
-            console.log(
-              "현재 로그인 되어있는 사용자의 docId: ",
-              currentUserDocId
-            );
+            const postData = docSnapshot.data();
+            const postAuthorDocId = postData.authorDocId;
+            console.log(postData);
+            console.log("게시글 작성자의 docId: ", postAuthorDocId);
 
             // 현재 sessionStorage에 로그인 되어있는 사용자의 docId와 게시글 작성자의 docId를 비교하여 일치하면 삭제합니다.
-            if (currentUserDocId === authorDocId) {
+            if (currentUserDocId === postAuthorDocId) {
               // Firebase에서 데이터를 삭제합니다.
-              await dbService.collection("board").doc(postDocId).delete();
+              await deleteDoc(docRef);
+              alert("게시글이 성공적으로 삭제되었습니다.");
               console.log("게시글이 성공적으로 삭제되었습니다.");
 
               // 화면에 삭제한 게시글을 제거합니다.
@@ -137,20 +150,26 @@ deleteBtn.addEventListener("click", async () => {
               }
 
               // 모달 창을 닫습니다.
+              const modal = document.querySelector("#modal");
               modal.style.display = "none";
             } else {
+              alert("삭제 권한이 없습니다.");
               console.log("삭제 권한이 없습니다.");
             }
           } else {
+            alert("해당 게시글을 찾을 수 없습니다.");
             console.error("해당 게시글을 찾을 수 없습니다.");
           }
         } catch (error) {
+          alert("게시글을 삭제하는 동안 오류가 발생했습니다.: ", error);
           console.error("게시글을 삭제하는 동안 오류가 발생했습니다.: ", error);
         }
       } else {
+        alert("게시글 ID를 찾을 수 없습니다.");
         console.error("게시글 ID를 찾을 수 없습니다.");
       }
     } else {
+      alert("선택된 게시글이 없습니다.");
       console.error("선택된 게시글이 없습니다.");
     }
   }
@@ -158,45 +177,8 @@ deleteBtn.addEventListener("click", async () => {
 
 // 수정 버튼 이벤트 리스너
 const modifyBtn = document.querySelector(".modifyBtn");
-modifyBtn.addEventListener("click", () => {
-  const modal = document.getElementById("modal");
-  const docId = modal.getAttribute("data-id");
-  const titleElement = modal.querySelector(".modal-title");
-  const contentElement = modal.querySelector(".modal-content");
-
-  if (docId) {
-    const newTitle = prompt("새 제목을 입력하세요:", titleElement.textContent);
-    const newContent = prompt(
-      "새 내용을 입력하세요:",
-      contentElement.textContent
-    );
-
-    if (newTitle !== null && newContent !== null) {
-      // Firestore에서 게시글을 수정합니다.
-      db.collection("board")
-        .doc(docId)
-        .update({
-          title: newTitle,
-          content: newContent,
-        })
-        .then(() => {
-          console.log("게시글이 성공적으로 수정되었습니다.");
-
-          // DOM에서 게시글 제목과 내용을 업데이트합니다.
-          titleElement.textContent = newTitle;
-          contentElement.textContent = newContent;
-
-          const boardRow = document.querySelector(`tr[data-id="${docId}"]`);
-          if (boardRow) {
-            boardRow.children[1].textContent = newTitle;
-          }
-        })
-        .catch((error) => {
-          console.error("게시글을 수정하는 데 오류가 발생하였습니다: ", error);
-        });
-    }
-  } else {
-    console.error("문서를 찾을 수 없습니다.");
+modifyBtn.addEventListener("click", async () => {
+  if (confirm("정말 이 내용대로 수정 하시겠습니까?")) {
   }
 });
 
@@ -270,13 +252,12 @@ updateBtn.addEventListener("click", async function (e) {
 
     // 화면에 추가된 데이터를 표시합니다.
     const tableTag = document.querySelector("table");
-    tableTag.firstElementChild.insertAdjacentHTML(
-      "beforeend",
+    tableTag.lastElementChild.insertAdjacentHTML(
+      "afterbegin",
       `
       <tr data-id=${docId}>
       <td class="name">${addObj.name}</td>
       <td class="title">${addObj.title}</td>
-      <td class="content">${addObj.content}</td>
       <td class="date">${addObj.date}</td>
       </tr>
       `

@@ -107,7 +107,7 @@
                 <th>작성일</th>
               </tr>
             </thead>
-            <tbody></tbody>
+            <tbody id="tbody"></tbody>
           </table>
         </div>
       </form>
@@ -127,6 +127,24 @@
           </div>
           <div class="ct">
             <div class="modal-content"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 수정 모달 창 -->
+    <div id="modifyModal" class="dialog">
+      <div class="tb">
+        <div class="inner" style="max-width: 800px">
+          <div class="top">
+            <textarea id="modifyContent" class="modal-title"></textarea>
+            <div class="functions">
+              <a id="modifyBtn" class="modifyBtn">수정</a>
+              <a href="#" class="closeBtn">취소</a>
+            </div>
+          </div>
+          <div class="ct">
+            <textarea id="modifyContent" class="modal-content" rows="5"></textarea>
           </div>
         </div>
       </div>
