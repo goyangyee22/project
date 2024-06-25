@@ -200,12 +200,6 @@ createBtn.addEventListener("click", async () => {
   createModal.style.display = "block";
 });
 
-// 작성 모달 창에서 취소 버튼을 누를 시 원래 페이지로 돌아갑니다.
-const closeCreateBtn = document.querySelector(".closeCreateBtn");
-closeCreateBtn.addEventListener("click", () => {
-  const createModal = document.querySelector("#createModal");
-  createModal.style.display = "none";
-})
 // (밑에 주석 혹시 몰라서 주석처리 해 놨어요)
 // const updateBtn = document.getElementById("updateBtn");
 // updateBtn.addEventListener("click", async function (e) {
@@ -279,3 +273,10 @@ closeCreateBtn.addEventListener("click", () => {
 //     console.error("Error adding document: ", error);
 //   }
 // });
+
+// 작성 모달 창에서 취소 버튼을 누를 시 원래 페이지로 돌아갑니다.
+const closeCreateBtn = document.querySelector(".closeCreateBtn");
+closeCreateBtn.addEventListener("click", () => {
+  const createModal = document.querySelector("#createModal");
+  createModal.style.display = "none";
+});
