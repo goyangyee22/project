@@ -569,20 +569,33 @@ gap: .5rem;
 }
 .Supplies{padding-top: 2.5rem;}
 .All-Supplies ul,li{padding: 0;}
+
+.common-main li{padding: 0  0 0 .5rem;}
 .common-title{margin: 1rem 0;
-font-size: 24px;}
+font-size: 1rem;}
 .common-main{display: grid;
 grid-template-columns: 1fr 1fr 1fr;
-font-size: 1.5rem;}
-.all-1{height: 21.875rem;}
+font-size: 1rem;}
+.common-1{display: grid;
+grid-template-columns: 1fr 1fr;}
+.all-1{height: 18.75rem;}
 .facility-main{padding: 0;}
-.facility-main li{font-size: 1.5rem;}
+.facility-main li{font-size: 1rem;
+  margin: 0;
+padding:.5rem;}
 .times{padding-top: 2.5rem;}
-.refund{padding-top: 2.5rem;}
-.facility{padding-top: 2.5rem;}
-.facility-main > li > .fa-solid{padding: .5rem 0;}
-.mapst{padding-top: 2.5rem;}
+.times td,th{font-size: 1rem;}
 
+.refund{padding-top: 2.5rem;}
+.refund-main li{font-size: 1rem;
+margin: 0;padding-top: .5rem;}
+.facility{padding-top: 2.5rem;}
+.facility-main > li > .fa-solid{padding: .5rem 0;
+font-size: 1rem;}
+
+.mapst{padding-top: 2.5rem;}
+.mapst span{font-size: 1rem;}
+.hover-text{font-size: 1rem;}
 }
 
 
