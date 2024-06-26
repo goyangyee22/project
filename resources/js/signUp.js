@@ -1,12 +1,7 @@
 import {
-  app,
-  // db,
   dbService,
-  storageService,
   addDatas,
   getDatas,
-  updateDatas,
-  deleteDatas,
 } from "../../firebase.js";
 import {
   collection,
