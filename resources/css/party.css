@@ -5,20 +5,22 @@
 
 /* 테블릿 */
 @media screen and (max-width: 1023px) {
-  body {
+  /* body {
     width: 100%;
-  }
+  } */
   #detail-wrap.wrap {
     width: 100%;
     display: block;
     /* padding: 0; */
   }
-
+  .wrap .detail-hero {
+    width: 100%;
+  }
   #party .detail-container {
     width: 100%;
   }
   body #party {
-    width: 100%;
+    /* width: 100%; */
   }
   body footer {
     /* width: ; */
@@ -32,16 +34,16 @@
   .wrap .detail-hero {
     /* gap: 24px; */
     /* padding: 10px 78px; */
-    width: 100%;
+    /* width: 100%; */
     /* height: 100%; */
   }
   .swiper-slide img {
-    height: 100%;
+    /* height: 100%; */
   }
   .wrap .detail-container {
     /* display: none; */
-    padding: 0 8px;
-    width: 390px;
+    padding: 0 80px;
+    width: 100%;
   }
   .wrap .party-contents {
     display: block;
@@ -104,6 +106,9 @@
   .QnA-num p {
     font-size: 1rem;
   }
+  footer .footer-sns {
+    width: 100%;
+  }
 }
 /* 테블릿 */
 
@@ -113,29 +118,21 @@
     display: block;
     padding: 0;
   }
-  body .detail-container {
-    width: 100px;
+  .wrap .detail-container {
+    /* display: none; */
+    padding: 0 12px;
+    width: 100%;
   }
-
-  /* .swiper {
-    height: 100px;
+  /* .detail-container {
+    padding: 50px;
   } */
-  .detail-hero .swiper-wrapper {
-    /* height: 100px; */
-  }
-  .swiper-slide img {
-    /* height: 100px; */
-  }
-  .detail-hero img {
-    /* height: 500px; */
-  }
+
   .swiper-slide-active {
     width: 100px;
     /* height: 100px; */
   }
   .detail-hero {
-    padding: 10px;
-    /* width: 1007px; */
+    padding-top: 60px;
   }
   body .wrap {
     padding: 0 100px;
@@ -152,9 +149,6 @@
     display: block;
     font-size: 1rem;
   }
-  .wrap .result {
-    /* padding: 10px; */
-  }
 
   .result .party-menu {
     padding: 0;
@@ -165,13 +159,6 @@
   }
   .party-menu a {
     font-size: 1rem;
-  }
-  .result #map {
-    width: 10rem;
-    height: 300px;
-  }
-  .result .map-copy-text {
-    font-size: 0.8rem;
   }
   .text-list h3,
   span,
@@ -200,8 +187,19 @@
   .none span {
     font-size: 0.7rem;
   }
-  .map-copy-main .map-copy-text {
+  .result #map {
+    width: 10rem;
+    height: 300px;
+  }
+  .result .map-copy-text {
+    font-size: 1rem;
     width: 200px;
+  }
+  .detail-container .map-copy-main {
+    width: 100%;
+  }
+  .map-copy-main img {
+    width: 100%;
   }
   .map-copy-main .copy-message {
     left: 180px;
@@ -210,6 +208,9 @@
     width: 50px;
     height: 50px;
   }
+  .QnA .guest-name {
+    width: 100%;
+  }
   .QnA .guest-img {
     width: 50px;
     height: 50px;
@@ -217,6 +218,56 @@
   .detail-container #map {
     width: 200px;
   }
+  .QnA-num {
+    width: 100%;
+  }
+  .review .guest-name {
+    width: 100%;
+  }
+  footer .footer-sns {
+    width: 100%;
+  }
+  /* dddddddddddddddd */
+  /* #detail-payment {
+    padding: 1rem 0.5rem;
+    gap: 1rem;
+  }
+  .fc .fc-daygrid-day-frame {
+    font-size: 1rem;
+  }
+  .pay-desc p {
+    font-size: 1.4rem;
+  }
+  .pay-hash .hash-item {
+    padding: 0 0.5rem;
+  }
+  .pay-caution h4 {
+    font-size: 1.2rem;
+    padding: 0;
+  }
+  .caution-desc a {
+    font-size: 1rem;
+  }
+  .caution-desc p {
+    font-size: 1rem;
+  }
+  .pay-options {
+    display: grid;
+  }
+  .pay-option {
+    margin: 0;
+  }
+  .pay-option span {
+    font-size: 1rem;
+  }
+  #personnel {
+    width: 80px;
+    height: 2.5rem;
+    margin-top: 2rem;
+  }
+  .select-personnel {
+    display: block;
+  } */
 }
 /* 모바일 */
 

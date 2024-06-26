@@ -405,7 +405,7 @@ th {
 /* 지도 */
 .mapst {
   padding-top: 120px;
-  padding: 0 2.5rem;
+  /* padding: 0 2.5rem; */
 }
 #copy {
   color: #4b70f5;
@@ -676,7 +676,7 @@ th {
   }
 
   .mapst {
-    padding-top: 2.5rem;
+    padding: 2.5rem 0 2.5rem 2.5rem;
   }
   .mapst span {
     font-size: 1rem;
@@ -755,10 +755,6 @@ th {
   }
   .select-personnel {
     display: block;
-  }
-  .pay-btn.selected,
-  #personnel {
-    color: #000;
   }
 
   /* 메뉴보기 */
