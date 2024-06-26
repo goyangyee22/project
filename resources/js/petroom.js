@@ -106,6 +106,19 @@ function urlCopy() {
 
   copyText.style.display = "none"; 
 }
-document.getElementById();
-//
+
+
+//메뉴버튼 숨기기'
+
+const btn = document.getElementById('menu-b');
+const menu = document.querySelector('.menu');
+btn.addEventListener('click', function () {
+  menu.classList.add('show-menus');
+});
+
+const closeEl = document.querySelector('.close');
+closeEl.addEventListener('click', function () {
+  menu.classList.remove('show-menus');
+});
+
 mapRendering();
