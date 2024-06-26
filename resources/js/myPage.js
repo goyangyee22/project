@@ -1,9 +1,4 @@
-import {
-  getDatas,
-  updateDatas,
-  deleteDatas,
-  addDatas,
-} from '../../firebase.js';
+import { getDatas, updateDatas, deleteDatas } from '../../firebase.js';
 
 const userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
 if (!userInfo) {
@@ -68,8 +63,6 @@ async function getMembers() {
 // section 이동
 const settingBtns = document.querySelectorAll('.setting-btn');
 const sections = document.querySelectorAll('section');
-
-console.log(sections);
 
 settingBtns.forEach((link) => {
   link.addEventListener('click', function (e) {
@@ -141,6 +134,79 @@ changeBtn.addEventListener('click', async function () {
     console.log(error);
   }
 });
+
+// 결제기록
+async function getPayment() {
+  try {
+    const snapshot = await getDatas('payment');
+
+    let paymentData;
+
+    snapshot.forEach((doc) => {
+      const data = doc.data();
+      if (data.buyer.id === userInfo.id) {
+        paymentData = data;
+      }
+    });
+    if (paymentData) {
+      const { personnel, reservationDate, reservationTime, room } =
+        paymentData.appointment;
+      const { name, phone } = paymentData.buyer;
+      const { amount, cashReceipts, dateOrdered, method } = paymentData.order;
+
+      const reservationInfo = document.querySelector('.reservation-info');
+      const paymentInfo = document.querySelector('.payment-info');
+
+      reservationInfo.innerHTML = `
+        <table class="table caption-top">
+          <caption>예약정보</caption>
+          <tbody>
+            <tr>
+              <th scope="row">예약자명</th>
+              <td>${name}</td>
+              <th>예약자 연락처</th>
+              <td>${phone}</td>
+            </tr>
+            <tr>
+              <th scope="row">예약날짜</th>
+              <td>${reservationDate}</td>
+              <th>예약시간</th>
+              <td>${reservationTime}</td>
+            </tr>
+            <tr>
+              <th scope="row">예약공간</th>
+              <td>${room}</td>
+              <th>예약인원</th>
+              <td>${personnel}명</td>
+            </tr>
+          </tbody>
+        </table>
+      `;
+      paymentInfo.innerHTML = `
+        <table class="table caption-top">
+          <caption>결제정보</caption>
+          <tbody>
+            <tr>
+              <th scope="row">결제일</th>
+              <td>${dateOrdered}</td>
+              <th>결제수단</th>
+              <td>${method}</td>
+            </tr>
+            <tr>
+              <th scope="row">결제금액</th>
+              <td>${amount}</td>
+              <th>현금영수증</th>
+              <td>${cashReceipts}</td>
+            </tr>
+          </tbody>
+        </table>
+      `;
+    }
+  } catch (err) {
+    console.log(err);
+  }
+}
+getPayment();
 
 // 회원탈퇴
 const withdrawalBtn = document.getElementById('withdrawal-btn');
