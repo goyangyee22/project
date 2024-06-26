@@ -552,12 +552,19 @@ left: 60%;
 }
 #map{width: 100%;
 height: 400px;}
+/* 메뉴보기 */
+.menu-main{display: none;}
 /* 태블릿 */
-@media screen and (max-width: 1023px){
-  .wrap{padding: 0 2rem;}
+@media screen and (max-width: 797px){
+  .wrap{padding: 0 2rem;
+ }
 .pet-contents{width: 100%;}
 .pet-detail{display: block;}
-.More ul{font-size: 5px;}
+
+.More ul{font-size: 1rem;
+display: grid;
+grid-template-columns: repeat(5,1fr);
+gap: .5rem;}
 .infor-title{font-size: 2rem;}
 .spaceintroduction{font-size: 1rem;}
 .space{padding-top: 2.5rem;}
@@ -604,7 +611,6 @@ font-size: 1rem;}
 .hover-text{font-size: 1rem;
 }
 
-
 #map{width: 100%;
 height: 200px;}
 .copyMessage{position: absolute;
@@ -618,8 +624,8 @@ top: 0;
 .customer{display: block;}
 .name{font-size: 1.5rem;}
 
-.room-main{width: 100%;
-}
+
+/* }.room-main{width: 100%; */
 
 /* 예약내용 */
 #detail-payment{padding: 1rem .5rem;
@@ -643,11 +649,79 @@ margin: 0;}
 }
 .select-personnel{display: block;}
 .pay-btn.selected,#personnel{color: #000;}
+
+/* 메뉴보기 */
+
+.room-main{display: none;}
+/* .menu-main button{display: block;
+} */
+.menu-main{
+  /* position: absolute; */
+
+  display: block;
+  margin: 32px auto;
+  padding: 16px 32px;
+  font-size: 24px;
+
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+li {
+  list-style: none;
+}
+
+/* layout */
+/* .menu-main{  display: block; */
+
+.menu-main button {
+  border: none;
+  font-size:1.5rem;
+  background-color: pink;
+  width: 150px;
+}
+
+.menu {
+  position: absolute;
+  background-color: rgba(252, 249, 249, 0.5);
+  backdrop-filter: blur(10px);
+  border-radius: 2rem;
+  bottom: 0;
+  left: -400px;
+  margin: 24px;
+  padding: 24px;
+  background-color: transparent;
+  transition: 0.3s;
+}
+
+.show-menus {
+  left: 0;
+}
+
+.menu li {
+  margin-bottom: 8px;
+  padding: 16px;
+  /* border: 1px solid #000; */
+}
+
+.room{
+  margin-top: .5rem;
+  /* width: 250px; */
+  height: 100%;
+  display: block;
+  padding: 0 .5rme;
+}
+.room li{font-size: 1rem;
+  padding: 0;
 }
 
 
 
 
+
+}
 
 /* .More{width: 100%;
 height: 100%;padding: 0;
