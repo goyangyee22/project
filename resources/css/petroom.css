@@ -626,11 +626,12 @@ top: 0;
 gap: 1rem;}
 .fc .fc-daygrid-day-frame{font-size: 1rem;
 }
+.pay-desc p{font-size: 1.4rem;}
 .pay-hash .hash-item{padding: 0 .5rem;}
-/* .pay-hash{display: grid;
-grid-template-columns: 1fr 1fr;} */
-.pay-caution h4{font-size: 1.5rem;}
+.pay-caution h4{font-size: 1.2rem;
+padding: 0;}
 .caution-desc a{font-size: 1rem;}
+.caution-desc p{font-size:1rem}
 .pay-options{display: grid;} 
 .pay-option{
 margin: 0;} 
@@ -641,6 +642,7 @@ margin: 0;}
   margin-top: 2rem;
 }
 .select-personnel{display: block;}
+.pay-btn.selected,#personnel{color: #000;}
 }
 
 
