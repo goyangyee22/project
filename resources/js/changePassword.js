@@ -1,14 +1,14 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
-import {
-  // app,
-  // db,
-  dbService,
-  storageService,
-  addDatas,
-  getDatas,
-  updateDatas,
-  deleteDatas,
-} from "../../firebase.js";
+// import {
+//   // app,
+//   // db,
+//   dbService,
+//   storageService,
+//   addDatas,
+//   getDatas,
+//   updateDatas,
+//   deleteDatas,
+// } from "../../firebase.js";
 import {
   getFirestore,
   doc,
