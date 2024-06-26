@@ -190,22 +190,28 @@ modifyBtn.addEventListener("click", async (e) => {
   const currentUser = JSON.parse(sessionStorage.getItem("userInfo"));
   const currentUserDocId = currentUser.docId;
 
-  if(selectedRow){
+  if (selectedRow) {
     // 선택된 행에서 게시글의 docId를 가져옵니다.
     const postDocId = selectedRow.getAttribute("data-id");
     console.log("선택된 게시글의 docId: ", postDocId);
 
-    if(postDocId){
-      try{
+    if (postDocId) {
+      try {
         const docRef = firestoreDoc(db, "board", postDocId);
         const docSnapshot = await getDoc(docRef);
 
-        if(docSnapshot.exists()){
+        if (docSnapshot.exists()) {
           const postData = docSnapshot.data();
           const postAuthorDocId = postData.userDocId;
 
-          /
+          // 현재 사용자의 docId와 게시글 작성자의 docId를 비교하여 권한을 확인합니다.
+          if (currentUserDocId !== postAuthorDocId) {
+            alert("수정 권한이 없습니다.");
+            return false;
+          }
         }
+      } catch (error) {
+        console.error("게시글을 가져오는 동안 오류가 발생했습니다.", error);
       }
     }
   }
@@ -276,7 +282,7 @@ modifySubmitBtn.addEventListener("click", async () => {
       titleElement.textContent = newData.title;
 
       alert("게시글이 성공적으로 수정되었습니다.");
-      
+
       // 게시글이 수정되면 수정 모달 창을 닫습니다.
       modifyModal.style.display = "none";
     } catch (error) {
@@ -300,7 +306,6 @@ const createBtn = document.getElementById("createBtn");
 createBtn.addEventListener("click", async (e) => {
   // 이벤트 전파를 방지합니다.
   e.stopPropagation();
-  alert("화면을 구축하는 중입니다!");
 
   const createModal = document.getElementById("createModal");
   createModal.style.display = "block";
