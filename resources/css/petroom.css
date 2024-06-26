@@ -74,8 +74,9 @@ section {
   top: 0;
   font-size: 1.5rem;
   color: #ff8080;
-  background-color: rgba(252, 249, 249, 0.2);
-  backdrop-filter: blur(20px);
+  background-color: rgba(252, 249, 249);
+  z-index: 2;
+  /* backdrop-filter: blur(20px); */
 }
 .More > ul > li > a:hover {
   color: #ffb4b4;
@@ -581,6 +582,10 @@ th {
   }
   #pet {
     padding-bottom: 0;
+  }
+  .More {
+    /* backdrop-filter: blur(50px); */
+    background-color: rgba(252, 249, 249);
   }
   .More ul {
     font-size: 1rem;
