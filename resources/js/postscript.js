@@ -107,7 +107,6 @@ tableTag.addEventListener("click", async function (e) {
 const deleteBtn = document.querySelector(".deleteBtn");
 deleteBtn.addEventListener("click", async () => {
   if (confirm("정말로 삭제 하시겠습니까?")) {
-    
     // 현재 sessionStorage에 로그인 되어있는 사용자의 정보를 가져옵니다.
     const currentUser = JSON.parse(sessionStorage.getItem("userInfo"));
     const currentUserDocId = currentUser.docId;
@@ -124,7 +123,6 @@ deleteBtn.addEventListener("click", async () => {
           const docRef = firestoreDoc(db, "board", postDocId);
           const docSnapshot = await getDoc(docRef);
           if (docSnapshot.exists()) {
-            
             // 게시글 데이터에서 작성자의 docId를 가져옵니다.
             const postData = docSnapshot.data();
             const postAuthorDocId = postData.userDocId;
@@ -194,16 +192,14 @@ closeBtn.addEventListener("click", () => {
   modal.style.display = "none";
 });
 
-// 페이지를 로드하면 게시글을 불러옵니다.
-window.onload = () => {
-  getBoard();
-};
-
 // 게시글을 작성하는 함수입니다.
 const createBtn = document.getElementById("createBtn");
-createBtn.addEventListener("click", async () => {
+createBtn.addEventListener("click", async (e) => {
   const createModal = document.querySelector("#createModal");
   createModal.style.display = "block";
+
+  // 이벤트 전파를 방지합니다.
+  e.stopPropagation();
 });
 
 // (밑에 주석 혹시 몰라서 주석처리 해 놨어요 이대로도 잘 되면 지우셔도 됩니다.)
@@ -363,3 +359,8 @@ closeCreateBtn.addEventListener("click", () => {
   const createModal = document.querySelector("#createModal");
   createModal.style.display = "none";
 });
+
+// 페이지를 로드하면 게시글을 불러옵니다.
+window.onload = () => {
+  getBoard();
+};
