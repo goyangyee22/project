@@ -1,32 +1,19 @@
-@media screen and (max-width: 1023px) {
-  * {
-    padding: 0;
-    margin: 0;
+@media screen and (max-width: 767px) {
+  .wrap {
+    padding: 0 2rem;
+  }
+  .pet-contents {
+    width: 100%;
+  }
+  .pet-detail {
+    display: block;
   }
   #pet {
     padding-bottom: 0;
   }
-  .wrap {
-    padding: 0 1rem;
-  }
   .More {
     /* backdrop-filter: blur(50px); */
     background-color: rgba(252, 249, 249);
-  }
-  .pet-contents {
-    width: 55%;
-  }
-  .pet-detail {
-    padding: 0;
-    display: block;
-  }
-  .room-main {
-    gap: 1rem;
-    width: 40%;
-  }
-  .room {
-    height: 100%;
-    padding: 0.5rem;
   }
   .More ul {
     font-size: 1rem;
@@ -35,22 +22,28 @@
     gap: 0.5rem;
   }
   .infor-title {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
   .spaceintroduction {
-    padding: 1rem;
+    font-size: 1rem;
   }
   .space {
     padding-top: 2.5rem;
   }
   .spaceintroduction p {
-    font-size: 1.5rem;
+    font-size: 1rem;
   }
 
   .iconsort p {
     font-size: 1rem;
   }
-
+  .main-icon {
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 2rem;
+    gap: 0.5rem;
+  }
   .Supplies {
     padding-top: 2.5rem;
   }
@@ -60,16 +53,16 @@
   }
 
   .common-main li {
-    padding: 0 0 0 1rem;
+    padding: 0 0 0 0.5rem;
   }
   .common-title {
     margin: 1rem 0;
-    font-size: 2rem;
+    font-size: 1rem;
   }
   .common-main {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    font-size: 1.5rem;
+    font-size: 1rem;
   }
   .common-1 {
     display: grid;
@@ -148,6 +141,8 @@
     font-size: 1.5rem;
   }
 
+  /* }.room-main{width: 100%; */
+
   /* 예약내용 */
   #detail-payment {
     padding: 1rem 0.5rem;
@@ -188,5 +183,102 @@
   }
   .select-personnel {
     display: block;
+  }
+
+  /* 메뉴보기 */
+
+  .room-main {
+    display: none;
+  }
+  /* .menu-main button{display: block;
+  } */
+  .menu-main {
+    /* position: absolute; */
+
+    display: block;
+    margin: 32px auto;
+    padding: 16px 32px;
+    font-size: 24px;
+    /* width: 100%; */
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  li {
+    list-style: none;
+  }
+  #menu-b {
+    display: block;
+    color: #d37676;
+  }
+  #menu-b:hover {
+    color: #ff8080;
+  }
+  /* layout */
+
+  .menu-main button {
+    border: none;
+    font-size: 1.5rem;
+    background-color: pink;
+
+    width: 150px;
+    /* width: 100%; */
+  }
+
+  #Space-introduction {
+    position: relative;
+    padding: 0 2.5rem;
+  }
+
+  #menu-b {
+    border: none;
+    font-size: 1.5rem;
+    background-color: #ffefef;
+    border-radius: 0.5rem;
+    width: 30px;
+    height: 150px;
+    position: fixed;
+    top: 600px;
+    left: 0;
+    /* width: 100%; */
+  }
+
+  .menu {
+    position: fixed;
+    bottom: 0;
+    left: -400px;
+    margin: 1rem;
+    padding: 1rem;
+    background-color: transparent;
+    transition: 0.3s;
+    z-index: 1;
+  }
+  .close {
+    text-align: end;
+  }
+  .show-menus {
+    left: 10%;
+    border-radius: 1.5rem;
+    background-color: rgb(252, 240, 241);
+  }
+
+  .menu li {
+    margin-bottom: 8px;
+    padding: 16px;
+    /* border: 1px solid #000; */
+  }
+
+  .room {
+    margin-top: 0.5rem;
+    /* width: 250px; */
+    height: 100%;
+    display: block;
+    padding: 0 0.5rme;
+  }
+  .room li {
+    font-size: 1rem;
+    padding: 0;
   }
 }
