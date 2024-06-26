@@ -1,14 +1,9 @@
-// "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
-// "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
-import { dbService, deleteDocument } from "../../firebase.js";
+import { dbService } from "../../firebase.js";
 import {
   getFirestore,
-  orderBy,
   collection,
   addDoc,
-  query,
-  where,
   getDocs,
   getDoc,
   deleteDoc,
@@ -112,6 +107,7 @@ tableTag.addEventListener("click", async function (e) {
 const deleteBtn = document.querySelector(".deleteBtn");
 deleteBtn.addEventListener("click", async () => {
   if (confirm("정말로 삭제 하시겠습니까?")) {
+    
     // 현재 sessionStorage에 로그인 되어있는 사용자의 정보를 가져옵니다.
     const currentUser = JSON.parse(sessionStorage.getItem("userInfo"));
     const currentUserDocId = currentUser.docId;
@@ -128,6 +124,7 @@ deleteBtn.addEventListener("click", async () => {
           const docRef = firestoreDoc(db, "board", postDocId);
           const docSnapshot = await getDoc(docRef);
           if (docSnapshot.exists()) {
+            
             // 게시글 데이터에서 작성자의 docId를 가져옵니다.
             const postData = docSnapshot.data();
             const postAuthorDocId = postData.userDocId;
