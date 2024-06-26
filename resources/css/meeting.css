@@ -25,7 +25,9 @@ header {
 
 .detail-slide {
   margin-bottom: 8px;
+  height: 430px;
 }
+
 .meet-contents.wrap {
   position: relative;
   display: flex;
@@ -63,7 +65,7 @@ header {
 }
 
 #information {
-  padding: 60px 0;
+  padding: 60px 0px;
   display: block;
 }
 
@@ -177,6 +179,7 @@ header {
   /* position: relative;
   top: 0; */
   display: flex;
+  padding-top: 100px;
   justify-content: space-between;
 }
 
@@ -267,12 +270,20 @@ header {
   height: 550px;
 }
 
-.menu_title {
-  font-size: 40px;
+.one-list {
+  padding: 30px 20px;
 }
 
-.menu_text {
+.menu_title {
+  font-size: 40px;
+  border-bottom: 2px solid var(--accent-color);
+  padding: 10px 0px;
+  width: 16.5%;
+}
+
+.menu-text {
   font-size: 24px;
+  padding: 30px 20px;
 }
 
 .date {
@@ -290,7 +301,7 @@ header {
   top: 24px;
   display: flex;
   flex-direction: column;
-  gap: 1px;
+  gap: 15px;
   width: 25%;
 }
 
@@ -366,7 +377,7 @@ header {
 }
 
 #information ol {
-  padding: 0;
+  padding: 30px 20px;
 }
 
 .meeting1 {
