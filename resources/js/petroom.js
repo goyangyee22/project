@@ -47,7 +47,7 @@ var swiper2 = new Swiper('.detail-slide', {
 
 function petroom(room) {
   console.log(room);
-  const gallery = document.querySelector(".room-body");
+  const gallery = document.querySelector('.room-body');
 
   let createImgStr = `
                       <div class="swiper petroom">
@@ -68,7 +68,7 @@ function petroom(room) {
                   `;
   gallery.innerHTML = createImgStr;
 
-  var swiper1 = new Swiper(".petroom", {
+  var swiper1 = new Swiper('.petroom', {
     slidesPerView: 1,
     spaceBetween: 30,
     loop: true,
@@ -78,35 +78,33 @@ function petroom(room) {
     // },
     freeMode: true,
     pagination: {
-      el: ".swiper-pagination",
+      el: '.swiper-pagination',
       clickable: true,
     },
   });
 }
 // 주소 복사하기
 function urlCopy() {
-  var copyText = document.getElementById("text");
-  copyText.style.display = "block"; 
+  var copyText = document.getElementById('text');
+  copyText.style.display = 'block';
   copyText.select();
-  copyText.setSelectionRange(0, 99999); 
+  copyText.setSelectionRange(0, 99999);
 
   navigator.clipboard.writeText(copyText.value).then(
     function () {
-      
-      var copyMessage = document.getElementById("copyMessage");
-      copyMessage.classList.add("show");
+      var copyMessage = document.getElementById('copyMessage');
+      copyMessage.classList.add('show');
       setTimeout(function () {
-        copyMessage.classList.remove("show");
+        copyMessage.classList.remove('show');
       }, 1000);
     },
     function (err) {
-      console.error("Failed to copy: ", err);
+      console.error('Failed to copy: ', err);
     }
   );
 
-  copyText.style.display = "none"; 
+  copyText.style.display = 'none';
 }
-
 
 //메뉴버튼 숨기기'
 
