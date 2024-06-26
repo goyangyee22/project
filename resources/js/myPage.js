@@ -85,12 +85,6 @@ settingBtns.forEach((link) => {
   });
 });
 
-// document
-//   .querySelector('input[type="checkbox"]')
-//   .addEventListener('change', function (e) {
-//     console.log(e.target.checked);
-//   });
-
 // 정보수정
 const pwEx = /^[0-9A-Za-z\d$@$!%*?&]{4,16}/g;
 const phoneEx = /^\d{3}-\d{4}-\d{4}$/;
@@ -151,6 +145,12 @@ changeBtn.addEventListener('click', async function () {
 // 회원탈퇴
 const withdrawalBtn = document.getElementById('withdrawal-btn');
 withdrawalBtn.addEventListener('click', async function () {
+  // 체크박스에 체크가 되어있지 않으면 회원탈퇴를 할 수 없습니다.
+  const withdrawalCheckbox = document.getElementById('withdrawal-checkbox');
+  if (!withdrawalCheckbox.checked) {
+    alert('안내사항에 동의하여야 회원 탈퇴를 할 수 있습니다.');
+    return false;
+  }
   // 삭제를 하기 전 확인 메세지를 표시합니다.
   if (confirm('정말 회원 탈퇴 하시겠습니까?')) {
     try {
