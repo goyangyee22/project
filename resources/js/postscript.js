@@ -86,7 +86,7 @@ tableTag.addEventListener("click", async function (e) {
         const modalTitleElement = document.querySelector(".modal-title");
         const modalContentElement = document.querySelector(".modal-content");
 
-        // db에서 가져온 title, content
+        // db에서 가져온 title, content입니다.
         modalTitleElement.textContent = title;
         modalContentElement.textContent = content;
 
@@ -173,33 +173,70 @@ deleteBtn.addEventListener("click", async () => {
 // 수정 버튼 이벤트 리스너
 const modifyBtn = document.querySelector(".modifyBtn");
 modifyBtn.addEventListener("click", async (e) => {
+  e.stopPropagation();
+  const createModal = document.getElementById("createModal");
   const modifyModal = document.getElementById("modifyModal");
 
+  // 수정 모달 창을 띄우기 위해 현재 열려 있는 작성 모달 창을 닫습니다.
+  createModal.style.display = "none";
+
   // .selected 되어있는 행의 데이터를 가져옵니다.
-  const selectedRow = document.querySelector("tr.selected");
   if (!selectedRow) {
     alert("수정할 게시글을 선택해주시기 바랍니다.");
     return false;
   }
 
-  // 선택된 행의 데이터에서 제목과 내용을 가져와 모달에 넣습니다.
-  const titleElement = selectedRow.querySelector(".title");
-  const contentElement = selectedRow.querySelector(".content");
+  const selectedPost = selectedRow.getAttribute("data-id");
+  if (!selectedPost) {
+    console.error("게시글 ID를 찾을 수 없습니다.");
+    return false;
+  }
 
-  const modifyTitleInput = modifyModal.querySelector(".modifyTitle");
-  const modifyContentInput = modifyModal.querySelector(".modifyContent");
+  try {
+    const docRef = firestoreDoc(db, "board", selectedPost);
+    const docSnapshot = await getDoc(docRef);
 
-  modifyTitleInput.value = titleElement.textContent.trim();
-  modifyContentInput.value = contentElement.textContent.trim();
+    if (docSnapshot.exists()) {
+      const postData = docSnapshot.data();
+      const postTitle = postData.title;
+      const postContent = postData.content;
+
+      // 수정 모달의 입력 필드에 현재 게시글의 제목과 내용을 설정합니다.
+      const modifyTitleInput = modifyModal.querySelector(".modifyTitle");
+      const modifyContentInput = modifyModal.querySelector(".modifyContent");
+
+      modifyTitleInput.value = postTitle;
+      modifyContentInput.value = postContent;
+
+      // Firestor에서 가져온 content 값을 .content 요소에 할당합니다.
+      const contentElement = selectedRow.querySelector(".content");
+      if (contentElement) {
+        contentElement.textContent = postContent;
+      } else {
+        console.error(".content 요소를 찾을 수 없습니다.");
+      }
+
+      // Firestore에서 가져온 title 값을 .title 요소에 할당합니다.
+      const titleElement = selectedRow.querySelector(".title");
+      if (titleElement) {
+        titleElement.textContent = postTitle;
+      } else {
+        console.error(".title 요소를 찾을 수 없습니다.");
+      }
+    } else {
+      console.error("해당 게시글을 찾을 수 없습니다.");
+    }
+  } catch (error) {
+    console.error("게시글을 가져오는 동안 오류가 발생했습니다.", error);
+  }
 
   // 수정 모달 창을 표시합니다.
   modifyModal.style.display = "block";
-  e.stopPropagation();
 });
 
 // 수정이 완료되면 수정 버튼을 눌러 저장합니다.
-const closeModifyBtn = document.querySelector(".closeModifyBtn");
-closeModifyBtn.addEventListener("click", async () => {
+const modifySubmitBtn = document.querySelector(".modifySubmitBtn");
+modifySubmitBtn.addEventListener("click", async () => {
   const modifyModal = document.querySelector("#modifyModal");
 
   // 수정된 제목과 내용을 불러옵니다.
@@ -232,7 +269,14 @@ closeModifyBtn.addEventListener("click", async () => {
       const contentElement = selectedRow.querySelector(".content");
 
       titleElement.textContent = newData.title;
-      contentElement.textContent = newData.content;
+      if (contentElement) {
+        contentElement.textContent = newData.content;
+      } else {
+        const newContentElement = document.createElement("td");
+        newContentElement.classList.add("content");
+        newContentElement.textContent = newData.content;
+        selectedRow.appendChild(newContentElement);
+      }
 
       alert("게시글이 성공적으로 수정되었습니다.");
 
@@ -257,9 +301,9 @@ closeBtn.addEventListener("click", () => {
 // 게시글을 작성하는 함수입니다.
 const createBtn = document.getElementById("createBtn");
 createBtn.addEventListener("click", async (e) => {
-  alert("화면을 구축하는 중입니다!");
   // 이벤트 전파를 방지합니다.
   e.stopPropagation();
+  alert("화면을 구축하는 중입니다!");
 
   const createModal = document.getElementById("createModal");
   createModal.style.display = "block";
@@ -303,13 +347,13 @@ submitBtn.addEventListener("click", async () => {
 
   try {
     // Firebase에 데이터를 추가합니다.
-    const docRef = await addDoc(collection(dbService, "board"), addObj);
+    const docRef = await addDoc(collection(db, "board"), addObj);
 
     // 추가된 문서의 아이디입니다.
     const docId = docRef.id;
 
     // 화면에 추가된 데이터를 표시합니다.
-    const tableTag = document.querySelector("table");
+    const tableTag = document.querySelector("#table");
     tableTag.lastElementChild.insertAdjacentHTML(
       "afterbegin",
       `
@@ -347,6 +391,13 @@ const closeCreateBtn = document.querySelector(".closeCreateBtn");
 closeCreateBtn.addEventListener("click", () => {
   const createModal = document.querySelector("#createModal");
   createModal.style.display = "none";
+});
+
+// 수정 모달 창에서 취소 버튼을 누를 시 원래 페이지로 돌아갑니다.
+const closeModifyBtn = document.querySelector(".closeModifyBtn");
+closeModifyBtn.addEventListener("click", () => {
+  const modifyModal = document.querySelector("#modifyModal");
+  modifyModal.style.display = "none";
 });
 
 // 페이지를 로드하면 게시글을 불러옵니다.
