@@ -564,7 +564,8 @@ th {
   height: 400px;
 }
 /* 메뉴보기 */
-.menu-main {
+.menu-main,
+#menu-b {
   display: none;
 }
 /* 태블릿 */
@@ -779,13 +780,20 @@ th {
   li {
     list-style: none;
   }
-
+  #menu-b {
+    display: block;
+    color: #d37676;
+  }
+  #menu-b:hover {
+    color: #ff8080;
+  }
   /* layout */
 
   .menu-main button {
     border: none;
     font-size: 1.5rem;
     background-color: pink;
+
     width: 150px;
     /* width: 100%; */
   }
@@ -798,7 +806,8 @@ th {
   #menu-b {
     border: none;
     font-size: 1.5rem;
-    background-color: pink;
+    background-color: #ffefef;
+    border-radius: 0.5rem;
     width: 30px;
     height: 150px;
     position: fixed;
@@ -817,9 +826,12 @@ th {
     transition: 0.3s;
     z-index: 1;
   }
-
+  .close {
+    text-align: end;
+  }
   .show-menus {
     left: 10%;
+    border-radius: 1.5rem;
     background-color: rgb(252, 240, 241);
   }
 
