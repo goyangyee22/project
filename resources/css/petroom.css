@@ -74,8 +74,9 @@ section {
   top: 0;
   font-size: 1.5rem;
   color: #ff8080;
-  background-color: rgba(252, 249, 249, 0.2);
-  backdrop-filter: blur(20px);
+  background-color: rgba(252, 249, 249);
+  z-index: 2;
+  /* backdrop-filter: blur(20px); */
 }
 .More > ul > li > a:hover {
   color: #ffb4b4;
@@ -404,7 +405,7 @@ th {
 /* 지도 */
 .mapst {
   padding-top: 120px;
-  padding: 0 2.5rem;
+  /* padding: 0 2.5rem; */
 }
 #copy {
   color: #4b70f5;
@@ -582,6 +583,10 @@ th {
   #pet {
     padding-bottom: 0;
   }
+  .More {
+    /* backdrop-filter: blur(50px); */
+    background-color: rgba(252, 249, 249);
+  }
   .More ul {
     font-size: 1rem;
     display: grid;
@@ -671,7 +676,7 @@ th {
   }
 
   .mapst {
-    padding-top: 2.5rem;
+    padding: 2.5rem 0 2.5rem 2.5rem;
   }
   .mapst span {
     font-size: 1rem;
@@ -750,10 +755,6 @@ th {
   }
   .select-personnel {
     display: block;
-  }
-  .pay-btn.selected,
-  #personnel {
-    color: #000;
   }
 
   /* 메뉴보기 */

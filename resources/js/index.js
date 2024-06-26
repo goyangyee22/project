@@ -1,10 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
 import {
   getFirestore,
-  collection,
-  query,
-  where,
-  getDocs,
 } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
 
 // Firebase를 구성하는 정보

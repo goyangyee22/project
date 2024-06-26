@@ -180,49 +180,56 @@ modifyBtn.addEventListener("click", async (e) => {
   // 수정 모달 창을 띄우기 위해 현재 열려 있는 작성 모달 창을 닫습니다.
   createModal.style.display = "none";
 
-  // .selected 되어있는 행의 데이터를 가져옵니다.
-  if (!selectedRow) {
-    alert("수정할 게시글을 선택해주시기 바랍니다.");
-    return false;
-  }
-
   const selectedPost = selectedRow.getAttribute("data-id");
   if (!selectedPost) {
     console.error("게시글 ID를 찾을 수 없습니다.");
     return false;
   }
 
+  // 현재 sessionStorage에 로그인 되어있는 사용자의 정보를 가져옵니다.
+  const currentUser = JSON.parse(sessionStorage.getItem("userInfo"));
+  const currentUserDocId = currentUser.docId;
+
+  if (selectedRow) {
+    // 선택된 행에서 게시글의 docId를 가져옵니다.
+    const postDocId = selectedRow.getAttribute("data-id");
+    console.log("선택된 게시글의 docId: ", postDocId);
+
+    if (postDocId) {
+      try {
+        const docRef = firestoreDoc(db, "board", postDocId);
+        const docSnapshot = await getDoc(docRef);
+
+        if (docSnapshot.exists()) {
+          const postData = docSnapshot.data();
+          const postAuthorDocId = postData.userDocId;
+
+          // 현재 사용자의 docId와 게시글 작성자의 docId를 비교하여 권한을 확인합니다.
+          if (currentUserDocId !== postAuthorDocId) {
+            alert("수정 권한이 없습니다.");
+            return false;
+          }
+        }
+      } catch (error) {
+        console.error("게시글을 가져오는 동안 오류가 발생했습니다.", error);
+      }
+    }
+  }
   try {
     const docRef = firestoreDoc(db, "board", selectedPost);
     const docSnapshot = await getDoc(docRef);
 
     if (docSnapshot.exists()) {
-      const postData = docSnapshot.data();
-      const postTitle = postData.title;
-      const postContent = postData.content;
+      const data = docSnapshot.data();
+      const { title, content } = data;
 
       // 수정 모달의 입력 필드에 현재 게시글의 제목과 내용을 설정합니다.
       const modifyTitleInput = modifyModal.querySelector(".modifyTitle");
       const modifyContentInput = modifyModal.querySelector(".modifyContent");
 
-      modifyTitleInput.value = postTitle;
-      modifyContentInput.value = postContent;
-
-      // Firestor에서 가져온 content 값을 .content 요소에 할당합니다.
-      const contentElement = selectedRow.querySelector(".content");
-      if (contentElement) {
-        contentElement.textContent = postContent;
-      } else {
-        console.error(".content 요소를 찾을 수 없습니다.");
-      }
-
-      // Firestore에서 가져온 title 값을 .title 요소에 할당합니다.
-      const titleElement = selectedRow.querySelector(".title");
-      if (titleElement) {
-        titleElement.textContent = postTitle;
-      } else {
-        console.error(".title 요소를 찾을 수 없습니다.");
-      }
+      // db에서 가져온 title, content입니다.
+      modifyTitleInput.value = title;
+      modifyContentInput.value = content;
     } else {
       console.error("해당 게시글을 찾을 수 없습니다.");
     }
@@ -240,9 +247,13 @@ modifySubmitBtn.addEventListener("click", async () => {
   const modifyModal = document.querySelector("#modifyModal");
 
   // 수정된 제목과 내용을 불러옵니다.
-  const modifyTitleInput = document.querySelector("textarea[name='modifyTitle']").value;
-  const modifyContentInput = document.querySelector("textarea[name='modifyContent']").value;
-  console.log("제목: "+modifyTitleInput+"\n내용: "+modifyContentInput);
+  const modifyTitleInput = document.querySelector(
+    "textarea[name='modifyTitle']"
+  ).value;
+  const modifyContentInput = document.querySelector(
+    "textarea[name='modifyContent']"
+  ).value;
+  console.log("제목: " + modifyTitleInput + "\n내용: " + modifyContentInput);
 
   // 현재 선택된 행을 찾습니다.
   const selectedRow = document.querySelector("tr.selected");
@@ -254,43 +265,33 @@ modifySubmitBtn.addEventListener("click", async () => {
   const docRef = firestoreDoc(db, "board", postDocId);
   const docSnapshot = await getDoc(docRef);
 
-  // if (docSnapshot.exists()) {
-  //   try {
-  //     // 수정할 데이터입니다.
-  //     const newData = {
-  //       title: document.querySelector("textarea[name='modifyTitle']"),
-  //       content: document.querySelector("textarea[name='modifyContent']"),
-  //     };
-  //     console.log(newData);
+  if (docSnapshot.exists()) {
+    try {
+      // 수정할 데이터입니다.
+      const newData = {
+        title: modifyTitleInput,
+        content: modifyContentInput,
+      };
+      console.log(newData);
 
-  //     // Firestore에 문서를 업데이트 합니다.
-  //     await updateDocument(docRef, newData);
+      // Firestore에 문서를 업데이트 합니다.
+      await updateDocument("board", postDocId, newData);
 
-  //     // 화면에 변경사항을 저장합니다.
-  //     const titleElement = selectedRow.querySelector(".title");
-  //     const contentElement = selectedRow.querySelector(".content");
+      // 화면에 변경사항을 저장합니다.
+      const titleElement = selectedRow.querySelector(".title");
+      titleElement.textContent = newData.title;
 
-  //     titleElement.textContent = newData.title;
-  //     if (contentElement) {
-  //       contentElement.textContent = newData.content;
-  //     } else {
-  //       const newContentElement = document.createElement("td");
-  //       newContentElement.classList.add("content");
-  //       newContentElement.textContent = newData.content;
-  //       selectedRow.appendChild(newContentElement);
-  //     }
+      alert("게시글이 성공적으로 수정되었습니다.");
 
-  //     alert("게시글이 성공적으로 수정되었습니다.");
-
-  //     // 게시글이 수정되면 수정 모달 창을 닫습니다.
-  //     modifyModal.style.display = "none";
-  //   } catch (error) {
-  //     console.error("게시글을 수정하는 동안 오류가 발생했습니다: ", error);
-  //     alert("게시글을 수정하는 동안 오류가 발생했습니다. 다시 시도해 주세요.");
-  //   }
-  // } else {
-  //   alert("해당 게시글을 찾을 수 없습니다.");
-  // }
+      // 게시글이 수정되면 수정 모달 창을 닫습니다.
+      modifyModal.style.display = "none";
+    } catch (error) {
+      console.error("게시글을 수정하는 동안 오류가 발생했습니다: ", error);
+      alert("게시글을 수정하는 동안 오류가 발생했습니다. 다시 시도해 주세요.");
+    }
+  } else {
+    alert("해당 게시글을 찾을 수 없습니다.");
+  }
 });
 
 // 모달창 닫기 버튼을 클릭하면 모달 창을 닫습니다.
@@ -305,7 +306,6 @@ const createBtn = document.getElementById("createBtn");
 createBtn.addEventListener("click", async (e) => {
   // 이벤트 전파를 방지합니다.
   e.stopPropagation();
-  alert("화면을 구축하는 중입니다!");
 
   const createModal = document.getElementById("createModal");
   createModal.style.display = "block";
