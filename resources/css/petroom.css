@@ -417,6 +417,7 @@ padding-top: 120px;}
 .room-main {
   /* border: 1px solid pink; */
   background-color: #fff;
+  gap: 8px;
   position: sticky;
   display: flex;
   flex-direction: column;
@@ -620,7 +621,26 @@ top: 0;
 .room-main{width: 100%;
 }
 
-
+/* 예약내용 */
+#detail-payment{padding: 1rem .5rem;
+gap: 1rem;}
+.fc .fc-daygrid-day-frame{font-size: 1rem;
+}
+.pay-hash .hash-item{padding: 0 .5rem;}
+/* .pay-hash{display: grid;
+grid-template-columns: 1fr 1fr;} */
+.pay-caution h4{font-size: 1.5rem;}
+.caution-desc a{font-size: 1rem;}
+.pay-options{display: grid;} 
+.pay-option{
+margin: 0;} 
+.pay-option span{font-size: 1rem;} 
+#personnel{
+  width:80px;
+  height: 2.5rem;
+  margin-top: 2rem;
+}
+.select-personnel{display: block;}
 }
 
 
