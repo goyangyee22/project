@@ -14,6 +14,11 @@ header {
   position: static;
 }
 
+.menu,
+#show-options {
+  display: none;
+}
+
 .swiper .detail-hero {
   padding-top: 100px;
   background-color: #d2e3fd;
@@ -404,9 +409,50 @@ header {
 @media screen and (max-width: 1023px) {
   .meet-contents.wrap {
     display: block;
+    padding-top: 0;
   }
   .meet-details {
     width: 100%;
+  }
+  .menu,
+  #show-options {
+    display: block;
+  }
+
+  #show-options {
+    display: block;
+    position: absolute;
+    right: -5px;
+    margin: 5px auto;
+    padding: 4px 8px;
+    font-size: 15px;
+    border-radius: 4px;
+  }
+
+  .menu {
+    position: absolute;
+    top: 0;
+    right: -200px;
+    background-color: transparent;
+    transition: 0.3s;
+    z-index: 2;
+  }
+
+  .show-menus {
+    right: 0;
+  }
+
+  /* .menu li {
+    margin-bottom: 8px;
+    padding: 16px;
+    border: 1px solid #000;
+  } */
+  /* ------------------------------------------------ */
+  .show-menus i {
+    display: block;
+    margin: 32px auto;
+    padding: 16px 32px;
+    font-size: 24px;
   }
   #detail-wrap {
     padding: 40px;
@@ -469,23 +515,58 @@ header {
     padding: 1px 8px;
     border-radius: 10px;
   }
+  .swiper-slide img {
+    width: 100%;
+  }
+  .meeting-room {
+    display: none;
+  }
 }
-.swiper-slide img {
-  width: 100%;
-}
+
 /* media - mobile ----------------------------*/
 @media screen and (max-width: 767px) {
   /* width: 768px~992px; */
   .detail-hero {
     padding-bottom: 1rem;
   }
-  .meet-contents.wrap {
+  .menu,
+  #show-options {
     display: block;
   }
+  #show-options {
+    display: block;
+    position: absolute;
+    right: -5px;
+    margin: 5px 3px;
+    padding: 2px 3px;
+    font-size: 13px;
+    border-radius: 3px;
+  }
+  .menu {
+    position: absolute;
+    top: 0;
+    right: -200px;
+    background-color: transparent;
+    transition: 0.3s;
+    z-index: 2;
+  }
+  .show-menus {
+    right: 0;
+  }
 
+  /* .menu li {
+    margin-bottom: 8px;
+    padding: 16px;
+    border: 1px solid #000;
+  } */
+  /* -------------------------------------------------- */
+  .meet-contents.wrap {
+    padding-top: 0px;
+    display: block;
+  }
   .detail-slide {
     margin-bottom: 8px;
-    height: 200px;
+    height: 250px;
   }
   .meet-details {
     width: 100%;
@@ -589,5 +670,8 @@ header {
   .button2 {
     padding: 1px 8px;
     border-radius: 10px;
+  }
+  .meeting-room {
+    display: none;
   }
 }
