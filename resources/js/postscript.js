@@ -209,7 +209,7 @@ createBtn.addEventListener("click", async () => {
   createModal.style.display = "block";
 });
 
-// (밑에 주석 혹시 몰라서 주석처리 해 놨어요)
+// (밑에 주석 혹시 몰라서 주석처리 해 놨어요 이대로도 잘 되면 지우셔도 됩니다.)
 // const updateBtn = document.getElementById("updateBtn");
 // updateBtn.addEventListener("click", async function (e) {
 //   e.preventDefault();
