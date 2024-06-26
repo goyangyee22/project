@@ -570,7 +570,9 @@ th {
   display: none;
 }
 /* 태블릿 */
-@media screen and (max-width: 1023px) {
+/*  모바일 */
+
+@media screen and (max-width: 767px) {
   .wrap {
     padding: 0 2rem;
   }
