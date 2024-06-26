@@ -240,8 +240,9 @@ modifySubmitBtn.addEventListener("click", async () => {
   const modifyModal = document.querySelector("#modifyModal");
 
   // 수정된 제목과 내용을 불러옵니다.
-  const modifyTitleInput = modifyModal.querySelector(".modifyTitle");
-  const modifyContentInput = modifyModal.querySelector(".modifyContent");
+  const modifyTitleInput = document.querySelector("textarea[name='modifyTitle']").value;
+  const modifyContentInput = document.querySelector("textarea[name='modifyContent']").value;
+  console.log("제목: "+modifyTitleInput+"\n내용: "+modifyContentInput);
 
   // 현재 선택된 행을 찾습니다.
   const selectedRow = document.querySelector("tr.selected");
@@ -253,42 +254,43 @@ modifySubmitBtn.addEventListener("click", async () => {
   const docRef = firestoreDoc(db, "board", postDocId);
   const docSnapshot = await getDoc(docRef);
 
-  if (docSnapshot.exists()) {
-    try {
-      // 수정할 데이터입니다.
-      const newData = {
-        title: modifyTitleInput.value.trim(),
-        content: modifyContentInput.value.trim(),
-      };
+  // if (docSnapshot.exists()) {
+  //   try {
+  //     // 수정할 데이터입니다.
+  //     const newData = {
+  //       title: document.querySelector("textarea[name='modifyTitle']"),
+  //       content: document.querySelector("textarea[name='modifyContent']"),
+  //     };
+  //     console.log(newData);
 
-      // Firestore에 문서를 업데이트 합니다.
-      await updateDocument(docRef, newData);
+  //     // Firestore에 문서를 업데이트 합니다.
+  //     await updateDocument(docRef, newData);
 
-      // 화면에 변경사항을 저장합니다.
-      const titleElement = selectedRow.querySelector(".title");
-      const contentElement = selectedRow.querySelector(".content");
+  //     // 화면에 변경사항을 저장합니다.
+  //     const titleElement = selectedRow.querySelector(".title");
+  //     const contentElement = selectedRow.querySelector(".content");
 
-      titleElement.textContent = newData.title;
-      if (contentElement) {
-        contentElement.textContent = newData.content;
-      } else {
-        const newContentElement = document.createElement("td");
-        newContentElement.classList.add("content");
-        newContentElement.textContent = newData.content;
-        selectedRow.appendChild(newContentElement);
-      }
+  //     titleElement.textContent = newData.title;
+  //     if (contentElement) {
+  //       contentElement.textContent = newData.content;
+  //     } else {
+  //       const newContentElement = document.createElement("td");
+  //       newContentElement.classList.add("content");
+  //       newContentElement.textContent = newData.content;
+  //       selectedRow.appendChild(newContentElement);
+  //     }
 
-      alert("게시글이 성공적으로 수정되었습니다.");
+  //     alert("게시글이 성공적으로 수정되었습니다.");
 
-      // 게시글이 수정되면 수정 모달 창을 닫습니다.
-      modifyModal.style.display = "none";
-    } catch (error) {
-      console.error("게시글을 수정하는 동안 오류가 발생했습니다: ", error);
-      alert("게시글을 수정하는 동안 오류가 발생했습니다. 다시 시도해 주세요.");
-    }
-  } else {
-    alert("해당 게시글을 찾을 수 없습니다.");
-  }
+  //     // 게시글이 수정되면 수정 모달 창을 닫습니다.
+  //     modifyModal.style.display = "none";
+  //   } catch (error) {
+  //     console.error("게시글을 수정하는 동안 오류가 발생했습니다: ", error);
+  //     alert("게시글을 수정하는 동안 오류가 발생했습니다. 다시 시도해 주세요.");
+  //   }
+  // } else {
+  //   alert("해당 게시글을 찾을 수 없습니다.");
+  // }
 });
 
 // 모달창 닫기 버튼을 클릭하면 모달 창을 닫습니다.
