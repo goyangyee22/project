@@ -92,17 +92,6 @@
             </button>
             <button id="createBtn">작성하기</button>
           </div>
-          <!-- <div class="form-container">
-            <button id="updateBtn">저장하기</button>
-            <div class="form-item">
-              <div class="form-label"><span>제목</span></div>
-              <div class="form-input"><input type="text" name="title" /></div>
-            </div>
-            <div class="form-item">
-              <div class="form-label"><span>내용</span></div>
-              <div class="form-input"><input type="text" name="content" /></div>
-            </div>
-          </div> -->
           <table border="1">
             <thead>
               <tr>
@@ -150,7 +139,7 @@
             <textarea class="modifyTitle"></textarea>
             <div class="functions">
               <a id="modifyBtn" class="modifyBtn">수정</a>
-              <a href="#" class="closeBtn">취소</a>
+              <a href="#" class="closeModifyBtn">취소</a>
             </div>
           </div>
           <div class="ct">
@@ -165,13 +154,24 @@
       <div class="tb">
         <div class="inner" style="max-width: 800px">
           <div class="top">
-            <textarea class="createTitle"></textarea>
+            <textarea
+              class="createTitle"
+              name="createTitle"
+              placeholder="제목을 입력해주세요."
+            ></textarea>
             <div class="functions">
-              <a href="#" class="closeCreateBtn">취소</a>
+              <a id="submitBtn" class="submitBtn">작성</a>
+              <a id="closeCreateBtn" class="closeCreateBtn">취소</a>
             </div>
           </div>
           <div class="ct">
-            <textarea class="createContent"></textarea>
+            <textarea
+              class="createContent"
+              name="createContent"
+              placeholder="내용을 입력해주세요."
+              rows="20"
+              cols="20"
+            ></textarea>
           </div>
         </div>
       </div>

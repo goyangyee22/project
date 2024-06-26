@@ -1,9 +1,4 @@
-import {
-  getDatas,
-  updateDatas,
-  deleteDatas,
-  addDatas,
-} from '../../firebase.js';
+import { getDatas, updateDatas, deleteDatas } from '../../firebase.js';
 
 const userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
 if (!userInfo) {
@@ -83,12 +78,6 @@ settingBtns.forEach((link) => {
   });
 });
 
-// document
-//   .querySelector('input[type="checkbox"]')
-//   .addEventListener('change', function (e) {
-//     console.log(e.target.checked);
-//   });
-
 // 정보수정
 const pwEx = /^[0-9A-Za-z\d$@$!%*?&]{4,16}/g;
 const phoneEx = /^\d{3}-\d{4}-\d{4}$/;
@@ -96,51 +85,144 @@ const phoneEx = /^\d{3}-\d{4}-\d{4}$/;
 const changeBtn = document.getElementById('change-info-btn');
 
 changeBtn.addEventListener('click', async function () {
-  const newPw = document.getElementById('new-pw').value;
-  const newPwConfirm = document.getElementById('new-pw-confirm').value;
-  const newPhone = document.getElementById('new-phone').value;
+  const newPw = document.getElementById('new-pw');
+  const newPwConfirm = document.getElementById('new-pw-confirm');
+  const newPhone = document.getElementById('new-phone');
 
-  // if (!pwEx.test(newPw)) {
+  // if (!pwEx.test(newPw.value)) {
   //   alert(
   //     '비밀번호 형식이 올바르지 않습니다. 4자-16자 사이의 대문자, 소문자, 숫자, 특수문자를 포함해야 합니다.'
   //   );
   //   return false;
-  // } else if (!phoneEx.test(newPhone)) {
+  // } else if (!phoneEx.test(newPhone.value)) {
   //   alert(
   //     '유효하지 않은 핸드폰 번호입니다. 핸드폰 번호 형식을 지켜주세요. \n ex) 010-1234-1234'
   //   );
   //   return false;
   // }
 
-  // if (newPw !== newPwConfirm) {
+  // if (newPw.value !== newPwConfirm.value) {
   //   alert('비밀번호가 일치하지 않습니다.');
   //   return false;
   // }
 
-  console.log(userInfo);
   try {
     const updateInfo = {
       ...userInfo,
-      pw: newPw,
-      phone: newPhone,
+      pw: newPw.value,
+      phone: newPhone.value,
     };
 
-    await addDatas('userInfo', userInfo.docId, updateInfo);
+    await updateDatas('userInfo', userInfo.docId, updateInfo);
 
     sessionStorage.setItem(
       'userInfo',
-      JSON.stringify({ ...userInfo, pw: newPw, phone: newPhone })
+      JSON.stringify({ ...userInfo, pw: newPw.value, phone: newPhone.value })
     );
 
+    getMembers();
+
+    newPw.value = '';
+    newPwConfirm.value = '';
+    newPhone.value = '';
+
     alert('정보가 성공적으로 변경되었습니다!');
+
+    this.closest('section#change-info').classList.remove('active');
+    sections[0].classList.add('active');
   } catch (error) {
     console.log(error);
   }
 });
 
+// 결제기록
+async function getPayment() {
+  try {
+    const snapshot = await getDatas('payment');
+
+    let paymentData;
+
+    snapshot.forEach((doc) => {
+      const data = doc.data();
+      if (data.buyer.id === userInfo.id) {
+        paymentData = data;
+      }
+    });
+    if (paymentData) {
+      const { personnel, reservationDate, reservationTime, room, thumb } =
+        paymentData.appointment;
+      const { name, phone } = paymentData.buyer;
+      const { amount, cashReceipts, dateOrdered, method } = paymentData.order;
+
+      const reservationInfo = document.querySelector('.reservation-info');
+      const paymentInfo = document.querySelector('.payment-info');
+
+      reservationInfo.innerHTML = `
+        <table class="table caption-top">
+          <caption>예약정보</caption>
+          <tbody>
+            <tr>
+              <td colspan="4">
+                <img src="../resources/images/${thumb}" alt="">
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">예약공간</th>
+              <td>${room}</td>
+              <th>예약인원</th>
+              <td>${personnel}명</td>
+            </tr>
+            <tr>
+              <th scope="row">예약날짜</th>
+              <td>${reservationDate}</td>
+              <th>예약시간</th>
+              <td>${reservationTime}</td>
+            </tr>
+            <tr>
+              <th scope="row">예약자명</th>
+              <td>${name}</td>
+              <th>예약자 연락처</th>
+              <td>${phone}</td>
+            </tr>
+          </tbody>
+        </table>
+      `;
+      paymentInfo.innerHTML = `
+        <table class="table caption-top">
+          <caption>결제정보</caption>
+          <tbody>
+            <tr>
+              <th scope="row">결제일</th>
+              <td>${dateOrdered}</td>
+              <th>결제수단</th>
+              <td>${method}</td>
+            </tr>
+            <tr>
+              <th scope="row">결제금액</th>
+              <td>${amount}</td>
+              <th>현금영수증</th>
+              <td>${cashReceipts}</td>
+            </tr>
+          </tbody>
+        </table>
+      `;
+    }
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+// 작성글
+
 // 회원탈퇴
 const withdrawalBtn = document.getElementById('withdrawal-btn');
 withdrawalBtn.addEventListener('click', async function () {
+  // 체크박스에 체크가 되어있지 않으면 회원탈퇴를 할 수 없습니다.
+  const withdrawalCheckbox = document.getElementById('withdrawal-checkbox');
+  if (!withdrawalCheckbox.checked) {
+    alert('안내사항에 동의하여야 회원 탈퇴를 할 수 있습니다.');
+    return false;
+  }
   // 삭제를 하기 전 확인 메세지를 표시합니다.
   if (confirm('정말 회원 탈퇴 하시겠습니까?')) {
     try {
@@ -165,3 +247,4 @@ withdrawalBtn.addEventListener('click', async function () {
 });
 
 getMembers();
+getPayment();

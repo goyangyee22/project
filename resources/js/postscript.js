@@ -1,14 +1,9 @@
-// "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
-// "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
-import { dbService, deleteDocument } from "../../firebase.js";
+import { dbService } from "../../firebase.js";
 import {
   getFirestore,
-  orderBy,
   collection,
   addDoc,
-  query,
-  where,
   getDocs,
   getDoc,
   deleteDoc,
@@ -130,7 +125,7 @@ deleteBtn.addEventListener("click", async () => {
           if (docSnapshot.exists()) {
             // 게시글 데이터에서 작성자의 docId를 가져옵니다.
             const postData = docSnapshot.data();
-            const postAuthorDocId = postData.authorDocId;
+            const postAuthorDocId = postData.userDocId;
             console.log(postData);
             console.log("게시글 작성자의 docId: ", postAuthorDocId);
 
@@ -176,9 +171,19 @@ deleteBtn.addEventListener("click", async () => {
 });
 
 // 수정 버튼 이벤트 리스너
-// const modifyBtn = document.querySelector(".modifyBtn");
-// modifyBtn.addEventListener("click", async () => {
-// });
+const modifyBtn = document.querySelector(".modifyBtn");
+modifyBtn.addEventListener("click", async () => {
+  alert("화면을 구축하는 중입니다!");
+  const modifyModal = document.querySelector("#modifyModal");
+  modifyModal.style.display = "block";
+});
+
+// 수정이 완료되면 수정 버튼을 눌러 저장합니다.
+const closeModifyBtn = document.querySelector(".closeModifyBtn");
+closeModifyBtn.addEventListener("click", async () => {
+  const modifyModal = document.querySelector("#modifyModal");
+  modifyModal.style.display = "none";
+});
 
 // 모달창 닫기 버튼을 클릭하면 모달 창을 닫습니다.
 const closeBtn = document.querySelector(".closeBtn");
@@ -187,26 +192,17 @@ closeBtn.addEventListener("click", () => {
   modal.style.display = "none";
 });
 
-// 페이지를 로드하면 게시글을 불러옵니다.
-window.onload = () => {
-  getBoard();
-};
-
 // 게시글을 작성하는 함수입니다.
 const createBtn = document.getElementById("createBtn");
-createBtn.addEventListener("click", async () => {
-  alert("화면을 구축하는 중입니다!");
+createBtn.addEventListener("click", async (e) => {
   const createModal = document.querySelector("#createModal");
   createModal.style.display = "block";
+
+  // 이벤트 전파를 방지합니다.
+  e.stopPropagation();
 });
 
-// 작성 모달 창에서 취소 버튼을 누를 시 원래 페이지로 돌아갑니다.
-const closeCreateBtn = document.querySelector(".closeCreateBtn");
-closeCreateBtn.addEventListener("click", () => {
-  const createModal = document.querySelector("#createModal");
-  createModal.style.display = "none";
-})
-// (밑에 주석 혹시 몰라서 주석처리 해 놨어요)
+// (밑에 주석 혹시 몰라서 주석처리 해 놨어요 이대로도 잘 되면 지우셔도 됩니다.)
 // const updateBtn = document.getElementById("updateBtn");
 // updateBtn.addEventListener("click", async function (e) {
 //   e.preventDefault();
@@ -279,3 +275,92 @@ closeCreateBtn.addEventListener("click", () => {
 //     console.error("Error adding document: ", error);
 //   }
 // });
+
+// 작성 모달 창에서 작성 버튼을 누를 시 Firestore database 및 게시판 화면에 게시글이 저장됩니다.
+// userDocId, name, title, content, date가 저장 됩니다.
+const submitBtn = document.querySelector(".submitBtn");
+submitBtn.addEventListener("click", async () => {
+  // 입력한 제목 및 내용의 값을 불러옵니다.
+  const createTitle = document.querySelector("textarea[name='createTitle']");
+  const createContent = document.querySelector(
+    "textarea[name='createContent']"
+  );
+
+  // 입력 필드에서 양 끝의 공백을 제거합니다.
+  const title = createTitle.value.trim();
+  const content = createContent.value.trim();
+
+  // 제목과 내용이 모두 비어있으면 작성을 할 수 없습니다.
+  if (title === "" || content === "") {
+    alert("제목과 내용은 빈 칸으로 작성하실 수 없습니다.");
+    return false;
+  }
+
+  // 작성자명을 불러옵니다.
+  const userNameString = sessionStorage.getItem("userInfo");
+  const userInfo = JSON.parse(userNameString);
+  const name = userInfo.name;
+  const userDocId = userInfo.docId;
+
+  // 게시물 제목,내용 및 작성시간, 사용자의 정보를 저장하는 객체를 생성합니다.
+  const addObj = {
+    name,
+    title,
+    content,
+    userDocId,
+    // 작성일 기준으로 고정합니다.
+    date: new Date().toLocaleDateString("ko-KR"),
+  };
+
+  try {
+    // Firebase에 데이터를 추가합니다.
+    const docRef = await addDoc(collection(dbService, "board"), addObj);
+
+    // 추가된 문서의 아이디입니다.
+    const docId = docRef.id;
+
+    // 화면에 추가된 데이터를 표시합니다.
+    const tableTag = document.querySelector("table");
+    tableTag.lastElementChild.insertAdjacentHTML(
+      "afterbegin",
+      `
+      <tr data-id=${docId}>
+      <td class="name">${addObj.name}</td>
+      <td class="title">${addObj.title}</td>
+      <td class="date">${addObj.date}</td>
+      </tr>
+      `
+    );
+  } catch (error) {
+    console.error("Error adding document: ", error);
+  }
+
+  // 올바른 정보인지 확인하기 위한 console.log입니다.
+  console.log(
+    `name: ` +
+      name +
+      `, title: ` +
+      title +
+      `, content: ` +
+      content +
+      `, userDocId: ` +
+      userDocId
+  );
+
+  // 작성이 완료되면 작성 버튼을 눌러 저장합니다.
+  const createModal = document.querySelector("#createModal");
+  alert("정말 이대로 작성 하시겠습니까?");
+  createModal.style.display = "none";
+});
+
+// 작성 모달 창에서 취소 버튼을 누를 시 원래 페이지로 돌아갑니다.
+const closeCreateBtn = document.querySelector(".closeCreateBtn");
+closeCreateBtn.addEventListener("click", () => {
+  const createModal = document.querySelector("#createModal");
+  createModal.style.display = "none";
+});
+
+// 페이지를 로드하면 게시글을 불러옵니다.
+window.onload = () => {
+  getBoard();
+};
