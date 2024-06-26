@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
-import { dbService } from "../../firebase.js";
+import { dbService, updateDocument } from "../../firebase.js";
 import {
   getFirestore,
   collection,
@@ -170,29 +170,29 @@ deleteBtn.addEventListener("click", async () => {
   }
 });
 
-// 수정 버튼 참고용입니다.
-/* <div id="modifyModal" class="dialog">
-      <div class="tb">
-        <div class="inner" style="max-width: 800px">
-          <div class="top">
-            <textarea class="modifyTitle"></textarea>
-            <div class="functions">
-              <a id="modifyBtn" class="modifyBtn">수정</a>
-              <a href="#" class="closeModifyBtn">취소</a>
-            </div>
-          </div>
-          <div class="ct">
-            <textarea class="modifyContent" rows="5"></textarea>
-          </div>
-        </div>
-      </div>
-    </div> */
-
 // 수정 버튼 이벤트 리스너
 const modifyBtn = document.querySelector(".modifyBtn");
 modifyBtn.addEventListener("click", async (e) => {
-  alert("화면을 구축하는 중입니다!");
   const modifyModal = document.getElementById("modifyModal");
+
+  // .selected 되어있는 행의 데이터를 가져옵니다.
+  const selectedRow = document.querySelector("tr.selected");
+  if (!selectedRow) {
+    alert("수정할 게시글을 선택해주시기 바랍니다.");
+    return false;
+  }
+
+  // 선택된 행의 데이터에서 제목과 내용을 가져와 모달에 넣습니다.
+  const titleElement = selectedRow.querySelector(".title");
+  const contentElement = selectedRow.querySelector(".content");
+
+  const modifyTitleInput = modifyModal.querySelector(".modifyTitle");
+  const modifyContentInput = modifyModal.querySelector(".modifyContent");
+
+  modifyTitleInput.value = titleElement.textContent.trim();
+  modifyContentInput.value = contentElement.textContent.trim();
+
+  // 수정 모달 창을 표시합니다.
   modifyModal.style.display = "block";
   e.stopPropagation();
 });
@@ -201,7 +201,50 @@ modifyBtn.addEventListener("click", async (e) => {
 const closeModifyBtn = document.querySelector(".closeModifyBtn");
 closeModifyBtn.addEventListener("click", async () => {
   const modifyModal = document.querySelector("#modifyModal");
-  modifyModal.style.display = "none";
+
+  // 수정된 제목과 내용을 불러옵니다.
+  const modifyTitleInput = modifyModal.querySelector(".modifyTitle");
+  const modifyContentInput = modifyModal.querySelector(".modifyContent");
+
+  // 현재 선택된 행을 찾습니다.
+  const selectedRow = document.querySelector("tr.selected");
+
+  // 선택된 행의 데이터에서 게시글 ID 가져옵니다.
+  const postDocId = selectedRow.getAttribute("data-id");
+
+  // Firestore에서 해당 게시글의 문서를 가져옵니다.
+  const docRef = firestoreDoc(db, "board", postDocId);
+  const docSnapshot = await getDoc(docRef);
+
+  if (docSnapshot.exists()) {
+    try {
+      // 수정할 데이터입니다.
+      const newData = {
+        title: modifyTitleInput.value.trim(),
+        content: modifyContentInput.value.trim(),
+      };
+
+      // Firestore에 문서를 업데이트 합니다.
+      await updateDocument(docRef, newData);
+
+      // 화면에 변경사항을 저장합니다.
+      const titleElement = selectedRow.querySelector(".title");
+      const contentElement = selectedRow.querySelector(".content");
+
+      titleElement.textContent = newData.title;
+      contentElement.textContent = newData.content;
+
+      alert("게시글이 성공적으로 수정되었습니다.");
+
+      // 게시글이 수정되면 수정 모달 창을 닫습니다.
+      modifyModal.style.display = "none";
+    } catch (error) {
+      console.error("게시글을 수정하는 동안 오류가 발생했습니다: ", error);
+      alert("게시글을 수정하는 동안 오류가 발생했습니다. 다시 시도해 주세요.");
+    }
+  } else {
+    alert("해당 게시글을 찾을 수 없습니다.");
+  }
 });
 
 // 모달창 닫기 버튼을 클릭하면 모달 창을 닫습니다.
@@ -221,80 +264,6 @@ createBtn.addEventListener("click", async (e) => {
   const createModal = document.getElementById("createModal");
   createModal.style.display = "block";
 });
-
-// (밑에 주석 혹시 몰라서 주석처리 해 놨어요 이대로도 잘 되면 지우셔도 됩니다.)
-// const updateBtn = document.getElementById("updateBtn");
-// updateBtn.addEventListener("click", async function (e) {
-//   e.preventDefault();
-
-//   // 제목과 내용 입력값을 가져옵니다.
-//   const titleInput = document.querySelector('input[name="title"]');
-//   const contentInput = document.querySelector('input[name="content"]');
-
-//   // 입력 필드의 값에서 양 끝 공백을 제거합니다.
-//   const title = titleInput.value.trim();
-//   const content = contentInput.value.trim();
-
-//   // 제목과 내용이 모두 비어있는지 검사합니다.
-//   if (title === "" || content === "") {
-//     alert("제목과 내용을 모두 입력해주세요.");
-//     return;
-//   }
-
-//   // 작성자명을 불러오는 함수입니다.
-//   const userNameString = sessionStorage.getItem("userInfo");
-//   const userInfo = JSON.parse(userNameString);
-//   const name = userInfo.name;
-//   const authorDocId = userInfo.docId;
-
-//   // Firestore에서 "userInfo" 컬렉션을 참조하는 변수 생성
-//   const usersRef = collection(dbService, "userInfo");
-
-//   // "userInfo" 컬렉션에서 "name" 필드가 JSON.parse(userInfoString).name과 같은 문서만을 검색하는 쿼리를 생성합니다.
-//   const q = query(usersRef, where("name", "==", userInfo.name));
-
-//   // 생성한 쿼리를 Firestore에 실행하여 결과를 가져옵니다.
-//   const querySnapshot = await getDocs(q);
-
-//   // 검색된 문서들 중 첫 번째 문서의 ID를 추출합니다. (자동으로 주어진 문서 고유 ID)
-//   const userDoc = querySnapshot.docs[0];
-//   const userData = userDoc.data();
-
-//   // 제목, 내용의 입력값을 받아옵니다.
-//   const inputs = document.querySelectorAll(".form-container input");
-//   const addObj = {
-//     name,
-//     // 작성일 기준으로 고정합니다.
-//     date: new Date().toLocaleDateString("ko-KR"),
-//     authorDocId,
-//   };
-//   inputs.forEach((input) => {
-//     addObj[input.name] = input.value;
-//   });
-
-//   try {
-//     // Firebase에 데이터를 추가합니다.
-//     const docRef = await addDoc(collection(dbService, "board"), addObj);
-//     // 추가된 문서의 ID입니다.
-//     const docId = docRef.id;
-
-//     // 화면에 추가된 데이터를 표시합니다.
-//     const tableTag = document.querySelector("table");
-//     tableTag.lastElementChild.insertAdjacentHTML(
-//       "afterbegin",
-//       `
-//       <tr data-id=${docId}>
-//       <td class="name">${addObj.name}</td>
-//       <td class="title">${addObj.title}</td>
-//       <td class="date">${addObj.date}</td>
-//       </tr>
-//       `
-//     );
-//     console.log(docId, addObj.name, addObj.title, addObj.content, addObj.date);
-//   } catch (error) {
-//     console.error("Error adding document: ", error);
-//   }
-// });
 
 // 작성 모달 창에서 작성 버튼을 누를 시 Firestore database 및 게시판 화면에 게시글이 저장됩니다.
 // userDocId, name, title, content, date가 저장 됩니다.
