@@ -620,7 +620,18 @@ top: 0;
 .room-main{width: 100%;
 }
 
+/* 예약내용 */
 
+.fc .fc-daygrid-day-frame{font-size: 1rem;
+}
+.pay-hash .hash-item{padding: 0 .5rem;}
+/* .pay-hash{display: grid;
+grid-template-columns: 1fr 1fr;} */
+.pay-caution h4{font-size: 1.5rem;}
+.caution-desc a{font-size: 1rem;}
+.pay-options{display: grid;} 
+.pay-option{height: 100%;
+margin: 0;}
 }
 
 
