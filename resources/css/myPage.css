@@ -132,7 +132,11 @@ th {
 #payment-record .contents {
   flex-direction: column;
 }
-
+#payment-record .reservation-info img {
+  width: 500px;
+  height: 310px;
+  object-fit: cover;
+}
 /* withdrawal */
 #withdrawal .contents {
   flex-direction: column;
