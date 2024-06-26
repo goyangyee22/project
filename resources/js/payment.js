@@ -107,6 +107,7 @@ async function getUsers() {
             personnel: personnel,
             room: room,
             reservationTime: time,
+            thumb: thumb,
           },
           buyer: {
             id: userId,
@@ -120,7 +121,6 @@ async function getUsers() {
         const sendDatas = await addDatas('payment', paymentData);
 
         if (sendDatas) {
-          console.log('paymentData:', paymentData);
           sessionStorage.removeItem('buyer');
           sessionStorage.removeItem('paymentInfo');
           window.location.href = './myPage.html';

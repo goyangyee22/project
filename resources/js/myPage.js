@@ -149,7 +149,7 @@ async function getPayment() {
       }
     });
     if (paymentData) {
-      const { personnel, reservationDate, reservationTime, room } =
+      const { personnel, reservationDate, reservationTime, room, thumb } =
         paymentData.appointment;
       const { name, phone } = paymentData.buyer;
       const { amount, cashReceipts, dateOrdered, method } = paymentData.order;
@@ -162,10 +162,15 @@ async function getPayment() {
           <caption>예약정보</caption>
           <tbody>
             <tr>
-              <th scope="row">예약자명</th>
-              <td>${name}</td>
-              <th>예약자 연락처</th>
-              <td>${phone}</td>
+              <td colspan="4">
+                <img src="../resources/images/${thumb}" alt="">
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">예약공간</th>
+              <td>${room}</td>
+              <th>예약인원</th>
+              <td>${personnel}명</td>
             </tr>
             <tr>
               <th scope="row">예약날짜</th>
@@ -174,10 +179,10 @@ async function getPayment() {
               <td>${reservationTime}</td>
             </tr>
             <tr>
-              <th scope="row">예약공간</th>
-              <td>${room}</td>
-              <th>예약인원</th>
-              <td>${personnel}명</td>
+              <th scope="row">예약자명</th>
+              <td>${name}</td>
+              <th>예약자 연락처</th>
+              <td>${phone}</td>
             </tr>
           </tbody>
         </table>
@@ -206,7 +211,8 @@ async function getPayment() {
     console.log(err);
   }
 }
-getPayment();
+
+// 작성글
 
 // 회원탈퇴
 const withdrawalBtn = document.getElementById('withdrawal-btn');
@@ -241,3 +247,4 @@ withdrawalBtn.addEventListener('click', async function () {
 });
 
 getMembers();
+getPayment();
