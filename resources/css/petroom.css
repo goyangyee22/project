@@ -552,8 +552,10 @@ left: 60%;
 }
 #map{width: 100%;
 height: 400px;}
+/* 메뉴보기 */
+.menu-main{display: none;}
 /* 태블릿 */
-@media screen and (max-width: 1023px){
+@media screen and (max-width: 797px){
   .wrap{padding: 0 2rem;}
 .pet-contents{width: 100%;}
 .pet-detail{display: block;}
@@ -643,6 +645,53 @@ margin: 0;}
 }
 .select-personnel{display: block;}
 .pay-btn.selected,#personnel{color: #000;}
+
+/* 메뉴보기 */
+
+.room-main{display: none;}
+
+.menu-main{
+  display: block;
+  margin: 32px auto;
+  padding: 16px 32px;
+  font-size: 24px;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+li {
+  list-style: none;
+}
+
+/* layout */
+.menu-main{  display: block;}
+.menu-main button {
+  /* display: block; */
+  margin: 32px auto;
+  padding: 16px 32px;
+  font-size: 24px;
+}
+
+.menu {
+  position: absolute;
+  top: 0;
+  left: -200px;
+  margin: 24px;
+  padding: 24px;
+  background-color: yellow;
+  transition: 0.3s;
+}
+
+.show-menus {
+  left: 0;
+}
+
+.menu li {
+  margin-bottom: 8px;
+  padding: 16px;
+  border: 1px solid #000;
+}
 }
 
 

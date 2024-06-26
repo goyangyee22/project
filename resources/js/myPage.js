@@ -199,7 +199,7 @@ async function getPayment() {
             </tr>
             <tr>
               <th scope="row">결제금액</th>
-              <td>${amount}</td>
+              <td>${amount.toLocaleString()}원</td>
               <th>현금영수증</th>
               <td>${cashReceipts}</td>
             </tr>
