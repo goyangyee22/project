@@ -170,12 +170,31 @@ deleteBtn.addEventListener("click", async () => {
   }
 });
 
+// 수정 버튼 참고용입니다.
+/* <div id="modifyModal" class="dialog">
+      <div class="tb">
+        <div class="inner" style="max-width: 800px">
+          <div class="top">
+            <textarea class="modifyTitle"></textarea>
+            <div class="functions">
+              <a id="modifyBtn" class="modifyBtn">수정</a>
+              <a href="#" class="closeModifyBtn">취소</a>
+            </div>
+          </div>
+          <div class="ct">
+            <textarea class="modifyContent" rows="5"></textarea>
+          </div>
+        </div>
+      </div>
+    </div> */
+
 // 수정 버튼 이벤트 리스너
 const modifyBtn = document.querySelector(".modifyBtn");
-modifyBtn.addEventListener("click", async () => {
+modifyBtn.addEventListener("click", async (e) => {
   alert("화면을 구축하는 중입니다!");
-  const modifyModal = document.querySelector("#modifyModal");
+  const modifyModal = document.getElementById("modifyModal");
   modifyModal.style.display = "block";
+  e.stopPropagation();
 });
 
 // 수정이 완료되면 수정 버튼을 눌러 저장합니다.
@@ -195,11 +214,12 @@ closeBtn.addEventListener("click", () => {
 // 게시글을 작성하는 함수입니다.
 const createBtn = document.getElementById("createBtn");
 createBtn.addEventListener("click", async (e) => {
-  const createModal = document.querySelector("#createModal");
-  createModal.style.display = "block";
-
+  alert("화면을 구축하는 중입니다!");
   // 이벤트 전파를 방지합니다.
   e.stopPropagation();
+
+  const createModal = document.getElementById("createModal");
+  createModal.style.display = "block";
 });
 
 // (밑에 주석 혹시 몰라서 주석처리 해 놨어요 이대로도 잘 되면 지우셔도 됩니다.)
