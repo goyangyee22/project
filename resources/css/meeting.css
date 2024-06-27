@@ -784,11 +784,13 @@ button:hover {
   }
   .show-menus {
     right: 0;
+    position: fixed;
   }
   .meeting_small {
     width: 150px;
     height: 150px;
     background-color: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
     /* background-color: #dddddd; */
   }
   .meeting_medium {
@@ -796,11 +798,13 @@ button:hover {
     height: 150px;
     margin: 5px 0px;
     background-color: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
   }
   .meeting_big {
     width: 150px;
     height: 150px;
     background-color: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
   }
   .button1 {
     padding: 5px 10px;
