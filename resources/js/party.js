@@ -1,9 +1,67 @@
+import { getDatas, addDatas } from "../../firebase.js";
+
 // var swiper = new Swiper(".mySwiper", {
 //   navigation: {
 //     nextEl: ".swiper-button-next",
 //     prevEl: ".swiper-button-prev",
 //   },
 // });
+
+const reviewContainer = document.querySelector(".guest-main-img");
+
+async function getBoard() {
+  try {
+    const snapshot = await getDatas("board");
+
+    let boardArr = [];
+    for (let i = 0; i < 3; i++) {
+      boardArr.push(snapshot.docs[i].data());
+    }
+
+    console.log(boardArr);
+
+    // snapshot.docs.forEach((doc) => {
+    //   const data = doc.data();
+    //   // console.log(data);
+    //   boardData = data;
+    // });
+
+    if (boardArr) {
+      boardArr.forEach((el) => {
+        const { content, name, title, date } = el;
+        console.log("name", name);
+        reviewContainer.insertAdjacentHTML(
+          "beforeend",
+          `
+          <div class="QnA-boxs">
+            <span class="guest-imgx"
+              ><img
+                class="guest-imgs"
+                src="resources/images/partyimg/게스트이미지1.jpg"
+            /></span>
+            <div class="QnA-num">
+              <strong class="guest-name"
+                >${name} <span>⭐⭐⭐⭐⭐</span></strong
+              >
+              <p class="QnA-ment">
+                ${content}
+              </p>
+              <img
+                src="resources/images/partyimg/후기1.jpg"
+                width="56px"
+                height="56px"
+              />
+              <span class="QnA-time">${date}</span>
+            </div>
+          </div>
+          `
+        );
+      });
+    }
+  } catch (err) {
+    console.log(err);
+  }
+}
 
 var swiper = new Swiper(".detail-slide-thumb", {
   loop: true,
@@ -111,6 +169,9 @@ function urlCopy() {
   copyText.style.display = "none"; // 다시 텍스트 숨김
 }
 
+const copybutton = document.getElementById("urlCopy");
+copybutton.addEventListener("click", urlCopy);
+
 //------------------------------ 반응형 버튼
 document.addEventListener("DOMContentLoaded", function () {
   const btn = document.getElementById("show-options");
@@ -121,4 +182,5 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+getBoard();
 mapRendering();
