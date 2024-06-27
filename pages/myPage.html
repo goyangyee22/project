@@ -13,8 +13,6 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../resources/css/myPage.css" />
-    <script src="https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script type="module" src="../resources/js/myPage.js"></script>
   </head>
@@ -88,7 +86,7 @@
             </li>
           </ul>
         </div>
-        <section id="my-info" class="active">
+        <section id="my-info">
           <h2 class="section-title">내 정보</h2>
           <div class="contents">
             <div class="content profile-img">
@@ -156,25 +154,27 @@
         <section id="payment-record">
           <h2 class="section-title">결제기록</h2>
           <div class="contents">
-            <div class="reservation-info content"></div>
-            <div class="payment-info content"></div>
+            <!-- 예약 및 결제내역 -->
           </div>
         </section>
-        <section id="post-written">
+        <section id="post-written" class="active">
           <h2 class="section-title">작성글</h2>
           <div class="contents">
-            <div class="content"></div>
-            <table border="1" class="table">
-              <thead>
-                <tr>
-                  <th>작성자</th>
-                  <th>제목</th>
-                  <th>작성일</th>
-                </tr>
-              </thead>
-              <tbody id="tbody"></tbody>
-            </table>
-            <ul id="postList" class="post-list"></ul>
+            <div class="content">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">제목</th>
+                    <th scope="col">작성자</th>
+                    <th scope="col">작성일</th>
+                  </tr>
+                </thead>
+                <tbody class="table-group-divider post-group">
+                  <!-- 작성글 보기 -->
+                </tbody>
+              </table>
+            </div>
           </div>
         </section>
         <section id="withdrawal">
