@@ -15,12 +15,12 @@ body {
   display: block;
 }
 .swiper-wrapper {
-  padding: 32px;
+  padding: 2rem;
 }
 .swiper-button-next,
 .swiper-button-prev {
-  width: 40px;
-  height: 40px;
+  width: 2.5rem;
+  height: 2.5rem;
   border-radius: 50%;
   color: var(--accent-color);
   background-color: var(--accent-color);
@@ -29,7 +29,7 @@ body {
 
 .swiper-button-next::after,
 .swiper-button-prev::after {
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 700;
   color: var(--main-color);
 }
@@ -41,10 +41,10 @@ body {
 
 /* header */
 #payment-header {
-  padding: 32px 0;
+  padding: 2rem 0;
   text-align: center;
   background-color: #fff;
-  box-shadow: 0 2px 10px 0 var(--common-color);
+  box-shadow: 0 0.125rem 0.625rem 0 var(--common-color);
 }
 #payment-header > .wrap {
   position: relative;
@@ -55,23 +55,23 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 40px;
-  height: 40px;
+  width: 2.5rem;
+  height: 2.5rem;
   border-radius: 50%;
-  border: 2px solid var(--accent-color);
+  border: 0.125rem solid var(--accent-color);
   color: var(--accent-color);
   transform: translateY(-50%);
   cursor: pointer;
   transition: 0.3s;
 }
 #payment-header .back:hover {
-  border: 2px solid var(--hover-color);
+  border: 0.125rem solid var(--hover-color);
   background-color: var(--hover-color);
   color: #fff;
 }
 
 #payment-header h1 {
-  font-size: 24px;
+  font-size: 1.5rem;
 }
 
 /* main */
@@ -79,28 +79,28 @@ body {
   position: relative;
   display: flex;
   align-items: flex-start;
-  gap: 24px;
-  padding-bottom: 160px;
+  gap: 1.5rem;
+  padding-bottom: 5rem;
 }
 
 #payment-section {
-  padding-top: 32px;
+  padding-top: 2rem;
   width: 65%;
 }
 
 .payment-contents {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 2rem;
 }
 .payment-content h2 {
-  margin-bottom: 8px;
-  font-size: 24px;
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
 }
 
 .payment-content-box {
-  padding: 24px;
-  border-radius: 24px;
+  padding: 1.5rem;
+  border-radius: 1.5rem;
   background-color: #fff;
 }
 
@@ -108,8 +108,8 @@ body {
 .user-info {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  font-size: 24px;
+  gap: 0.5rem;
+  font-size: 1.5rem;
 }
 #user-name {
   font-weight: 700;
@@ -117,21 +117,21 @@ body {
 
 /* 주문상품 */
 .product-info-title {
-  margin-bottom: 16px;
-  font-size: 24px;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
   font-weight: 700;
 }
 
 .product-info-content {
   display: flex;
-  gap: 16px;
+  gap: 1rem;
 }
 
 #display-thumb {
-  width: 240px;
-  height: 150px;
+  width: 15rem;
+  height: 9.375rem;
   overflow: hidden;
-  border-radius: 16px;
+  border-radius: 1rem;
 }
 #display-thumb img {
   width: 100%;
@@ -143,33 +143,33 @@ body {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  gap: 8px;
+  gap: 0.5rem;
 }
 
 .info-desc li {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 1rem;
 }
 .info-desc li h3 {
-  padding: 8px 16px;
-  border: 2px solid var(--main-color);
-  border-radius: 16px;
-  font-size: 16px;
+  padding: 0.5rem 1rem;
+  border: 0.125rem solid var(--main-color);
+  border-radius: 1rem;
+  font-size: 1rem;
   font-weight: 400;
 }
 .info-desc li > p {
-  font-size: 24px;
+  font-size: 1.5rem;
   font-weight: 700;
 }
 .info-cost {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 16px;
-  padding: 24px;
-  font-size: 24px;
-  border-radius: 24px;
+  margin-top: 1rem;
+  padding: 1.5rem;
+  font-size: 1.5rem;
+  border-radius: 1.5rem;
   font-weight: 700;
   background-color: var(--common-color);
 }
@@ -178,7 +178,46 @@ body {
 .payment-method {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 1.5rem;
+}
+
+/* common method */
+.common-method {
+  display: none;
+  padding: 1rem 0;
+  text-align: center;
+}
+.show-common-method {
+  display: block;
+}
+.common-btn-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem 0;
+}
+.common-btn {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  background-color: #fff;
+  border-radius: 1.5rem;
+  box-shadow: 0 0.0625rem 0.1875rem 0 rgba(0, 0, 0, 0.02);
+}
+
+.common-btn:hover,
+.common-btn:focus {
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0.25rem 0.75rem 0 rgba(0, 0, 0, 0.1);
+}
+.common-btn:hover {
+  transform: translateY(-1px);
+}
+.common-btn:active {
+  background-color: var(--common-color);
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0.125rem 0.25rem 0 rgba(0, 0, 0, 0.06);
+  transform: translateY(0);
 }
 
 /* radio button custom */
@@ -195,10 +234,10 @@ body {
 .radio-checkmark {
   position: relative;
   display: inline-block;
-  width: 24px;
-  height: 24px;
-  margin-right: 10px;
-  border: 2px solid var(--common-color);
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 0.625rem;
+  border: 0.125rem solid var(--common-color);
   border-radius: 50%;
   transition: 0.3s;
 }
@@ -208,97 +247,197 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(0);
-  width: 12px;
-  height: 12px;
+  width: 0.75rem;
+  height: 0.75rem;
   border-radius: 50%;
   background-color: var(--accent-color);
   transition: 0.3s;
 }
 .radio-button input[type='radio']:checked ~ .radio-checkmark {
-  border: 2px solid var(--hover-color);
+  border: 0.125rem solid var(--hover-color);
 }
 .radio-button input[type='radio']:checked ~ .radio-checkmark::before {
   transform: translate(-50%, -50%) scale(1);
 }
 
 .radio-label {
-  font-size: 24px;
+  font-size: 1.5rem;
 }
 
 .display-method {
-  margin-top: 16px;
+  margin-top: 1rem;
   height: 0;
-  border-radius: 24px;
+  border-radius: 1.5rem;
   background-color: var(--main-color);
   transition: height 0.3s;
 }
 .show-method {
-  height: 150px;
+  height: 9.375rem;
 }
 
 .method-btn {
   text-align: center;
   width: 100%;
   height: 100%;
-  padding: 32px 48px;
-  font-size: 16px;
-  border-radius: 24px;
+  padding: 2rem 3rem;
+  font-size: 1rem;
+  border-radius: 1.5rem;
   background-color: #fff;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.02);
+  box-shadow: 0 0.0625rem 0.1875rem 0 rgba(0, 0, 0, 0.02);
 }
 .method-btn:hover,
 .method-btn:focus {
   border-color: rgba(0, 0, 0, 0.15);
-  box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.25rem 0.75rem 0 rgba(0, 0, 0, 0.1);
 }
 .method-btn:hover {
-  transform: translateY(-1px);
+  transform: translateY(-0.0625rem);
 }
 .method-btn:active {
   background-color: var(--common-color);
   border-color: rgba(0, 0, 0, 0.15);
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+  box-shadow: 0 0.125rem 0.25rem 0 rgba(0, 0, 0, 0.06);
   transform: translateY(0);
 }
 
 /* data send form */
 #payment-data-send {
   position: relative;
-  padding-top: 32px;
+  padding-top: 2rem;
   width: 35%;
   height: 500px;
 }
 .payment-contents {
   position: sticky;
   top: 0;
-  padding-top: 32px;
+  padding-top: 2rem;
 }
 .payment-aside-content {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: 24px;
-  font-size: 24px;
+  gap: 1.5rem;
+  font-size: 1.5rem;
 }
-
+.select-info {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
 #select-method,
 #total-cost {
   font-weight: 700;
 }
 
 .data-send-content {
-  padding-top: 16px;
-  border-top: 1px solid #000;
+  padding-top: 1rem;
+  border-top: 0.0625rem solid #000;
 }
 .data-send-content p {
-  margin-bottom: 16px;
-  font-size: 14px;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
   text-align: center;
 }
 #final-payment-btn {
-  padding: 16px 0;
+  padding: 1rem 0;
   width: 100%;
-  font-size: 24px;
-  border-radius: 16px;
+  font-size: 1.5rem;
+  border-radius: 1rem;
+  background-color: var(--accent-color);
+  color: var(--main-color);
+}
+#final-payment-btn:hover {
+  background-color: var(--hover-color);
+}
+
+/* media - tablet */
+@media screen and (max-width: 1023px) {
+  .swiper-button-next,
+  .swiper-button-prev {
+    display: none;
+  }
+  #payment-main {
+    display: block;
+    padding-bottom: 160px;
+  }
+  #payment-section {
+    width: 100%;
+  }
+  .display-method {
+    display: flex;
+    align-items: center;
+  }
+  .method-option {
+    width: 100%;
+    height: 100%;
+  }
+  .swiper-wrapper {
+    box-sizing: border-box;
+  }
+  .method-btn {
+    padding: 14px 28px;
+  }
+  #add-account,
+  #add-card {
+    width: 108px;
+  }
+  #payment-data-send {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0;
+    width: 100%;
+    height: max-content;
+  }
+  #payment-data-send h2 {
+    display: none;
+  }
+  .payment-aside-content {
+    flex-direction: row;
+    padding: 24px 100px;
+    border-radius: 0;
+    box-shadow: 0 -2px 10px 0 var(--common-color);
+  }
+  .data-send-content.wrap {
+    border: 0;
+    padding: 0;
+  }
+  .data-send-content p {
+    margin-bottom: 8px;
+  }
+  .select-info {
+    justify-content: start;
+    gap: 16px;
+  }
+}
+
+/* media - mobile */
+@media screen and (max-width: 767px) {
+  .product-info-content {
+    flex-direction: column;
+  }
+  #display-thumb {
+    width: 100%;
+  }
+  .payment-aside-content {
+    padding: 16px 50px;
+    gap: 8px;
+  }
+  .common-btn-wrap {
+    gap: 4px;
+  }
+  .common-btn {
+    padding: 4px 8px;
+    border-radius: 8px;
+  }
+  #select-method,
+  #total-cost {
+    font-size: 16px;
+  }
+  .select-info {
+    flex-direction: column;
+    gap: 4px;
+  }
 }

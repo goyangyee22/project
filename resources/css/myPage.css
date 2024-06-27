@@ -154,7 +154,10 @@ th {
   object-fit: cover;
 }
 caption {
-  background-color: #ccc;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  background-color: var(--common-color);
 }
 /* withdrawal */
 #withdrawal .contents {

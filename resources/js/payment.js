@@ -1,5 +1,110 @@
 import { addDatas, getDatas } from '../../firebase.js  ';
 
+// 결제할 은행 & 카드 선택
+const bankNames = [
+  '농협은행',
+  '신한은행',
+  '기업은행',
+  '하나은행',
+  '우리은행',
+  '국민은행',
+];
+const cardNames = [
+  '삼성카드',
+  '현대카드',
+  '롯데카드',
+  'BC카드',
+  '카카오뱅크',
+  '토스뱅크',
+];
+
+function addRandomSlide(arr, swiper, slideName) {
+  return function () {
+    const randomItem = arr[Math.floor(Math.random() * arr.length)];
+
+    const swiperWrapper = document.querySelector(slideName);
+
+    swiperWrapper.insertAdjacentHTML(
+      'afterbegin',
+      `
+        <div class="swiper-slide">
+          <button class="method-btn">
+            ${randomItem}
+          </button>
+        </div>
+      `
+    );
+    swiper.update();
+  };
+}
+
+let accountSwiper = new Swiper('.account-slide ', {
+  slidesPerView: 2,
+  spaceBetween: 8,
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+  breakpoints: {
+    768: {
+      slidesPerView: 3,
+      spaceBetween: 16,
+    },
+    1024: {
+      slidesPerView: 3,
+      spaceBetween: 16,
+    },
+  },
+});
+
+let cardSwiper = new Swiper('.card-slide ', {
+  slidesPerView: 2,
+  spaceBetween: 8,
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+  breakpoints: {
+    768: {
+      slidesPerView: 3,
+      spaceBetween: 16,
+    },
+    1024: {
+      slidesPerView: 3,
+      spaceBetween: 16,
+    },
+  },
+});
+
+const addAccountBtn = document.getElementById('add-account');
+const addCardBtn = document.getElementById('add-card');
+
+addAccountBtn.addEventListener(
+  'click',
+  addRandomSlide(bankNames, accountSwiper, '.account-slide-wrapper')
+);
+addCardBtn.addEventListener(
+  'click',
+  addRandomSlide(cardNames, cardSwiper, '.card-slide-wrapper')
+);
+
+const commonBtns = document.querySelectorAll('.common-btn');
+const commonMethod = document.querySelectorAll('.common-method');
+
+commonBtns.forEach((btn) => {
+  btn.addEventListener('click', function () {
+    const target = btn.getAttribute('data-target');
+
+    commonMethod.forEach((method) => {
+      if (method.classList.contains(`${target}-pay`)) {
+        method.classList.add('show-common-method');
+      } else {
+        method.classList.remove('show-common-method');
+      }
+    });
+  });
+});
+
 const userInfo = sessionStorage.getItem('userInfo');
 if (!userInfo) {
   alert('로그인을 해주세요.');
@@ -61,11 +166,11 @@ async function getUsers() {
         parseInt(amount).toLocaleString();
     }
 
-    /* 가격 표시 */
+    // 가격 표시
     displayCost('#display-amount');
     displayCost('#total-cost span');
 
-    /* 결제수단 선택 */
+    // 결제수단 선택
     const paymentMethod = document.getElementById('paymentMethod');
     const methodBtn = document.querySelectorAll('input[name="method"]');
     methodBtn.forEach((method) => {
@@ -74,28 +179,18 @@ async function getUsers() {
         document.getElementById('select-method').textContent = e.target.value;
       });
     });
-    /* 현금영수증 여부 */
-    const cashReceiptsBtn = document.querySelectorAll(
-      'input[name="cash-receipt"]'
-    );
-    cashReceiptsBtn.forEach((radio) => {
-      radio.addEventListener('change', function (e) {
-        document.getElementById('cashReceipt').value = e.target.value;
-      });
-    });
 
+    // 결제 정보 전송
     document
       .getElementById('payment-data-send')
       .addEventListener('submit', async function (e) {
         e.preventDefault();
 
         const formData = e.target;
-        const cashReceipt = formData.cashReceipt.value;
         const chooseMethod = formData.paymentMethod.value;
 
         const orderData = {
           amount: parseInt(amount),
-          cashReceipts: cashReceipt,
           dateOrdered: new Date().toLocaleString(),
           method: chooseMethod,
         };
@@ -140,40 +235,19 @@ radioBtns.forEach((radio) => {
     document.querySelectorAll('.display-method').forEach((div) => {
       div.classList.remove('show-method');
     });
-    document.querySelectorAll('.swiper').forEach((swiper) => {
-      swiper.classList.remove('display-swiper');
+    document.querySelectorAll('.method-option').forEach((swiper) => {
+      swiper.classList.remove('display-method-option');
     });
 
     let methodData = radio.getAttribute('data-method');
 
     const selectedMethod = document.querySelector(`#display-${methodData}`);
-    console.log(selectedMethod);
     if (selectedMethod) {
       selectedMethod.classList.add('show-method');
       const swiperContainer = selectedMethod.querySelector('.method-option');
       if (swiperContainer) {
-        swiperContainer.classList.add('display-method-option ');
+        swiperContainer.classList.add('display-method-option');
       }
     }
   });
-});
-
-let accountSwiper = new Swiper('.account-slide ', {
-  slidesPerView: 4,
-  spaceBetween: 16,
-  centeredSlides: true,
-  navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
-  },
-});
-
-let cardSwiper = new Swiper('.card-slide ', {
-  slidesPerView: 4,
-  spaceBetween: 16,
-  centeredSlides: true,
-  navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
-  },
 });
