@@ -167,9 +167,10 @@
   .caution-desc p {
     font-size: 1rem;
   }
-  .pay-options {
+
+  /* .pay-options {
     display: grid;
-  }
+  } */
   .pay-option {
     margin: 0;
   }
