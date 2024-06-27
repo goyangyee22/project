@@ -57,13 +57,15 @@ async function getBoard() {
     row.innerHTML =
       ('afterbegin',
       `
-    <td class="name">${name}</td>
-    <td class="title">${title}</td>
-    <td class="date">${date}</td>
+        <td class="name">${name}</td>
+        <td class="title">${title}</td>
+        <td class="date">${date}</td>
     `);
 
     tableBody.append(row);
   });
+
+  window.location.reload();
 }
 
 // table에 클릭 이벤트를 생성합니다. (클릭을 하면 노란색 배경이 씌워지며 모달 창이 나타납니다.)
@@ -401,6 +403,8 @@ submitBtn.addEventListener('click', async () => {
   const createModal = document.querySelector('#createModal');
   alert('정말 이대로 작성 하시겠습니까?');
   createModal.style.display = 'none';
+
+  getBoard();
 });
 
 // 작성 모달 창에서 취소 버튼을 누를 시 원래 페이지로 돌아갑니다.
@@ -418,6 +422,5 @@ closeModifyBtn.addEventListener('click', () => {
 });
 
 // 페이지를 로드하면 게시글을 불러옵니다.
-window.onload = () => {
-  getBoard();
-};
+
+getBoard();

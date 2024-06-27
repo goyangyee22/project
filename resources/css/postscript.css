@@ -37,18 +37,33 @@ header {
   padding: 0 16px;
   gap: 8px;
 }
-.containerBtn {
-  background-color: transparent;
+.containerBtn,
+.submitBtn,
+.functionsBtn,
+.closeCreateBtn,
+.modifySubmitBtn,
+.closeModifyBtn {
+  padding: 8px 16px;
+  background-color: var(--common-color);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
 }
-.functionsBtn {
-  background-color: transparent;
+.containerBtn:hover,
+.submitBtn:hover,
+.functionsBtn:hover,
+.closeCreateBtn:hover,
+.modifySubmitBtn:hover,
+.closeModifyBtn:hover {
+  background-color: var(--hover-color);
+  color: var(--main-color);
 }
 textarea {
   resize: none;
 }
 .createTitle,
 .modifyTitle {
-  width: 90%;
+  flex-grow: 1;
   padding: 8px;
 }
 .createContent,
@@ -61,7 +76,6 @@ textarea {
 
 /* 모달에 관련된 css입니다. */
 .functionsBtn a {
-  color: #000;
   text-decoration: none;
 }
 .functions {
@@ -69,7 +83,6 @@ textarea {
   padding: 0 8px;
 }
 #backToMainPage a {
-  color: #000;
   text-decoration: none;
 }
 .selected {
