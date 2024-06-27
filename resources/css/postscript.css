@@ -37,6 +37,9 @@ header {
   padding: 0 8px;
   gap: 16px;
 }
+.containerBtn{
+  background-color: transparent;
+}
 .functionsBtn {
   background-color: transparent;
 }
