@@ -1,4 +1,10 @@
-import { getDatas, updateDatas, deleteDatas } from '../../firebase.js';
+import {
+  getDatas,
+  updateDatas,
+  deleteDatas,
+  // firstPage,
+  // nextPage,
+} from '../../firebase.js';
 
 const userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
 if (!userInfo) {
@@ -140,72 +146,83 @@ async function getPayment() {
   try {
     const snapshot = await getDatas('payment');
 
-    let paymentData;
+    let paymentData = [];
 
-    snapshot.forEach((doc) => {
-      const data = doc.data();
-      if (data.buyer.id === userInfo.id) {
-        paymentData = data;
+    snapshot.docs.forEach((e) => {
+      if (e.data().buyer.id == userInfo.id) {
+        paymentData.push(e.data());
       }
     });
-    if (paymentData) {
-      const { personnel, reservationDate, reservationTime, room, thumb } =
-        paymentData.appointment;
-      const { name, phone } = paymentData.buyer;
-      const { amount, cashReceipts, dateOrdered, method } = paymentData.order;
 
-      const reservationInfo = document.querySelector('.reservation-info');
-      const paymentInfo = document.querySelector('.payment-info');
+    // console.log(paymentData);
 
-      reservationInfo.innerHTML = `
-        <table class="table caption-top">
-          <caption>예약정보</caption>
-          <tbody>
-            <tr>
-              <td colspan="4">
-                <img src="../resources/images/${thumb}" alt="">
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">예약공간</th>
-              <td>${room}</td>
-              <th>예약인원</th>
-              <td>${personnel}명</td>
-            </tr>
-            <tr>
-              <th scope="row">예약날짜</th>
-              <td>${reservationDate}</td>
-              <th>예약시간</th>
-              <td>${reservationTime}</td>
-            </tr>
-            <tr>
-              <th scope="row">예약자명</th>
-              <td>${name}</td>
-              <th>예약자 연락처</th>
-              <td>${phone}</td>
-            </tr>
-          </tbody>
-        </table>
-      `;
-      paymentInfo.innerHTML = `
-        <table class="table caption-top">
-          <caption>결제정보</caption>
-          <tbody>
-            <tr>
-              <th scope="row">결제일</th>
-              <td>${dateOrdered}</td>
-              <th>결제수단</th>
-              <td>${method}</td>
-            </tr>
-            <tr>
-              <th scope="row">결제금액</th>
-              <td>${amount.toLocaleString()}원</td>
-              <th>현금영수증</th>
-              <td>${cashReceipts}</td>
-            </tr>
-          </tbody>
-        </table>
-      `;
+    const container = document.querySelector('#payment-record .contents');
+    paymentData.forEach((payment) => {
+      if (payment) {
+        const { personnel, reservationDate, reservationTime, room, thumb } =
+          payment.appointment;
+        const { name, phone } = payment.buyer;
+        const { amount, cashReceipts, dateOrdered, method } = payment.order;
+
+        container.insertAdjacentHTML(
+          'beforeend',
+          `
+          <div class="reservation-info content">
+            <table class="table caption-top">
+            <caption>예약정보</caption>
+            <tbody>
+              <tr>
+                <td colspan="4">
+                  <img src="../resources/images/${thumb}" alt="">
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">예약공간</th>
+                <td>${room}</td>
+                <th>예약인원</th>
+                <td>${personnel}명</td>
+              </tr>
+              <tr>
+                <th scope="row">예약날짜</th>
+                <td>${reservationDate}</td>
+                <th>예약시간</th>
+                <td>${reservationTime}</td>
+              </tr>
+              <tr>
+                <th scope="row">예약자명</th>
+                <td>${name}</td>
+                <th>예약자 연락처</th>
+                <td>${phone}</td>
+              </tr>
+            </tbody>
+          </table>
+          </div>
+          <div class="payment-info content">
+            <table class="table caption-top">
+            <caption>결제정보</caption>
+            <tbody>
+              <tr>
+                <th scope="row">결제일</th>
+                <td>${dateOrdered}</td>
+                <th>결제수단</th>
+                <td>${method}</td>
+              </tr>
+              <tr>
+                <th scope="row">결제금액</th>
+                <td>${amount.toLocaleString()}원</td>
+                <th>현금영수증</th>
+                <td>${cashReceipts}</td>
+              </tr>
+            </tbody>
+          </table>
+          </div>
+          `
+        );
+      }
+    });
+
+    if (paymentData == 0) {
+      container.innerHTML = '결제내역이 없습니다.';
     }
   } catch (err) {
     console.log(err);
@@ -213,6 +230,52 @@ async function getPayment() {
 }
 
 // 작성글
+const postWritten = document.querySelector(
+  '#post-written .contents .post-group'
+);
+async function postRendering() {
+  try {
+    const snapshot = await getDatas('board');
+
+    let postData = [];
+
+    snapshot.docs.forEach((doc) => {
+      if (doc.data().userDocId == userInfo.docId) {
+        postData.push(doc.data());
+      }
+    });
+
+    postData.forEach((post, idx) => {
+      if (post) {
+        const { name, date, title } = post;
+        postWritten.insertAdjacentHTML(
+          'beforeend',
+          `
+          <tr>
+            <th scope="row">${idx + 1}</th>
+            <td>${title}</td>
+            <td>${name}</td>
+            <td>${date}</td>
+          </tr>
+          `
+        );
+      }
+    });
+
+    if (postData.length == 0) {
+      postWritten.insertAdjacentHTML(
+        'beforeend',
+        `
+        <tr>
+          <td colspan='4'>작성한 글이 없습니다.</td>
+        </tr>
+        `
+      );
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 // 회원탈퇴
 const withdrawalBtn = document.getElementById('withdrawal-btn');
@@ -248,3 +311,4 @@ withdrawalBtn.addEventListener('click', async function () {
 
 getMembers();
 getPayment();
+postRendering();
