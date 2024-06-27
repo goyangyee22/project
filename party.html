@@ -299,14 +299,15 @@
                   <div class="party-span">
                     <h1 class="party-mainfour">환불규정 안내</h1>
                     <i class="fa-solid fa-minus" style="color: #ffd43b"></i>
-                    <span style="color: red">
+                    <p style="color: red">
                       이용당일(첫날) 이후에는 환불 관련 사항은 호스트에게 직접
-                      문의하셔야 합니다.<br
-                    /></span>
-                    <span
-                      >결제 후 2시간 이내에는 100% 환불이
-                      가능합니다.(단,이용시간 전까지만 가능)</span
-                    >
+                      문의하셔야 합니다.<br />
+                    </p>
+                    <p>
+                      결제 후 2시간 이내에는 100% 환불이 가능합니다.(단,이용시간
+                      전까지만 가능)
+                    </p>
+
                     <div class="none">
                       <p>이용 8일 전 총 금액의 100% 환불</p>
                       <p>이용 7일 전 총 금액의 50% 환불</p>
@@ -323,7 +324,7 @@
                     <div
                       id="map"
                       class="map-map"
-                      style="width: 360px; height: 360px"
+                      style="width: 100%; height: 360px"
                     ></div>
                     <input
                       type="text"
@@ -519,47 +520,17 @@
           </div>
           <!-- dddddddddd -->
           <div id="party-payment">
-            <div class="container-one">
-              <div class="container-main">
-                <div class="pay-text">
-                  <h2>스페이스 파티룸</h2>
-                  <p>인원: 4~6인</p>
-
-                  <p>가격: 60,00 ~ 90,000</p>
-                </div>
-                <div class="pay-click">
-                  <div id="click-button">
-                    <button
-                      type="button"
-                      id="popupBtn"
-                      class="btn btn-primary"
-                      data-bs-toggle="modal"
-                      data-bs-target="#partyroom-room"
-                      onclick="partyroom('a4인')"
-                    >
-                      사진 모두보기
-                    </button>
-                    <button
-                      type="button"
-                      class="btn btn-primary"
-                      data-bs-toggle="modal"
-                      data-bs-target="#payment-form-modal"
-                      onclick="openPayment('party1')"
-                    >
-                      예약하기
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="container-one">
-              <div class="payment-container">
+            <button id="show-options">
+              <i class="fa-solid fa-angles-left"></i>menu
+            </button>
+            <div id="menumain" class="menu">
+              <div class="container-one mainone">
                 <div class="container-main">
                   <div class="pay-text">
-                    <h2>스페셜 파티룸</h2>
-                    <p>인원: 6~8인</p>
+                    <h2>스페이스 파티룸</h2>
+                    <p>인원: 4~6인</p>
 
-                    <p>가격: 80,000 ~ 120,000</p>
+                    <p>가격: 60,00 ~ 90,000</p>
                   </div>
                   <div class="pay-click">
                     <div id="click-button">
@@ -569,16 +540,16 @@
                         class="btn btn-primary"
                         data-bs-toggle="modal"
                         data-bs-target="#partyroom-room"
-                        onclick="partyroom('s')"
+                        onclick="partyroom('a4인')"
                       >
-                        사진 모두보기
+                        사진 보기
                       </button>
                       <button
                         type="button"
                         class="btn btn-primary"
                         data-bs-toggle="modal"
                         data-bs-target="#payment-form-modal"
-                        onclick="openPayment('party2')"
+                        onclick="openPayment('party1')"
                       >
                         예약하기
                       </button>
@@ -586,38 +557,73 @@
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="payment-container">
               <div class="container-one">
-                <div class="container-main">
-                  <div class="pay-text">
-                    <h2>다모여 파티룸</h2>
-                    <p>인원: 8~12인</p>
+                <div class="payment-container">
+                  <div class="container-main maintwo">
+                    <div class="pay-text">
+                      <h2>스페셜 파티룸</h2>
+                      <p>인원: 6~8인</p>
 
-                    <p>가격: 100,000 ~ 150,000</p>
+                      <p>가격: 80,000 ~ 120,000</p>
+                    </div>
+                    <div class="pay-click">
+                      <div id="click-button">
+                        <button
+                          type="button"
+                          id="popupBtn"
+                          class="btn btn-primary"
+                          data-bs-toggle="modal"
+                          data-bs-target="#partyroom-room"
+                          onclick="partyroom('s')"
+                        >
+                          사진 보기
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-primary"
+                          data-bs-toggle="modal"
+                          data-bs-target="#payment-form-modal"
+                          onclick="openPayment('party2')"
+                        >
+                          예약하기
+                        </button>
+                      </div>
+                    </div>
                   </div>
-                  <div class="pay-click">
-                    <!-- 사진 모두 보기 -->
-                    <div id="click-button">
-                      <button
-                        type="button"
-                        id="popupBtn"
-                        class="btn btn-primary"
-                        data-bs-toggle="modal"
-                        data-bs-target="#partyroom-room"
-                        onclick="partyroom('d8인')"
-                      >
-                        사진 모두보기
-                      </button>
-                      <button
-                        type="button"
-                        class="btn btn-primary"
-                        data-bs-toggle="modal"
-                        data-bs-target="#payment-form-modal"
-                        onclick="openPayment('party3')"
-                      >
-                        예약하기
-                      </button>
+                </div>
+              </div>
+              <div class="payment-container">
+                <div class="container-one">
+                  <div class="container-main mainthree">
+                    <div class="pay-text">
+                      <h2>다모여 파티룸</h2>
+                      <p>인원: 8~12인</p>
+
+                      <p>가격: 100,000 ~ 150,000</p>
+                    </div>
+                    <div class="pay-click">
+                      <!-- 사진 모두 보기 -->
+                      <div id="click-button">
+                        <button
+                          type="button"
+                          id="popupBtn"
+                          class="btn btn-primary"
+                          data-bs-toggle="modal"
+                          data-bs-target="#partyroom-room"
+                          onclick="partyroom('d8인')"
+                        >
+                          사진 보기
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-primary"
+                          data-bs-toggle="modal"
+                          data-bs-target="#payment-form-modal"
+                          onclick="openPayment('party3')"
+                        >
+                          예약하기
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>

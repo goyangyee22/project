@@ -1,10 +1,18 @@
-import {
-  getDatas,
-  updateDatas,
-  deleteDatas,
-  // firstPage,
-  // nextPage,
-} from '../../firebase.js';
+import { getDatas, updateDatas, deleteDatas } from '../../firebase.js';
+
+const firebaseConfig = {
+  apiKey: 'AIzaSyAacCYNcsw241GRaLn9A5jUuS0hm0qbxbs',
+  authDomain: 'project-52d4c.firebaseapp.com',
+  projectId: 'project-52d4c',
+  storageBucket: 'project-52d4c.appspot.com',
+  messagingSenderId: '587892298418',
+  appId: '1:587892298418:web:43d4e281e654f11750efab',
+  measurementId: 'G-ZY1J3CGR0E',
+};
+firebase.initializeApp(firebaseConfig);
+
+// Firebase를 초기화 하고 db 참조를 가져옵니다.
+const db = firebase.firestore();
 
 const userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
 if (!userInfo) {
@@ -154,8 +162,6 @@ async function getPayment() {
       }
     });
 
-    // console.log(paymentData);
-
     const container = document.querySelector('#payment-record .contents');
     paymentData.forEach((payment) => {
       if (payment) {
@@ -271,6 +277,51 @@ async function postRendering() {
         </tr>
         `
       );
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// 사용자가 작성한 게시글을 가져오는 함수입니다.
+async function fetchUserPosts() {
+  try {
+    // 로그인 되어있는 사용자의 sessionStorage에서 userDocId 값을 가져옵니다.
+    const userInfoString = sessionStorage.getItem('userInfo');
+    const user = JSON.parse(userNameString);
+    const docId = user.docId;
+    if (!userInfoString) {
+      console.log('사용자 정보가 없습니다.');
+      return false;
+    }
+    const userInfo = JSON.parse(userInfoString);
+    const postsRef = collection(db, 'board');
+    const postDocs = await getDocs(postsRef);
+    const postList = document.getElementById('postList');
+
+    // 기존의 게시글 목록을 초기화합니다.
+    if (postList) {
+      postList.innerHTML = '';
+
+      postDocs.forEach((doc) => {
+        const data = doc.data();
+        if (data.userDocId === userInfo.docId) {
+          // sessionStorage의 userDocId 값과 작성자의 docId가 일치하면 작성글이 나타납니다.
+          const listItem = document.createElement('li');
+          listItem.innerHTML = `
+      <div class="post-item">
+          <div class="post-info">
+            <span class="post-name">${data.name}</span>
+            <span class="post-title">${data.title}</span>
+            <span class="post-date">${data.date}</span>
+          </div>
+        </div>
+      `;
+          postList.appendChild(listItem);
+        }
+      });
+    } else {
+      console.log('게시글을 찾을 수 없습니다.');
     }
   } catch (error) {
     console.log(error);

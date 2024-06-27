@@ -7,7 +7,7 @@
     padding: 0 1.5rem;
   }
   .wrap {
-    margin: 1rem;
+    margin: 1.5rem 0;
     gap: 1rem;
   }
   .More {
@@ -43,7 +43,7 @@
     padding: 1rem;
   }
   .space {
-    padding-top: 2.5rem;
+    padding-top: 4.5rem;
   }
   .spaceintroduction p {
     font-size: 1.5rem;
@@ -54,7 +54,7 @@
   }
 
   .Supplies {
-    padding-top: 2.5rem;
+    padding-top: 4.5rem;
   }
   .All-Supplies ul,
   li {
@@ -105,7 +105,7 @@
     padding-top: 0.5rem;
   }
   .facility {
-    padding-top: 2.5rem;
+    padding-top: 4.5rem;
   }
   .facility-main > li > .fa-solid {
     padding: 0.5rem 0;
@@ -132,10 +132,7 @@
   }
   /* 후기 */
   #Reviews {
-    padding: 0;
-  }
-  #Q-A {
-    padding: 0 2.5rem;
+    padding-top: 3.5rem;
   }
 
   .profile-img {
@@ -195,5 +192,11 @@
   }
   .select-personnel {
     display: block;
+  }
+
+  /* up btn */
+  .up-btn button {
+    position: fixed;
+    right: 0.5rem;
   }
 }
