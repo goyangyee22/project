@@ -349,3 +349,4 @@ withdrawalBtn.addEventListener("click", async function () {
 getMembers();
 getPayment();
 postRendering();
+fetchUserPosts();
