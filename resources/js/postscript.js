@@ -64,8 +64,6 @@ async function getBoard() {
 
     tableBody.append(row);
   });
-
-  window.location.reload();
 }
 
 // table에 클릭 이벤트를 생성합니다. (클릭을 하면 노란색 배경이 씌워지며 모달 창이 나타납니다.)
@@ -422,5 +420,6 @@ closeModifyBtn.addEventListener('click', () => {
 });
 
 // 페이지를 로드하면 게시글을 불러옵니다.
-
-getBoard();
+window.onload = () => {
+  getBoard();
+};
