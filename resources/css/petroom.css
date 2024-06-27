@@ -594,3 +594,29 @@ th {
 button:hover {
   background-color: #ff6969;
 }
+
+/* 후기 모달 */
+/* 모달 전체 배경 */
+.modal {
+  display: none; /* 초기에는 모달이 숨겨져 있음 */
+  position: fixed; /* 화면에 고정 */
+  z-index: 9999; /* 다른 요소들보다 위에 표시 */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* 반투명한 배경 */
+}
+
+/* 모달 내용 */
+textarea {
+  height: 300px;
+  width: 100%;
+  /* border: 1rem; */
+}
+.Reviewswrite-header {
+  background-color: #f5dad2;
+}
+.Reviewswrite-footer {
+  background-color: #f5dad2;
+}
