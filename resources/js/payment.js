@@ -56,15 +56,14 @@ async function getUsers() {
     document.getElementById('display-room').textContent = room;
     document.getElementById('display-personnel').textContent = personnel;
 
-    function displayCost(id) {
-      document.getElementById(id).textContent =
+    function displayCost(el) {
+      document.querySelector(el).textContent =
         parseInt(amount).toLocaleString();
     }
 
     /* 가격 표시 */
-    displayCost('display-amount');
-    displayCost('amount-of-payment');
-    displayCost('total-cost');
+    displayCost('#display-amount');
+    displayCost('#total-cost span');
 
     /* 결제수단 선택 */
     const paymentMethod = document.getElementById('paymentMethod');
@@ -145,12 +144,15 @@ radioBtns.forEach((radio) => {
       swiper.classList.remove('display-swiper');
     });
 
-    const selectedMethod = document.querySelector(`#display-${this.value}`);
+    let methodData = radio.getAttribute('data-method');
+
+    const selectedMethod = document.querySelector(`#display-${methodData}`);
+    console.log(selectedMethod);
     if (selectedMethod) {
       selectedMethod.classList.add('show-method');
-      const swiperContainer = selectedMethod.querySelector('.swiper');
+      const swiperContainer = selectedMethod.querySelector('.method-option');
       if (swiperContainer) {
-        swiperContainer.classList.add('display-swiper');
+        swiperContainer.classList.add('display-method-option ');
       }
     }
   });

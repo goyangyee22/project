@@ -503,21 +503,22 @@ header {
     width: 105px;
   }
   .menu-text {
-    font-size: 1.4rem;
+    padding-top: 10px;
+    font-size: 1.3rem;
   }
   .map-copy-text {
-    font-size: 1.2rem;
+    font-size: 1rem;
     border-bottom: 2px solid #eeeeee;
     padding-left: 15px;
   }
   #map {
-    width: 450px;
-    height: 400px;
+    width: 400px;
+    height: 300px;
   }
   .map-text {
     border: 2px solid #eeeeee;
     border-radius: 10px;
-    width: 75%;
+    width: 95%;
   }
   #hello {
     padding: 15px;
@@ -526,10 +527,9 @@ header {
   /* 사이드 메뉴 */
   .meeting-room {
     position: sticky;
-    top: 24px;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 10px;
     width: 30%;
   }
 
@@ -584,12 +584,12 @@ header {
   }
 
   .button1 {
-    padding: 7px 10px;
+    padding: 7px 12px;
     border-radius: 10px;
   }
 
   .button2 {
-    padding: 7px 10px;
+    padding: 7px 12px;
     border-radius: 10px;
   }
 

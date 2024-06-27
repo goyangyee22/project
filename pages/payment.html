@@ -92,13 +92,14 @@
                       type="radio"
                       id="account"
                       name="method"
+                      data-method="account"
                       value="계좌결제"
                     />
                     <span class="radio-checkmark"></span>
                     <span class="radio-label">계좌 간편결제</span>
                   </label>
                   <div id="display-account" class="display-method">
-                    <div class="swiper account-slide">
+                    <div class="swiper account-slide method-option">
                       <div class="swiper-wrapper account-slide-wrapper">
                         <div class="swiper-slide">
                           <button class="method-btn">농협은행</button>
@@ -132,13 +133,14 @@
                       type="radio"
                       id="card"
                       name="method"
+                      data-method="card"
                       value="카드결제"
                     />
                     <span class="radio-checkmark"></span>
                     <span class="radio-label">카드 간편결제</span>
                   </label>
                   <div id="display-card" class="display-method">
-                    <div class="swiper card-slide">
+                    <div class="swiper card-slide method-option">
                       <div class="swiper-wrapper card-slide-wrapper">
                         <div class="swiper-slide">
                           <button class="method-btn">삼성카드</button>
@@ -164,41 +166,44 @@
                       type="radio"
                       id="common"
                       name="method"
+                      data-method="common"
                       value="일반결제"
                     />
                     <span class="radio-checkmark"></span>
                     <span class="radio-label">일반결제</span>
                   </label>
                   <div id="display-common" class="display-method">
-                    <div class="common-btn-wrap">
-                      <button class="btn">삼성페이</button>
-                      <button class="btn">네이버페이</button>
-                      <button class="btn">카카오페이</button>
-                      <button class="btn">무통장입금</button>
-                    </div>
-                    <div class="samsung-pay">
-                      <p>삼성페이 인증 후 결제됩니다.</p>
-                    </div>
-                    <div class="naver-pay">
-                      <p>네이버페이 인증 후 결제됩니다.</p>
-                    </div>
-                    <div class="kakao-pay">
-                      <p>카카오페이 인증 후 결제됩니다.</p>
-                    </div>
-                    <div class="no-bankbook">
-                      <select name="bankbook" id="bankbook">
-                        <option value="">은행을 선택해주세요.</option>
-                        <option value="NH">농협</option>
-                        <option value="KM">국민은행</option>
-                        <option value="SH">신한은행</option>
-                        <option value="WR">우리은행</option>
-                        <option value="KU">기업은행</option>
-                        <option value="HN">하나은행</option>
-                        <option value="EP">우체국</option>
-                      </select>
-                      <div class="no-bankbook-info">
-                        <p>무통장입금 안내</p>
-                        <span class="more-info">?</span>
+                    <div class="method-option">
+                      <div class="common-btn-wrap">
+                        <button class="btn">삼성페이</button>
+                        <button class="btn">네이버페이</button>
+                        <button class="btn">카카오페이</button>
+                        <button class="btn">무통장입금</button>
+                      </div>
+                      <div class="samsung-pay">
+                        <p>삼성페이 인증 후 결제됩니다.</p>
+                      </div>
+                      <div class="naver-pay">
+                        <p>네이버페이 인증 후 결제됩니다.</p>
+                      </div>
+                      <div class="kakao-pay">
+                        <p>카카오페이 인증 후 결제됩니다.</p>
+                      </div>
+                      <div class="no-bankbook">
+                        <select name="bankbook" id="bankbook">
+                          <option value="">은행을 선택해주세요.</option>
+                          <option value="NH">농협</option>
+                          <option value="KM">국민은행</option>
+                          <option value="SH">신한은행</option>
+                          <option value="WR">우리은행</option>
+                          <option value="KU">기업은행</option>
+                          <option value="HN">하나은행</option>
+                          <option value="EP">우체국</option>
+                        </select>
+                        <div class="no-bankbook-info">
+                          <p>무통장입금 안내</p>
+                          <span class="more-info">?</span>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -234,45 +239,32 @@
             </div>
           </div>
         </div>
-        <div id="payment-aside">
-          <div class="payment-aside-wrap">
-            <div class="payment-aside-contents">
+        <form id="payment-data-send">
+          <div class="payment-contents">
+            <div class="payment-content">
               <h2>결제상세</h2>
               <div class="payment-aside-content payment-content-box">
                 <div id="select-method">결제수단</div>
-                <div>
-                  <span id="total-cost"> <!-- 총 금액 --> </span>원
+                <div id="total-cost">
+                  <span> <!-- 총 금액 --> </span>원
                 </div>
-              </div>
-            </div>
-            <div class="payment-aside-contents">
-              <h2>포인트 혜택</h2>
-              <div class="payment-aside-content payment-content-box">
-                <div class="acc-points purchase-point">
-                  <h3>구매적립</h3>
-                  <span class="more-info">?</span>
-                  <span>결제금액의 5% (얼마인지 표시하기)</span>
-                </div>
-                <div class="acc-points review-point">
-                  <h3>리뷰적립</h3>
-                  <span class="more-info">?</span>
-                  <span>결제금액의 10% (얼마인지 표시하기)</span>
+                <div class="data-send-content wrap">
+                  <p>주문내용을 확인하였으며, 정보 제공 등에 동의합니다.</p>
+                  <button
+                    type="submit"
+                    id="final-payment-btn"
+                    class="payment-btn"
+                  >
+                    결제하기
+                  </button>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+          <input type="hidden" name="cashReceipt" id="cashReceipt" />
+          <input type="hidden" name="paymentMethod" id="paymentMethod" />
+        </form>
       </div>
-      <form id="payment-data-send">
-        <input type="hidden" name="cashReceipt" id="cashReceipt" />
-        <input type="hidden" name="paymentMethod" id="paymentMethod" />
-        <div class="data-send-content wrap">
-          <p>주문내용을 확인하였으며, 정보 제공 등에 동의합니다.</p>
-          <button type="submit" id="final-payment-btn" class="payment-btn">
-            <span id="amount-of-payment"> <!-- 총 금액 --> </span>원 결제하기
-          </button>
-        </div>
-      </form>
     </div>
   </body>
 </html>
