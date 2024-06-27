@@ -145,4 +145,12 @@ closeEl.addEventListener("click", function () {
   menu.classList.remove("show-menus");
 });
 
+//------------------------------- up버튼
+function Topbtn() {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+}
+
 mapRendering();

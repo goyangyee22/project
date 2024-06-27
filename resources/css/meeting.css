@@ -45,6 +45,27 @@ header {
   width: 100%;
   max-width: 1200px;
 }
+.up-btn button i {
+  font-size: 1.5rem;
+  text-align: center;
+}
+.up-btn button {
+  position: fixed;
+  bottom: 1rem;
+  right: 20px;
+
+  background-color: pink;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+}
+
+button:hover {
+  background-color: #ff6969;
+}
 
 .meet-details {
   width: 75%;
@@ -656,9 +677,9 @@ header {
   }
 
   .information-list span {
-    font-size: 2px;
-    padding: 1px 5px;
-    border-radius: 9px;
+    font-size: 1rem;
+    padding: 4px 8px;
+    border-radius: 10px;
   }
   .main-icon {
     display: flex;
@@ -707,7 +728,6 @@ header {
     font-size: 8px;
   }
   #hello {
-    font-size: ;
     padding: 10px;
   }
   .hover-text {
@@ -716,6 +736,10 @@ header {
   }
   .ra_menu {
     font-size: 22px;
+  }
+  .rclick {
+    font-size: 1rem;
+    padding: 0px 10px;
   }
 
   /* 사이드 메뉴 */
