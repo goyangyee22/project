@@ -8,10 +8,10 @@ body {
 }
 
 /* common swiper */
-.swiper {
+.method-option {
   display: none;
 }
-.swiper.display-swiper {
+.display-method-option {
   display: block;
 }
 .swiper-wrapper {
