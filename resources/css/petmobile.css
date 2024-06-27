@@ -294,7 +294,7 @@
   /* up btn */
   .up-btn button {
     position: fixed;
-    right: 0;
+    right: 0.5rem;
     bottom: 40px;
   }
 }
