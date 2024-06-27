@@ -126,6 +126,7 @@ body {
   align-items: center;
   gap: 1rem;
   font-size: 3rem;
+  font-weight: 700;
 }
 .section-title span {
   display: flex;
@@ -565,7 +566,7 @@ body {
   }
   .section-desc {
     padding: 2rem 0;
-    font-size: 1rem;
+    font-size: 1.25rem;
   }
   .info-icons {
     grid-template-columns: repeat(2, 1fr);
@@ -589,7 +590,7 @@ body {
   }
 
   #section-menu > ul > li a {
-    padding: 8px 16px;
+    padding: 8px;
   }
 
   .service-img {
@@ -602,10 +603,10 @@ body {
     font-size: 1rem;
   }
   .service-desc > p {
-    font-size: 1rem;
+    font-size: 1.25rem;
   }
   .service-inquiry > span {
-    font-size: 0.75rem;
+    font-size: 1rem;
   }
 
   .booking-icons {
@@ -619,6 +620,6 @@ body {
     font-size: 1rem;
   }
   .transportation > ul p {
-    font-size: 0.75rem;
+    font-size: 12px;
   }
 }
