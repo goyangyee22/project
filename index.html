@@ -19,6 +19,9 @@
       type="text/javascript"
       src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1fb3a65936addf6c3befbf8da8e54a23"
     ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/ScrollToPlugin.min.js"></script>
     <script defer src="./resources/js/common.js"></script>
     <script defer src="./resources/js/main.js"></script>
   </head>
@@ -46,7 +49,8 @@
             <li><a href="./pages/QnA.html">Q&A</a></li>
           </ul>
         </nav>
-        <ul class="spot"></ul>
+        <ul class="spot">
+        </ul>
       </header>
       <main>
         <section id="hero">
@@ -148,10 +152,10 @@
         <section id="intro" class="main-section">
           <div class="wrap">
             <div class="intro-container">
-              <h2 class="section-title">
+              <h2 class="section-title animate">
                 <span>#놀다</span> 빌리슈에서의 특별한 순간
               </h2>
-              <div class="intro-contents section-desc">
+              <div class="intro-contents section-desc animate">
                 <p>
                   빌리슈는 다양한 공간을 대여하여 여러분의 특별한 순간을 더욱
                   빛나게 합니다. <br /><span>친구들과 함께하는 파티룸</span>,
@@ -248,10 +252,10 @@
         <section id="options" class="main-section">
           <div class="wrap">
             <div class="option-info">
-              <h2 class="section-title">
+              <h2 class="section-title animate">
                 <span>#즐기다</span> 편리함이 넘치는 올인원 공간
               </h2>
-              <div class="section-desc">
+              <div class="section-desc animate">
                 <p>
                   빌리슈는 다양한 요구를 만족시키는
                   <span>올인원 공간을 제공</span>합니다.

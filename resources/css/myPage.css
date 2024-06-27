@@ -7,6 +7,12 @@ main {
   min-height: calc(100vh - 243px);
 }
 
+.table{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /* side menu */
 .side-menu {
   position: fixed;
@@ -104,6 +110,7 @@ th {
   text-align: center;
   vertical-align: middle;
 }
+
 /* change info */
 #change-info input {
   padding: 8px;
@@ -127,6 +134,15 @@ th {
   color: var(--main-color);
 }
 
+/* payment record */
+#payment-record .contents {
+  flex-direction: column;
+}
+#payment-record .reservation-info img {
+  width: 500px;
+  height: 310px;
+  object-fit: cover;
+}
 /* withdrawal */
 #withdrawal .contents {
   flex-direction: column;

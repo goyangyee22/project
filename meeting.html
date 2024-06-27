@@ -63,6 +63,113 @@
       <ul class="spot"></ul>
     </header>
     <main>
+      <button id="show-options">
+        <i class="fa-solid fa-angles-left"></i>menu
+      </button>
+      <div class="menu_list">
+        <div class="menu">
+          <div class="close">X</div>
+          <ul class="meeting_small">
+            <li>
+              <h3>소회의실</h3>
+            </li>
+            <li>
+              <span>인원 4~6인</span>
+            </li>
+            <li>
+              <span>구성 책상/의자/70인치 칠판</span>
+            </li>
+            <li class="reservation_button">
+              <button
+                type="button"
+                class="button1"
+                data-bs-toggle="modal"
+                data-bs-target="#all_pohoto"
+                onclick="meeting('small')"
+              >
+                사진보기
+              </button>
+              <button
+                type="button"
+                class="button2"
+                data-bs-toggle="modal"
+                data-bs-target="#payment-form-modal"
+                onclick="openPayment('meeting1')"
+              >
+                예약하기
+              </button>
+            </li>
+          </ul>
+
+          <ul class="meeting_medium">
+            <li>
+              <h3>중회의실</h3>
+            </li>
+            <li>
+              <span>인원 6~15인</span>
+            </li>
+            <li>
+              <span
+                >구성 책상/의자/55인치 스마트TV/<br />
+                75인치 전자칠판(OTT)</span
+              >
+            </li>
+            <li class="reservation_button">
+              <button
+                type="button"
+                class="button1"
+                data-bs-toggle="modal"
+                data-bs-target="#all_pohoto"
+                onclick="meeting('medium')"
+              >
+                사진보기
+              </button>
+              <button
+                type="button"
+                class="button2"
+                data-bs-toggle="modal"
+                data-bs-target="#payment-form-modal"
+                onclick="openPayment('meeting2')"
+              >
+                예약하기
+              </button>
+            </li>
+          </ul>
+
+          <ul class="meeting_big">
+            <li>
+              <h3>대회의실</h3>
+            </li>
+            <li>
+              <span>인원 15~30인</span>
+            </li>
+            <li>
+              <span>구성 책상/의자/스마트 스크린</span>
+            </li>
+            <li class="reservation_button">
+              <button
+                type="button"
+                class="button1"
+                data-bs-toggle="modal"
+                data-bs-target="#all_pohoto"
+                onclick="meeting('big')"
+              >
+                사진보기
+              </button>
+              <button
+                type="button"
+                class="button2"
+                data-bs-toggle="modal"
+                data-bs-target="#payment-form-modal"
+                onclick="openPayment('meeting3')"
+              >
+                예약하기
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+
       <section id="detail">
         <div id="detail-wrap" class="wrap">
           <div class="detail-container">
@@ -73,6 +180,7 @@
                     style="
                       --swiper-navigation-color: #fff;
                       --swiper-pagination-color: #fff;
+                      --swiper-navigation-size: 15px;
                     "
                     class="swiper detail-slide"
                   >
@@ -133,47 +241,51 @@
                 </ul>
                 <div id="information">
                   <h1 class="menu_title" id="menu_title1">공간 소개</h1>
-                  <p class="information-list">
-                    <span>#회의실</span>
-                    <span>#미팅룸</span>
-                    <span>#스터디룸</span>
-                    <span>#모임공간</span>
-                  </p>
-                  <h5>
-                    깔끔한 인테리어와 쾌적한 공간 중구 선화동에 위치한 깔끔한
-                    모임 공간<br />
-                    최대 30명까지 수용 가능한 공간 <br />
-                    스터디,소모임,회의,과외,면접,인터뷰,영상촬영,원데이클래스
-                    모두 가능
-                  </h5>
-                  <br />
-                  <div class="main-icon">
-                    <div class="iconsort">
-                      <div class="i-con"><i class="fa-solid fa-car"></i></div>
-                      <p>주차가능</p>
-                    </div>
-
-                    <div class="iconsort">
-                      <div class="i-con"><i class="fa-solid fa-wifi"></i></div>
-                      <p>인터넷/WIFI</p>
-                    </div>
-
-                    <div class="iconsort">
-                      <div class="i-con">
-                        <i class="fa-solid fa-stairs"></i>
+                  <div class="one-list">
+                    <p class="information-list">
+                      <span>#회의실</span>
+                      <span>#미팅룸</span>
+                      <span>#스터디룸</span>
+                      <span>#모임공간</span>
+                    </p>
+                    <h5>
+                      깔끔한 인테리어와 쾌적한 공간 중구 선화동에 위치한 깔끔한
+                      모임 공간<br />
+                      최대 30명까지 수용 가능한 공간 <br />
+                      스터디,소모임,회의,과외,면접,인터뷰,영상촬영,원데이클래스
+                      모두 가능
+                    </h5>
+                    <br />
+                    <div class="main-icon">
+                      <div class="iconsort">
+                        <div class="i-con"><i class="fa-solid fa-car"></i></div>
+                        <p>주차가능</p>
                       </div>
-                      <p>지상3층</p>
-                    </div>
 
-                    <div class="iconsort">
-                      <div class="i-con">
-                        <i class="fa-solid fa-elevator"></i>
+                      <div class="iconsort">
+                        <div class="i-con">
+                          <i class="fa-solid fa-wifi"></i>
+                        </div>
+                        <p>인터넷/WIFI</p>
                       </div>
-                      <p>엘리베이터</p>
+
+                      <div class="iconsort">
+                        <div class="i-con">
+                          <i class="fa-solid fa-stairs"></i>
+                        </div>
+                        <p>지상3층</p>
+                      </div>
+
+                      <div class="iconsort">
+                        <div class="i-con">
+                          <i class="fa-solid fa-elevator"></i>
+                        </div>
+                        <p>엘리베이터</p>
+                      </div>
                     </div>
                   </div>
-                  <br />
-                  <h1 class="menu_title" id="menu_title1">시설 안내</h1>
+
+                  <h1 class="menu_title" id="menu_title2">시설 안내</h1>
                   <ol class="menu-text">
                     <!-- 🤍 ⋈ ① ⊳   -->
                     <li>
@@ -192,7 +304,7 @@
                     <li>⊳ 개수대 및 내부 화장실</li>
                   </ol>
                   <br />
-                  <h1 class="menu_title" id="menu_title1">주의 사항</h1>
+                  <h1 class="menu_title" id="menu_title3">주의 사항</h1>
                   <ol class="menu-text">
                     <li>⊳ 예약시간 및 대관인원을 꼭 지켜주세요.</li>
                     <li>
@@ -201,7 +313,7 @@
                     </li>
                     <li>
                       ⊳ 내부 시설은 모두 무료로 이용 가능하나, 이용자 개인
-                      과실로 인한 파손 및 고장, 유실, 도난 등이 발생할 경우<br />
+                      과실로 인한 파손 및 고장, 유실, 도난 등이 발생할 경우
                       이용자가 책임을 집니다. (새 제품 가격으로 배상)
                     </li>
                     <li>
@@ -220,9 +332,9 @@
                   <br />
 
                   <h1 class="menu_title">환불 정책</h1>
-                  <span class="menu-text">
+                  <div class="menu-text">
                     이용 전날과 당일만 제외하고 총 금액의 100% 환불 가능 합니다.
-                  </span>
+                  </div>
                 </div>
 
                 <!-- 지도 -->
@@ -253,7 +365,6 @@
                   </div>
                 </div>
 
-                <br />
                 <!-- 이용후기, Q&A -->
                 <div id="review">
                   <div class="ra_button">
