@@ -11,12 +11,14 @@
   #detail-wrap.wrap {
     width: 100%;
     display: block;
-    /* padding: 0; */
+    padding-top: 60px;
   }
   .wrap .detail-hero {
     width: 100%;
   }
   #party .detail-container {
+    /* padding-top: 10px; */
+    padding: 0 12px;
     width: 100%;
   }
   body #party {
@@ -41,8 +43,6 @@
     /* height: 100%; */
   }
   .wrap .detail-container {
-    /* display: none; */
-    padding: 0 80px;
     width: 100%;
   }
   .wrap .party-contents {
@@ -56,9 +56,7 @@
     display: flex;
     justify-content: center;
   }
-  .maini header {
-    font-size: 1rem;
-  }
+
   .result .party-maintwo,
   .party-mainthree {
     padding-top: 30px;
@@ -106,7 +104,16 @@
   .QnA-num p {
     font-size: 1rem;
   }
+  .review .QnA-num {
+    /* display: block; */
+    width: 100%;
+  }
+  .QnA-boxs .guest-name {
+    width: 100%;
+  }
   footer .footer-sns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     width: 100%;
   }
 }
@@ -142,9 +149,7 @@
     display: flex;
     justify-content: center;
   }
-  .maini header {
-    font-size: 1rem;
-  }
+
   .main-icon p {
     display: block;
     font-size: 1rem;
@@ -159,6 +164,9 @@
   }
   .party-menu a {
     font-size: 1rem;
+  }
+  .result .party-span span {
+    font-size: 1.5rem;
   }
   .text-list h3,
   span,
