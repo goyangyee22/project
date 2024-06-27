@@ -28,7 +28,7 @@
     font-size: 1rem;
   }
   .space {
-    padding-top: 2.5rem;
+    padding-top: 3.5rem;
   }
   .spaceintroduction p {
     font-size: 1rem;
@@ -45,7 +45,7 @@
     gap: 0.5rem;
   }
   .Supplies {
-    padding-top: 2.5rem;
+    padding-top: 3.5rem;
   }
   .All-Supplies ul,
   li {
@@ -80,7 +80,7 @@
     padding: 0.5rem;
   }
   .times {
-    padding-top: 2.5rem;
+    padding-top: 3.5rem;
   }
   .times td,
   th {
@@ -96,7 +96,7 @@
     padding-top: 0.5rem;
   }
   .facility {
-    padding-top: 2.5rem;
+    padding-top: 3.5rem;
   }
   .facility-main > li > .fa-solid {
     padding: 0.5rem 0;
@@ -104,13 +104,14 @@
   }
 
   .mapst {
-    padding: 2.5rem 0 2.5rem 2.5rem;
+    /* padding: 2.5rem 0 2.5rem 2.5rem; */
   }
   .mapst span {
     font-size: 1rem;
   }
   .hover-text {
     font-size: 1rem;
+    width: 5rem;
   }
 
   #map {
@@ -122,9 +123,8 @@
     top: 0;
   }
   /* 후기 */
-  #Reviews,
-  #Q-A {
-    padding: 0 2.5rem;
+  #Reviews {
+    padding-top: 3.5rem;
   }
 
   .profile-img {
@@ -138,7 +138,10 @@
     display: block;
   }
   .name {
-    font-size: 1.5rem;
+    font-size: 1rem;
+  }
+  .profile-title {
+    font-size: 1rem;
   }
 
   /* }.room-main{width: 100%; */
@@ -210,10 +213,7 @@
   li {
     list-style: none;
   }
-  #menu-b {
-    display: block;
-    color: #d37676;
-  }
+
   #menu-b:hover {
     color: #ff8080;
   }
@@ -234,6 +234,8 @@
   }
 
   #menu-b {
+    display: block;
+    color: #d37676;
     border: none;
     font-size: 1.5rem;
     background-color: #ffefef;
