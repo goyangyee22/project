@@ -1,6 +1,27 @@
 import { getDatas, updateDatas, deleteDatas } from '../../firebase.js';
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+const userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
+=======
+const firebaseConfig = {
+  apiKey: 'AIzaSyAacCYNcsw241GRaLn9A5jUuS0hm0qbxbs',
+  authDomain: 'project-52d4c.firebaseapp.com',
+  projectId: 'project-52d4c',
+  storageBucket: 'project-52d4c.appspot.com',
+  messagingSenderId: '587892298418',
+  appId: '1:587892298418:web:43d4e281e654f11750efab',
+  measurementId: 'G-ZY1J3CGR0E',
+};
+firebase.initializeApp(firebaseConfig);
+
+// Firebase를 초기화 하고 db 참조를 가져옵니다.
+const db = firebase.firestore();
+
+=======
+>>>>>>> 08dfb8bebb6546f39559ef4a1920397752c4523c
 const userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+>>>>>>> 3dbfdbdb1980834e7067afaf0d896b3fb9e097b9
 if (!userInfo) {
   alert('로그인을 해주세요.');
   window.location.href = './signIn.html';
@@ -277,7 +298,11 @@ async function fetchUserPosts() {
     const user = JSON.parse(userNameString);
     const docId = user.docId;
     if (!userInfoString) {
+<<<<<<< HEAD
+      console.log("사용자 정보가 없습니다.");
+=======
       console.log('사용자 정보가 없습니다.');
+>>>>>>> 3dbfdbdb1980834e7067afaf0d896b3fb9e097b9
       return false;
     }
     const userInfo = JSON.parse(userInfoString);
