@@ -34,8 +34,8 @@ let previewSwiper = new Swiper('.preview-slide', {
 // gsap
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
-gsap.utils.toArray('.animate').forEach((element, index) => {
-  let delay = index * 0.3;
+gsap.utils.toArray('.animateY').forEach((element, index) => {
+  let delay = index * 0.2;
   gsap.fromTo(
     element,
     { opacity: 0, y: -50 },
@@ -47,8 +47,41 @@ gsap.utils.toArray('.animate').forEach((element, index) => {
         trigger: element,
         start: 'top 90%',
         end: 'top 10%',
-        toggleActions: 'play reverse play reverse',
-        markers: true,
+      },
+    }
+  );
+});
+
+gsap.utils.toArray('.side-animate').forEach((el, idx) => {
+  let direction = idx % 2 === 0 ? -100 : 100;
+  gsap.fromTo(
+    el,
+    { opacity: 0, x: direction },
+    {
+      opacity: 1,
+      x: 0,
+      scrollTrigger: {
+        trigger: el,
+        start: 'top 90%',
+        end: 'top 10%',
+      },
+    }
+  );
+});
+
+gsap.utils.toArray('.icon-animate').forEach((element, index) => {
+  let delay = index * 0.5;
+  gsap.fromTo(
+    element,
+    { opacity: 0, y: 50 },
+    {
+      opacity: 1,
+      y: 0,
+      delay: delay,
+      scrollTrigger: {
+        trigger: element,
+        start: 'top 90%',
+        end: 'top 10%',
       },
     }
   );

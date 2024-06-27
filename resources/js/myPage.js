@@ -213,6 +213,34 @@ async function getPayment() {
 }
 
 // 작성글
+// 로그인 되어있는 사용자의 sessionStorage에서 userDocId 값을 가져옵니다.
+const userNameString = sessionStorage.getItem("userInfo");
+  const user = JSON.parse(userNameString);
+  const docId = user.docId;
+
+// Firebase를 초기화 하고 db 참조를 가져옵니다.
+// const db = firebase.firestore();
+
+// 사용자가 작성한 게시물을 가져오는 함수입니다.
+async function fetchUserPosts(){
+  try{
+    const snapshot = await getDatas("board");
+
+    let postData;
+
+    snapshot.forEach((doc) => {
+      const data = doc.data();
+      if(data.userDocId === docId){
+        userPost = data;
+      }
+    });
+
+    if(userPost){
+      const { title, name, date } = postData;
+      const 
+    }
+  }
+}
 
 // 회원탈퇴
 const withdrawalBtn = document.getElementById('withdrawal-btn');
