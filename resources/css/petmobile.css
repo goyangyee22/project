@@ -236,7 +236,8 @@
 
   #Space-introduction {
     position: relative;
-    padding: 0 2.5rem;
+    /* padding: 0 2.5rem; */
+    padding-right: 2.5rme;
   }
 
   #menu-b {
