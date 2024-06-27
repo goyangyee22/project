@@ -31,6 +31,13 @@ header{
   width: 20%;
   flex-shrink: 0;
 }
+.btnFunction{
+  position: absolute;
+  right: 0;
+  top: 10%;
+  padding: 0 8px;
+  gap: 16px;
+}
 
 /* 모달에 관련된 css입니다. */
 .functionsBtn a {
