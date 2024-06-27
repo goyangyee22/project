@@ -1,6 +1,7 @@
 import { getDatas, updateDatas, deleteDatas } from '../../firebase.js';
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 const userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
 =======
 const firebaseConfig = {
@@ -17,6 +18,8 @@ firebase.initializeApp(firebaseConfig);
 // Firebase를 초기화 하고 db 참조를 가져옵니다.
 const db = firebase.firestore();
 
+=======
+>>>>>>> 08dfb8bebb6546f39559ef4a1920397752c4523c
 const userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
 >>>>>>> 3dbfdbdb1980834e7067afaf0d896b3fb9e097b9
 if (!userInfo) {
