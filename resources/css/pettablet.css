@@ -131,7 +131,9 @@
     top: 0;
   }
   /* 후기 */
-  #Reviews,
+  #Reviews {
+    padding: 0;
+  }
   #Q-A {
     padding: 0 2.5rem;
   }
