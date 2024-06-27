@@ -71,6 +71,12 @@
   .all-1 {
     height: 18.75rem;
   }
+  /* .all-1 ul li {
+    padding: 0.3rem;
+  }
+  .all-2 {
+    padding: 1rem;
+  } */
   .facility-main {
     padding: 0;
   }
@@ -230,7 +236,8 @@
 
   #Space-introduction {
     position: relative;
-    padding: 0 2.5rem;
+    /* padding: 0 2.5rem; */
+    padding-right: 2.5rme;
   }
 
   #menu-b {
@@ -243,8 +250,9 @@
     width: 30px;
     height: 150px;
     position: fixed;
-    top: 600px;
+    /* top: 600px; */
     left: 0;
+
     /* width: 100%; */
   }
 
@@ -283,5 +291,11 @@
   .room li {
     font-size: 1rem;
     padding: 0;
+  }
+  /* up btn */
+  .up-btn button {
+    position: fixed;
+    right: 10px;
+    bottom: 40px;
   }
 }

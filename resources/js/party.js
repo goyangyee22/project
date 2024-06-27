@@ -111,4 +111,17 @@ function urlCopy() {
   copyText.style.display = "none"; // 다시 텍스트 숨김
 }
 
+//------------------------------ 반응형 버튼
+// const btn = document.getElementById("show-options");
+// const menu = document.querySelector(".menumain");
+
+// btn.addEventListener("click", function () {
+//   menu.classList.add("show-menus");
+// });
+
+// const closeEl = document.querySelector(".close");
+// closeEl.addEventListener("click", function () {
+//   menu.classList.remove("show-menus");
+// });
+
 mapRendering();
