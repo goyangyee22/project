@@ -7,7 +7,7 @@
     padding: 0 1.5rem;
   }
   .wrap {
-    margin: 1rem;
+    margin: 1.5rem 0;
     gap: 1rem;
   }
   .More {
@@ -132,7 +132,7 @@
   }
   /* 후기 */
   #Reviews {
-    padding: 0;
+    padding-top: 3.5rem;
   }
 
   .profile-img {
@@ -192,5 +192,11 @@
   }
   .select-personnel {
     display: block;
+  }
+
+  /* up btn */
+  .up-btn button {
+    position: fixed;
+    right: 0.5rem;
   }
 }
