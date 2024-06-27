@@ -4,7 +4,7 @@
     margin: 0;
   }
   #pet {
-    padding-bottom: 0;
+    padding: 0 1.5rem;
   }
   .wrap {
     padding: 0 1rem;
@@ -18,7 +18,7 @@
   }
   .pet-detail {
     padding: 0;
-    display: block;
+    /* display: block; */
   }
   .room-main {
     gap: 1rem;
@@ -172,9 +172,9 @@
   .caution-desc p {
     font-size: 1rem;
   }
-  .pay-options {
+  /* .pay-options {
     display: grid;
-  }
+  } */
   .pay-option {
     margin: 0;
   }
