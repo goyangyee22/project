@@ -1,0 +1,199 @@
+@media screen and (max-width: 1023px) {
+  * {
+    padding: 0;
+    margin: 0;
+  }
+  #pet {
+    padding: 0 1.5rem;
+  }
+  .wrap {
+    margin: 1rem;
+    gap: 1rem;
+  }
+  .More {
+    /* backdrop-filter: blur(50px); */
+    background-color: rgba(252, 249, 249);
+  }
+  .pet-contents {
+    width: 60%;
+  }
+  .pet-detail {
+    padding: 0;
+    /* display: block; */
+  }
+  .room-main {
+    gap: 1rem;
+    width: 40%;
+    padding: 0;
+  }
+  .room {
+    height: 100%;
+    /* padding: 0.5rem; */
+  }
+  .More ul {
+    font-size: 1rem;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.5rem;
+  }
+  .infor-title {
+    font-size: 2.5rem;
+  }
+  .spaceintroduction {
+    padding: 1rem;
+  }
+  .space {
+    padding-top: 2.5rem;
+  }
+  .spaceintroduction p {
+    font-size: 1.5rem;
+  }
+
+  .iconsort p {
+    font-size: 1rem;
+  }
+
+  .Supplies {
+    padding-top: 2.5rem;
+  }
+  .All-Supplies ul,
+  li {
+    padding: 0;
+  }
+
+  .common-main li {
+    padding: 0 0 0 1rem;
+  }
+  .common-title {
+    margin: 1rem 0;
+    font-size: 2rem;
+  }
+  .common-main {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    font-size: 1.5rem;
+  }
+  .common-1 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .all-1 {
+    height: 18.75rem;
+  }
+  .facility-main {
+    padding: 0;
+  }
+  .facility-main li {
+    font-size: 1.5rem;
+    margin: 0;
+    padding: 0.5rem 0;
+  }
+  .times {
+    padding-top: 2.5rem;
+  }
+  .times td,
+  th {
+    font-size: 1.5rem;
+  }
+
+  .refund {
+    padding-top: 2.5rem;
+  }
+  .refund-main li {
+    font-size: 1.5rem;
+    margin: 0;
+    padding-top: 0.5rem;
+  }
+  .facility {
+    padding-top: 2.5rem;
+  }
+  .facility-main > li > .fa-solid {
+    padding: 0.5rem 0;
+    font-size: 1rem;
+  }
+  /* 지도 */
+
+  .mapst span {
+    font-size: 1rem;
+  }
+  .hover-text {
+    font-size: 1rem;
+  }
+  .map-copy {
+    padding: 1rem 0;
+  }
+  #map {
+    width: 100%;
+    height: 200px;
+  }
+  .copyMessage {
+    position: absolute;
+    top: 0;
+  }
+  /* 후기 */
+  #Reviews {
+    padding: 0;
+  }
+  #Q-A {
+    padding: 0 2.5rem;
+  }
+
+  .profile-img {
+    margin: 0;
+  }
+  .profile-img img {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+  .customer {
+    display: block;
+  }
+  .name {
+    font-size: 2rem;
+  }
+  .profile-title {
+    font-size: 1.5rem;
+  }
+
+  /* 예약내용 */
+  #detail-payment {
+    padding: 1rem 0.5rem;
+    gap: 1rem;
+  }
+  .fc .fc-daygrid-day-frame {
+    font-size: 1rem;
+  }
+  .pay-desc p {
+    font-size: 1.4rem;
+  }
+  .pay-hash .hash-item {
+    padding: 0 0.5rem;
+  }
+  .pay-caution h4 {
+    font-size: 1.2rem;
+    padding: 0;
+  }
+  .caution-desc a {
+    font-size: 1rem;
+  }
+  .caution-desc p {
+    font-size: 1rem;
+  }
+  /* .pay-options {
+    display: grid;
+  } */
+  .pay-option {
+    margin: 0;
+  }
+  .pay-option span {
+    font-size: 1rem;
+  }
+  #personnel {
+    width: 80px;
+    height: 2.5rem;
+    margin-top: 2rem;
+  }
+  .select-personnel {
+    display: block;
+  }
+}

@@ -9,21 +9,53 @@
     <!-- 부트스트랩 및 Firebase 스크립트 -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.0/js/bootstrap.bundle.min.js"></script>
   </head>
-  <style>
-    
-  </style>
   <body>
+    <header>
+      <h1 class="logo">
+        <a href="/">
+          <span class="logo-en">BILLISHU</span>
+          <span class="logo-ko">빌리슈</span>
+        </a>
+      </h1>
+      <div class="ham-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <nav>
+        <ul class="main-menu">
+          <li><a href="#">EVENT</a></li>
+          <li><a href="../party.html">PARTY</a></li>
+          <li><a href="../meeting.html">MEETING</a></li>
+          <li><a href="../petroom.html">PET</a></li>
+          <li><a href="./postscript.html">REVIEW</a></li>
+          <li><a href="./QnA.html">Q&A</a></li>
+        </ul>
+      </nav>
+      <ul class="spot">
+        <li id="logout">
+          <i class="fa-solid fa-right-from-bracket"></i>
+          <span>로그아웃</span>
+        </li>
+        <li class="mypage">
+          <a href="./myPage.html">
+            <i class="fa-solid fa-user-gear"></i>
+            <span>마이페이지</span>
+          </a>
+        </li>
+      </ul>
+    </header>
     <h1 class="postscript">여러분의 후기를 남겨주세요!</h1>
     <div class="container">
       <form id="updateForm" name="updateForm">
         <div>
-          <div>
+          <div class="btnFunction">
             <button id="backToMainPage">
               <a href="../index.html">메인페이지로 돌아가기</a>
             </button>
             <button id="createBtn">작성하기</button>
           </div>
-          <table border="1">
+          <table border="1" class="table">
             <thead>
               <tr>
                 <th>작성자</th>
