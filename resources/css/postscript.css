@@ -7,7 +7,7 @@ header{
 }
 .table{
   width: 90%;
-  height: 8%;
+  /* height: 8%; */
   text-align: center;
   position: absolute;
   left: 50%;
@@ -19,6 +19,17 @@ header{
   top: 12.5%;
   left: 50%;
   transform: translateX(-50%);
+}
+.name{
+  width: 10%;
+  flex-shrink: 0;
+}
+.title{
+  width: 70%;
+}
+.date{
+  width: 20%;
+  flex-shrink: 0;
 }
 
 /* 모달에 관련된 css입니다. */
