@@ -24,8 +24,12 @@ header {
   background-color: #d2e3fd;
 }
 
-#detail {
+html,
+body {
   background-color: #d2e3fd;
+}
+
+#detail {
 }
 
 .detail-slide {
@@ -458,7 +462,8 @@ button:hover {
     width: 70%;
   }
   #detail-wrap {
-    padding: 35px 100px;
+    margin-top: 35px;
+    padding: 0 100px 35px;
   }
   /* .swiper-wrapper {
     width: 200px;
@@ -652,7 +657,8 @@ button:hover {
     bottom: 40px;
   }
   #detail-wrap {
-    padding: 35px 50px;
+    margin-top: 35px;
+    padding: 0 50px 35px;
   }
   #meeting-room {
     width: 40px;
@@ -753,6 +759,7 @@ button:hover {
   /* 사이드 메뉴 */
   #detail {
     position: relative;
+    z-index: 1;
   }
   .menu,
   #show-options {

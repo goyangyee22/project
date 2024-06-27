@@ -26,11 +26,11 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 // 로그인이 되어있지 않은 경우, 접근이 제한됩니다.
-const userInfo = sessionStorage.getItem("userInfo");
-if (!userInfo) {
-  alert("로그인을 해주세요.");
-  window.location.href = "./signIn.html";
-}
+// const userInfo = sessionStorage.getItem("userInfo");
+// if (!userInfo) {
+//   alert("로그인을 해주세요.");
+//   window.location.href = "./signIn.html";
+// }
 
 // 로그아웃
 document.getElementById("logout").addEventListener("click", function () {
@@ -313,6 +313,11 @@ closeBtn.addEventListener("click", () => {
 // 게시글을 작성하는 함수입니다.
 const createBtn = document.getElementById("createBtn");
 createBtn.addEventListener("click", async (e) => {
+  const userInfo = sessionStorage.getItem("userInfo");
+  if (!userInfo) {
+    alert("로그인을 해주세요.");
+    return false;
+  }
   // 이벤트 전파를 방지합니다.
   e.preventDefault();
   e.stopPropagation();
