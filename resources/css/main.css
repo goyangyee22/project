@@ -244,6 +244,9 @@ body {
 }
 
 /* service */
+#service {
+  overflow-x: hidden;
+}
 .service-container {
   display: flex;
   justify-content: center;
@@ -341,7 +344,7 @@ body {
   height: 18.75rem;
   border-radius: 50%;
   overflow: hidden;
-  transition: 0.3s;
+  transition: 0.3s linear;
 }
 .booking-icon > a {
   position: absolute;
@@ -430,6 +433,7 @@ body {
 .transportation > h3 {
   margin-bottom: 1rem;
   font-size: 1.5rem;
+  font-weight: 700;
 }
 
 .transportation > ul {
@@ -440,12 +444,12 @@ body {
 }
 .transportation > ul h4 {
   margin-bottom: 0.5rem;
-  font-size: 1rem;
+  font-size: 1.25rem;
 }
 .transportation > ul p {
   padding: 0 8px;
   line-height: 1.5;
-  font-size: 14px;
+  font-size: 1rem;
 }
 .transportation > ul p > span,
 .transportation > ul p > a {
