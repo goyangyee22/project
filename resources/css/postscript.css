@@ -34,8 +34,8 @@ header {
   position: absolute;
   right: 0;
   top: 10%;
-  padding: 0 8px;
-  gap: 16px;
+  padding: 0 16px;
+  gap: 8px;
 }
 .containerBtn{
   background-color: transparent;
