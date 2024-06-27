@@ -71,6 +71,12 @@
   .all-1 {
     height: 18.75rem;
   }
+  /* .all-1 ul li {
+    padding: 0.3rem;
+  }
+  .all-2 {
+    padding: 1rem;
+  } */
   .facility-main {
     padding: 0;
   }
@@ -283,5 +289,10 @@
   .room li {
     font-size: 1rem;
     padding: 0;
+  }
+  /* up btn */
+  .up-btn button {
+    position: fixed;
+    right: 0;
   }
 }

@@ -193,4 +193,10 @@
   .select-personnel {
     display: block;
   }
+
+  /* up btn */
+  .up-btn button {
+    position: fixed;
+    right: 0;
+  }
 }
