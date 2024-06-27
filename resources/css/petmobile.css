@@ -298,4 +298,13 @@
     right: 10px;
     bottom: 40px;
   }
+  /* 후기작성 모달 */
+  textarea {
+    height: 250px;
+    width: 100%;
+  }
+  .Reviewswrite-modal {
+    width: 300px;
+    margin-left: 10%;
+  }
 }
