@@ -250,8 +250,9 @@
     width: 30px;
     height: 150px;
     position: fixed;
-    top: 600px;
+    /* top: 600px; */
     left: 0;
+
     /* width: 100%; */
   }
 

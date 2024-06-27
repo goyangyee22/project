@@ -431,7 +431,7 @@ th {
   position: sticky;
   display: flex;
   flex-direction: column;
-  top: 0;
+  top: 1rem;
   padding: 16px;
   border-radius: 8px;
   width: 30%;
