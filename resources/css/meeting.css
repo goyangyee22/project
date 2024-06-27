@@ -53,8 +53,7 @@ header {
   position: fixed;
   bottom: 1rem;
   right: 20px;
-
-  background-color: pink;
+  background-color: #1a2130;
   color: white;
   border: none;
   border-radius: 0.5rem;
@@ -64,7 +63,7 @@ header {
 }
 
 button:hover {
-  background-color: #ff6969;
+  background-color: #1a2130;
 }
 
 .meet-details {
@@ -199,7 +198,7 @@ button:hover {
   display: inline-block;
   padding: 1px 13px;
   border-radius: 20px;
-  font-size: 15px;
+  font-size: 17px;
   cursor: pointer;
 }
 
@@ -527,6 +526,10 @@ button:hover {
     padding-top: 10px;
     font-size: 1.3rem;
   }
+  .rclick {
+    font-size: 1rem;
+    padding: 0px 15px;
+  }
   .map-copy-text {
     font-size: 1rem;
     border-bottom: 2px solid #eeeeee;
@@ -605,12 +608,12 @@ button:hover {
   }
 
   .button1 {
-    padding: 7px 12px;
+    padding: 7px 11px;
     border-radius: 10px;
   }
 
   .button2 {
-    padding: 7px 12px;
+    padding: 7px 11px;
     border-radius: 10px;
   }
 
@@ -643,6 +646,11 @@ button:hover {
   .meet-details {
     width: 100%;
   }
+  .up-btn button {
+    position: fixed;
+    right: 10px;
+    bottom: 40px;
+  }
   #detail-wrap {
     padding: 35px 50px;
   }
@@ -656,13 +664,13 @@ button:hover {
     padding: 10px 0px;
     gap: 20px;
   }
-  .meeting-room {
+  /* .meeting-room {
     position: sticky;
     top: 24px;
     display: flex;
     flex-direction: column;
     gap: 1px;
-  }
+  } */
   #information {
     padding: 30px 0px;
     font-size: 16px;
@@ -743,26 +751,36 @@ button:hover {
   }
 
   /* 사이드 메뉴 */
+  #detail {
+    position: relative;
+  }
   .menu,
   #show-options {
     display: block;
   }
-  #show-options {
-    display: block;
-    position: absolute;
-    right: -5px;
-    margin: 5px 3px;
-    padding: 2px 3px;
-    font-size: 13px;
-    border-radius: 3px;
+  /* 버튼이랑 소중대 전체 */
+  .meeting-option {
+    position: sticky;
+    z-index: 5;
   }
+  /* 버튼 */
+  #show-options {
+    position: fixed;
+    cursor: pointer;
+    right: -6px;
+    padding: 40px 8px;
+    background-color: #1a2130;
+    font-size: 15px;
+    border-radius: 5px;
+    color: #eeeeee;
+  }
+  /* 소중대 전체, 닫기버튼 */
   .menu {
-    position: absolute;
-    top: 0;
-    right: -200px;
+    position: fixed;
+    top: 50;
+    right: -800px;
     background-color: transparent;
     transition: 0.3s;
-    z-index: 2;
   }
   .show-menus {
     right: 0;
@@ -780,11 +798,11 @@ button:hover {
     height: 150px;
   }
   .button1 {
-    padding: 1px 8px;
+    padding: 5px 10px;
     border-radius: 10px;
   }
   .button2 {
-    padding: 1px 8px;
+    padding: 5px 10px;
     border-radius: 10px;
   }
   .meeting-room {
