@@ -264,7 +264,7 @@
     padding: 1rem;
     background-color: transparent;
     transition: 0.3s;
-    z-index: 1;
+    z-index: 2;
   }
   .close {
     text-align: end;
@@ -283,10 +283,10 @@
 
   .room {
     margin-top: 0.5rem;
-    /* width: 250px; */
     height: 100%;
+    width: 250px;
     display: block;
-    padding: 0 0.5rme;
+    padding: 0 0.5rem;
   }
   .room li {
     font-size: 1rem;
