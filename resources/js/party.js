@@ -112,18 +112,13 @@ function urlCopy() {
 }
 
 //------------------------------ 반응형 버튼
-// document.addEventListener("DOMContentLoaded", function () {
-//   const btn = document.getElementById("show-options");
-//   const menu = document.querySelector(".menu");
-//   const closeEl = document.querySelector(".close");
+document.addEventListener("DOMContentLoaded", function () {
+  const btn = document.getElementById("show-options");
+  const menu = document.querySelector("#menumain"); // 메뉴 창 요소
 
-//   btn.addEventListener("click", function () {
-//     menu.classList.add("show-menus");
-//   });
-
-//   closeEl.addEventListener("click", function () {
-//     menu.classList.remove("show-menus");
-//   });
-// });
+  btn.addEventListener("click", function () {
+    menu.classList.toggle("show-menus"); // show-menus 클래스를 toggle하여 보이기/숨기기
+  });
+});
 
 mapRendering();
