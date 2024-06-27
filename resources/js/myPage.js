@@ -9,10 +9,10 @@ const firebaseConfig = {
   appId: "1:587892298418:web:43d4e281e654f11750efab",
   measurementId: "G-ZY1J3CGR0E",
 };
-firebase.initializeApp(firebaseConfig);
+// firebase.initializeApp(firebaseConfig);
 
 // Firebase를 초기화 하고 db 참조를 가져옵니다.
-const db = firebase.firestore();
+// const db = firebase.firestore();
 
 const userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
 if (!userInfo) {
