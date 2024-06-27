@@ -140,19 +140,18 @@ radioBtns.forEach((radio) => {
     document.querySelectorAll('.display-method').forEach((div) => {
       div.classList.remove('show-method');
     });
-    document.querySelectorAll('.swiper').forEach((swiper) => {
-      swiper.classList.remove('display-swiper');
+    document.querySelectorAll('.method-option').forEach((swiper) => {
+      swiper.classList.remove('display-method-option');
     });
 
     let methodData = radio.getAttribute('data-method');
 
     const selectedMethod = document.querySelector(`#display-${methodData}`);
-    console.log(selectedMethod);
     if (selectedMethod) {
       selectedMethod.classList.add('show-method');
       const swiperContainer = selectedMethod.querySelector('.method-option');
       if (swiperContainer) {
-        swiperContainer.classList.add('display-method-option ');
+        swiperContainer.classList.add('display-method-option');
       }
     }
   });
