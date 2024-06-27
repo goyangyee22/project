@@ -41,6 +41,47 @@ const db = getFirestore(app);
 //   }
 // });
 
+const userInfo = sessionStorage.getItem('userInfo');
+const spotMenu = document.querySelector('.spot');
+if (!userInfo) {
+  // spot
+  spotMenu.innerHTML = `
+    <li class='login'>
+      <a href="./signIn.html">
+        <i class="fa-solid fa-right-to-bracket"></i>
+        <span>로그인</span>
+      </a>
+    </li>
+    <li class='join'>
+      <a href="./signUp.html">
+        <i class="fa-solid fa-user-plus"></i>
+        <span>회원가입</span>
+      </a>
+    </li>
+  `;
+} else {
+  // spot
+  spotMenu.innerHTML = `
+    <li id="logout">
+      <i class="fa-solid fa-right-from-bracket"></i>
+      <span>로그아웃</span>
+    </li>
+    <li class='mypage'>
+      <a href="./myPage.html">
+        <i class="fa-solid fa-user-gear"></i>
+        <span>마이페이지</span>
+      </a>
+    </li>
+`;
+  document.getElementById('logout').addEventListener('click', function () {
+    if (confirm('정말 로그아웃 하시겠습니까?')) {
+      sessionStorage.removeItem('userInfo');
+      alert('로그아웃 되었습니다.');
+      window.location.reload();
+    }
+  });
+}
+
 // 작성한 게시글을 화면에 반영합니다.
 async function getBoard() {
   const tableBody = document.querySelector('#tbody');
