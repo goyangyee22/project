@@ -3,8 +3,8 @@
 @import url(./common.css);
 
 main {
-  padding: 160px 0;
-  min-height: calc(100vh - 243px);
+  padding: 10rem 0;
+  min-height: calc(100vh - 15.1875rem);
 }
 
 /* .table {
@@ -17,25 +17,25 @@ main {
 /* side menu */
 .side-menu {
   /* position: fixed; */
-  border-top: 2px solid var(--accent-color);
-  border-bottom: 2px solid var(--accent-color);
+  border-top: 0.125rem solid var(--accent-color);
+  border-bottom: 0.125rem solid var(--accent-color);
 }
 
 .menu-title h2 {
-  padding: 24px;
-  font-size: 24px;
+  padding: 1.5rem;
+  font-size: 1.5rem;
   text-transform: uppercase;
 }
 
 .side-menu ul {
-  padding: 24px 0;
-  border-top: 1px dashed var(--sub-color);
+  padding: 1.5rem 0;
+  border-top: 0.0625rem dashed var(--sub-color);
 }
 .side-menu ul li {
   text-align: center;
 }
 .side-menu ul li button {
-  padding: 16px;
+  padding: 1rem;
   width: 100%;
   font-size: 1rem;
   background-color: transparent;
@@ -49,7 +49,7 @@ main {
   display: flex;
   justify-content: space-between;
   align-items: start;
-  gap: 24px;
+  gap: 1.5rem;
   width: 100%;
   height: fit-content;
 }
@@ -57,7 +57,7 @@ main {
 section {
   flex-grow: 1;
   display: none;
-  padding-bottom: 48px;
+  padding-bottom: 3rem;
   /* outline: 1px dotted blue; */
 }
 .active {
@@ -65,20 +65,20 @@ section {
 }
 
 .section-title {
-  margin-bottom: 48px;
-  font-size: 32px;
+  margin-bottom: 3rem;
+  font-size: 2rem;
   text-align: center;
 }
 
 /* profile */
 #my-info {
-  padding-bottom: 120px;
+  padding-bottom: 7.5rem;
 }
 .contents {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 32px;
+  gap: 2rem;
 }
 
 .profile-img {
@@ -86,16 +86,16 @@ section {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 8px;
+  gap: 0.5rem;
 }
 
 .profile-img img {
-  height: 150px;
+  height: 9.375rem;
 }
 .profile-img button {
-  padding: 8px 24px;
-  font-size: 14px;
-  border-radius: 8px;
+  padding: 0.5rem 1.5rem;
+  font-size: 0.875rem;
+  border-radius: 0.5rem;
   background-color: var(--common-color);
 }
 .profile-img button:hover {
@@ -119,20 +119,20 @@ th {
 
 /* change info */
 #change-info input {
-  padding: 8px;
+  padding: 0.5rem;
   outline: 0;
   border: 1px solid var(--sub-color);
-  border-radius: 8px;
+  border-radius: 0.5rem;
 }
 .change-btns {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 8px;
+  gap: 0.5rem;
 }
 .change-btns > button {
-  padding: 16px 32px;
-  border-radius: 8px;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
   background-color: var(--common-color);
 }
 .change-btns > button:hover {
@@ -150,13 +150,13 @@ th {
 
 #payment-record .reservation-info img {
   width: 100%;
-  height: 310px;
+  height: 19.375rem;
   object-fit: cover;
 }
 caption {
   display: inline-block;
   padding: 0.5rem 1rem;
-  border-radius: 8px;
+  border-radius: 0.5rem;
   background-color: var(--common-color);
 }
 /* withdrawal */
@@ -164,7 +164,7 @@ caption {
   flex-direction: column;
 }
 #withdrawal .contents h3 {
-  font-size: 24px;
+  font-size: 1.5rem;
 }
 #withdrawal .content {
   text-align: center;
@@ -174,8 +174,124 @@ caption {
 .withdrawal-btns {
   text-align: center;
 }
+.withdrawal-btns > button {
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  background-color: var(--common-color);
+}
+.withdrawal-btns > button:hover {
+  background-color: var(--hover-color);
+  color: var(--main-color);
+}
 
-#withdrawal-btn {
-  padding: 16px 32px;
-  font-size: 16px;
+label[for='withdrawal-checkbox'] {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.checkbox-wrap {
+  margin-bottom: 1rem;
+}
+
+.checkmark {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: var(--common-color);
+  border-radius: 0.5rem;
+}
+
+#withdrawal-checkbox:checked ~ .checkmark {
+  background-color: var(--hover-color);
+}
+
+.checkmark::after {
+  content: '';
+  position: absolute;
+  width: 0.625rem;
+  height: 0.9375rem;
+  border-right: 0.1875rem solid var(--main-color);
+  border-bottom: 0.1875rem solid var(--main-color);
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotateZ(40deg) scale(10);
+  opacity: 0;
+  transition: all 0.4s;
+}
+
+#withdrawal-checkbox:checked ~ .checkmark::after {
+  opacity: 1;
+  transform: translate(-50%, -50%) rotateZ(40deg) scale(1);
+}
+
+/* media - tablet */
+@media screen and (max-width: 1023px) {
+  .container {
+    flex-direction: column;
+  }
+  section {
+    width: 100%;
+  }
+  .menu-title h2 {
+    border-right: 1px dashed var(--sub-color);
+  }
+  .side-menu {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+    width: 100%;
+  }
+  .side-menu ul {
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0;
+    border-top: 0;
+  }
+
+  #payment-record .contents > div {
+    width: 100%;
+  }
+}
+
+/* media - mobile */
+@media screen and (max-width: 767px) {
+  .side-menu {
+    flex-direction: column;
+  }
+  .menu-title {
+    width: 100%;
+    text-align: center;
+  }
+  .menu-title h2 {
+    padding: 1rem 0;
+    width: 100%;
+    border-right: 0;
+    border-bottom: 1px dashed var(--sub-color);
+  }
+  .side-menu ul {
+    width: 100%;
+    justify-content: stretch;
+  }
+  .side-menu ul li {
+    width: 100%;
+  }
+  .side-menu ul li button {
+    padding: 0.5rem;
+  }
+
+  #my-info .contents {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .profile-info {
+    width: 100%;
+  }
+  caption {
+    width: max-content;
+  }
 }

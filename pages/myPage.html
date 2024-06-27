@@ -157,7 +157,7 @@
             <!-- 예약 및 결제내역 -->
           </div>
         </section>
-        <section id="post-written" class="active">
+        <section id="post-written">
           <h2 class="section-title">작성글</h2>
           <div class="contents">
             <div class="content">
@@ -177,7 +177,7 @@
             </div>
           </div>
         </section>
-        <section id="withdrawal">
+        <section id="withdrawal" class="active">
           <h2 class="section-title">회원탈퇴</h2>
           <div class="contents">
             <h3>
@@ -192,9 +192,12 @@
             </div>
             <div class="withdrawal-btns">
               <div class="checkbox-wrap">
-                <input id="withdrawal-checkbox" type="checkbox" />
                 <label for="withdrawal-checkbox">
-                  안내사항을 모두 확인했으며, 이에 동의합니다.
+                  <input id="withdrawal-checkbox" type="checkbox" hidden="" />
+                  <span class="checkmark"></span>
+                  <span class="withdrawal-desc">
+                    안내사항을 모두 확인했으며, 이에 동의합니다.
+                  </span>
                 </label>
               </div>
               <button id="withdrawal-btn">탈퇴하기</button>
