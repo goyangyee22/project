@@ -32,6 +32,16 @@ if (!userInfo) {
   window.location.href = './signIn.html';
 }
 
+// 로그아웃
+document.getElementById("logout").addEventListener("click", function () {
+  if (confirm("정말 로그아웃 하시겠습니까?")) {
+    sessionStorage.removeItem("userInfo");
+    alert("로그아웃 되었습니다.");
+    window.location.href = "/";
+  }
+});
+
+
 // 작성한 게시글을 화면에 반영합니다.
 async function getBoard() {
   const tableBody = document.querySelector('#tbody');
