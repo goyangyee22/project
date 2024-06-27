@@ -129,61 +129,6 @@ async function deleteDocument(collectionName, docId) {
   }
 }
 
-// 페이지네이션
-// async function getPaginatedData(
-//   collectionName,
-//   orderByField,
-//   userId,
-//   lastVisibleDocument = null
-// ) {
-//   let q = query(
-//     collection(dbService, collectionName),
-//     where(userId, '==', 'userInfo.id'),
-//     orderBy(orderByField, 'desc'),
-//     limit(1)
-//   );
-
-//   if (lastVisibleDocument) {
-//     q = query(q, startAfter(lastVisibleDocument));
-//   }
-
-//   const snapshot = await getDocs(q);
-//   const data = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-
-//   const lastVisible = snapshot.docs[snapshot.docs.length - 1];
-
-//   return { data, lastVisible };
-// }
-
-// let lastVisibleDocument = null;
-
-// async function firstPage(collectionName, orderByField, userId, renderFunction) {
-//   try {
-//     const { data, lastVisible } = await getPaginatedData(
-//       collectionName,
-//       userId,
-//       orderByField
-//     );
-//     lastVisibleDocument = lastVisible;
-//     renderFunction(data);
-//   } catch (error) {
-//     console.error('Error fetching first page:', error);
-//     throw error;
-//   }
-// }
-
-// async function nextPage(collectionName, orderByField, userId, renderFunction) {
-//   if (!lastVisibleDocument) return;
-//   const { data, lastVisible } = await getPaginatedData(
-//     collectionName,
-//     orderByField,
-//     userId,
-//     lastVisibleDocument
-//   );
-//   lastVisibleDocument = lastVisible;
-//   renderFunction(data);
-// }
-
 export {
   app,
   // db,
@@ -195,6 +140,4 @@ export {
   deleteDatas,
   deleteDocument,
   updateDocument,
-  // firstPage,
-  // nextPage,
 };
