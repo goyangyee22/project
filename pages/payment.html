@@ -102,24 +102,9 @@
                     <div class="swiper account-slide method-option">
                       <div class="swiper-wrapper account-slide-wrapper">
                         <div class="swiper-slide">
-                          <button class="method-btn">농협은행</button>
-                        </div>
-                        <div class="swiper-slide">
-                          <div class="swiper-slide">
-                            <button class="method-btn">신한은행</button>
-                          </div>
-                        </div>
-                        <div class="swiper-slide">
-                          <div class="swiper-slide">
-                            <button class="method-btn">우리은행</button>
-                          </div>
-                        </div>
-                        <div class="swiper-slide">
-                          <div class="swiper-slide">
-                            <button id="add-account" class="method-btn">
-                              계좌등록
-                            </button>
-                          </div>
+                          <button id="add-account" class="method-btn">
+                            계좌등록
+                          </button>
                         </div>
                       </div>
                       <div class="swiper-button-next"></div>
@@ -143,16 +128,9 @@
                     <div class="swiper card-slide method-option">
                       <div class="swiper-wrapper card-slide-wrapper">
                         <div class="swiper-slide">
-                          <button class="method-btn">삼성카드</button>
-                        </div>
-                        <div class="swiper-slide">
-                          <button class="method-btn">현대카드</button>
-                        </div>
-                        <div class="swiper-slide">
-                          <button class="method-btn">국민카드</button>
-                        </div>
-                        <div class="swiper-slide">
-                          <button class="method-btn">카드등록</button>
+                          <button id="add-card" class="method-btn">
+                            카드등록
+                          </button>
                         </div>
                       </div>
                       <div class="swiper-button-next"></div>
@@ -175,59 +153,27 @@
                   <div id="display-common" class="display-method">
                     <div class="method-option">
                       <div class="common-btn-wrap">
-                        <button class="btn">삼성페이</button>
-                        <button class="btn">네이버페이</button>
-                        <button class="btn">카카오페이</button>
-                        <button class="btn">무통장입금</button>
+                        <button class="common-btn" data-target="samsung">
+                          삼성페이
+                        </button>
+                        <button class="common-btn" data-target="naver">
+                          네이버페이
+                        </button>
+                        <button class="common-btn" data-target="kakao">
+                          카카오페이
+                        </button>
                       </div>
-                      <div class="samsung-pay">
+                      <div class="samsung-pay common-method show-common-method">
                         <p>삼성페이 인증 후 결제됩니다.</p>
                       </div>
-                      <div class="naver-pay">
+                      <div class="naver-pay common-method">
                         <p>네이버페이 인증 후 결제됩니다.</p>
                       </div>
-                      <div class="kakao-pay">
+                      <div class="kakao-pay common-method">
                         <p>카카오페이 인증 후 결제됩니다.</p>
-                      </div>
-                      <div class="no-bankbook">
-                        <select name="bankbook" id="bankbook">
-                          <option value="">은행을 선택해주세요.</option>
-                          <option value="NH">농협</option>
-                          <option value="KM">국민은행</option>
-                          <option value="SH">신한은행</option>
-                          <option value="WR">우리은행</option>
-                          <option value="KU">기업은행</option>
-                          <option value="HN">하나은행</option>
-                          <option value="EP">우체국</option>
-                        </select>
-                        <div class="no-bankbook-info">
-                          <p>무통장입금 안내</p>
-                          <span class="more-info">?</span>
-                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            </div>
-            <div class="payment-content cash-receipts">
-              <h2>현금영수증</h2>
-              <div class="display-cash-receipt payment-content-box">
-                <div class="cash-receipt-proposal">
-                  <input
-                    id="applied_y"
-                    type="radio"
-                    name="cash-receipt"
-                    value="신청"
-                  />
-                  <label for="applied_y">신청</label>
-                  <input
-                    id="applied_n"
-                    type="radio"
-                    name="cash-receipt"
-                    value="미신청"
-                  />
-                  <label for="applied_n">미신청</label>
                 </div>
               </div>
             </div>
@@ -238,9 +184,11 @@
             <div class="payment-content">
               <h2>결제상세</h2>
               <div class="payment-aside-content payment-content-box">
-                <div id="select-method">결제수단</div>
-                <div id="total-cost">
-                  <span> <!-- 총 금액 --> </span>원
+                <div class="select-info">
+                  <div id="select-method">결제수단</div>
+                  <div id="total-cost">
+                    <span> <!-- 총 금액 --> </span>원
+                  </div>
                 </div>
                 <div class="data-send-content wrap">
                   <p>주문내용을 확인하였으며, 정보 제공 등에 동의합니다.</p>
@@ -255,7 +203,6 @@
               </div>
             </div>
           </div>
-          <input type="hidden" name="cashReceipt" id="cashReceipt" />
           <input type="hidden" name="paymentMethod" id="paymentMethod" />
         </form>
       </div>
