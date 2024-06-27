@@ -357,8 +357,17 @@
             <div id="Reviews">
               <div class="location">
                 <h3 class="infor-title">이용 후기 <span>4개</span></h3>
-                <button class="clickbtn">
-                  <a href="pages/postscript.html">이용 후기 작성</a>
+                <!-- <button class="clickbtn containerBtn" id="createBtn">
+                  이용 후기 작성
+                </button> -->
+                <button
+                  class="clickbtn"
+                  type="button"
+                  id="createBtn"
+                  data-bs-toggle="modal"
+                  data-bs-target="#Reviewswrite"
+                >
+                  이용 후기 작성
                 </button>
               </div>
               <div class="line"></div>
@@ -817,6 +826,45 @@
       </div>
     </div>
 
+    <!-- 후기작성 모달 창 -->
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="Reviewswrite"
+      tabindex="-1"
+      aria-labelledby="ReviewswriteLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content Reviewswrite-modal">
+          <div class="modal-header Reviewswrite-header">
+            <h1 class="modal-title fs-5" id="ReviewswriteLabel">
+              <input
+                type="text"
+                id="modalInput"
+                placeholder="제목을 입력해주세요."
+              />
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <textarea name="" id="modaltexttarea">
+내용을 작성해주세요.</textarea
+            >
+          </div>
+          <div class="modal-footer Reviewswrite-footer">
+            <button type="button" class="btn btn-primary clickbtn">
+              작성하기
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- 이미지 팝업 -->
     <div
       class="modal fade"

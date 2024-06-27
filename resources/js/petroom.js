@@ -126,5 +126,24 @@ function Topbtn() {
     behavior: "smooth",
   });
 }
+// 후기작성
+
+// 게시글을 작성하는 함수입니다.
+// const createBtn = document.getElementById("createBtn");
+// createBtn.addEventListener("click", async (e) => {
+//   // 이벤트 전파를 방지합니다.
+//   e.preventDefault();
+//   e.stopPropagation();
+
+//   const createModal = document.getElementById("createModal");
+//   createModal.style.display = "block";
+// });
+
+// // 모달창 닫기 버튼을 클릭하면 모달 창을 닫습니다.
+// const closeBtn = document.querySelector(".closeBtn");
+// closeBtn.addEventListener("click", () => {
+//   const modal = document.querySelector("#createModal");
+//   modal.style.display = "none";
+// });
 
 mapRendering();
