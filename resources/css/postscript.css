@@ -37,11 +37,22 @@ header {
   padding: 0 16px;
   gap: 8px;
 }
-.containerBtn{
+.containerBtn {
   background-color: transparent;
 }
 .functionsBtn {
   background-color: transparent;
+}
+textarea {
+  resize: none;
+}
+.createTitle {
+  width: 90%;
+}
+.createContent {
+  width: 100%;
+  height: 99%;
+  overflow: hidden;
 }
 
 /* 모달에 관련된 css입니다. */
