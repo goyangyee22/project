@@ -112,16 +112,18 @@ function urlCopy() {
 }
 
 //------------------------------ 반응형 버튼
-// const btn = document.getElementById("show-options");
-// const menu = document.querySelector(".menumain");
+// document.addEventListener("DOMContentLoaded", function () {
+//   const btn = document.getElementById("show-options");
+//   const menu = document.querySelector(".menu");
+//   const closeEl = document.querySelector(".close");
 
-// btn.addEventListener("click", function () {
-//   menu.classList.add("show-menus");
-// });
+//   btn.addEventListener("click", function () {
+//     menu.classList.add("show-menus");
+//   });
 
-// const closeEl = document.querySelector(".close");
-// closeEl.addEventListener("click", function () {
-//   menu.classList.remove("show-menus");
+//   closeEl.addEventListener("click", function () {
+//     menu.classList.remove("show-menus");
+//   });
 // });
 
 mapRendering();
