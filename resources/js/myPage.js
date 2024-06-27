@@ -1,9 +1,4 @@
-import {
-  getDatas,
-  updateDatas,
-  deleteDatas,
-  addDatas,
-} from '../../firebase.js';
+import { getDatas, updateDatas, deleteDatas } from '../../firebase.js';
 
 const userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
 if (!userInfo) {
@@ -83,12 +78,6 @@ settingBtns.forEach((link) => {
   });
 });
 
-// document
-//   .querySelector('input[type="checkbox"]')
-//   .addEventListener('change', function (e) {
-//     console.log(e.target.checked);
-//   });
-
 // 정보수정
 const pwEx = /^[0-9A-Za-z\d$@$!%*?&]{4,16}/g;
 const phoneEx = /^\d{3}-\d{4}-\d{4}$/;
@@ -125,7 +114,7 @@ changeBtn.addEventListener('click', async function () {
       phone: newPhone,
     };
 
-    await addDatas('userInfo', userInfo.docId, updateInfo);
+    await updateDatas('userInfo', userInfo.docId, updateInfo);
 
     sessionStorage.setItem(
       'userInfo',
