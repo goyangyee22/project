@@ -39,7 +39,7 @@
 
     <script defer src="./resources/js/common.js"></script>
     <script defer src="./resources/js/payment_modal.js"></script>
-    <script defer src="resources/js/party.js"></script>
+    <script type="module" src="resources/js/party.js"></script>
   </head>
   <body>
     <header>
@@ -339,8 +339,8 @@
                       <div class="hover-text">
                         <i class="fa-solid fa-clone icon-hover"> </i>
                         <input
+                          id="urlCopy"
                           type="button"
-                          onclick="urlCopy()"
                           value="주소 복사"
                           style="border: none"
                         />
@@ -522,7 +522,6 @@
           <div id="party-payment">
             <button id="show-options">
               <i class="fa-solid fa-bars"></i>
-              <p>예약하기</p>
             </button>
             <div id="menumain" class="menu">
               <div class="container-one mainone">
@@ -637,8 +636,11 @@
     </main>
     <footer>
       <div class="footer-info">
-        <h1 class="logo">
-          <a href="./index.html" style="color: #fff">빌리슈</a>
+        <h1 class="footer-logo">
+          <a href="./index.html" style="color: #fff"
+            ><span class="logo-en">BILLISHU</span>
+            빌리슈
+          </a>
         </h1>
         <ul class="footer-menu">
           <li><a href="#">이용약관</a></li>

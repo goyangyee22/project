@@ -2,6 +2,10 @@
 
 @import url(./common.css);
 @import url(./payment_form.css);
+html,
+body {
+  background-color: rgb(247, 241, 230);
+}
 
 header {
   position: static;
@@ -24,7 +28,6 @@ header {
   /* display: flex;
   flex-direction: column; */
 
-  background-color: rgb(247, 241, 230);
   /* height: 100%; */
 }
 
@@ -415,7 +418,7 @@ header {
   display: inline-block;
 
   border-radius: 10px;
-  width: 180px;
+  width: 120px;
   color: rgb(224, 184, 235);
   font-size: 16px;
 }
@@ -688,9 +691,10 @@ header {
   /* footer .footer-info {
     display: ;
   } */
-  .wrap footer .footer-sns {
+  .footer-contents .footer-sns {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
+    font-size: 2rem;
     width: 100%;
   }
 
@@ -764,7 +768,7 @@ header {
     /* height: 100px; */
   }
   .detail-container .detail-hero {
-    padding-top: 60px;
+    margin-top: 60px;
     width: 100%;
   }
 
@@ -859,9 +863,6 @@ header {
   .review .guest-name {
     width: 100%;
   }
-  footer .footer-sns {
-    width: 100%;
-  }
 
   /* 사이드 메뉴 */
   /* #party-payment {
@@ -950,13 +951,16 @@ header {
     right: 0px;
     height: 150px;
     width: 30px;
-    background-color: orange;
+    background-color: rgb(252, 218, 156);
     position: fixed;
   }
   .show-menus {
     display: block;
 
     /* position: sticky; */
+  }
+  .hover-text {
+    width: 100px;
   }
 }
 /* 모바일 */
