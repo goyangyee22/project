@@ -116,23 +116,39 @@ body {
   padding: 1rem 2rem;
 }
 
+#duplicateId i,
+#duplicatePhone i {
+  display: none;
+}
+
 /* media - mobile */
 @media screen and (max-width: 767px) {
+  #wrapper {
+    padding: 0 50px;
+  }
   .container {
-    padding: 2rem 3rem;
-    gap: 2rem;
+    padding: 24px;
+    gap: 16px;
   }
   .join-header h1 {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
   .join-content input {
     font-size: 1rem;
   }
   .join-content label {
-    font-size: 1rem;
+    font-size: 16px;
   }
   .join-btn {
-    padding: 0.5rem 1rem;
+    padding: 8px 16px;
     font-weight: 200;
+  }
+  #duplicateId i,
+  #duplicatePhone i {
+    display: block;
+  }
+  #duplicateId span,
+  #duplicatePhone span {
+    display: none;
   }
 }

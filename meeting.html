@@ -63,114 +63,110 @@
       <ul class="spot"></ul>
     </header>
     <main>
-      <button id="show-options">
-        <i class="fa-solid fa-angles-left"></i>
-      </button>
-      <div class="menu_list">
-        <div class="menu">
-          <div class="close">X</div>
-          <ul class="meeting_small">
-            <li>
-              <h3>소회의실</h3>
-            </li>
-            <li>
-              <span>인원 4~6인</span>
-            </li>
-            <li>
-              <span>구성 책상/의자/70인치 칠판</span>
-            </li>
-            <li class="reservation_button">
-              <button
-                type="button"
-                class="button1"
-                data-bs-toggle="modal"
-                data-bs-target="#all_pohoto"
-                onclick="meeting('small')"
-              >
-                사진보기
-              </button>
-              <button
-                type="button"
-                class="button2"
-                data-bs-toggle="modal"
-                data-bs-target="#payment-form-modal"
-                onclick="openPayment('meeting1')"
-              >
-                예약하기
-              </button>
-            </li>
-          </ul>
-
-          <ul class="meeting_medium">
-            <li>
-              <h3>중회의실</h3>
-            </li>
-            <li>
-              <span>인원 6~15인</span>
-            </li>
-            <li>
-              <span
-                >구성 책상/의자/55인치 스마트TV/<br />
-                75인치 전자칠판(OTT)</span
-              >
-            </li>
-            <li class="reservation_button">
-              <button
-                type="button"
-                class="button1"
-                data-bs-toggle="modal"
-                data-bs-target="#all_pohoto"
-                onclick="meeting('medium')"
-              >
-                사진보기
-              </button>
-              <button
-                type="button"
-                class="button2"
-                data-bs-toggle="modal"
-                data-bs-target="#payment-form-modal"
-                onclick="openPayment('meeting2')"
-              >
-                예약하기
-              </button>
-            </li>
-          </ul>
-
-          <ul class="meeting_big">
-            <li>
-              <h3>대회의실</h3>
-            </li>
-            <li>
-              <span>인원 15~30인</span>
-            </li>
-            <li>
-              <span>구성 책상/의자/스마트 스크린</span>
-            </li>
-            <li class="reservation_button">
-              <button
-                type="button"
-                class="button1"
-                data-bs-toggle="modal"
-                data-bs-target="#all_pohoto"
-                onclick="meeting('big')"
-              >
-                사진보기
-              </button>
-              <button
-                type="button"
-                class="button2"
-                data-bs-toggle="modal"
-                data-bs-target="#payment-form-modal"
-                onclick="openPayment('meeting3')"
-              >
-                예약하기
-              </button>
-            </li>
-          </ul>
-        </div>
-      </div>
-
       <section id="detail">
+        <div class="meeting-option">
+          <button id="show-options">
+            <i class="fa-solid fa-right-to-bracket fa-flip-horizontal"></i>
+          </button>
+          <div class="menu">
+            <div class="close">X</div>
+            <ul class="meeting_small">
+              <li>
+                <h3>소회의실</h3>
+              </li>
+              <li>
+                <span>인원 4~6인</span>
+              </li>
+              <li>
+                <span>구성 책상/의자/70인치 칠판</span>
+              </li>
+              <li class="reservation_button">
+                <button
+                  type="button"
+                  class="button1"
+                  data-bs-toggle="modal"
+                  data-bs-target="#all_pohoto"
+                  onclick="meeting('small')"
+                >
+                  사진보기
+                </button>
+                <button
+                  type="button"
+                  class="button2"
+                  data-bs-toggle="modal"
+                  data-bs-target="#payment-form-modal"
+                  onclick="openPayment('meeting1')"
+                >
+                  예약하기
+                </button>
+              </li>
+            </ul>
+
+            <ul class="meeting_medium">
+              <li>
+                <h3>중회의실</h3>
+              </li>
+              <li>
+                <span>인원 6~15인</span>
+              </li>
+              <li>
+                <span>구성 책상/의자/55인치 스마트TV</span>
+              </li>
+              <li class="reservation_button">
+                <button
+                  type="button"
+                  class="button1"
+                  data-bs-toggle="modal"
+                  data-bs-target="#all_pohoto"
+                  onclick="meeting('medium')"
+                >
+                  사진보기
+                </button>
+                <button
+                  type="button"
+                  class="button2"
+                  data-bs-toggle="modal"
+                  data-bs-target="#payment-form-modal"
+                  onclick="openPayment('meeting2')"
+                >
+                  예약하기
+                </button>
+              </li>
+            </ul>
+
+            <ul class="meeting_big">
+              <li>
+                <h3>대회의실</h3>
+              </li>
+              <li>
+                <span>인원 15~30인</span>
+              </li>
+              <li>
+                <span>구성 책상/의자/스마트 스크린</span>
+              </li>
+              <li class="reservation_button">
+                <button
+                  type="button"
+                  class="button1"
+                  data-bs-toggle="modal"
+                  data-bs-target="#all_pohoto"
+                  onclick="meeting('big')"
+                >
+                  사진보기
+                </button>
+                <button
+                  type="button"
+                  class="button2"
+                  data-bs-toggle="modal"
+                  data-bs-target="#payment-form-modal"
+                  onclick="openPayment('meeting3')"
+                >
+                  예약하기
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
         <div id="detail-wrap" class="wrap">
           <div class="detail-container">
             <div class="meet-contents wrap">
