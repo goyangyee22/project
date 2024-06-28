@@ -1,4 +1,21 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
+import { getFirestore } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
 import { getDatas, updateDatas, deleteDatas } from "../../firebase.js";
+
+// Firebase를 구성하는 정보
+const firebaseConfig = {
+  apiKey: "AIzaSyAacCYNcsw241GRaLn9A5jUuS0hm0qbxbs",
+  authDomain: "project-52d4c.firebaseapp.com",
+  projectId: "project-52d4c",
+  storageBucket: "project-52d4c.appspot.com",
+  messagingSenderId: "587892298418",
+  appId: "1:587892298418:web:43d4e281e654f11750efab",
+  measurementId: "G-ZY1J3CGR0E",
+};
+
+// Firebase 앱 초기화
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
 const userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
 
@@ -96,21 +113,6 @@ changeBtn.addEventListener("click", async function () {
       pw: newPw.value,
       phone: newPhone.value,
     };
-
-    // // 비밀번호 형식이 지켜지지 않을 경우 비밀번호를 변경할 수 없습니다.
-    if (!pwEx.test(newPw)) {
-      alert(
-        "비밀번호 형식이 올바르지 않습니다. 4자-16자 사이의 대문자, 소문자, 숫자, 특수문자를 포함해야 합니다."
-      );
-      return false;
-    }
-    console.log(newPw);
-
-    // 새로운 비밀번호와 새로운 비밀번호 확인의 입력값이 일치하지 않으면 비밀번호를 변경할 수 없습니다.
-    if (newPw !== newPwConfirm) {
-      alert("비밀번호가 일치하지 않습니다.");
-      return false;
-    }
 
     await updateDatas("userInfo", userInfo.docId, updateInfo);
 
