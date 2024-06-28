@@ -477,7 +477,7 @@ th {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  padding: 0.5rem 2px;
+  padding: 1rem 2px;
   background-color: #fff;
   border: 2px solid rgba(255, 128, 128, 0.5);
   border-radius: 16px;
@@ -543,7 +543,7 @@ th {
   border-radius: 5px;
   padding: 5px;
   position: relative;
-  left: 60%;
+  left: 48%;
   top: 10px;
   z-index: 1;
   transition: opacity 0.2s;
@@ -620,3 +620,16 @@ textarea {
 .Reviewswrite-footer {
   background-color: #c7c8cc;
 } */
+
+.fc .fc-daygrid-day-frame {
+  font-size: 1rem;
+}
+.fc-view-harness-active {
+  width: 100%;
+}
+.mig-body {
+  height: 100%;
+}
+#calendar {
+  height: 240px;
+}

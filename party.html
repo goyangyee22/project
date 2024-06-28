@@ -356,9 +356,7 @@
 
                   <div class="QnA" id="party-tagtwo">
                     <div class="QnA-intro">
-                      <h1 class="QnA-order">
-                        Q&A <span class="QnA-color">3개</span>
-                      </h1>
+                      <h1 class="QnA-order">Q&A</h1>
                       <button class="QnA-T">
                         <a href="pages/QnA.html">질문 작성 하기</a>
                       </button>
@@ -436,26 +434,75 @@
                       </div>
                     </div>
                   </div>
+                  <div
+                    class="modal fade"
+                    id="Reviewswrite"
+                    tabindex="-1"
+                    aria-labelledby="ReviewswriteLabel"
+                    aria-hidden="true"
+                  >
+                    <div
+                      class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+                    >
+                      <div class="modal-content Reviewswrite-modal">
+                        <div class="modal-header Reviewswrite-header">
+                          <h1 class="modal-title fs-5" id="ReviewswriteLabel">
+                            <input
+                              type="text"
+                              id="modalInput"
+                              placeholder="제목을 입력해주세요."
+                            />
+                          </h1>
+                          <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                          ></button>
+                        </div>
+                        <div class="modal-body">
+                          <textarea
+                            name=""
+                            id="modaltexttarea"
+                            placeholder="내용을 작성해주세요."
+                          ></textarea>
+                        </div>
+                        <div class="modal-footer Reviewswrite-footer">
+                          <button
+                            type="button"
+                            id="modal-btn"
+                            class="btn btn-primary clickbtn"
+                          >
+                            작성하기
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                   <div class="review">
                     <div class="QnA-intro">
                       <h1 id="party-tagthree">
-                        이용 후기 <strong class="em">3개</strong>
+                        이용 후기
                         <!-- / 평균 평점
                   <span class="em">5.0</span> -->
                       </h1>
-                      <button class="QnA-T">
-                        <a href="pages/postscript.html">이용 후기 작성</a>
+                      <button
+                        class="QnA-T"
+                        type="button"
+                        id="createBtn"
+                        data-bs-toggle="modal"
+                        data-bs-target="#Reviewswrite"
+                      >
+                        이용 후기 작성
                       </button>
                     </div>
                     <div class="guest-main-img">
                       <i class="fa-solid fa-minus" style="color: #ffd43b"></i>
 
                       <div class="QnA-boxs">
-                        <span class="guest-imgx"
-                          ><img
-                            class="guest-imgs"
-                            src="resources/images/partyimg/게스트이미지1.jpg"
-                        /></span>
+                        <span class="guest-imgx">
+                          <i class="fa-regular fa-user guest-imgs"></i>
+                        </span>
                         <div class="QnA-num">
                           <strong class="guest-name"
                             >병아리 <span>⭐⭐⭐⭐⭐</span></strong
@@ -469,7 +516,7 @@
                             width="56px"
                             height="56px"
                           />
-                          <span class="QnA-time">2024-06-11 08:38</span>
+                          <span class="QnA-time">2024-06-11</span>
                         </div>
                       </div>
                       <div class="QnA-boxs">
@@ -486,7 +533,7 @@
                             잘 놀다갑니다. 재방문 의사 있어요~~
                           </p>
 
-                          <span class="QnA-time">2024-06-16 09:07</span>
+                          <span class="QnA-time">2024-06-16</span>
                         </div>
                       </div>
                       <div class="QnA-boxs">
@@ -508,7 +555,7 @@
                             width="56px"
                             height="56px"
                           />
-                          <span class="QnA-time">2024-06-20 20:12</span>
+                          <span class="QnA-time">2024-06-20</span>
                         </div>
                       </div>
                     </div>
@@ -688,7 +735,7 @@
               aria-label="Close"
             ></button>
           </div>
-          <div class="modal-body">
+          <div class="modal-body payment-modal-body">
             <!-- form -->
           </div>
         </div>

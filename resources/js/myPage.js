@@ -7,15 +7,6 @@ if (!userInfo) {
   window.location.href = './signIn.html';
 }
 
-// 로그아웃
-document.getElementById('logout').addEventListener('click', function () {
-  if (confirm('정말 로그아웃 하시겠습니까?')) {
-    sessionStorage.removeItem('userInfo');
-    alert('로그아웃 되었습니다.');
-    window.location.href = '/';
-  }
-});
-
 // 회원정보표시
 async function getMembers() {
   try {
@@ -90,22 +81,25 @@ changeBtn.addEventListener('click', async function () {
   const newPwConfirm = document.getElementById('new-pw-confirm');
   const newPhone = document.getElementById('new-phone');
 
-  // if (!pwEx.test(newPw.value)) {
-  //   alert(
-  //     '비밀번호 형식이 올바르지 않습니다. 4자-16자 사이의 대문자, 소문자, 숫자, 특수문자를 포함해야 합니다.'
-  //   );
-  //   return false;
-  // } else if (!phoneEx.test(newPhone.value)) {
-  //   alert(
-  //     '유효하지 않은 핸드폰 번호입니다. 핸드폰 번호 형식을 지켜주세요. \n ex) 010-1234-1234'
-  //   );
-  //   return false;
-  // }
+  if (!pwEx.test(newPw.value)) {
+    alert(
+      '비밀번호 형식이 올바르지 않습니다. 4자-16자 사이의 대문자, 소문자, 숫자, 특수문자를 포함해야 합니다.'
+    );
+    return false;
+  }
 
-  // if (newPw.value !== newPwConfirm.value) {
-  //   alert('비밀번호가 일치하지 않습니다.');
-  //   return false;
-  // }
+  // 새로운 비밀번호와 새로운 비밀번호 확인의 입력값이 일치하지 않으면 비밀번호를 변경할 수 없습니다.
+  if (newPw.value !== newPwConfirm.value) {
+    alert('비밀번호가 일치하지 않습니다.');
+    return false;
+  }
+
+  if (!phoneEx.test(newPhone.value)) {
+    alert(
+      '유효하지 않은 핸드폰 번호입니다. 양식을 지켜주세요. ex) 010-0000-0000'
+    );
+    return false;
+  }
 
   try {
     const updateInfo = {

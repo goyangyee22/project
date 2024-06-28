@@ -121,21 +121,114 @@ closeEl.addEventListener("click", function () {
 });
 
 // 위로 가기 버튼
-function Topbtn() {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth",
-  });
-}
+// function Topbtn() {
+//   window.scrollTo({
+//     top: 0,
+//     behavior: "smooth",
+//   });
+// }
 // 후기작성
+
+const userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
+
 const displaytext = document.getElementsByClassName("profil-scroll");
 const input = document.getElementById("modalInput");
 const textarr = document.getElementById("modaltexttarea");
 const modalbtn = document.getElementById("modal-btn");
+const open = document.getElementById("createBtn");
 
-modalbtn.onclick = function () {
-  const inputValue = input.value;
-  const textarrvlue = textarr.value;
-  displaytext.textContent = inputValue;
-};
+// 로그인을 하지 않았을 경우 접근 제한
+open.addEventListener("click", function () {
+  if (!userInfo) {
+    alert("로그인을 해주세요.");
+    window.location.href = "./pages/signIn.html";
+  }
+});
+
+// 데이터전송
+modalbtn.addEventListener("click", async function () {
+  try {
+    const inputValue = input.value;
+    const textarrvlue = textarr.value;
+    const user = userInfo.name;
+    const docId = userInfo.docId;
+    const date = new Date().toLocaleDateString("ko-KR");
+
+    const sendObj = {
+      content: textarrvlue,
+      date: date,
+      name: user,
+      title: inputValue,
+      userDocId: docId,
+    };
+
+    const sendDatas = await addDatas("board", sendObj);
+
+    if (sendDatas) {
+      alert("게시글이 작성되었습니다.");
+    } else {
+      console.log("저장 실패");
+      console.log(sendDatas);
+    }
+  } catch (error) {
+    console.log(error);
+  }
+  // displaytext.textContent = inputValue;
+});
+
+//
+const profilScroll = document.querySelector(".profil-scroll");
+async function getBoard() {
+  try {
+    const snapshot = await getDatas("board");
+
+    let boardArr = [];
+    for (let i = 0; i < 3; i++) {
+      boardArr.push(snapshot.docs[i].data());
+    }
+
+    console.log(boardArr);
+
+    if (boardArr) {
+      boardArr.forEach((el) => {
+        const { content, name, title, date } = el;
+        profilScroll.insertAdjacentHTML(
+          "beforeend",
+          `
+            <div class="Reviews-in">
+                  <div class="customer">
+                    <div></div>
+                    <div class="profile-img">
+                      <img src="./resources/images/petroom/사용자.jpg" alt="" />
+                    </div>
+                    <div>
+                      <div class="name">${name}</div>
+                      <div class="stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                      </div>
+                      <div class="profile-title">
+                        <p>
+                         ${content}
+                        </p>
+                      </div>
+
+                      <div class="date">${date}</div>
+                    </div>
+                  </div>
+                </div>
+            `
+        );
+      });
+    }
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+getBoard();
+
 mapRendering();

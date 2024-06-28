@@ -1,6 +1,6 @@
 // header spot menu rendering
-const userInfo = sessionStorage.getItem("userInfo");
-const spotMenu = document.querySelector(".spot");
+const userInfo = sessionStorage.getItem('userInfo');
+const spotMenu = document.querySelector('.spot');
 if (!userInfo) {
   // spot
   spotMenu.innerHTML = `
@@ -32,67 +32,67 @@ if (!userInfo) {
     </li>
 `;
 
-  document.getElementById("logout").addEventListener("click", function () {
-    if (confirm("정말 로그아웃 하시겠습니까?")) {
-      sessionStorage.removeItem("userInfo");
-      alert("로그아웃 되었습니다.");
-      window.location.reload();
+  document.getElementById('logout').addEventListener('click', function () {
+    if (confirm('정말 로그아웃 하시겠습니까?')) {
+      sessionStorage.removeItem('userInfo');
+      alert('로그아웃 되었습니다.');
+      window.location.href = '/';
     }
   });
 }
 
 /* 햄버거 메뉴 */
-const hamMenu = document.querySelector(".ham-menu");
-const navEl = document.querySelector("nav");
-hamMenu.addEventListener("click", function () {
-  this.classList.toggle("show-menu");
-  if (this.classList.contains("show-menu")) {
-    navEl.style.display = "flex";
-    navEl.style.height = "35px";
-    navEl.firstElementChild.style.display = "flex";
+const hamMenu = document.querySelector('.ham-menu');
+const navEl = document.querySelector('nav');
+hamMenu.addEventListener('click', function () {
+  this.classList.toggle('show-menu');
+  if (this.classList.contains('show-menu')) {
+    navEl.style.display = 'flex';
+    navEl.style.height = '35px';
+    navEl.firstElementChild.style.display = 'flex';
   } else {
     navEl.style.height = 0;
-    navEl.firstElementChild.style.display = "none";
+    navEl.firstElementChild.style.display = 'none';
   }
 });
 
-window.addEventListener("resize", function () {
+window.addEventListener('resize', function () {
   if (window.innerWidth < 1024) {
     // 모바일 화면일 때
-    if (!hamMenu.classList.contains("show-menu")) {
+    if (!hamMenu.classList.contains('show-menu')) {
       navEl.style.height = 0;
-      navEl.firstElementChild.style.display = "none";
+      navEl.firstElementChild.style.display = 'none';
     }
   } else {
     // 데스크탑 화면일 때
-    hamMenu.classList.remove("show-menu");
-    navEl.style.display = "flex";
+    hamMenu.classList.remove('show-menu');
+    navEl.style.display = 'flex';
     navEl.style.height = 0;
-    navEl.firstElementChild.style.display = "flex";
+    navEl.firstElementChild.style.display = 'flex';
   }
 });
 
 // 페이지 로드 시 초기 상태 설정
 if (window.innerWidth < 1024) {
   navEl.style.height = 0;
-  navEl.firstElementChild.style.display = "none";
+  navEl.firstElementChild.style.display = 'none';
 } else {
-  navEl.style.display = "flex";
+  navEl.style.display = 'flex';
   navEl.style.height = 0;
-  navEl.firstElementChild.style.display = "flex";
+  navEl.firstElementChild.style.display = 'flex';
 }
 
 // 달력 렌더링
 function calendarRendering(display, date) {
-  const calendarEl = document.getElementById("calendar");
+  const calendarEl = document.getElementById('calendar');
 
   let calendar = new FullCalendar.Calendar(calendarEl, {
-    locale: "ko",
-    initialView: "dayGridMonth",
-    googleCalendarApiKey: "AIzaSyDjg0gbj5QCe_pmGqhJcl_510x5i-0C6-U",
+    locale: 'ko',
+    initialView: 'dayGridMonth',
+    googleCalendarApiKey: 'AIzaSyDjg0gbj5QCe_pmGqhJcl_510x5i-0C6-U',
     events: {
       googleCalendarId:
-        "07602c2e77c6a76840bc6eb4d079f9a4f653c0ba493d1a91469f9b276f437298@group.calendar.google.com",
+        '07602c2e77c6a76840bc6eb4d079f9a4f653c0ba493d1a91469f9b276f437298@group.calendar.google.com',
     },
     // editable: true,
     selectable: true,
@@ -110,7 +110,7 @@ function calendarRendering(display, date) {
       maxDate.setMonth(now.getMonth() + 2);
 
       if (start < now || start > maxDate) {
-        alert("최대 2개월 후만 예약이 가능합니다.");
+        alert('최대 2개월 후만 예약이 가능합니다.');
         calendar.usselect();
       }
     },
@@ -122,13 +122,13 @@ function calendarRendering(display, date) {
       return { html: e.date.getDate().toString() };
     },
     headerToolbar: {
-      start: "prev",
-      center: "title",
-      end: "next",
+      start: 'prev',
+      center: 'title',
+      end: 'next',
     },
     titleFormat: {
-      year: "numeric",
-      month: "2-digit",
+      year: 'numeric',
+      month: '2-digit',
     },
   });
 
@@ -138,7 +138,7 @@ function calendarRendering(display, date) {
 // 총 합계 계산 함수 (결제)
 function calculateAmount(display, personnel, amount) {
   // 방 옵션 선택
-  const timeOption = document.querySelector(".pay-time-btn.selected");
+  const timeOption = document.querySelector('.pay-time-btn.selected');
 
   if (!timeOption) {
     return;
@@ -158,7 +158,7 @@ function calculateAmount(display, personnel, amount) {
 
 // 지도
 function mapRendering() {
-  var container = document.getElementById("map"); //지도를 담을 영역의 DOM 레퍼런스
+  var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
   var options = {
     //지도를 생성할 때 필요한 기본 옵션
     center: new kakao.maps.LatLng(36.328772, 127.423009), //지도의 중심좌표.
@@ -181,7 +181,7 @@ function mapRendering() {
 
 function partyroom(room) {
   console.log(room);
-  const gallery = document.querySelector(".party-body");
+  const gallery = document.querySelector('.party-body');
 
   let createImgStr = `
       <div class="swiper partyrooms">
@@ -202,7 +202,7 @@ function partyroom(room) {
             `;
   gallery.innerHTML = createImgStr;
 
-  var swiper1 = new Swiper(".partyrooms", {
+  var swiper1 = new Swiper('.partyrooms', {
     slidesPerView: 1,
     spaceBetween: 30,
     loop: true,
@@ -212,14 +212,14 @@ function partyroom(room) {
     // },
     freeMode: true,
     pagination: {
-      el: ".swiper-pagination",
+      el: '.swiper-pagination',
       clickable: true,
     },
   });
 }
 function petroom(room) {
   console.log(room);
-  const gallery = document.querySelector(".room-body");
+  const gallery = document.querySelector('.room-body');
 
   let createImgStr = `
                       <div class="swiper petroom">
@@ -240,7 +240,7 @@ function petroom(room) {
                   `;
   gallery.innerHTML = createImgStr;
 
-  var swiper1 = new Swiper(".petroom", {
+  var swiper1 = new Swiper('.petroom', {
     slidesPerView: 1,
     spaceBetween: 30,
     loop: true,
@@ -250,30 +250,36 @@ function petroom(room) {
     // },
     freeMode: true,
     pagination: {
-      el: ".swiper-pagination",
+      el: '.swiper-pagination',
       clickable: true,
     },
   });
 }
 // 주소 복사하기
 function urlCopy() {
-  var copyText = document.getElementById("text");
-  copyText.style.display = "block";
+  var copyText = document.getElementById('text');
+  copyText.style.display = 'block';
   copyText.select();
   copyText.setSelectionRange(0, 99999);
 
   navigator.clipboard.writeText(copyText.value).then(
     function () {
-      var copyMessage = document.getElementById("copyMessage");
-      copyMessage.classList.add("show");
+      var copyMessage = document.getElementById('copyMessage');
+      copyMessage.classList.add('show');
       setTimeout(function () {
-        copyMessage.classList.remove("show");
+        copyMessage.classList.remove('show');
       }, 1000);
     },
     function (err) {
-      console.error("Failed to copy: ", err);
+      console.error('Failed to copy: ', err);
     }
   );
 
-  copyText.style.display = "none";
+  copyText.style.display = 'none';
+}
+function Topbtn() {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  });
 }

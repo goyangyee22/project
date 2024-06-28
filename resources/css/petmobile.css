@@ -1,15 +1,21 @@
 @media screen and (max-width: 767px) {
-  .wrap {
+  /* .wrap {
     padding: 0 2rem;
-  }
+  } */
   .pet-contents {
     width: 100%;
   }
   .pet-detail {
     display: block;
+    padding: 1rem 0;
   }
   #pet {
     padding-bottom: 0;
+    padding: 0 0 0 1.5rem 1rem;
+  }
+  .fa-solid,
+  .fas {
+    font-size: 1rem;
   }
   .More {
     /* backdrop-filter: blur(50px); */
@@ -153,8 +159,9 @@
   /* }.room-main{width: 100%; */
 
   /* 예약내용 */
+
   #detail-payment {
-    padding: 1rem 0.5rem;
+    /* padding: 1rem 0.5rem; */
     gap: 1rem;
   }
   .fc .fc-daygrid-day-frame {
@@ -176,7 +183,23 @@
   .caution-desc p {
     font-size: 1rem;
   }
+  /* 사진보기 */
 
+  .petroom {
+    height: 100%;
+  }
+  .room-body {
+    height: 100%;
+    /* width: ; */
+  }
+  .roomimg {
+    height: 250px;
+  }
+  .room-body img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
   /* .pay-options {
     display: grid;
   } */
@@ -247,7 +270,7 @@
     font-size: 1.5rem;
     background-color: #ffefef;
     border-radius: 0.5rem;
-    width: 30px;
+    width: 17px;
     height: 150px;
     position: fixed;
     /* top: 600px; */

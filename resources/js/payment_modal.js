@@ -156,7 +156,7 @@ function openPayment(content) {
     .join('');
 
   if (data) {
-    document.querySelector('.modal-body').innerHTML = `
+    document.querySelector('.payment-modal-body').innerHTML = `
       <div id="detail-payment">
         <div class="pay-info">
           <div class="pay-header">
