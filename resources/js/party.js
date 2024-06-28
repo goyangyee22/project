@@ -1,12 +1,5 @@
 import { getDatas, addDatas } from "../../firebase.js";
 
-// var swiper = new Swiper(".mySwiper", {
-//   navigation: {
-//     nextEl: ".swiper-button-next",
-//     prevEl: ".swiper-button-prev",
-//   },
-// });
-
 const reviewContainer = document.querySelector(".guest-main-img");
 
 async function getBoard() {
@@ -19,12 +12,6 @@ async function getBoard() {
     }
 
     console.log(boardArr);
-
-    // snapshot.docs.forEach((doc) => {
-    //   const data = doc.data();
-    //   // console.log(data);
-    //   boardData = data;
-    // });
 
     if (boardArr) {
       boardArr.forEach((el) => {
