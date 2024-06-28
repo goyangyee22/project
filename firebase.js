@@ -65,7 +65,7 @@ async function getDatas(collectionName) {
 
 async function updateDatas(collectionName, docId, updateObj) {
   try {
-    const docRef = await firestoreDoc(dbService, collectionName, docId);
+    const docRef = await doc(dbService, collectionName, docId);
     await updateDoc(docRef, updateObj);
     console.log('Document successfully updated!');
   } catch (error) {
