@@ -181,7 +181,8 @@ button:hover {
   border-radius: 5px;
   padding: 5px;
   position: relative;
-  left: 100%;
+  left: 50%;
+  bottom: 60px;
   z-index: 999;
   opacity: 0;
   transition: opacity 0.3s;
@@ -546,17 +547,9 @@ button:hover {
     width: 95%;
   }
   .copy-message {
-    visibility: hidden;
     width: 120px;
-    background-color: #1a2130;
-    color: #fff;
-    text-align: center;
-    border-radius: 5px;
-    padding: 5px;
-    position: relative;
-    left: 150px;
+    left: 230px;
     z-index: 999;
-    opacity: 0;
     transition: opacity 0.3s;
     bottom: 60px;
   }
@@ -750,17 +743,10 @@ button:hover {
     width: 303px;
   }
   .copy-message {
-    visibility: hidden;
-    width: 120px;
-    background-color: #1a2130;
-    color: #fff;
-    text-align: center;
-    border-radius: 5px;
-    padding: 5px;
-    position: relative;
-    left: 100px;
-    z-index: 999;
-    opacity: 0;
+    width: 100px;
+    left: 170px;
+    padding: 3px 0px;
+    /* z-index: 999; */
     transition: opacity 0.3s;
     bottom: 50px;
   }
