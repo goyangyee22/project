@@ -11,21 +11,16 @@ async function getBoard() {
       boardArr.push(snapshot.docs[i].data());
     }
 
-    console.log(boardArr);
-
     if (boardArr) {
       boardArr.forEach((el) => {
         const { content, name, title, date } = el;
-        console.log("name", name);
+
         reviewContainer.insertAdjacentHTML(
           "beforeend",
           `
           <div class="QnA-boxs">
             <span class="guest-imgx"
-              ><img
-                class="guest-imgs"
-                src="resources/images/partyimg/게스트이미지1.jpg"
-            /></span>
+              ><i class="fa-regular fa-user guest-imgs"></i></span>
             <div class="QnA-num">
               <strong class="guest-name"
                 >${name} <span>⭐⭐⭐⭐⭐</span></strong
@@ -33,11 +28,7 @@ async function getBoard() {
               <p class="QnA-ment">
                 ${content}
               </p>
-              <img
-                src="resources/images/partyimg/후기1.jpg"
-                width="56px"
-                height="56px"
-              />
+            
               <span class="QnA-time">${date}</span>
             </div>
           </div>
@@ -45,9 +36,7 @@ async function getBoard() {
         );
       });
     }
-  } catch (err) {
-    console.log(err);
-  }
+  } catch (err) {}
 }
 
 var swiper = new Swiper(".detail-slide-thumb", {
@@ -67,6 +56,51 @@ var swiper2 = new Swiper(".detail-slide", {
   thumbs: {
     swiper: swiper,
   },
+});
+
+const userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
+const displaytext = document.getElementsByClassName("profil-scroll");
+const input = document.getElementById("modalInput");
+const textarr = document.getElementById("modaltexttarea");
+const modalbtn = document.getElementById("modal-btn");
+const open = document.getElementById("createBtn");
+
+open.addEventListener("click", function () {
+  if (!userInfo) {
+    alert("로그인을 해주세요.");
+    window.location.href = "./pages/signIn.html";
+  }
+});
+
+// 데이터전송
+modalbtn.addEventListener("click", async function () {
+  try {
+    const inputValue = input.value;
+    const textarrvlue = textarr.value;
+    const user = userInfo.name;
+    const docId = userInfo.docId;
+    const date = new Date().toLocaleDateString("ko-KR");
+
+    const sendObj = {
+      content: textarrvlue,
+      date: date,
+      name: user,
+      title: inputValue,
+      userDocId: docId,
+    };
+
+    const sendDatas = await addDatas("board", sendObj);
+
+    if (sendDatas) {
+      alert("게시글이 작성되었습니다.");
+    } else {
+      console.log("저장 실패");
+      console.log(sendDatas);
+    }
+  } catch (error) {
+    console.log(error);
+  }
+  // displaytext.textContent = inputValue;
 });
 
 const sectionMenus = document.querySelectorAll(".party-menu a");
