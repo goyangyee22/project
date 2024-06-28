@@ -1,16 +1,16 @@
-import { getDatas, updateDatas, deleteDatas } from '../../firebase.js';
+import { getDatas, updateDatas, deleteDatas } from "../../firebase.js";
 
-const userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+const userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
 
 if (!userInfo) {
-  alert('로그인을 해주세요.');
-  window.location.href = './signIn.html';
+  alert("로그인을 해주세요.");
+  window.location.href = "./signIn.html";
 }
 
 // 회원정보표시
 async function getMembers() {
   try {
-    const snapshot = await getDatas('userInfo');
+    const snapshot = await getDatas("userInfo");
 
     let userData;
 
@@ -23,9 +23,9 @@ async function getMembers() {
 
     if (userData) {
       const { id, name, phone } = userData;
-      const profileInfo = document.querySelector('.profile-info');
-      const userName = document.getElementById('user-name');
-      const userId = document.getElementById('user-id');
+      const profileInfo = document.querySelector(".profile-info");
+      const userName = document.getElementById("user-name");
+      const userId = document.getElementById("user-id");
 
       profileInfo.innerHTML = `
         <table class="table">
@@ -53,18 +53,18 @@ async function getMembers() {
 }
 
 // section 이동
-const settingBtns = document.querySelectorAll('.setting-btn');
-const sections = document.querySelectorAll('section');
+const settingBtns = document.querySelectorAll(".setting-btn");
+const sections = document.querySelectorAll("section");
 
 settingBtns.forEach((link) => {
-  link.addEventListener('click', function (e) {
+  link.addEventListener("click", function (e) {
     e.preventDefault();
-    const targetSection = this.getAttribute('data-section');
+    const targetSection = this.getAttribute("data-section");
 
     sections.forEach((section) => {
-      section.classList.remove('active');
+      section.classList.remove("active");
       if (section.id === targetSection) {
-        section.classList.add('active');
+        section.classList.add("active");
       }
     });
   });
@@ -74,29 +74,29 @@ settingBtns.forEach((link) => {
 const pwEx = /^[0-9A-Za-z\d$@$!%*?&]{4,16}/g;
 const phoneEx = /^\d{3}-\d{4}-\d{4}$/;
 
-const changeBtn = document.getElementById('change-info-btn');
+const changeBtn = document.getElementById("change-info-btn");
 
-changeBtn.addEventListener('click', async function () {
-  const newPw = document.getElementById('new-pw');
-  const newPwConfirm = document.getElementById('new-pw-confirm');
-  const newPhone = document.getElementById('new-phone');
+changeBtn.addEventListener("click", async function () {
+  const newPw = document.getElementById("new-pw");
+  const newPwConfirm = document.getElementById("new-pw-confirm");
+  const newPhone = document.getElementById("new-phone");
 
   if (!pwEx.test(newPw.value)) {
     alert(
-      '비밀번호 형식이 올바르지 않습니다. 4자-16자 사이의 대문자, 소문자, 숫자, 특수문자를 포함해야 합니다.'
+      "비밀번호 형식이 올바르지 않습니다. 4자-16자 사이의 대문자, 소문자, 숫자, 특수문자를 포함해야 합니다."
     );
     return false;
   }
 
   // 새로운 비밀번호와 새로운 비밀번호 확인의 입력값이 일치하지 않으면 비밀번호를 변경할 수 없습니다.
   if (newPw.value !== newPwConfirm.value) {
-    alert('비밀번호가 일치하지 않습니다.');
+    alert("비밀번호가 일치하지 않습니다.");
     return false;
   }
 
   if (!phoneEx.test(newPhone.value)) {
     alert(
-      '유효하지 않은 핸드폰 번호입니다. 양식을 지켜주세요. ex) 010-0000-0000'
+      "유효하지 않은 핸드폰 번호입니다. 양식을 지켜주세요. ex) 010-0000-0000"
     );
     return false;
   }
@@ -108,23 +108,23 @@ changeBtn.addEventListener('click', async function () {
       phone: newPhone.value,
     };
 
-    await updateDatas('userInfo', userInfo.docId, updateInfo);
+    await updateDatas("userInfo", userInfo.docId, updateInfo);
 
     sessionStorage.setItem(
-      'userInfo',
+      "userInfo",
       JSON.stringify({ ...userInfo, pw: newPw.value, phone: newPhone.value })
     );
 
     getMembers();
 
-    newPw.value = '';
-    newPwConfirm.value = '';
-    newPhone.value = '';
+    newPw.value = "";
+    newPwConfirm.value = "";
+    newPhone.value = "";
 
-    alert('정보가 성공적으로 변경되었습니다!');
+    alert("정보가 성공적으로 변경되었습니다!");
 
-    this.closest('section#change-info').classList.remove('active');
-    sections[0].classList.add('active');
+    this.closest("section#change-info").classList.remove("active");
+    sections[0].classList.add("active");
   } catch (error) {
     console.log(error);
   }
@@ -133,7 +133,7 @@ changeBtn.addEventListener('click', async function () {
 // 결제기록
 async function getPayment() {
   try {
-    const snapshot = await getDatas('payment');
+    const snapshot = await getDatas("payment");
 
     let paymentData = [];
 
@@ -143,7 +143,7 @@ async function getPayment() {
       }
     });
 
-    const container = document.querySelector('#payment-record .contents');
+    const container = document.querySelector("#payment-record .contents");
     paymentData.forEach((payment) => {
       if (payment) {
         const { personnel, reservationDate, reservationTime, room, thumb } =
@@ -152,7 +152,7 @@ async function getPayment() {
         const { amount, dateOrdered, method } = payment.order;
 
         container.insertAdjacentHTML(
-          'beforeend',
+          "beforeend",
           `
           <div class="reservation-info content">
             <table class="table caption-top">
@@ -207,7 +207,7 @@ async function getPayment() {
     });
 
     if (paymentData == 0) {
-      container.innerHTML = '결제내역이 없습니다.';
+      container.innerHTML = "결제내역이 없습니다.";
     }
   } catch (err) {
     console.log(err);
@@ -216,11 +216,11 @@ async function getPayment() {
 
 // 작성글
 const postWritten = document.querySelector(
-  '#post-written .contents .post-group'
+  "#post-written .contents .post-group"
 );
 async function postRendering() {
   try {
-    const snapshot = await getDatas('board');
+    const snapshot = await getDatas("board");
 
     let postData = [];
 
@@ -234,7 +234,7 @@ async function postRendering() {
       if (post) {
         const { name, date, title } = post;
         postWritten.insertAdjacentHTML(
-          'beforeend',
+          "beforeend",
           `
           <tr>
             <th scope="row">${idx + 1}</th>
@@ -249,7 +249,7 @@ async function postRendering() {
 
     if (postData.length == 0) {
       postWritten.insertAdjacentHTML(
-        'beforeend',
+        "beforeend",
         `
         <tr>
           <td colspan='4'>작성한 글이 없습니다.</td>
@@ -266,26 +266,26 @@ async function postRendering() {
 async function fetchUserPosts() {
   try {
     // 로그인 되어있는 사용자의 sessionStorage에서 userDocId 값을 가져옵니다.
-    const userInfoString = sessionStorage.getItem('userInfo');
+    const userInfoString = sessionStorage.getItem("userInfo");
     const user = JSON.parse(userNameString);
     const docId = user.docId;
     if (!userInfoString) {
       return false;
     }
     const userInfo = JSON.parse(userInfoString);
-    const postsRef = collection(db, 'board');
+    const postsRef = collection(db, "board");
     const postDocs = await getDocs(postsRef);
-    const postList = document.getElementById('postList');
+    const postList = document.getElementById("postList");
 
     // 기존의 게시글 목록을 초기화합니다.
     if (postList) {
-      postList.innerHTML = '';
+      postList.innerHTML = "";
 
       postDocs.forEach((doc) => {
         const data = doc.data();
         if (data.userDocId === userInfo.docId) {
           // sessionStorage의 userDocId 값과 작성자의 docId가 일치하면 작성글이 나타납니다.
-          const listItem = document.createElement('li');
+          const listItem = document.createElement("li");
           listItem.innerHTML = `
       <div class="post-item">
           <div class="post-info">
@@ -299,7 +299,7 @@ async function fetchUserPosts() {
         }
       });
     } else {
-      console.log('게시글을 찾을 수 없습니다.');
+      console.log("게시글을 찾을 수 없습니다.");
     }
   } catch (error) {
     console.log(error);
@@ -307,33 +307,33 @@ async function fetchUserPosts() {
 }
 
 // 회원탈퇴
-const withdrawalBtn = document.getElementById('withdrawal-btn');
-withdrawalBtn.addEventListener('click', async function () {
+const withdrawalBtn = document.getElementById("withdrawal-btn");
+withdrawalBtn.addEventListener("click", async function () {
   // 체크박스에 체크가 되어있지 않으면 회원탈퇴를 할 수 없습니다.
-  const withdrawalCheckbox = document.getElementById('withdrawal-checkbox');
+  const withdrawalCheckbox = document.getElementById("withdrawal-checkbox");
   if (!withdrawalCheckbox.checked) {
-    alert('안내사항에 동의하여야 회원 탈퇴를 할 수 있습니다.');
+    alert("안내사항에 동의하여야 회원 탈퇴를 할 수 있습니다.");
     return false;
   }
   // 삭제를 하기 전 확인 메세지를 표시합니다.
-  if (confirm('정말 회원 탈퇴 하시겠습니까?')) {
+  if (confirm("정말 회원 탈퇴 하시겠습니까?")) {
     try {
       // 세션 스토리지에서 사용자 정보를 가져옵니다.
 
       if (userInfo) {
-        await deleteDatas('userInfo', userInfo.docId);
+        await deleteDatas("userInfo", userInfo.docId);
 
-        sessionStorage.removeItem('userInfo');
+        sessionStorage.removeItem("userInfo");
 
-        alert('회원 탈퇴가 성공적으로 완료 되었습니다.');
+        alert("회원 탈퇴가 성공적으로 완료 되었습니다.");
 
-        window.location.href = '../index.html';
+        window.location.href = "../index.html";
       } else {
-        throw new Error('사용자 정보를 찾을 수 없습니다.');
+        throw new Error("사용자 정보를 찾을 수 없습니다.");
       }
     } catch (err) {
       console.error(err);
-      alert('회원 탈퇴 중 오류가 발생했습니다. 다시 시도해 주십시오.');
+      alert("회원 탈퇴 중 오류가 발생했습니다. 다시 시도해 주십시오.");
     }
   }
 });
