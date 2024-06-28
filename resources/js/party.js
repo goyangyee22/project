@@ -1,12 +1,5 @@
 import { getDatas, addDatas } from "../../firebase.js";
 
-// var swiper = new Swiper(".mySwiper", {
-//   navigation: {
-//     nextEl: ".swiper-button-next",
-//     prevEl: ".swiper-button-prev",
-//   },
-// });
-
 const reviewContainer = document.querySelector(".guest-main-img");
 
 async function getBoard() {
@@ -19,12 +12,6 @@ async function getBoard() {
     }
 
     console.log(boardArr);
-
-    // snapshot.docs.forEach((doc) => {
-    //   const data = doc.data();
-    //   // console.log(data);
-    //   boardData = data;
-    // });
 
     if (boardArr) {
       boardArr.forEach((el) => {
@@ -106,45 +93,6 @@ sectionMenus.forEach((link) => {
     }, 1000);
   });
 });
-
-function partyroom(room) {
-  console.log(room);
-  const gallery = document.querySelector(".party-body");
-
-  let createImgStr = `
-      <div class="swiper partyrooms">
-        <div class="swiper-wrapper" id="">
-          `;
-
-  for (let i = 1; i < 6; i++) {
-    createImgStr += `
-            <div class="swiper-slide roomimg1">
-              <img src="resources/images/partyimg/${room}${i}.jpg" alt="" />
-              </div>
-              `;
-  }
-  createImgStr += `
-            </div>
-            <div class="swiper-pagination"></div>
-            </div>
-            `;
-  gallery.innerHTML = createImgStr;
-
-  var swiper1 = new Swiper(".partyrooms", {
-    slidesPerView: 1,
-    spaceBetween: 30,
-    loop: true,
-    // autoplay: {
-    //   delay: 2500,
-    //   disableOnInteraction: false,
-    // },
-    freeMode: true,
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-    },
-  });
-}
 
 function urlCopy() {
   var copyText = document.getElementById("text");
