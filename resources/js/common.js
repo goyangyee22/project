@@ -178,3 +178,42 @@ function mapRendering() {
   // 마커가 지도 위에 표시되도록 설정합니다
   marker.setMap(map);
 }
+
+function partyroom(room) {
+  console.log(room);
+  const gallery = document.querySelector(".party-body");
+
+  let createImgStr = `
+      <div class="swiper partyrooms">
+        <div class="swiper-wrapper" id="">
+          `;
+
+  for (let i = 1; i < 6; i++) {
+    createImgStr += `
+            <div class="swiper-slide roomimg1">
+              <img src="resources/images/partyimg/${room}${i}.jpg" alt="" />
+              </div>
+              `;
+  }
+  createImgStr += `
+            </div>
+            <div class="swiper-pagination"></div>
+            </div>
+            `;
+  gallery.innerHTML = createImgStr;
+
+  var swiper1 = new Swiper(".partyrooms", {
+    slidesPerView: 1,
+    spaceBetween: 30,
+    loop: true,
+    // autoplay: {
+    //   delay: 2500,
+    //   disableOnInteraction: false,
+    // },
+    freeMode: true,
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+  });
+}
