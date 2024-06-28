@@ -7,15 +7,6 @@ if (!userInfo) {
   window.location.href = './signIn.html';
 }
 
-// 로그아웃
-document.getElementById('logout').addEventListener('click', function () {
-  if (confirm('정말 로그아웃 하시겠습니까?')) {
-    sessionStorage.removeItem('userInfo');
-    alert('로그아웃 되었습니다.');
-    window.location.href = '/';
-  }
-});
-
 // 회원정보표시
 async function getMembers() {
   try {
