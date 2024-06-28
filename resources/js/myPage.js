@@ -98,12 +98,12 @@ changeBtn.addEventListener("click", async function () {
     };
 
     // 비밀번호 형식이 지켜지지 않을 경우 비밀번호를 변경할 수 없습니다.
-    if (!pwEx.test(newPw)) {
-      alert(
-        "비밀번호 형식이 올바르지 않습니다. 4자-16자 사이의 대문자, 소문자, 숫자, 특수문자를 포함해야 합니다."
-      );
-      return false;
-    }
+    // if (!pwEx.test(newPw)) {
+    //   alert(
+    //     "비밀번호 형식이 올바르지 않습니다. 4자-16자 사이의 대문자, 소문자, 숫자, 특수문자를 포함해야 합니다."
+    //   );
+    //   return false;
+    // }
 
     // 새로운 비밀번호와 새로운 비밀번호 확인의 입력값이 일치하지 않으면 비밀번호를 변경할 수 없습니다.
     if (newPw !== newPwConfirm) {
