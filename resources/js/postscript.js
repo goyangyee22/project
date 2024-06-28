@@ -25,6 +25,22 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
+// 로그인이 되어있지 않은 경우, 접근이 제한됩니다.
+// const userInfo = sessionStorage.getItem("userInfo");
+// if (!userInfo) {
+//   alert("로그인을 해주세요.");
+//   window.location.href = "./signIn.html";
+// }
+
+// 로그아웃
+// document.getElementById("logout").addEventListener("click", function () {
+//   if (confirm("정말 로그아웃 하시겠습니까?")) {
+//     sessionStorage.removeItem("userInfo");
+//     alert("로그아웃 되었습니다.");
+//     window.location.href = "/";
+//   }
+// });
+
 const userInfo = sessionStorage.getItem("userInfo");
 const spotMenu = document.querySelector(".spot");
 if (!userInfo) {
