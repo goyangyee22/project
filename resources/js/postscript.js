@@ -443,7 +443,7 @@ submitBtn.addEventListener('click', async () => {
   alert('정말 이대로 작성 하시겠습니까?');
   createModal.style.display = 'none';
 
-  getBoard();
+  // getBoard();
 });
 
 // 작성 모달 창에서 취소 버튼을 누를 시 원래 페이지로 돌아갑니다.
