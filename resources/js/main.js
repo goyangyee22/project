@@ -87,6 +87,24 @@ gsap.utils.toArray('.icon-animate').forEach((element, index) => {
   );
 });
 
+gsap.to('.top-btn', {
+  scrollTrigger: {
+    trigger: document.body,
+    start: 'top+=100vh',
+    toggleActions: 'play none none reverse',
+  },
+  x: 0,
+  opacity: 1,
+  duration: 0.5,
+});
+
+document.querySelector('.top-btn').addEventListener('click', () => {
+  gsap.to(window, {
+    scrollTo: { y: 0, autoKill: false },
+    duration: 1,
+  });
+});
+
 // 옵션 리스트
 const infoOptions = [
   {
