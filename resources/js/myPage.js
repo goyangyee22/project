@@ -25,13 +25,21 @@ if (!userInfo) {
 }
 
 // 로그아웃
-document.getElementById("logout").addEventListener("click", function () {
+const logout = document.getElementById("logout");
+
+// 기존에 등록된 이벤트 리스너 제거 (옵션)
+logout.removeEventListener("click", handleLogout);
+
+// 새로운 이벤트 리스너 등록
+logout.addEventListener("click", handleLogout);
+
+function handleLogout() {
   if (confirm("정말 로그아웃 하시겠습니까?")) {
     sessionStorage.removeItem("userInfo");
     alert("로그아웃 되었습니다.");
     window.location.href = "/";
   }
-});
+}
 
 // 회원정보표시
 async function getMembers() {
