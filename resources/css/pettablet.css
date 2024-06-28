@@ -6,10 +6,10 @@
   #pet {
     padding: 0 1.5rem;
   }
-  .wrap {
+  /* .wrap {
     margin: 1.5rem 0;
     gap: 1rem;
-  }
+  } */
   .More {
     /* backdrop-filter: blur(50px); */
     background-color: rgba(252, 249, 249);
@@ -18,7 +18,7 @@
     width: 60%;
   }
   .pet-detail {
-    padding: 0;
+    padding: 1rem 0;
     /* display: block; */
   }
   .room-main {
@@ -151,6 +151,22 @@
   }
   .profile-title {
     font-size: 1.5rem;
+  }
+  /* 사진보기 */
+  .petroom {
+    height: 100%;
+  }
+  .room-body {
+    height: 100%;
+    /* width: ; */
+  }
+  .roomimg {
+    height: 350px;
+  }
+  .room-body img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
   /* 예약내용 */

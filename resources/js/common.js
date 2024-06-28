@@ -277,3 +277,9 @@ function urlCopy() {
 
   copyText.style.display = "none";
 }
+function Topbtn() {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+}
