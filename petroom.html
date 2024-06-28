@@ -36,7 +36,7 @@
       src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1fb3a65936addf6c3befbf8da8e54a23"
     ></script>
     <script defer src="./resources/js/common.js"></script>
-    <script defer src="./resources/js/petroom.js"></script>
+    <script type="module" src="./resources/js/petroom.js"></script>
 
     <script defer src="./resources/js/payment_modal.js"></script>
   </head>
@@ -858,7 +858,7 @@
             >
           </div>
           <div class="modal-footer Reviewswrite-footer">
-            <button type="button" class="btn btn-primary clickbtn">
+            <button type="button" id="modal-btn" class="btn btn-primary">
               작성하기
             </button>
           </div>
