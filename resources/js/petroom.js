@@ -9,6 +9,7 @@
 //     prevEl: ".swiper-button-prev",
 //   },
 // });
+import { getDatas, addDatas } from "../../firebase.js";
 
 var swiper = new Swiper(".detail-slide-thumb", {
   loop: true,
@@ -45,66 +46,66 @@ var swiper2 = new Swiper(".detail-slide", {
 // });
 // 여러이미지 불러오기
 
-function petroom(room) {
-  console.log(room);
-  const gallery = document.querySelector(".room-body");
+// function petroom(room) {
+//   console.log(room);
+//   const gallery = document.querySelector(".room-body");
 
-  let createImgStr = `
-                      <div class="swiper petroom">
-                        <div class="swiper-wrapper" id="">
-                    `;
+//   let createImgStr = `
+//                       <div class="swiper petroom">
+//                         <div class="swiper-wrapper" id="">
+//                     `;
 
-  for (let i = 1; i < 9; i++) {
-    createImgStr += `
-                    <div class="swiper-slide roomimg">
-                      <img src="./resources/images/petroom/${room}${i}.jpg" alt="" />
-                    </div>
-                    `;
-  }
-  createImgStr += `
-                      </div>
-                        <div class="swiper-pagination"></div>
-                      </div>
-                  `;
-  gallery.innerHTML = createImgStr;
+//   for (let i = 1; i < 9; i++) {
+//     createImgStr += `
+//                     <div class="swiper-slide roomimg">
+//                       <img src="./resources/images/petroom/${room}${i}.jpg" alt="" />
+//                     </div>
+//                     `;
+//   }
+//   createImgStr += `
+//                       </div>
+//                         <div class="swiper-pagination"></div>
+//                       </div>
+//                   `;
+//   gallery.innerHTML = createImgStr;
 
-  var swiper1 = new Swiper(".petroom", {
-    slidesPerView: 1,
-    spaceBetween: 30,
-    loop: true,
-    // autoplay: {
-    //   delay: 2500,
-    //   disableOnInteraction: false,
-    // },
-    freeMode: true,
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-    },
-  });
-}
-// 주소 복사하기
-function urlCopy() {
-  var copyText = document.getElementById("text");
-  copyText.style.display = "block";
-  copyText.select();
-  copyText.setSelectionRange(0, 99999);
+//   var swiper1 = new Swiper(".petroom", {
+//     slidesPerView: 1,
+//     spaceBetween: 30,
+//     loop: true,
+//     // autoplay: {
+//     //   delay: 2500,
+//     //   disableOnInteraction: false,
+//     // },
+//     freeMode: true,
+//     pagination: {
+//       el: ".swiper-pagination",
+//       clickable: true,
+//     },
+//   });
+// }
+// // 주소 복사하기
+// function urlCopy() {
+//   var copyText = document.getElementById("text");
+//   copyText.style.display = "block";
+//   copyText.select();
+//   copyText.setSelectionRange(0, 99999);
 
-  navigator.clipboard.writeText(copyText.value).then(
-    function () {
-      var copyMessage = document.getElementById("copyMessage");
-      copyMessage.classList.add("show");
-      setTimeout(function () {
-        copyMessage.classList.remove("show");
-      }, 1000);
-    },
-    function (err) {
-      console.error("Failed to copy: ", err);
-    }
-  );
+//   navigator.clipboard.writeText(copyText.value).then(
+//     function () {
+//       var copyMessage = document.getElementById("copyMessage");
+//       copyMessage.classList.add("show");
+//       setTimeout(function () {
+//         copyMessage.classList.remove("show");
+//       }, 1000);
+//     },
+//     function (err) {
+//       console.error("Failed to copy: ", err);
+//     }
+//   );
 
-  copyText.style.display = "none";
-}
+//   copyText.style.display = "none";
+// }
 
 //메뉴버튼 숨기기'
 
@@ -127,23 +128,14 @@ function Topbtn() {
   });
 }
 // 후기작성
+const displaytext = document.getElementsByClassName("profil-scroll");
+const input = document.getElementById("modalInput");
+const textarr = document.getElementById("modaltexttarea");
+const modalbtn = document.getElementById("modal-btn");
 
-// 게시글을 작성하는 함수입니다.
-// const createBtn = document.getElementById("createBtn");
-// createBtn.addEventListener("click", async (e) => {
-//   // 이벤트 전파를 방지합니다.
-//   e.preventDefault();
-//   e.stopPropagation();
-
-//   const createModal = document.getElementById("createModal");
-//   createModal.style.display = "block";
-// });
-
-// // 모달창 닫기 버튼을 클릭하면 모달 창을 닫습니다.
-// const closeBtn = document.querySelector(".closeBtn");
-// closeBtn.addEventListener("click", () => {
-//   const modal = document.querySelector("#createModal");
-//   modal.style.display = "none";
-// });
-
+modalbtn.onclick = function () {
+  const inputValue = input.value;
+  const textarrvlue = textarr.value;
+  displaytext.textContent = inputValue;
+};
 mapRendering();

@@ -432,7 +432,7 @@ th {
   display: flex;
   flex-direction: column;
   top: 1rem;
-  padding: 16px;
+  /* padding: 1rem; */
   border-radius: 8px;
   width: 30%;
 }
@@ -477,7 +477,7 @@ th {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 2px;
   background-color: #fff;
   border: 2px solid rgba(255, 128, 128, 0.5);
   border-radius: 16px;
@@ -614,9 +614,9 @@ textarea {
   width: 100%;
   /* border: 1rem; */
 }
-.Reviewswrite-header {
-  background-color: #f5dad2;
+/* .Reviewswrite-header {
+  background-color: #c7c8cc;
 }
 .Reviewswrite-footer {
-  background-color: #f5dad2;
-}
+  background-color: #c7c8cc;
+} */

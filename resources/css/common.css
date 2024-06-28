@@ -72,7 +72,7 @@ button {
   outline: 0;
   border: 0;
   cursor: pointer;
-  transition: 0.3s;
+  transition: 0.3s linear;
 }
 
 /* header */
