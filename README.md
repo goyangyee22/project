@@ -141,7 +141,7 @@ comments centent
 > **팀원 서정은**
 
 ```
-comments centent
+-
 ```
 
 <br>
