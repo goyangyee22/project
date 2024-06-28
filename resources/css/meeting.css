@@ -181,12 +181,8 @@ button:hover {
   border-radius: 5px;
   padding: 5px;
   position: relative;
-  left: 50%;
-  top: 8px;
-  z-index: 1;
-  /* bottom: 1590px; */
-  /* left: 90px; */
-  /* margin-left: -60px; */
+  left: 100%;
+  z-index: 999;
   opacity: 0;
   transition: opacity 0.3s;
 }
@@ -549,6 +545,21 @@ button:hover {
     border-radius: 10px;
     width: 95%;
   }
+  .copy-message {
+    visibility: hidden;
+    width: 120px;
+    background-color: #1a2130;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px;
+    position: relative;
+    left: 150px;
+    z-index: 999;
+    opacity: 0;
+    transition: opacity 0.3s;
+    bottom: 60px;
+  }
   #hello {
     padding: 15px;
   }
@@ -738,6 +749,21 @@ button:hover {
     border-radius: 10px;
     width: 303px;
   }
+  .copy-message {
+    visibility: hidden;
+    width: 120px;
+    background-color: #1a2130;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px;
+    position: relative;
+    left: 100px;
+    z-index: 999;
+    opacity: 0;
+    transition: opacity 0.3s;
+    bottom: 50px;
+  }
   .hover-input {
     font-size: 8px;
   }
@@ -797,7 +823,7 @@ button:hover {
     width: 150px;
     height: 150px;
     background-color: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(30px);
     /* background-color: #dddddd; */
   }
   .meeting_medium {
@@ -805,13 +831,13 @@ button:hover {
     height: 150px;
     margin: 5px 0px;
     background-color: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(30px);
   }
   .meeting_big {
     width: 150px;
     height: 150px;
     background-color: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(30px);
   }
   .button1 {
     padding: 5px 10px;
