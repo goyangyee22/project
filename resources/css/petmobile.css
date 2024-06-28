@@ -11,6 +11,11 @@
   }
   #pet {
     padding-bottom: 0;
+    padding: 0 0 0 1.5rem 1rem;
+  }
+  .fa-solid,
+  .fas {
+    font-size: 1rem;
   }
   .More {
     /* backdrop-filter: blur(50px); */
@@ -265,7 +270,7 @@
     font-size: 1.5rem;
     background-color: #ffefef;
     border-radius: 0.5rem;
-    width: 30px;
+    width: 1rem;
     height: 150px;
     position: fixed;
     /* top: 600px; */
